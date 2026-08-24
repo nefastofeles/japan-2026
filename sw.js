@@ -39,6 +39,7 @@ const SHELL = [
   "js/components/video-embed.js",
   "js/components/booking-card.js",
   "js/components/markdown.js",
+  "js/components/reference.js",
   "data/itinerary.json",
   "data/people.json",
 ];

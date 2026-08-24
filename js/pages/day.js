@@ -18,6 +18,9 @@ import { videoEmbed, bindVideos } from "../components/video-embed.js";
 import { photoGrid, bindPhotoGrid } from "../components/photo-grid.js";
 import { mealList } from "../components/meal-card.js";
 import { markdown } from "../components/markdown.js";
+import {
+  weatherLine, watchlistSection, packingSection, weatherTable,
+} from "../components/reference.js";
 
 function header(day) {
   const counter = dayNumber(day);
@@ -126,6 +129,7 @@ export async function dayPage({ date }) {
       ${cover}
 
       ${day.transit ? `<p class="transit"><span aria-hidden="true">🚄</span><span>${esc(day.transit)}</span></p>` : ""}
+      ${day.kind === "day" ? weatherLine(day.leg) : ""}
       ${bookings(day.bookings)}
       ${day.special ? `<p class="notice"><strong>A special one.</strong> This is the day the whole trip bends around.</p>` : ""}
 
@@ -155,6 +159,12 @@ export async function dayPage({ date }) {
       </section>
 
       ${plan(day)}
+
+      ${
+        day.kind === "pre"
+          ? watchlistSection() + weatherTable() + packingSection()
+          : ""
+      }
 
       <section>
         <h2 class="section-title">Comments</h2>
