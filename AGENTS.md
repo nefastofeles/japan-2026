@@ -35,7 +35,8 @@ make anything smaller to fit more in.
 | I want to... | Open |
 |---|---|
 | change a colour or a font size | `css/tokens.css` |
-| change how something looks | `css/components.css` |
+| change how the frame looks: strip, cards, buttons | `css/components.css` |
+| change how photos, video or meals look | `css/media.css` |
 | change what a page says | the file in `js/pages/` |
 | fix the trip plan, dates, bookings | `data/itinerary.json` |
 | add a new page | `js/pages/`, then register it in `js/app.js` |

@@ -27,7 +27,8 @@ the site loads `data/itinerary.json` and browsers block that on `file://`.
 index.html              the shell: header, nav, an empty <main>
 css/tokens.css          colours, type sizes, spacing. The safe playground
 css/base.css            layout and typography
-css/components.css      day strip, photo grid, meal cards, everything else
+css/components.css      day strip, cards, buttons, forms: the frame
+css/media.css           photos, lightbox, video, meals: the contents
 css/themes/             one file per person. Yours to wreck
 js/app.js               start here. Registers the routes and boots the site
 js/config.js            the two Supabase values. Also image sizes
@@ -101,9 +102,30 @@ See `SETUP.md`. Until it is done, everything still works in plan mode.
 
 ## Before we fly
 
+### Kit and accounts
+
 - [ ] Set both iPhones to Settings, Camera, Formats, **Most Compatible**
 - [ ] Two 256GB V30 microSD cards for the Pocket 3, set to 4K/30 in H.264
 - [ ] A separate Google account for the trip's YouTube channel
-- [ ] Entry times for the four booked things, into `data/itinerary.json`
 - [ ] Send the family password round and check a grandparent can sign in
 - [ ] Everyone writes their predictions before the airport
+
+### Trip decisions still open
+
+These came out of the planning spreadsheets and are not yet in
+`data/itinerary.json`, because they are yours to decide rather than mine.
+
+- [ ] **Grand Sumo, Aki Basho.** Time-critical. The tournament runs 13 to 27
+      September at Ryogoku Kokugikan, so 16, 17 or 18 September all work, and
+      mid-basho weekdays are the least contested. Tickets have been on sale
+      since 8 August. Chair seats ¥3,500 to ¥8,500. If this is wanted, it is
+      the one thing on the list that can sell out.
+- [ ] **Ghibli Museum.** The research sheet says tickets were to be bought on
+      10 August for a Tokyo day. If they were bought, tell me which day and
+      what time and it goes in as a booking.
+- [ ] **Entry times** for Skytree, the three teamLab venues and Ninja-dera.
+      Currently in the itinerary with no time against them.
+- [ ] **Super Nintendo World** is on the family wish list but Osaka has only
+      two days and the trip DNA says no amusement parks. Decide or drop it.
+- [ ] Confirm the Miyajima Airbnb has a private bath, since it is no longer
+      the ryokan the original document assumed.
