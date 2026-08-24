@@ -1,0 +1,796 @@
+{
+  "trip": {
+    "name": "Japan 2026",
+    "subtitle": "Javier, Rikke, Saga and Leo",
+    "startDate": "2026-09-15",
+    "endDate": "2026-10-06",
+    "homeTimezone": "Europe/Copenhagen",
+    "tripTimezone": "Asia/Tokyo",
+    "dailyBudgetDkk": 3500,
+    "dailyBudgetYen": 75000,
+    "dna": "Rikke's first time in Japan. Equal mix of culture, nature, food and fun. No amusement parks. Tattoo-friendly onsen strategy throughout."
+  },
+
+  "legs": [
+    { "id": "before",    "name": "Before",        "jp": "若竹", "romaji": "wakatake", "meaning": "young bamboo",   "colour": "#68BE8D" },
+    { "id": "inbound",   "name": "Inbound",       "jp": "浅葱", "romaji": "asagi",    "meaning": "pale blue-green", "colour": "#00A3AF" },
+    { "id": "shinjuku",  "name": "Shinjuku",      "jp": "朱",   "romaji": "shu",      "meaning": "vermilion",      "colour": "#EB6101" },
+    { "id": "kyoto",     "name": "Kyoto",         "jp": "藤",   "romaji": "fuji",     "meaning": "wisteria",       "colour": "#8B81C3" },
+    { "id": "osaka",     "name": "Osaka",         "jp": "柿",   "romaji": "kaki",     "meaning": "persimmon",      "colour": "#ED6D3D" },
+    { "id": "hiroshima", "name": "Hiroshima",     "jp": "群青", "romaji": "gunjo",    "meaning": "ultramarine",    "colour": "#4C6CB3" },
+    { "id": "miyajima",  "name": "Miyajima",      "jp": "紅",   "romaji": "beni",     "meaning": "crimson",        "colour": "#C9171E" },
+    { "id": "kanazawa",  "name": "Kanazawa",      "jp": "山吹", "romaji": "yamabuki", "meaning": "golden",         "colour": "#F8B500" },
+    { "id": "takayama",  "name": "Takayama",      "jp": "松葉", "romaji": "matsuba",  "meaning": "pine needle",    "colour": "#839B5C" },
+    { "id": "kiso",      "name": "Kiso Valley",   "jp": "苔",   "romaji": "koke",     "meaning": "moss",           "colour": "#69821B" },
+    { "id": "tokyo",     "name": "Tokyo",         "jp": "藍",   "romaji": "ai",       "meaning": "indigo",         "colour": "#165E83" },
+    { "id": "outbound",  "name": "Outbound",      "jp": "薄墨", "romaji": "usuzumi",  "meaning": "pale ink",       "colour": "#8C8C8C" },
+    { "id": "after",     "name": "After",         "jp": "黄金", "romaji": "kogane",   "meaning": "gold",           "colour": "#E6B422" }
+  ],
+
+  "days": [
+    {
+      "position": 0,
+      "kind": "pre",
+      "slug": "before",
+      "leg": "before",
+      "date": null,
+      "city": "Home",
+      "overnight": null,
+      "title": "Before We Go",
+      "subtitle": "Packing, predictions and counting down",
+      "activities": [
+        { "when": "To do", "items": [
+          "Everyone writes their sealed predictions before the airport",
+          "Pack: light layers, walking shoes, compact umbrella, day backpacks",
+          "Set both iPhones to Most Compatible so photos are JPEG not HEIC",
+          "Buy the Japan eSIM (Ubigi, Airalo or Mobal) and activate on landing",
+          "Each kid researches one place and writes a card for the site"
+        ] }
+      ],
+      "bookings": [],
+      "food": []
+    },
+
+    {
+      "position": 1,
+      "kind": "day",
+      "date": "2026-09-15",
+      "leg": "inbound",
+      "city": "Copenhagen to Tokyo",
+      "overnight": "In flight",
+      "title": "Departure Day",
+      "subtitle": "The long way east",
+      "transit": "Overnight flight to Haneda, landing 07:55 tomorrow morning.",
+      "activities": [
+        { "when": "Morning", "items": [
+          "Final packing and bag weigh-in",
+          "Passports, passport copies, eSIM ready to activate on landing"
+        ] },
+        { "when": "Afternoon", "items": [
+          "Airport. Seal everyone's predictions before boarding",
+          "First post to the site from the departure lounge"
+        ] },
+        { "when": "Evening", "items": [
+          "Board. Sleep as much as the seats allow"
+        ] }
+      ],
+      "bookings": [],
+      "food": ["Whatever the airline calls dinner"]
+    },
+
+    {
+      "position": 2,
+      "kind": "day",
+      "date": "2026-09-16",
+      "leg": "shinjuku",
+      "city": "Tokyo",
+      "overnight": "Shinjuku",
+      "title": "Arrival, Senso-ji and the First Konbini",
+      "subtitle": "Landing 07:55. Jet lag day, keep it gentle.",
+      "transit": "Haneda to Shinagawa on the Keikyu Line (~20 min, ¥300), then on to Shinjuku.",
+      "activities": [
+        { "when": "Morning", "items": [
+          "Land at Haneda. Suica cards at the airport or straight into Apple Wallet",
+          "Drop bags. Check-in unlikely before 15:00, so coin lockers or luggage storage",
+          "First konbini run: onigiri, egg sandwiches, melon pan, canned coffee. This is a ritual, not a compromise"
+        ] },
+        { "when": "Afternoon", "items": [
+          "Senso-ji, Asakusa. Rikke's first temple, through the Kaminarimon gate and down Nakamise-dori",
+          "Street snacks: ningyo-yaki, age-manju, melon pan",
+          "Slow walk along the Sumida River toward the Skytree, visible the whole way"
+        ] },
+        { "when": "Evening", "items": [
+          "Early izakaya dinner. Yakitori, edamame, gyoza",
+          "Back by 20:00. Jet lag will crush everyone"
+        ] }
+      ],
+      "bookings": [],
+      "food": ["Konbini onigiri and egg sandwiches", "Ningyo-yaki on Nakamise-dori", "First izakaya yakitori"]
+    },
+
+    {
+      "position": 3,
+      "kind": "day",
+      "date": "2026-09-17",
+      "leg": "shinjuku",
+      "city": "Tokyo",
+      "overnight": "Shinjuku",
+      "title": "Tsukiji, Gardens and the Skytree",
+      "subtitle": "Markets in the morning, the whole city at night",
+      "activities": [
+        { "when": "Morning", "items": [
+          "Tsukiji Outer Market food crawl. Tamagoyaki on a stick, tuna cheek skewers, fresh uni, strawberry daifuku. Budget ¥3,000 to ¥5,000 each for grazing",
+          "Hama-rikyu Gardens, ten minutes away. Edo-era garden with a teahouse on the pond. Matcha and wagashi"
+        ] },
+        { "when": "Afternoon", "items": [
+          "Shibuya Crossing at dusk, the scramble from above",
+          "Shibuya Sky observation deck if the timing works"
+        ] },
+        { "when": "Evening", "items": [
+          "Tokyo Skytree. Tembo Deck and Tembo Galleria, timed for sunset around 17:30",
+          "Dinner at Solamachi in the mall below: ramen, tonkatsu, curry"
+        ] }
+      ],
+      "bookings": [
+        { "time": "", "title": "Tokyo Skytree", "type": "ticket", "note": "Tembo Deck + Galleria combo. Time for sunset ~17:30." }
+      ],
+      "food": ["Tsukiji tamagoyaki and tuna cheek", "Matcha and wagashi at Hama-rikyu", "Solamachi dinner"]
+    },
+
+    {
+      "position": 4,
+      "kind": "day",
+      "date": "2026-09-18",
+      "leg": "shinjuku",
+      "city": "Tokyo",
+      "overnight": "Shinjuku",
+      "title": "Shrines, Harajuku and teamLab",
+      "subtitle": "Culture, pop culture, then the lights",
+      "activities": [
+        { "when": "Morning", "items": [
+          "Meiji Jingu. Massive torii, forest-wrapped approach, maybe a wedding procession. Walk on through Yoyogi Park",
+          "Takeshita Street, Harajuku. Saga's territory: crepes, fashion, pop culture shops"
+        ] },
+        { "when": "Lunch", "items": [
+          "Harajuku Gyoza Lou, or walk Omotesando for something more elevated"
+        ] },
+        { "when": "Afternoon", "items": [
+          "Akihabara. Leo's paradise: arcades, gachapon, manga shops, retro games. Budget ¥2,000 to ¥3,000 for tokens and capsules"
+        ] },
+        { "when": "Evening", "items": [
+          "teamLab. Budget two to three hours and don't rush Rikke through it",
+          "Pack for Kyoto"
+        ] }
+      ],
+      "bookings": [
+        { "time": "", "title": "teamLab Tokyo", "type": "ticket", "note": "Timed entry. Dark venue, so the Pocket 3 is the better camera." }
+      ],
+      "food": ["Harajuku crepes", "Gyoza Lou", "Konbini supper after teamLab"]
+    },
+
+    {
+      "position": 5,
+      "kind": "day",
+      "date": "2026-09-19",
+      "leg": "kyoto",
+      "city": "Kyoto",
+      "overnight": "Gion",
+      "title": "Shinkansen South, Then a Thousand Torii",
+      "subtitle": "Tokyo to Kyoto, and straight into the vermilion",
+      "transit": "Tokaido Shinkansen, 2h 15m. Fuji on the right-hand side, seats D and E, on a clear day.",
+      "activities": [
+        { "when": "Morning", "items": [
+          "Check out. Ekiben from the Gransta food halls under Tokyo Station. This is a travel ritual, take your time choosing",
+          "Board. Watch for Fuji"
+        ] },
+        { "when": "Afternoon", "items": [
+          "Arrive Kyoto around 12:30, drop bags in Gion",
+          "Fushimi Inari Taisha in the golden afternoon light. The first 20 to 30 minutes give the iconic shots, and the upper trails thin out dramatically",
+          "Inari sushi from a stall in the Fushimi backstreets"
+        ] },
+        { "when": "Evening", "items": [
+          "Gion evening walk down Hanami-koji. Maiko heading to engagements around 17:30 to 18:00",
+          "Dinner in Pontocho Alley. Riverside terraces run until 30 September"
+        ] }
+      ],
+      "bookings": [],
+      "food": ["Ekiben on the shinkansen", "Inari sushi at Fushimi", "Obanzai in Pontocho"]
+    },
+
+    {
+      "position": 6,
+      "kind": "day",
+      "date": "2026-09-20",
+      "leg": "kyoto",
+      "city": "Kyoto",
+      "overnight": "Gion",
+      "title": "Gold, Zen and Bamboo",
+      "subtitle": "Northwest Kyoto and Arashiyama",
+      "activities": [
+        { "when": "Morning", "items": [
+          "Kinkaku-ji at the 09:00 opening to beat the crowds. Thirty or forty minutes is plenty",
+          "Ryoan-ji, the most famous zen rock garden in the world. You can never see all fifteen stones at once. Let Leo try"
+        ] },
+        { "when": "Late morning", "items": [
+          "Arashiyama Bamboo Grove, before noon while it is still walkable"
+        ] },
+        { "when": "Lunch", "items": [
+          "% Arabica by the river, then soba or udon nearby"
+        ] },
+        { "when": "Afternoon", "items": [
+          "Monkey Park Iwatayama. Twenty-minute hike up to wild macaques and a panorama of Kyoto",
+          "Or the Hozugawa river boat, 16 km down the gorge (¥4,100 adult, ¥2,700 child, about 2 hours)"
+        ] },
+        { "when": "Evening", "items": [
+          "Casual dinner in Arashiyama, or back in Gion"
+        ] }
+      ],
+      "bookings": [],
+      "food": ["% Arabica coffee", "Riverside soba", "Yudofu or izakaya in Gion"]
+    },
+
+    {
+      "position": 7,
+      "kind": "day",
+      "date": "2026-09-21",
+      "leg": "kyoto",
+      "city": "Kyoto",
+      "overnight": "Gion",
+      "title": "Nishiki Market and teamLab Kyoto",
+      "subtitle": "Kyoto's kitchen, then the lights again",
+      "activities": [
+        { "when": "Morning", "items": [
+          "Nishiki Market, Kyoto's kitchen. A covered arcade of a hundred-plus stalls: dashimaki tamago, yuba, tsukemono, matcha sweets, tako tamago. Budget ¥3,000 to ¥5,000 each"
+        ] },
+        { "when": "Midday", "items": [
+          "Optional family cooking class. Hana Cooking, WAK Japan or via Cookly. Around ¥7,000 to ¥10,000 each including the meal you cook"
+        ] },
+        { "when": "Afternoon", "items": [
+          "teamLab Kyoto"
+        ] },
+        { "when": "Evening", "items": [
+          "Gion food crawl in small plates: kushikatsu, lighter chicken-based Kyoto ramen, then wagashi and matcha at a teahouse"
+        ] }
+      ],
+      "bookings": [
+        { "time": "", "title": "teamLab Kyoto", "type": "ticket", "note": "Timed entry." }
+      ],
+      "food": ["Nishiki Market grazing", "Kyoto-style ramen", "Wagashi and matcha"]
+    },
+
+    {
+      "position": 8,
+      "kind": "day",
+      "date": "2026-09-22",
+      "leg": "kyoto",
+      "city": "Kyoto",
+      "overnight": "Gion",
+      "title": "Kiyomizu-dera and the Last Kyoto Day",
+      "subtitle": "Deep cuts before Osaka",
+      "activities": [
+        { "when": "Morning", "items": [
+          "Kiyomizu-dera in morning light, the wooden terrace cantilevered over the hillside",
+          "Down through Ninenzaka and Sannenzaka, the most photogenic lanes in Kyoto",
+          "Otowa Waterfall at the base. Three streams, three wishes: longevity, love, success at school. Let the kids choose"
+        ] },
+        { "when": "Late morning", "items": [
+          "Tofuku-ji. Far less crowded, an extraordinary zen garden and a bridge over the ravine"
+        ] },
+        { "when": "Lunch", "items": [
+          "Yudofu at Junsei near Nanzen-ji, or Kyoto beef yakiniku"
+        ] },
+        { "when": "Afternoon", "items": [
+          "Philosopher's Path and Nanzen-ji, where a Meiji brick aqueduct cuts straight through the temple grounds. Leo will think the Romans invaded Kyoto",
+          "Or the Manga Museum, 300,000 volumes and open reading",
+          "Or kimono rental for Rikke and Saga to walk Gion"
+        ] },
+        { "when": "Evening", "items": [
+          "Kaiseki splurge, ¥8,000 to ¥15,000 each. Worth it for Rikke's introduction",
+          "Pack for Osaka"
+        ] }
+      ],
+      "bookings": [],
+      "food": ["Yudofu at Junsei", "Kaiseki dinner"]
+    },
+
+    {
+      "position": 9,
+      "kind": "day",
+      "date": "2026-09-23",
+      "leg": "osaka",
+      "city": "Osaka",
+      "overnight": "Namba",
+      "title": "Osaka in Two Words: Eat Everything",
+      "subtitle": "Shinsekai, the castle, and then Dotonbori",
+      "transit": "Kyoto to Osaka on the JR Special Rapid, 30 minutes.",
+      "activities": [
+        { "when": "Late morning", "items": [
+          "Shinsekai. Retro neon with Tsutenkaku Tower over the narrow streets",
+          "Kushikatsu at Daruma or Yaekatsu. One rule: never double-dip the communal sauce"
+        ] },
+        { "when": "Afternoon", "items": [
+          "Osaka Castle. The grounds and the top-floor view are the point",
+          "Kuromon Market, Osaka's kitchen. Giant grilled scallops, crab legs, uni, mochi"
+        ] },
+        { "when": "Evening", "items": [
+          "Dotonbori. The Glico running man, canal reflections, neon overload",
+          "Takoyaki at Wanaka or Kukuru, watching them turned in the moulds",
+          "Okonomiyaki at Mizuno or Fukutaro, gyoza at Chao Chao, and Cremia soft serve",
+          "Walk the canal after dark. Rikke will remember this night"
+        ] }
+      ],
+      "bookings": [],
+      "food": ["Kushikatsu at Daruma", "Kuromon scallops", "Takoyaki, okonomiyaki and Cremia"]
+    },
+
+    {
+      "position": 10,
+      "kind": "day",
+      "date": "2026-09-24",
+      "leg": "osaka",
+      "city": "Osaka",
+      "overnight": "Namba",
+      "title": "teamLab Osaka and Ura-Namba",
+      "subtitle": "Vintage streets by day, botanical lights by night",
+      "activities": [
+        { "when": "Morning", "items": [
+          "Amerikamura. Osaka's street culture district: vintage clothing, record shops, street art. Saga territory"
+        ] },
+        { "when": "Lunch", "items": [
+          "Okonomiyaki you cook yourself on the teppan at your table. Kiji at the Umeda Sky Building is legendary",
+          "Umeda Sky Building floating garden observatory while you are there"
+        ] },
+        { "when": "Afternoon", "items": [
+          "Spa World in Shinsekai. Check the current tattoo policy first, it has moved toward tattoo-friendly access on certain days",
+          "Or the Museum of Housing and Living, a full-scale Edo-era Osaka street indoors"
+        ] },
+        { "when": "Evening", "items": [
+          "teamLab Botanical Garden, Nagai Park. Always better after dark",
+          "Ura-Namba back alleys afterwards: tiny standing bars and yakitori. Lively rather than rowdy, kids welcome",
+          "Or Hozenji Yokocho, the stone-paved alley with the moss-covered statue"
+        ] }
+      ],
+      "bookings": [
+        { "time": "", "title": "teamLab Osaka", "type": "ticket", "note": "Botanical Garden, Nagai Park. Outdoors and after dark." }
+      ],
+      "food": ["Okonomiyaki cooked at the table", "Ura-Namba kushikatsu and beef tongue"]
+    },
+
+    {
+      "position": 11,
+      "kind": "day",
+      "date": "2026-09-25",
+      "leg": "hiroshima",
+      "city": "Hiroshima",
+      "overnight": "Hiroshima",
+      "title": "Peace Memorial Park",
+      "subtitle": "The reason for the stop. Don't rush it.",
+      "transit": "Osaka to Hiroshima, Sanyo Shinkansen, 1h 30m. Arrive around 11:00.",
+      "activities": [
+        { "when": "Afternoon", "items": [
+          "The A-Bomb Dome, preserved exactly as the blast left it",
+          "Peace Memorial Museum. Deeply moving, and the personal artifacts section is devastating. Saga at 13 is the right age to absorb this",
+          "Children's Peace Monument. For Leo, the Sadako paper cranes story is the way in",
+          "The Cenotaph and the Flame of Peace, which frames the Dome through its arch",
+          "Budget two to three hours minimum"
+        ] },
+        { "when": "Late afternoon", "items": [
+          "Decompress. Walk or cycle along the river. The contrast between the park's weight and the city's vitality is the thing to notice"
+        ] },
+        { "when": "Dinner", "items": [
+          "Hiroshima-style okonomiyaki, layered rather than mixed, with yakisoba built in",
+          "Okonomimura, a whole building of teppan counters, or Nagata-ya for the famous version"
+        ] }
+      ],
+      "bookings": [],
+      "food": ["Hiroshima-style okonomiyaki at Okonomimura"]
+    },
+
+    {
+      "position": 12,
+      "kind": "day",
+      "date": "2026-09-26",
+      "leg": "miyajima",
+      "city": "Miyajima",
+      "overnight": "Ryokan, Miyajima",
+      "title": "The Floating Torii",
+      "subtitle": "Deer, oysters, and the island after the day-trippers leave",
+      "transit": "JR to Miyajimaguchi (~30 min) then the JR ferry (10 min). Pay with the IC card.",
+      "activities": [
+        { "when": "Morning", "items": [
+          "Ship the large luggage ahead to Kanazawa by Takkyubin, around ¥2,000 a bag. Travel with day bags only",
+          "The ferry approach, with the floating torii of Itsukushima in view. Check the tide tables: low tide lets you walk to the gate, high tide makes it float"
+        ] },
+        { "when": "Explore", "items": [
+          "Itsukushima Shrine, vermilion and built out over the water. One of Japan's Three Views",
+          "The five-storey pagoda and Senjokaku Hall, a vast tatami-floored wooden hall that is often completely empty",
+          "Daishoin Temple. Hundreds of small statues in knitted caps, spinning prayer wheels, and caves lined with pilgrimage icons. The tactile stuff makes this a hit with kids"
+        ] },
+        { "when": "Lunch", "items": [
+          "Grilled oysters from the street stalls, ¥200 to ¥500 each",
+          "Momiji manju, and the fried age-momiji version: crisp outside, molten inside"
+        ] },
+        { "when": "Afternoon", "items": [
+          "Mt Misen. Ropeway up (~¥1,800 return) then a 30-minute hike to the summit, with deer on the trails and views across the Seto Inland Sea",
+          "Or beach and deer time on the quieter southern paths"
+        ] },
+        { "when": "Evening", "items": [
+          "Check into the ryokan. Confirm the private onsen or in-room bath in advance",
+          "Kaiseki dinner with local seafood. Anago-meshi, conger eel over rice, is the island's signature",
+          "Walk the island at night. After 17:00 it empties out: the torii lit up, deer asleep in the streets, near silence"
+        ] }
+      ],
+      "bookings": [],
+      "food": ["Grilled oysters", "Age-momiji", "Anago-meshi at the ryokan"]
+    },
+
+    {
+      "position": 13,
+      "kind": "day",
+      "date": "2026-09-27",
+      "leg": "kanazawa",
+      "city": "Kanazawa",
+      "overnight": "SOKI Kanazawa",
+      "title": "The Long Leg North",
+      "subtitle": "Five hours of trains, then gold leaf",
+      "transit": "Ferry, JR to Hiroshima, Sanyo Shinkansen to Shin-Osaka, then the Thunderbird to Kanazawa. Around five hours.",
+      "activities": [
+        { "when": "Morning", "items": [
+          "Early start. Ekiben and snacks for the journey, card games and books",
+          "Scenic run through mountains, coastline and rice paddies",
+          "The luggage arrives at SOKI separately by Takkyubin"
+        ] },
+        { "when": "Late afternoon", "items": [
+          "Arrive around 15:00 to 16:00 and check in",
+          "Higashi Chaya District, the preserved geisha quarter of wooden lattice buildings and narrow lanes",
+          "Hakuza, where you can watch gold leaf being applied. Then the gold-leaf ice cream, Kanazawa's signature",
+          "Walk the Asano River in the fading light"
+        ] },
+        { "when": "Dinner", "items": [
+          "Omi-cho Market area. Kaisendon piled with sweet shrimp, uni, crab and ikura, or a sushi counter where the chef decides. Nothing like Tokyo prices"
+        ] }
+      ],
+      "bookings": [],
+      "food": ["Ekiben on the Thunderbird", "Gold-leaf ice cream", "Kaisendon at Omi-cho"]
+    },
+
+    {
+      "position": 14,
+      "kind": "day",
+      "date": "2026-09-28",
+      "leg": "kanazawa",
+      "city": "Kanazawa",
+      "overnight": "SOKI Kanazawa",
+      "title": "Kenroku-en, Ninja-dera and the Swimming Pool",
+      "subtitle": "A full Kanazawa day",
+      "activities": [
+        { "when": "Morning", "items": [
+          "Kenroku-en, one of the Three Great Gardens of Japan. Eleven hectares of lanterns, ponds, bridges and tea houses. Early admission at 7:00, standard at 8:00. Budget an hour and a half",
+          "Kanazawa Castle Park next door"
+        ] },
+        { "when": "Late morning", "items": [
+          "21st Century Museum of Contemporary Art. The free zones include Leandro Erlich's Swimming Pool, where you look down through water at people walking below, then go below and look up"
+        ] },
+        { "when": "Lunch", "items": [
+          "Kanazawa curry. Darker and richer than standard, on a steel plate with shredded cabbage. Champion Curry is the iconic spot and Leo will approve"
+        ] },
+        { "when": "Afternoon", "items": [
+          "Nagamachi Samurai District. Earthen walls, waterways, and the Nomura house with its garden viewed from inside",
+          "Ninja-dera. Trap doors, hidden stairways, escape tunnels and trick rooms. Around 45 minutes and reservation required"
+        ] },
+        { "when": "Evening", "items": [
+          "Nodoguro, blackthroat sea perch, Kanazawa's signature luxury fish. Grilled, simmered or as sashimi"
+        ] }
+      ],
+      "bookings": [
+        { "time": "", "title": "Ninja-dera (Myoryu-ji)", "type": "reservation", "note": "Must be reserved ahead. Tour in Japanese with an English pamphlet." }
+      ],
+      "food": ["Kanazawa curry at Champion", "Nodoguro"]
+    },
+
+    {
+      "position": 15,
+      "kind": "day",
+      "date": "2026-09-29",
+      "leg": "kanazawa",
+      "city": "Kanazawa",
+      "overnight": "SOKI Kanazawa",
+      "title": "Craft and Chill",
+      "subtitle": "Slow day before the mountains",
+      "activities": [
+        { "when": "Morning", "items": [
+          "D.T. Suzuki Museum. The Taniguchi architecture is the real draw: reflecting pools, meditation spaces, minimalist corridors",
+          "Or the Yasue Gold Leaf Museum, where 99% of Japan's gold leaf comes from, with a hands-on pressing workshop"
+        ] },
+        { "when": "Late morning", "items": [
+          "Omi-cho Market, round two. Morning is peak. Grilled scallops, fresh crab, tamagoyaki"
+        ] },
+        { "when": "Lunch", "items": [
+          "Kaiten-zushi at Morimori Sushi. Conveyor belt sushi at Kanazawa fish quality is a different thing entirely"
+        ] },
+        { "when": "Afternoon", "items": [
+          "Rent bikes. Kanazawa is flat and easy",
+          "Nishi Chaya, the quieter western geisha quarter",
+          "Kutani pottery, with painting workshops at some studios",
+          "Or simply the private baths at SOKI before the mountain phase"
+        ] },
+        { "when": "Evening", "items": [
+          "Omakase sushi. Mid-range here is ¥5,000 to ¥8,000 each and world-class"
+        ] }
+      ],
+      "bookings": [],
+      "food": ["Morimori kaiten-zushi", "Omakase counter"]
+    },
+
+    {
+      "position": 16,
+      "kind": "day",
+      "date": "2026-09-30",
+      "leg": "takayama",
+      "city": "Takayama",
+      "overnight": "Takayama",
+      "title": "Into the Alps",
+      "subtitle": "Old town, Hida beef, and mountain air",
+      "transit": "Kanazawa to Takayama by Nohi Bus, 2h 15m (~¥3,500 adult, ~¥1,750 child). Arrive around 12:30.",
+      "activities": [
+        { "when": "Afternoon", "items": [
+          "Sanmachi Suji, three parallel streets of Edo-period merchant houses, now sake breweries and craft shops. The best-preserved old town in the Japanese Alps. Walk it slowly",
+          "Hida beef sushi, grilled wagyu on vinegared rice served on a senbei cracker, eaten standing at a street stall. A top-five food moment of the trip",
+          "Mitarashi dango, the savoury soy-glazed version rather than the sweet Tokyo kind",
+          "Sake tasting. Seven breweries in the old town, marked by the cedar balls hanging outside. Amazake for the kids"
+        ] },
+        { "when": "Evening", "items": [
+          "Hida beef dinner. Maruaki for affordable sets, or Center4 Hamburgers as the Leo-approved fallback",
+          "If staying out at Okuhida, the private rotenburo under the stars. One of the trip's peak moments"
+        ] }
+      ],
+      "bookings": [],
+      "food": ["Hida beef sushi on a senbei cracker", "Mitarashi dango", "Hida beef dinner"]
+    },
+
+    {
+      "position": 17,
+      "kind": "day",
+      "date": "2026-10-01",
+      "leg": "takayama",
+      "city": "Takayama",
+      "overnight": "Takayama",
+      "title": "Morning Market and the Folk Village",
+      "subtitle": "A full Takayama day",
+      "activities": [
+        { "when": "Morning", "items": [
+          "Miyagawa Morning Market along the river, open 06:00 to 12:00. Mountain pickles, produce, crafts, apple juice, hoba miso samples",
+          "Takayama Jinya, the only surviving Edo-era magistrate's office in Japan. Better than it sounds, with a good English audio guide"
+        ] },
+        { "when": "Midday", "items": [
+          "Hida Folk Village. An open-air museum of relocated gassho-zukuri thatched farmhouses around a mountain-backed pond, with hands-on woodworking, shibori dyeing and weaving. Budget one and a half to two hours"
+        ] },
+        { "when": "Lunch", "items": [
+          "Takayama ramen. Thin curly noodles in a soy-based broth, simple toppings"
+        ] },
+        { "when": "Afternoon", "items": [
+          "Sake brewery deep dive. Funasaka and Harada are the standouts",
+          "Or cycle to Hida-Furukawa, a quieter Takayama with white-walled storehouses and koi-filled canals, from the film Your Name"
+        ] },
+        { "when": "Evening", "items": [
+          "Light early dinner. Tomorrow is a travel and hiking day",
+          "Pack for the Nakasendo"
+        ] }
+      ],
+      "bookings": [],
+      "food": ["Morning market hoba miso", "Takayama ramen", "Sake and amazake tasting"]
+    },
+
+    {
+      "position": 18,
+      "kind": "day",
+      "date": "2026-10-02",
+      "leg": "kiso",
+      "city": "Magome to Tsumago",
+      "overnight": "Tokoname",
+      "title": "The Nakasendo: Magome to Tsumago",
+      "subtitle": "Eight kilometres of the old road, then south to the pottery town",
+      "special": true,
+      "gpx": true,
+      "transit": "Takayama to Nagoya on the JR Hida, then to Nakatsugawa and a bus to Magome. Afterwards: Nagiso to Nagoya, then Meitetsu down to Tokoname.",
+      "activities": [
+        { "when": "Morning", "items": [
+          "Depart Takayama early, around 07:30. Forward the large luggage on to Tokyo by Takkyubin",
+          "Train through the mountain valleys",
+          "Arrive Magome around 11:00. Bag forwarding on to Tsumago is about ¥500 a bag, so hike unburdened"
+        ] },
+        { "when": "The hike", "items": [
+          "Eight kilometres, two and a half to three hours at family pace with stops. Easy to moderate, well-marked forest trail",
+          "Cypress and cedar forest, the Odaki-Medaki twin waterfalls, the mountain pass, and stone-paved sections of the original road",
+          "Traditional tea houses along the way for rest and snacks",
+          "Gohei mochi, grilled rice cakes in walnut-miso sauce. The Kiso Valley speciality"
+        ] },
+        { "when": "Afternoon", "items": [
+          "Arrive Tsumago around 15:00 to 16:00. Arguably the most perfectly preserved post town in Japan: no visible power lines, no modern signage",
+          "Walk the main street once the day-trippers have gone. Wooden buildings, mountain light, near silence"
+        ] },
+        { "when": "Evening", "items": [
+          "On south to Tokoname for the night"
+        ] }
+      ],
+      "bookings": [],
+      "food": ["Gohei mochi on the trail", "Tea house snacks at the pass"]
+    },
+
+    {
+      "position": 19,
+      "kind": "day",
+      "date": "2026-10-03",
+      "leg": "tokyo",
+      "city": "Tokoname to Tokyo",
+      "overnight": "Tokyo",
+      "title": "Pottery Town, Then Back to the City",
+      "subtitle": "Kilns and maneki-neko before the shinkansen",
+      "transit": "Tokoname to Nagoya on the Meitetsu line, then the Tokaido Shinkansen to Tokyo, about 1h 40m.",
+      "activities": [
+        { "when": "Morning", "items": [
+          "The Pottery Footpath, Yakimono Sanpomichi. Kiln chimneys, walls built from stacked pots and pipes, and Tokonyan the giant maneki-neko watching the street",
+          "Tokoname is one of the Six Ancient Kilns of Japan, best known for red clay teapots. Workshops are easy to find if you want to make something"
+        ] },
+        { "when": "Afternoon", "items": [
+          "Arrive Tokyo around 14:00. Check in, luggage should be waiting via Takkyubin",
+          "Low-key wander. Yanaka old-town: the Ginza shopping street, cat statues everywhere, temple walks. Non-neon Tokyo"
+        ] },
+        { "when": "Evening", "items": [
+          "Yakitori Alley at Yurakucho, under the elevated tracks. Smoke, charcoal, cold beer and trains rumbling overhead"
+        ] }
+      ],
+      "bookings": [],
+      "food": ["Tokoname pottery-town lunch", "Yakitori under the tracks"]
+    },
+
+    {
+      "position": 20,
+      "kind": "day",
+      "date": "2026-10-04",
+      "leg": "tokyo",
+      "city": "Tokyo",
+      "overnight": "Tokyo",
+      "title": "Unfinished Business",
+      "subtitle": "Whatever you missed the first time",
+      "activities": [
+        { "when": "Morning", "items": [
+          "Toyosu Market. The restaurants open early for world-class sushi breakfast, so go hungry. The tuna auction deck needs a reservation",
+          "Or Ueno Park: the Tokyo National Museum, the zoo, and the chaotic Ameya-Yokocho market under the tracks"
+        ] },
+        { "when": "Lunch", "items": [
+          "Tsukemen at Fuunji in Shinjuku. Thick rich broth, cold noodles you dip. Among Tokyo's top five ramen experiences"
+        ] },
+        { "when": "Afternoon", "items": [
+          "Odaiba and Miraikan: robots, space, interactive exhibits, and the Gundam statue outside",
+          "Or Shinjuku Gyoen with a konbini picnic",
+          "Or Nakano Broadway, a less touristy Akihabara of vintage manga and retro toys"
+        ] },
+        { "when": "Evening", "items": [
+          "Omoide Yokocho in Shinjuku. Tiny alleyways of yakitori stalls and ramen counters, smoky and cramped",
+          "Or a sushi omakase splurge, ¥8,000 to ¥15,000 each"
+        ] }
+      ],
+      "bookings": [],
+      "food": ["Toyosu sushi breakfast", "Tsukemen at Fuunji", "Omoide Yokocho yakitori"]
+    },
+
+    {
+      "position": 21,
+      "kind": "day",
+      "date": "2026-10-05",
+      "leg": "tokyo",
+      "city": "Tokyo",
+      "overnight": "Tokyo",
+      "title": "Last Full Day",
+      "subtitle": "Souvenirs, favourites, and the final dinner",
+      "activities": [
+        { "when": "Morning", "items": [
+          "Souvenirs. Don Quijote for the chaotic everything-store run, tax-free for tourists",
+          "Tokyu Hands and Loft for Japanese design goods and stationery",
+          "Isetan Shinjuku depachika, the gold standard for beautifully packaged sweets. This is where you buy for people back home"
+        ] },
+        { "when": "Lunch", "items": [
+          "Tonkatsu at Maisen, tempura at Tsunahachi, or udon at Maruka"
+        ] },
+        { "when": "Afternoon", "items": [
+          "Repeat a favourite. teamLab again if Rikke wants a second round, Meiji Jingu for a last quiet temple moment, or bikes along the Sumida"
+        ] },
+        { "when": "Evening", "items": [
+          "Final dinner. Bookend the trip at the izakaya from night one, or robatayaki for the theatre of it, or curate a depachika picnic and eat in",
+          "Pack for departure"
+        ] }
+      ],
+      "bookings": [],
+      "food": ["Maisen tonkatsu", "Depachika sweets", "Final dinner"]
+    },
+
+    {
+      "position": 22,
+      "kind": "day",
+      "date": "2026-10-06",
+      "leg": "outbound",
+      "city": "Tokyo to Copenhagen",
+      "overnight": "Home",
+      "title": "Homeward",
+      "subtitle": "Early transfer to Haneda",
+      "transit": "Keikyu Line from Shinagawa (~20 min, ¥300 each) or the Tokyo Monorail from Hamamatsucho (~15 min, ¥500 each).",
+      "activities": [
+        { "when": "Morning", "items": [
+          "Early start and airport transfer",
+          "One last konbini breakfast",
+          "Fly home"
+        ] }
+      ],
+      "bookings": [],
+      "food": ["Final konbini breakfast"]
+    },
+
+    {
+      "position": 23,
+      "kind": "post",
+      "slug": "after",
+      "leg": "after",
+      "date": null,
+      "city": "Home",
+      "overnight": null,
+      "title": "After",
+      "subtitle": "What we learned, ate, and would do again",
+      "activities": [
+        { "when": "To do", "items": [
+          "Reveal everyone's sealed predictions",
+          "Each person picks their top three photos and says why",
+          "The food book: best dish per city, the ramen leaderboard, most divisive meal",
+          "Trip stats: photos taken, kilometres travelled, yen spent, konbini snacks tried",
+          "What each of us shipped on the website"
+        ] }
+      ],
+      "bookings": [],
+      "food": []
+    }
+  ],
+
+  "reference": {
+    "budget": {
+      "dailyTotalYen": "55,000 to 80,000",
+      "categories": [
+        { "name": "Accommodation", "yen": "18,000 to 30,000" },
+        { "name": "Food", "yen": "18,000 to 25,000" },
+        { "name": "Local transport", "yen": "3,000 to 5,000" },
+        { "name": "Activities and entry", "yen": "8,000 to 15,000" },
+        { "name": "Misc and shopping", "yen": "5,000 to 10,000" }
+      ]
+    },
+    "packing": [
+      "Comfortable walking shoes, 10,000 steps a day is the floor",
+      "Light layers: t-shirt plus a light jacket or hoodie",
+      "Rain jackets or compact umbrellas, light rain is likely",
+      "Small day backpacks",
+      "Pack for five days and use coin laundry twice",
+      "A modesty layer for temples, shoulders covered",
+      "Passport copies",
+      "Japan eSIM bought before departure, activated on landing"
+    ],
+    "weather": "18 to 28C, warm and humid early on. Typhoon season runs through October, so watch the ten-day forecasts. Mountains at Takayama and Kiso are cooler, 12 to 18C, especially mornings and evenings.",
+    "apps": [
+      { "name": "Google Maps", "for": "Navigation and transit routing" },
+      { "name": "Navitime", "for": "Backup train schedules" },
+      { "name": "Google Translate", "for": "Camera mode on menus and signs" },
+      { "name": "Tabelog", "for": "Restaurant reviews, better than Google for food" },
+      { "name": "Suica", "for": "IC card in Apple Wallet" },
+      { "name": "SmartEX", "for": "Shinkansen reserved seats" },
+      { "name": "XE Currency", "for": "DKK to JPY" }
+    ],
+    "foodHitList": [
+      { "city": "Tokyo", "eat": "Tsukiji grazing, conveyor sushi, tsukemen, yakitori" },
+      { "city": "Kyoto", "eat": "Nishiki Market, yudofu, obanzai, kaiseki, matcha everything" },
+      { "city": "Osaka", "eat": "Takoyaki, okonomiyaki, kushikatsu" },
+      { "city": "Hiroshima", "eat": "Hiroshima-style okonomiyaki" },
+      { "city": "Miyajima", "eat": "Grilled oysters, anago-meshi, momiji manju" },
+      { "city": "Kanazawa", "eat": "Kaisendon, nodoguro, gold-leaf ice cream, Kanazawa curry" },
+      { "city": "Takayama", "eat": "Hida beef sushi, mitarashi dango, sake" },
+      { "city": "Kiso Valley", "eat": "Gohei mochi, soba, mountain vegetables, iwana" },
+      { "city": "Tokoname", "eat": "Pottery-town cafes and Aichi miso" }
+    ]
+  }
+}

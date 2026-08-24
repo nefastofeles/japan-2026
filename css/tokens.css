@@ -1,0 +1,129 @@
+/* ==========================================================================
+   Japan 2026 - design tokens
+   --------------------------------------------------------------------------
+   This is the safe playground. Everything here is a variable, so you can
+   change how the whole site looks without touching any other file.
+
+   Try it: change --paper to #F2EFE6 and reload. The entire site changes.
+   ========================================================================== */
+
+:root {
+  /* ---------------------------------------------------------------- paper */
+  /* Washi & Ink. Warm off-white paper, near-black ink, one quiet rule. */
+  --paper:        #FAF8F3;
+  --paper-sunk:   #F2EFE7;   /* slightly darker, for cards that sit back  */
+  --paper-raised: #FFFFFF;   /* pure white, for cards that lift forward   */
+  --ink:          #1A1A1A;
+  --ink-soft:     #4A4741;
+  --ink-muted:    #6B6660;
+  --rule:         #E3DED2;
+
+  /* ------------------------------------------------- the eleven leg hues */
+  /* Traditional Japanese colours, one per leg of the trip. The names are
+     real: say them out loud. These drive the day strip, day headers, rules
+     and rating pips, so changing one re-skins a whole city.               */
+
+  --leg-before:    #68BE8D;  /* 若竹 wakatake  - young bamboo    */
+  --leg-inbound:   #00A3AF;  /* 浅葱 asagi     - pale blue-green */
+  --leg-shinjuku:  #EB6101;  /* 朱   shu       - vermilion       */
+  --leg-kyoto:     #8B81C3;  /* 藤   fuji      - wisteria        */
+  --leg-osaka:     #ED6D3D;  /* 柿   kaki      - persimmon       */
+  --leg-hiroshima: #4C6CB3;  /* 群青 gunjo     - ultramarine     */
+  --leg-miyajima:  #C9171E;  /* 紅   beni      - crimson         */
+  --leg-kanazawa:  #F8B500;  /* 山吹 yamabuki  - golden          */
+  --leg-takayama:  #839B5C;  /* 松葉 matsuba   - pine needle     */
+  --leg-kiso:      #69821B;  /* 苔   koke      - moss            */
+  --leg-tokyo:     #165E83;  /* 藍   ai        - indigo          */
+  --leg-outbound:  #8C8C8C;  /* 薄墨 usuzumi   - pale ink        */
+  --leg-after:     #E6B422;  /* 黄金 kogane    - gold            */
+
+  /* The current page sets --leg to one of the above. Everything else
+     derives from it, so a day page only ever needs to set one value.     */
+  --leg:      var(--leg-inbound);
+  --leg-tint: color-mix(in srgb, var(--leg) 12%, var(--paper));
+  --leg-edge: color-mix(in srgb, var(--leg) 40%, var(--paper));
+  --leg-deep: color-mix(in srgb, var(--leg) 80%, var(--ink));
+
+  /* ----------------------------------------------------------- lettering */
+  /* System fonts only, so nothing has to download before the page renders.
+     Japanese text uses the .jp class and picks up the built-in Japanese
+     face on every platform.                                              */
+  --font-display: "Iowan Old Style", "Palatino Linotype", Palatino,
+                  "Book Antiqua", Georgia, serif;
+  --font-body:    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                  "Helvetica Neue", Arial, sans-serif;
+  --font-jp:      "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic",
+                  "Noto Sans JP", "Meiryo", sans-serif;
+
+  /* 18px base is deliberate. The people reading this most are grandparents
+     on a phone or an iPad. Do not make it smaller.                       */
+  --size-base: 1.125rem;   /* 18px */
+  --size-sm:   1rem;       /* 16px */
+  --size-xs:   0.875rem;   /* 14px */
+  --size-lg:   1.375rem;   /* 22px */
+  --size-xl:   1.75rem;    /* 28px */
+  --size-2xl:  2.5rem;     /* 40px */
+  --size-3xl:  3.5rem;     /* 56px */
+
+  --leading:       1.65;
+  --leading-tight: 1.15;
+
+  /* ------------------------------------------------------------- spacing */
+  --sp-1: 0.25rem;
+  --sp-2: 0.5rem;
+  --sp-3: 0.75rem;
+  --sp-4: 1rem;
+  --sp-5: 1.5rem;
+  --sp-6: 2rem;
+  --sp-7: 3rem;
+  --sp-8: 4rem;
+
+  --measure: 38rem;    /* comfortable reading width  */
+  --page:    72rem;    /* maximum page width         */
+
+  /* --------------------------------------------------------------- shape */
+  --radius:    10px;
+  --radius-sm: 6px;
+  --radius-lg: 16px;
+
+  /* Photos sit on the paper like prints in an album. */
+  --shadow:    0 1px 2px rgba(26, 22, 16, 0.06),
+               0 4px 12px rgba(26, 22, 16, 0.06);
+  --shadow-lg: 0 2px 6px rgba(26, 22, 16, 0.08),
+               0 12px 32px rgba(26, 22, 16, 0.12);
+
+  /* Tap targets. 44px is the minimum anyone should have to aim at. */
+  --tap: 44px;
+
+  --transition: 160ms ease;
+}
+
+/* Per-leg scoping. Any element with data-leg="kyoto" and everything inside it
+   switches to the Kyoto colour. That is the whole mechanism.               */
+[data-leg="before"]    { --leg: var(--leg-before);    }
+[data-leg="inbound"]   { --leg: var(--leg-inbound);   }
+[data-leg="shinjuku"]  { --leg: var(--leg-shinjuku);  }
+[data-leg="kyoto"]     { --leg: var(--leg-kyoto);     }
+[data-leg="osaka"]     { --leg: var(--leg-osaka);     }
+[data-leg="hiroshima"] { --leg: var(--leg-hiroshima); }
+[data-leg="miyajima"]  { --leg: var(--leg-miyajima);  }
+[data-leg="kanazawa"]  { --leg: var(--leg-kanazawa);  }
+[data-leg="takayama"]  { --leg: var(--leg-takayama);  }
+[data-leg="kiso"]      { --leg: var(--leg-kiso);      }
+[data-leg="tokyo"]     { --leg: var(--leg-tokyo);     }
+[data-leg="outbound"]  { --leg: var(--leg-outbound);  }
+[data-leg="after"]     { --leg: var(--leg-after);     }
+
+/* Dark mode is used as a per-day theme for the teamLab nights, not as a
+   global preference. Add data-theme="dark" to <html> to try it.          */
+[data-theme="dark"] {
+  --paper:        #14120F;
+  --paper-sunk:   #0E0D0B;
+  --paper-raised: #1E1B17;
+  --ink:          #F4F1EA;
+  --ink-soft:     #CFC9BC;
+  --ink-muted:    #9A9387;
+  --rule:         #2E2A24;
+  --shadow:       0 1px 2px rgba(0,0,0,0.4), 0 4px 12px rgba(0,0,0,0.4);
+  --shadow-lg:    0 2px 6px rgba(0,0,0,0.5), 0 12px 32px rgba(0,0,0,0.5);
+}

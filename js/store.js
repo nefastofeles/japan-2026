@@ -1,0 +1,192 @@
+/* ==========================================================================
+   Japan 2026 - data store
+   --------------------------------------------------------------------------
+   Two sources, deliberately kept apart:
+
+     data/itinerary.json  the PLAN   - legs, dates, bookings, activities.
+                                       Lives in git, editable in a pull
+                                       request, present before the trip.
+     Supabase             the MEMORIES - photos, videos, meals, comments.
+                                       Created during the trip.
+
+   The plan is always available. The memories are only there once Supabase is
+   configured, so every read below degrades to an empty list.
+   ========================================================================== */
+
+import { getClient } from "./supabase.js";
+import { isConfigured } from "./config.js";
+
+let itinerary = null;
+let people = null;
+let dayIdByDate = null;
+
+/* --------------------------------------------------------------- the plan */
+
+export async function load() {
+  if (itinerary && people) return { itinerary, people };
+
+  const [i, p] = await Promise.all([
+    fetch("data/itinerary.json").then((r) => r.json()),
+    fetch("data/people.json").then((r) => r.json()),
+  ]);
+  itinerary = i;
+  people = p;
+  return { itinerary, people };
+}
+
+export const getTrip = () => itinerary.trip;
+export const getDays = () => itinerary.days;
+export const getPeople = () => people;
+export const getReference = () => itinerary.reference;
+
+export const getPerson = (id) => people.find((p) => p.id === id) || null;
+
+export const getLeg = (id) =>
+  itinerary.legs.find((l) => l.id === id) || { id, name: id, colour: "#888" };
+
+export const getTravelDays = () => itinerary.days.filter((d) => d.kind === "day");
+
+/** Look a day up by date ("2026-09-18") or by slug ("before" / "after"). */
+export function getDay(key) {
+  return (
+    itinerary.days.find((d) => d.date === key) ||
+    itinerary.days.find((d) => d.slug === key) ||
+    null
+  );
+}
+
+export function neighbours(day) {
+  const all = itinerary.days;
+  const i = all.findIndex((d) => d.position === day.position);
+  return { prev: all[i - 1] || null, next: all[i + 1] || null };
+}
+
+/** "Day 7 of 22" - only travel days are counted. */
+export function dayNumber(day) {
+  if (day.kind !== "day") return null;
+  const travel = getTravelDays();
+  return {
+    n: travel.findIndex((d) => d.date === day.date) + 1,
+    of: travel.length,
+  };
+}
+
+/** Days grouped into consecutive legs, which is what the day strip renders. */
+export function legGroups() {
+  const groups = [];
+  for (const day of itinerary.days) {
+    const last = groups[groups.length - 1];
+    if (last && last.leg === day.leg) last.days.push(day);
+    else groups.push({ leg: day.leg, meta: getLeg(day.leg), days: [day] });
+  }
+  return groups;
+}
+
+/* ----------------------------------------------------------- the memories */
+
+/** Maps "2026-09-18" to the Supabase row id, so media can be attached. */
+async function dayIndex() {
+  if (dayIdByDate) return dayIdByDate;
+  dayIdByDate = new Map();
+
+  const supabase = await getClient();
+  if (!supabase) return dayIdByDate;
+
+  const { data, error } = await supabase.from("days").select("id, date, slug, position");
+  if (error) {
+    console.warn("Could not load days:", error.message);
+    return dayIdByDate;
+  }
+  for (const row of data) dayIdByDate.set(row.date || row.slug, row.id);
+  return dayIdByDate;
+}
+
+export async function dayId(day) {
+  const index = await dayIndex();
+  return index.get(day.date || day.slug) || null;
+}
+
+async function query(table, build) {
+  if (!isConfigured()) return [];
+  const supabase = await getClient();
+  if (!supabase) return [];
+  const { data, error } = await build(supabase.from(table));
+  if (error) {
+    console.warn(`Could not load ${table}:`, error.message);
+    return [];
+  }
+  return data || [];
+}
+
+export async function mediaForDay(day) {
+  const id = await dayId(day);
+  if (!id) return [];
+  return query("media", (t) =>
+    t.select("*").eq("day_id", id).order("taken_at", { ascending: true, nullsFirst: false })
+  );
+}
+
+export async function mealsForDay(day) {
+  const id = await dayId(day);
+  if (!id) return [];
+  const meals = await query("meals", (t) =>
+    t.select("*, meal_ratings(*)").eq("day_id", id).order("created_at")
+  );
+  if (!meals.length) return [];
+
+  const mediaByMeal = new Map();
+  const shots = await query("media", (t) =>
+    t.select("*").in("meal_id", meals.map((m) => m.id))
+  );
+  for (const shot of shots) {
+    if (!mediaByMeal.has(shot.meal_id)) mediaByMeal.set(shot.meal_id, []);
+    mediaByMeal.get(shot.meal_id).push(shot);
+  }
+  return meals.map((m) => ({ ...m, media: mediaByMeal.get(m.id) || [] }));
+}
+
+export async function entriesForDay(day) {
+  const id = await dayId(day);
+  if (!id) return [];
+  return query("entries", (t) => t.select("*").eq("day_id", id).order("position"));
+}
+
+export async function commentsForDay(day) {
+  const id = await dayId(day);
+  if (!id) return [];
+  return query("comments", (t) => t.select("*").eq("day_id", id).order("created_at"));
+}
+
+export async function allFood() {
+  return query("meals", (t) =>
+    t.select("*, meal_ratings(*), days(date, city, leg)").order("created_at")
+  );
+}
+
+export async function allMedia({ limit = 500 } = {}) {
+  return query("media", (t) =>
+    t.select("*, days(date, city, leg)")
+      .order("taken_at", { ascending: false, nullsFirst: false })
+      .limit(limit)
+  );
+}
+
+export async function addComment(day, authorName, body) {
+  const id = await dayId(day);
+  if (!id) throw new Error("This day does not exist in the database yet.");
+  const supabase = await getClient();
+  const { error } = await supabase
+    .from("comments")
+    .insert({ day_id: id, author_name: authorName, body });
+  if (error) throw error;
+}
+
+export async function addReaction(targetType, targetId, emoji) {
+  const supabase = await getClient();
+  if (!supabase) return;
+  await supabase.from("reactions").insert({
+    target_type: targetType,
+    target_id: targetId,
+    emoji,
+  });
+}

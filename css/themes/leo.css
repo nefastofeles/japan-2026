@@ -1,0 +1,39 @@
+/* ==========================================================================
+   Leo's theme
+   --------------------------------------------------------------------------
+   This file is yours. Nobody else edits it.
+
+   To switch it on, open index.html and find this line:
+
+       <!-- <link rel="stylesheet" href="css/themes/leo.css"> -->
+
+   Delete the <!-- at the start and the --> at the end, then save and reload.
+
+   Everything below overrides the normal colours. Change any hex code and
+   reload the page to see what happens. You cannot break anything: if it goes
+   wrong, put the <!-- and --> back.
+   ========================================================================== */
+
+:root {
+  /* Try changing the paper colour first. It changes the whole site. */
+  /* --paper: #FFF9E8; */
+
+  /* Or make one city your colour. This one is Osaka. */
+  /* --leg-osaka: #FF2D95; */
+}
+
+/* Make the rating pips bigger and rounder. */
+/*
+.pip {
+  width: 16px;
+  height: 16px;
+}
+*/
+
+/* Give every photo a thick border like a Polaroid. */
+/*
+.photo-grid__item {
+  border: 6px solid white;
+  box-shadow: var(--shadow);
+}
+*/

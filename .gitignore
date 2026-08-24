@@ -1,0 +1,25 @@
+# macOS / Google Drive noise
+.DS_Store
+Icon?
+._*
+.Spotlight-V100
+.Trashes
+
+# Never commit these
+.env
+.env.*
+*.local
+
+# Editor
+.vscode/
+.idea/
+
+# Scratch space for photos being prepared. Originals belong in iCloud or
+# Google Photos, not in the repo.
+/scratch/
+*.heic
+*.HEIC
+*.mov
+*.MOV
+*.mp4
+*.MP4

@@ -1,0 +1,6 @@
+[
+  { "id": "javier", "name": "Javier", "short": "J",  "colour": "#2E4A6B", "role": "admin" },
+  { "id": "rikke",  "name": "Rikke",  "short": "R",  "colour": "#B0447A", "role": "editor" },
+  { "id": "saga",   "name": "Saga",   "short": "S",  "colour": "#D97706", "role": "editor" },
+  { "id": "leo",    "name": "Leo",    "short": "L",  "colour": "#2E8B57", "role": "editor" }
+]
