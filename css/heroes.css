@@ -70,6 +70,21 @@
   padding: var(--sp-3) var(--sp-4);
 }
 
+/* Mask URLs are resolved against this stylesheet, not the page. */
+.place-hero[data-hero="before"]     { --hero-src: url("../assets/heroes/crane.svg"); }
+.place-hero[data-hero="inbound"]    { --hero-src: url("../assets/heroes/haneda.svg"); }
+.place-hero[data-hero="shinjuku"]   { --hero-src: url("../assets/heroes/senso-ji.svg"); }
+.place-hero[data-hero="kyoto"]      { --hero-src: url("../assets/heroes/fushimi-inari.svg"); }
+.place-hero[data-hero="osaka"]      { --hero-src: url("../assets/heroes/osaka-castle.svg"); }
+.place-hero[data-hero="hiroshima"]  { --hero-src: url("../assets/heroes/peace-memorial.svg"); }
+.place-hero[data-hero="miyajima"]   { --hero-src: url("../assets/heroes/itsukushima.svg"); }
+.place-hero[data-hero="kanazawa"]   { --hero-src: url("../assets/heroes/kenrokuen.svg"); }
+.place-hero[data-hero="takayama"]   { --hero-src: url("../assets/heroes/sanmachi.svg"); }
+.place-hero[data-hero="kiso"]       { --hero-src: url("../assets/heroes/magome.svg"); }
+.place-hero[data-hero="tokyo"]      { --hero-src: url("../assets/heroes/tokyo-tower.svg"); }
+.place-hero[data-hero="outbound"]   { --hero-src: url("../assets/heroes/haneda.svg"); }
+.place-hero[data-hero="after"]      { --hero-src: url("../assets/heroes/crane.svg"); }
+
 .day-list__group > .place-hero--compact {
   margin: calc(-1 * var(--sp-4)) calc(-1 * var(--sp-4)) var(--sp-4);
   width: calc(100% + 2 * var(--sp-4));

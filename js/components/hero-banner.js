@@ -82,8 +82,7 @@ export function destinationHero(leg, { compact = false } = {}) {
   const classes = ["place-hero"];
   if (compact) classes.push("place-hero--compact");
 
-  return `<figure class="${classes.join(" ")}" data-leg="${esc(leg)}"
-                  style="--hero-src: url('assets/heroes/${esc(hero.file)}')">
+  return `<figure class="${classes.join(" ")}" data-leg="${esc(leg)}" data-hero="${esc(leg)}">
             <div class="place-hero__sun" aria-hidden="true"></div>
             <div class="place-hero__art" aria-hidden="true"></div>
             <figcaption class="place-hero__caption">
