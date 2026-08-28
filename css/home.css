@@ -1,0 +1,106 @@
+/* ==========================================================================
+   Japan 2026 - home dashboard and route map
+   --------------------------------------------------------------------------
+   Countdown, stats and the Leaflet map. Split out of media.css so photos,
+   food and this file each stay readable.
+   ========================================================================== */
+
+.hero {
+  padding: var(--sp-8) 0 var(--sp-6);
+  text-align: center;
+}
+
+.hero__title { font-size: var(--size-3xl); margin-bottom: var(--sp-3); }
+.hero__sub { color: var(--ink-muted); font-size: var(--size-lg); }
+
+.countdown {
+  display: flex;
+  justify-content: center;
+  gap: var(--sp-5);
+  margin: var(--sp-6) 0;
+  flex-wrap: wrap;
+}
+
+.countdown__unit { text-align: center; min-width: 4.5rem; }
+
+.countdown__n {
+  display: block;
+  font-family: var(--font-display);
+  font-size: var(--size-3xl);
+  font-weight: 700;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  color: var(--leg-deep);
+}
+
+.countdown__l {
+  font-size: var(--size-sm);
+  letter-spacing: var(--tracking);
+  color: var(--ink-muted);
+}
+
+.now-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-3);
+  flex-wrap: wrap;
+  padding: var(--sp-5);
+  border-radius: var(--radius-lg);
+  background: var(--paper-raised);
+  border: 1px solid var(--leg-edge);
+  text-align: center;
+}
+
+.now-card__time {
+  font-family: var(--font-display);
+  font-size: var(--size-2xl);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--leg-deep);
+}
+
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: var(--sp-4);
+}
+
+.stat {
+  padding: var(--sp-4);
+  border-radius: var(--radius);
+  background: var(--paper-raised);
+  border: 1px solid var(--rule);
+  text-align: center;
+}
+
+.stat__n {
+  display: block;
+  font-family: var(--font-display);
+  font-size: var(--size-2xl);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.stat__l { font-size: var(--size-sm); color: var(--ink-muted); }
+
+.route-map {
+  height: 60vh;
+  min-height: 380px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--rule);
+  background: var(--paper-raised);
+  box-shadow: var(--shadow);
+}
+
+.route-map--home {
+  height: 40vh;
+  min-height: 280px;
+}
+
+.leaflet-popup-content,
+.leaflet-container {
+  font-family: var(--font-body);
+  letter-spacing: var(--tracking);
+}

@@ -11,15 +11,16 @@
    ========================================================================== */
 
 import {
-  getTrip, getDays, getTravelDays, getDay, getLeg, allMedia, allFood,
+  getTrip, getTravelDays, getDay, getLeg, allMedia, allFood,
 } from "../store.js";
 import { TRIP, isConfigured } from "../config.js";
 import {
   esc, formatDate, timeIn, todayISO, tripPhase, daysUntilStart, yen,
 } from "../util.js";
-import { dayList } from "../components/day-strip.js";
+import { dayListByLeg } from "../components/day-strip.js";
 import { photoGrid, bindPhotoGrid } from "../components/photo-grid.js";
 import { bookingCard } from "../components/booking-card.js";
+import { mountRouteMap } from "../components/route-map.js";
 
 function countdown() {
   const days = daysUntilStart();
@@ -136,8 +137,14 @@ export async function homePage() {
       }
 
       <section>
+        <h2 class="section-title">The route</h2>
+        <p class="measure muted">Tokyo down to Hiroshima, north to Kanazawa, into the Alps and back.</p>
+        <div id="home-map" class="route-map route-map--home"></div>
+      </section>
+
+      <section>
         <h2 class="section-title">Every day</h2>
-        ${dayList(getDays())}
+        ${dayListByLeg()}
       </section>
     </div>`;
 
@@ -145,6 +152,9 @@ export async function homePage() {
     html,
     mount(root) {
       if (recent.length) bindPhotoGrid(root, recent);
+
+      const homeMap = root.querySelector("#home-map");
+      if (homeMap) mountRouteMap(homeMap);
 
       const clock = root.querySelector("[data-clock]");
       if (clock) {

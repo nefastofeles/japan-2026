@@ -1,170 +1,7 @@
 /* ==========================================================================
    Japan 2026 - components
+   Cards, bookings, forms. Day-strip styles live in days.css.
    ========================================================================== */
-
-/* ------------------------------------------------------------- day strip */
-/* Twenty-four days grouped into legs, scrolling sideways with snap points.
-   There is also a plain list view (see .day-list) for anyone who does not
-   get on with horizontal scrolling.                                       */
-
-.day-strip {
-  border-bottom: 1px solid var(--rule);
-  background: var(--paper);
-  position: sticky;
-  top: 0;
-  z-index: 15;
-}
-
-.day-strip__scroll {
-  display: flex;
-  gap: var(--sp-5);
-  overflow-x: auto;
-  scroll-snap-type: x proximity;
-  padding: var(--sp-3) var(--sp-5) var(--sp-4);
-  max-width: var(--page);
-  margin: 0 auto;
-  scrollbar-width: thin;
-}
-
-.leg-group { flex: 0 0 auto; }
-
-.leg-group__label {
-  display: flex;
-  align-items: baseline;
-  gap: var(--sp-2);
-  margin-bottom: var(--sp-2);
-  padding-left: 2px;
-}
-
-.leg-group__name {
-  font-size: var(--size-xs);
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--leg-deep);
-}
-
-.leg-group__jp {
-  font-family: var(--font-jp);
-  font-size: var(--size-xs);
-  color: var(--ink-muted);
-}
-
-.leg-group__days { display: flex; gap: var(--sp-1); }
-
-.day-chip {
-  scroll-snap-align: center;
-  flex: 0 0 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-width: 3.25rem;
-  min-height: var(--tap);
-  padding: var(--sp-2) var(--sp-2);
-  border-radius: var(--radius-sm);
-  border: 1px solid var(--leg-edge);
-  background: var(--paper);
-  color: var(--ink-soft);
-  text-decoration: none;
-  line-height: 1.1;
-  transition: background var(--transition), color var(--transition);
-}
-
-.day-chip:hover { background: var(--leg-tint); }
-
-.day-chip__num {
-  font-family: var(--font-display);
-  font-size: var(--size-lg);
-  font-weight: 600;
-  color: var(--ink);
-}
-
-.day-chip__mon {
-  font-size: 0.6875rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--ink-muted);
-}
-
-.day-chip[aria-current="page"] {
-  background: var(--leg);
-  border-color: var(--leg);
-}
-
-.day-chip[aria-current="page"] .day-chip__num,
-.day-chip[aria-current="page"] .day-chip__mon { color: #fff; }
-
-.day-chip--today {
-  box-shadow: 0 0 0 2px var(--paper), 0 0 0 4px var(--leg);
-}
-
-.day-chip--book { min-width: 5.5rem; }
-.day-chip--book .day-chip__num { font-size: var(--size-sm); }
-
-/* Plain list alternative */
-.day-list { display: grid; gap: var(--sp-2); }
-
-.day-list__item {
-  display: flex;
-  align-items: center;
-  gap: var(--sp-4);
-  min-height: var(--tap);
-  padding: var(--sp-3) var(--sp-4);
-  border: 1px solid var(--rule);
-  border-left: 5px solid var(--leg);
-  border-radius: var(--radius);
-  background: var(--paper-raised);
-  text-decoration: none;
-  color: inherit;
-}
-
-.day-list__item:hover { background: var(--leg-tint); }
-.day-list__date { font-variant-numeric: tabular-nums; color: var(--ink-muted); min-width: 6.5rem; }
-.day-list__title { font-weight: 600; }
-.day-list__city { margin-left: auto; color: var(--ink-muted); font-size: var(--size-sm); }
-
-/* ------------------------------------------------------------ day header */
-
-.day-head { border-top: 6px solid var(--leg); padding-top: var(--sp-5); }
-
-.day-head__meta {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: var(--sp-2) var(--sp-4);
-  margin-bottom: var(--sp-3);
-  font-size: var(--size-sm);
-}
-
-.day-head__counter {
-  display: inline-flex;
-  align-items: center;
-  padding: var(--sp-1) var(--sp-3);
-  border-radius: 999px;
-  background: var(--leg-tint);
-  color: var(--leg-deep);
-  font-weight: 700;
-  letter-spacing: 0.03em;
-}
-
-.day-head__date { font-variant-numeric: tabular-nums; color: var(--ink-soft); font-weight: 600; }
-.day-head__where { color: var(--ink-muted); }
-.day-head__title { font-size: var(--size-3xl); margin-bottom: var(--sp-2); }
-.day-head__sub { font-size: var(--size-lg); color: var(--ink-muted); font-family: var(--font-display); font-style: italic; }
-
-.day-cover {
-  margin: var(--sp-5) 0;
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  box-shadow: var(--shadow);
-  background: var(--paper-sunk);
-  aspect-ratio: 3 / 2;
-}
-
-.day-cover img { width: 100%; height: 100%; object-fit: cover; }
-
-/* ----------------------------------------------------------------- cards */
 
 .card {
   padding: var(--sp-5);
@@ -198,7 +35,8 @@
   gap: var(--sp-3);
   padding: var(--sp-4);
   border-radius: var(--radius);
-  background: var(--paper-sunk);
+  background: var(--paper-raised);
+  border: 1px solid var(--rule);
   color: var(--ink-soft);
   font-size: var(--size-sm);
 }
@@ -209,20 +47,21 @@
   gap: var(--sp-4);
   padding: var(--sp-4);
   border: 1px solid var(--leg-edge);
+  border-left: 5px solid var(--leg);
   border-radius: var(--radius);
-  background: var(--leg-tint);
+  background: var(--paper-raised);
 }
 
 .booking__time {
   font-family: var(--font-display);
   font-size: var(--size-lg);
-  font-weight: 600;
+  font-weight: 700;
   font-variant-numeric: tabular-nums;
   color: var(--leg-deep);
   min-width: 4rem;
 }
 
-.booking__title { font-weight: 650; }
+.booking__title { font-weight: 700; }
 .booking__note { color: var(--ink-muted); font-size: var(--size-sm); }
 
 /* Activity blocks */
@@ -230,10 +69,9 @@
 .block { margin-bottom: var(--sp-5); }
 
 .block__when {
-  font-size: var(--size-xs);
+  font-size: var(--size-sm);
   font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  letter-spacing: var(--tracking);
   color: var(--leg-deep);
   margin-bottom: var(--sp-2);
 }
@@ -256,36 +94,6 @@
   border-radius: 50%;
   background: var(--leg);
 }
-
-/* --------------------------------------------------------------- footers */
-
-.day-nav {
-  display: flex;
-  gap: var(--sp-4);
-  justify-content: space-between;
-  margin-top: var(--sp-7);
-  padding-top: var(--sp-5);
-  border-top: 1px solid var(--rule);
-}
-
-.day-nav a {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  min-height: var(--tap);
-  padding: var(--sp-3) var(--sp-4);
-  border: 1px solid var(--rule);
-  border-radius: var(--radius);
-  text-decoration: none;
-  color: inherit;
-  max-width: 20rem;
-}
-
-.day-nav a:hover { background: var(--paper-sunk); }
-.day-nav__dir { font-size: var(--size-xs); text-transform: uppercase; letter-spacing: 0.07em; color: var(--ink-muted); }
-.day-nav__title { font-weight: 600; }
-.day-nav a:last-child { text-align: right; margin-left: auto; }
 
 .empty {
   padding: var(--sp-7) var(--sp-5);
@@ -328,14 +136,7 @@
   display: flex;
   gap: var(--sp-3);
   align-items: center;
-  font-weight: 500;
+  font-weight: 400;
 }
 
 .score-row__input { max-width: 6rem; }
-
-@media (max-width: 40rem) {
-  .day-strip__scroll { gap: var(--sp-4); padding: var(--sp-2) var(--sp-4) var(--sp-3); }
-  .day-nav { flex-direction: column; }
-  .day-nav a { max-width: none; }
-  .day-nav a:last-child { text-align: left; }
-}

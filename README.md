@@ -27,8 +27,10 @@ the site loads `data/itinerary.json` and browsers block that on `file://`.
 index.html              the shell: header, nav, an empty <main>
 css/tokens.css          colours, type sizes, spacing. The safe playground
 css/base.css            layout and typography
-css/components.css      day strip, cards, buttons, forms: the frame
-css/media.css           photos, lightbox, video, meals: the contents
+css/components.css      cards, buttons, forms
+css/days.css            day strip, city list, day header
+css/media.css           photos, lightbox, video, meals
+css/home.css            countdown, stats, the route map
 css/themes/             one file per person. Yours to wreck
 js/app.js               start here. Registers the routes and boots the site
 js/config.js            the two Supabase values. Also image sizes

@@ -4,8 +4,8 @@
    Ratings belong to PEOPLE, not to accounts, so Leo can score a bowl of ramen
    from his dad's phone without owning an email address.
 
-   Leo: these are plain circles right now. They could be chopsticks, or
-   onigiri, or little bowls. Look for .pip in css/components.css.
+   Leo: these are larger circles now so they are easy to count. They could
+   still become chopsticks, or onigiri, or little bowls. Look for .pip.
    ========================================================================== */
 
 import { esc } from "../util.js";
