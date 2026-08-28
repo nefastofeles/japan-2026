@@ -73,23 +73,38 @@ export function centreActiveChip() {
 }
 
 export function dayList(days) {
-  return `<div class="day-list">${days
-    .map((d) => {
-      const leg = getLeg(d.leg);
-      const href = d.kind === "day" ? `#/day/${d.date}` : `#/${d.slug}`;
-      const when =
-        d.kind === "day"
-          ? (() => {
-              const { day, month } = shortDate(d.date);
-              return `${day} ${month}`;
-            })()
-          : leg.name;
+  return `<div class="day-list">${days.map(dayListItem).join("")}</div>`;
+}
 
-      return `<a class="day-list__item" data-leg="${esc(d.leg)}" href="${href}">
-                <span class="day-list__date">${esc(when)}</span>
-                <span class="day-list__title">${esc(d.title)}</span>
-                <span class="day-list__city">${esc(d.city || "")}</span>
-              </a>`;
+/** Same list, split into coloured city groups — used on the home page. */
+export function dayListByLeg() {
+  return `<div class="day-list">${legGroups()
+    .map((group) => {
+      const meta = group.meta;
+      return `<section class="day-list__group" data-leg="${esc(group.leg)}">
+                <h3 class="day-list__leg">
+                  <span>${esc(meta.name)}</span>
+                  <span class="day-list__leg-jp jp">${esc(meta.jp || "")}</span>
+                </h3>
+                ${group.days.map(dayListItem).join("")}
+              </section>`;
     })
     .join("")}</div>`;
+}
+
+function dayListItem(d) {
+  const href = d.kind === "day" ? `#/day/${d.date}` : `#/${d.slug}`;
+  const when =
+    d.kind === "day"
+      ? (() => {
+          const { day, month } = shortDate(d.date);
+          return `${day} ${month}`;
+        })()
+      : getLeg(d.leg).name;
+
+  return `<a class="day-list__item" data-leg="${esc(d.leg)}" href="${href}">
+            <span class="day-list__date">${esc(when)}</span>
+            <span class="day-list__title">${esc(d.title)}</span>
+            <span class="day-list__city">${esc(d.city || "")}</span>
+          </a>`;
 }

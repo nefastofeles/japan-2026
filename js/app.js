@@ -9,8 +9,8 @@
 import * as store from "./store.js";
 import * as router from "./router.js";
 import * as auth from "./auth.js";
-import { esc } from "./util.js";
-import { isConfigured } from "./config.js";
+import { esc, todayISO, tripPhase } from "./util.js";
+import { isConfigured, TRIP } from "./config.js";
 
 import { homePage } from "./pages/home.js";
 import { dayPage } from "./pages/day.js";
@@ -42,6 +42,57 @@ function renderNav(path) {
     (isConfigured() ? `<a href="#/admin">Post</a>` : "");
 }
 
+/** Mix a leg hex onto washi paper so the phone chrome matches the page wash. */
+function washHex(hex) {
+  const raw = String(hex || "").replace("#", "");
+  if (raw.length !== 6) return "#FAF8F3";
+  const paper = [0xfa, 0xf8, 0xf3];
+  const amount = 0.22;
+  const mix = (offset, paperChannel) => {
+    const channel = parseInt(raw.slice(offset, offset + 2), 16);
+    return Math.round(channel * amount + paperChannel * (1 - amount))
+      .toString(16)
+      .padStart(2, "0");
+  };
+  return `#${mix(0, paper[0])}${mix(2, paper[1])}${mix(4, paper[2])}`;
+}
+
+function syncHeaderHeight() {
+  const header = document.querySelector(".site-header");
+  if (!header) return;
+  document.documentElement.style.setProperty(
+    "--header-height",
+    `${header.offsetHeight}px`
+  );
+}
+
+function chromeLeg(path) {
+  if (path.startsWith("/day/")) {
+    return store.getDay(path.slice("/day/".length))?.leg || "inbound";
+  }
+  if (path === "/before") return "before";
+  if (path === "/after") return "after";
+
+  const today = todayISO(TRIP.timezone);
+  const phase = tripPhase(today);
+  if (phase === "before") return "inbound";
+  if (phase === "after") return "after";
+  return store.getDay(today)?.leg || "inbound";
+}
+
+function afterRender(path) {
+  renderNav(path);
+
+  const legId = chromeLeg(path);
+  document.documentElement.dataset.leg = legId;
+
+  const meta = document.querySelector('meta[name="theme-color"]');
+  const colour = store.getLeg(legId).colour;
+  if (meta) meta.content = washHex(colour);
+
+  syncHeaderHeight();
+}
+
 async function boot() {
   await store.load();
   await auth.init();
@@ -50,6 +101,8 @@ async function boot() {
   document.title = trip.name;
   const title = document.querySelector(".site-title a");
   if (title) title.textContent = trip.name;
+
+  window.addEventListener("resize", syncHeaderHeight);
 
   router.route("/", homePage);
   router.route("/before", () => dayPage({ date: "before" }));
@@ -67,7 +120,7 @@ async function boot() {
                </div>`
   );
 
-  router.start(document.getElementById("app"), { afterRender: renderNav });
+  router.start(document.getElementById("app"), { afterRender });
 }
 
 boot().catch((error) => {

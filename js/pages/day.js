@@ -122,6 +122,63 @@ export async function dayPage({ date }) {
     ? `<div class="day-cover"><img src="${esc(day.coverUrl)}" alt=""></div>`
     : "";
 
+  const photosSection = unattachedPhotos.length
+    ? `<section>
+         <h2 class="section-title">Photos</h2>
+         ${await photoGrid(unattachedPhotos)}
+       </section>`
+    : "";
+
+  const videoSection = videos.length
+    ? `<section>
+         <h2 class="section-title">Video</h2>
+         <div class="stack">${videos
+           .map((v) => videoEmbed(v.external_id, v.caption))
+           .join("")}</div>
+       </section>`
+    : "";
+
+  const plannedFood = foodPlan(day);
+  const foodSection = meals.length
+    ? `<section>
+         <h2 class="section-title">Food</h2>
+         ${await mealList(meals)}
+       </section>`
+    : plannedFood
+      ? `<section>
+           <h2 class="section-title">Food we are hoping to eat</h2>
+           ${plannedFood}
+         </section>`
+      : "";
+
+  const commentItems = comments.length
+    ? comments
+        .map(
+          (c) => `<div class="comment">
+                    <p class="comment__who">${esc(c.author_name)}
+                      <span class="comment__when">${esc(relativeTime(c.created_at))}</span>
+                    </p>
+                    <p>${esc(c.body)}</p>
+                  </div>`
+        )
+        .join("")
+    : "";
+
+  const commentsSection =
+    comments.length || isConfigured()
+      ? `<section>
+           <h2 class="section-title">Comments</h2>
+           <div class="stack">
+             ${commentItems}
+             ${commentForm()}
+           </div>
+         </section>`
+      : "";
+
+  const storySection = story
+    ? `<section><h2 class="section-title">The story</h2>${story}</section>`
+    : "";
+
   const html = `
     ${dayStrip(day.date || day.slug)}
     <div class="page stack" data-leg="${esc(day.leg)}">
@@ -133,32 +190,11 @@ export async function dayPage({ date }) {
       ${bookings(day.bookings)}
       ${day.special ? `<p class="notice"><strong>A special one.</strong> This is the day the whole trip bends around.</p>` : ""}
 
-      ${story ? `<section><h2 class="section-title">The story</h2>${story}</section>` : ""}
-
-      <section>
-        <h2 class="section-title">Photos</h2>
-        ${await photoGrid(unattachedPhotos, {
-          emptyMessage: isConfigured()
-            ? "No photos on this day yet."
-            : "Photos appear here once Supabase is connected.",
-        })}
-      </section>
-
-      ${
-        videos.length
-          ? `<section><h2 class="section-title">Video</h2>
-             <div class="stack">${videos
-               .map((v) => videoEmbed(v.external_id, v.caption))
-               .join("")}</div></section>`
-          : ""
-      }
-
-      <section>
-        <h2 class="section-title">Food</h2>
-        ${meals.length ? await mealList(meals) : foodPlan(day) || await mealList([])}
-      </section>
-
       ${plan(day)}
+      ${storySection}
+      ${photosSection}
+      ${videoSection}
+      ${foodSection}
 
       ${
         day.kind === "pre"
@@ -166,26 +202,7 @@ export async function dayPage({ date }) {
           : ""
       }
 
-      <section>
-        <h2 class="section-title">Comments</h2>
-        <div class="stack">
-          ${
-            comments.length
-              ? comments
-                  .map(
-                    (c) => `<div class="comment">
-                              <p class="comment__who">${esc(c.author_name)}
-                                <span class="comment__when">${esc(relativeTime(c.created_at))}</span>
-                              </p>
-                              <p>${esc(c.body)}</p>
-                            </div>`
-                  )
-                  .join("")
-              : `<p class="empty">No comments yet.</p>`
-          }
-          ${commentForm()}
-        </div>
-      </section>
+      ${commentsSection}
 
       <nav class="day-nav" aria-label="Day navigation">
         ${

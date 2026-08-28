@@ -7,6 +7,24 @@
    Try it: change --paper to #F2EFE6 and reload. The entire site changes.
    ========================================================================== */
 
+/* Atkinson Hyperlegible is hosted in assets/fonts (OFL). Distinct letter
+   shapes help readers with dyslexia; we do not wait on a font CDN. */
+@font-face {
+  font-family: "Atkinson Hyperlegible";
+  src: url("../assets/fonts/AtkinsonHyperlegible-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Atkinson Hyperlegible";
+  src: url("../assets/fonts/AtkinsonHyperlegible-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   /* ---------------------------------------------------------------- paper */
   /* Washi & Ink. Warm off-white paper, near-black ink, one quiet rule. */
@@ -41,32 +59,35 @@
      derives from it, so a day page only ever needs to set one value.     */
   --leg:      var(--leg-inbound);
   --leg-tint: color-mix(in srgb, var(--leg) 12%, var(--paper));
+  --leg-wash: color-mix(in srgb, var(--leg) 22%, var(--paper));
   --leg-edge: color-mix(in srgb, var(--leg) 40%, var(--paper));
-  --leg-deep: color-mix(in srgb, var(--leg) 80%, var(--ink));
+  /* Half ink so gold and bamboo still take light text on buttons. */
+  --leg-deep: color-mix(in srgb, var(--leg) 50%, var(--ink));
 
   /* ----------------------------------------------------------- lettering */
-  /* System fonts only, so nothing has to download before the page renders.
-     Japanese text uses the .jp class and picks up the built-in Japanese
-     face on every platform.                                              */
-  --font-display: "Iowan Old Style", "Palatino Linotype", Palatino,
-                  "Book Antiqua", Georgia, serif;
-  --font-body:    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-                  "Helvetica Neue", Arial, sans-serif;
+  /* One face for headings and body. Serifs make b/d and I/l collapse. */
+  --font-display: "Atkinson Hyperlegible", Verdana, Tahoma, "Segoe UI",
+                  sans-serif;
+  --font-body:    "Atkinson Hyperlegible", Verdana, Tahoma, "Segoe UI",
+                  sans-serif;
   --font-jp:      "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic",
                   "Noto Sans JP", "Meiryo", sans-serif;
 
   /* 18px base is deliberate. The people reading this most are grandparents
      on a phone or an iPad. Do not make it smaller.                       */
   --size-base: 1.125rem;   /* 18px */
-  --size-sm:   1rem;       /* 16px */
-  --size-xs:   0.875rem;   /* 14px */
+  --size-sm:   1rem;       /* 16px — chrome labels only, never body copy */
+  --size-xs:   0.875rem;   /* 14px — chip months and badges only         */
   --size-lg:   1.375rem;   /* 22px */
   --size-xl:   1.75rem;    /* 28px */
   --size-2xl:  2.5rem;     /* 40px */
   --size-3xl:  3.5rem;     /* 56px */
 
-  --leading:       1.65;
-  --leading-tight: 1.15;
+  --leading:       1.7;
+  --leading-tight: 1.25;
+  --tracking:      0.03em;
+  --tracking-head: 0.04em;
+  --word-space:    0.08em;
 
   /* ------------------------------------------------------------- spacing */
   --sp-1: 0.25rem;
@@ -96,6 +117,8 @@
   --tap: 44px;
 
   --transition: 160ms ease;
+
+  --header-height: 4rem;
 }
 
 /* Per-leg scoping. Any element with data-leg="kyoto" and everything inside it
@@ -124,6 +147,7 @@
   --ink-soft:     #CFC9BC;
   --ink-muted:    #9A9387;
   --rule:         #2E2A24;
+  --leg-wash:     color-mix(in srgb, var(--leg) 18%, var(--paper));
   --shadow:       0 1px 2px rgba(0,0,0,0.4), 0 4px 12px rgba(0,0,0,0.4);
   --shadow-lg:    0 2px 6px rgba(0,0,0,0.5), 0 12px 32px rgba(0,0,0,0.5);
 }

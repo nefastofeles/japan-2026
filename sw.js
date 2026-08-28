@@ -8,7 +8,7 @@
    Bump CACHE when you change the shell, otherwise phones keep the old copy.
    ========================================================================== */
 
-const CACHE = "japan-2026-v2";
+const CACHE = "japan-2026-v3";
 
 const SHELL = [
   "./",
@@ -17,7 +17,9 @@ const SHELL = [
   "css/tokens.css",
   "css/base.css",
   "css/components.css",
+  "css/days.css",
   "css/media.css",
+  "css/home.css",
   "js/app.js",
   "js/config.js",
   "js/util.js",
@@ -42,8 +44,11 @@ const SHELL = [
   "js/components/booking-card.js",
   "js/components/markdown.js",
   "js/components/reference.js",
+  "js/components/route-map.js",
   "data/itinerary.json",
   "data/people.json",
+  "assets/fonts/AtkinsonHyperlegible-Regular.woff2",
+  "assets/fonts/AtkinsonHyperlegible-Bold.woff2",
 ];
 
 self.addEventListener("install", (event) => {
