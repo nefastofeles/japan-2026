@@ -95,9 +95,12 @@ export function weatherBoard() {
       <div class="weather-now">
         ${venues
           .map(
+            (v) => `<div class="weather-now__card" data-leg="${esc(v.leg)}"
+                         data-live-city="${esc(v.city)}">
                       <p class="weather-now__place">${esc(v.label)}</p>
                       <p class="weather-now__temp" data-live-temp>—</p>
                       <p class="weather-now__sky muted" data-live-sky></p>
+                    </div>`
           )
           .join("")}
       </div>
