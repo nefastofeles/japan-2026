@@ -21,6 +21,7 @@ import { markdown } from "../components/markdown.js";
 import {
   weatherLine, watchlistSection, packingSection, weatherTable,
 } from "../components/reference.js";
+import { bindLiveWeather } from "../weather.js";
 
 function header(day) {
   const counter = dayNumber(day);
@@ -186,7 +187,7 @@ export async function dayPage({ date }) {
       ${cover}
 
       ${day.transit ? `<p class="transit"><span aria-hidden="true">🚄</span><span>${esc(day.transit)}</span></p>` : ""}
-      ${day.kind === "day" ? weatherLine(day.leg) : ""}
+      ${day.kind === "day" ? weatherLine(day) : ""}
       ${bookings(day.bookings)}
       ${day.special ? `<p class="notice"><strong>A special one.</strong> This is the day the whole trip bends around.</p>` : ""}
 
@@ -231,6 +232,7 @@ export async function dayPage({ date }) {
       centreActiveChip();
       bindVideos(root);
       bindPhotoGrid(root, unattachedPhotos);
+      bindLiveWeather(root);
 
       const form = root.querySelector("[data-comment-form]");
       if (form) {

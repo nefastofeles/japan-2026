@@ -21,6 +21,7 @@ import { dayListByLeg } from "../components/day-strip.js";
 import { photoGrid, bindPhotoGrid } from "../components/photo-grid.js";
 import { bookingCard } from "../components/booking-card.js";
 import { mountRouteMap } from "../components/route-map.js";
+import { weatherBoard, bindLiveWeather } from "../weather.js";
 
 function countdown() {
   const days = daysUntilStart();
@@ -136,6 +137,8 @@ export async function homePage() {
           : ""
       }
 
+      ${weatherBoard()}
+
       <section>
         <h2 class="section-title">The route</h2>
         <p class="measure muted">Tokyo down to Hiroshima, north to Kanazawa, into the Alps and back.</p>
@@ -155,6 +158,7 @@ export async function homePage() {
 
       const homeMap = root.querySelector("#home-map");
       if (homeMap) mountRouteMap(homeMap);
+      bindLiveWeather(root);
 
       const clock = root.querySelector("[data-clock]");
       if (clock) {

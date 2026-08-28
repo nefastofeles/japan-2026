@@ -39,6 +39,7 @@ make anything smaller to fit more in.
 | change the day strip, day list or day header | `css/days.css` |
 | change how photos, video or meals look | `css/media.css` |
 | change the home countdown or the map | `css/home.css` |
+| change live weather | `js/weather.js` |
 | change what a page says | the file in `js/pages/` |
 | fix the trip plan, dates, bookings | `data/itinerary.json` |
 | add a new page | `js/pages/`, then register it in `js/app.js` |
