@@ -8,19 +8,7 @@
 
 import { getTravelDays, getLeg, allMedia } from "../store.js";
 import { esc } from "../util.js";
-
-const JAPAN_PLACES = {
-  Tokyo: [35.6895, 139.6917],
-  "Tokyo, Ebisu": [35.6467, 139.7101],
-  Kyoto: [35.0116, 135.7681],
-  Osaka: [34.6937, 135.5023],
-  Hiroshima: [34.3853, 132.4553],
-  Miyajima: [34.2960, 132.3197],
-  Kanazawa: [36.5613, 136.6562],
-  Takayama: [36.1461, 137.2522],
-  "Magome to Tsumago": [35.5769, 137.5722],
-  "Tokoname to Tokyo": [34.8863, 136.8320],
-};
+import { coordsForCity } from "../places.js";
 
 const LEAFLET_CSS = "https://unpkg.com/leaflet@1.9.4/dist/leaflet.css";
 const LEAFLET_JS = "https://unpkg.com/leaflet@1.9.4/dist/leaflet.js";
@@ -46,7 +34,7 @@ function loadLeaflet() {
 
 function japanStops() {
   return getTravelDays()
-    .map((day) => ({ day, coords: JAPAN_PLACES[day.city] }))
+    .map((day) => ({ day, coords: coordsForCity(day.city) }))
     .filter((stop) => stop.coords);
 }
 

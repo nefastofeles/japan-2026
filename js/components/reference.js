@@ -8,20 +8,25 @@
 
 import { getReference } from "../store.js";
 import { esc } from "../util.js";
+import { cityForLeg, liveWeatherLine } from "../weather.js";
 
-export function weatherLine(legId) {
+export function weatherLine(day) {
   const weather = getReference().weather || {};
-  const w = weather[legId];
-  if (!w) return "";
+  const w = weather[day.leg];
+  const live = liveWeatherLine(day.city, day.date);
+  if (!w && !live) return "";
 
-  return `
-    <p class="transit">
-      <span aria-hidden="true">🌤️</span>
-      <span>Usually around <strong>${w.high}°C</strong> by day and
-        <strong>${w.low}°C</strong> at night, rain ${esc(w.rain)}.
-        <span class="muted">${esc(w.note)}</span>
-      </span>
-    </p>`;
+  const usual = w
+    ? `<p class="transit">
+         <span aria-hidden="true">🌤️</span>
+         <span>Usually around <strong>${w.high}°C</strong> by day and
+           <strong>${w.low}°C</strong> at night, rain ${esc(w.rain)}.
+           <span class="muted">${esc(w.note)}</span>
+         </span>
+       </p>`
+    : "";
+
+  return live + usual;
 }
 
 export function watchlistSection() {
@@ -94,19 +99,21 @@ export function weatherTable() {
     <section>
       <h2 class="section-title">What the weather usually does</h2>
       <p class="measure muted">
-        Averaged from the last four years, day by day, for each place we stay.
+        Averaged from the last four years, plus what it is doing there right now.
       </p>
       <div class="stack">
         ${entries
-          .map(
-            ([leg, w]) => `
+          .map(([leg, w]) => {
+            const city = cityForLeg(leg);
+            return `
               <div class="card" data-leg="${esc(leg)}"
                    style="border-left:5px solid var(--leg)">
                 <p><strong>${esc(leg[0].toUpperCase() + leg.slice(1))}</strong>
-                   — ${w.high}°C / ${w.low}°C, rain ${esc(w.rain)}</p>
+                   — usually ${w.high}°C / ${w.low}°C, rain ${esc(w.rain)}</p>
+                ${liveWeatherLine(city, "")}
                 <p class="small muted">${esc(w.note)}</p>
-              </div>`
-          )
+              </div>`;
+          })
           .join("")}
       </div>
     </section>`;

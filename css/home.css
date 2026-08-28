@@ -99,6 +99,34 @@
   min-height: 280px;
 }
 
+.weather-now {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(9.5rem, 1fr));
+  gap: var(--sp-3);
+}
+
+.weather-now__card {
+  padding: var(--sp-4);
+  border-radius: var(--radius);
+  background: var(--paper-raised);
+  border: 1px solid var(--leg-edge);
+  text-align: center;
+}
+
+.weather-now__place { font-weight: 700; margin: 0 0 var(--sp-2); }
+
+.weather-now__temp {
+  font-family: var(--font-display);
+  font-size: var(--size-xl);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--leg-deep);
+  line-height: 1.1;
+  margin: 0 0 var(--sp-1);
+}
+
+.weather-now__sky { margin: 0; }
+
 .leaflet-popup-content,
 .leaflet-container {
   font-family: var(--font-body);
