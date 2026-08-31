@@ -40,6 +40,7 @@ make anything smaller to fit more in.
 | change how photos, video or meals look | `css/media.css` |
 | change the home countdown or the map | `css/home.css` |
 | change live weather | `js/weather.js` |
+| change a destination banner | `js/components/hero-banner.js` |
 | change what a page says | the file in `js/pages/` |
 | fix the trip plan, dates, bookings | `data/itinerary.json` |
 | add a new page | `js/pages/`, then register it in `js/app.js` |

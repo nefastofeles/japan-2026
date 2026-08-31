@@ -7,6 +7,7 @@
 import { legGroups, getLeg } from "../store.js";
 import { esc, shortDate, todayISO } from "../util.js";
 import { TRIP } from "../config.js";
+import { destinationHero } from "./hero-banner.js";
 
 function chip(day, { activeKey, today }) {
   const key = day.date || day.slug;
@@ -82,6 +83,7 @@ export function dayListByLeg() {
     .map((group) => {
       const meta = group.meta;
       return `<section class="day-list__group" data-leg="${esc(group.leg)}">
+                ${destinationHero(group.leg, { compact: true })}
                 <h3 class="day-list__leg">
                   <span>${esc(meta.name)}</span>
                   <span class="day-list__leg-jp jp">${esc(meta.jp || "")}</span>

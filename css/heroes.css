@@ -1,0 +1,102 @@
+/* ==========================================================================
+   Destination hero banners
+   A coloured sky and a landmark silhouette, one per city. The drawing is a
+   CSS mask so it picks up --leg without editing the SVG.
+   ========================================================================== */
+
+.place-hero {
+  position: relative;
+  aspect-ratio: 2.4 / 1;
+  min-height: 11rem;
+  margin: 0 0 var(--sp-5);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse 48% 42% at 78% 24%,
+      color-mix(in srgb, var(--leg) 40%, #fff) 0%,
+      transparent 70%),
+    linear-gradient(180deg,
+      var(--leg-tint) 0%,
+      var(--leg-wash) 42%,
+      color-mix(in srgb, var(--leg) 32%, var(--paper)) 100%);
+  box-shadow: var(--shadow);
+}
+
+.place-hero__sun {
+  position: absolute;
+  right: 11%;
+  top: 12%;
+  width: clamp(3.5rem, 16%, 7rem);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--leg) 38%, #fff);
+}
+
+.place-hero__art {
+  position: absolute;
+  inset: auto 0 0;
+  height: 78%;
+  background: var(--leg-deep);
+  -webkit-mask: var(--hero-src) center bottom / contain no-repeat;
+  mask: var(--hero-src) center bottom / contain no-repeat;
+}
+
+.place-hero__caption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--sp-3);
+  padding: var(--sp-4) var(--sp-5);
+  background: linear-gradient(transparent, color-mix(in srgb, var(--ink) 52%, transparent));
+  color: var(--paper-raised);
+  margin: 0;
+}
+
+.place-hero__place { font-weight: 700; }
+.place-hero__jp { opacity: 0.9; }
+
+.place-hero--compact {
+  aspect-ratio: 3 / 1;
+  min-height: 7.5rem;
+  margin: 0 0 var(--sp-4);
+  border-radius: var(--radius);
+}
+
+.place-hero--compact .place-hero__caption {
+  padding: var(--sp-3) var(--sp-4);
+}
+
+/* Mask URLs are resolved against this stylesheet, not the page. */
+.place-hero[data-hero="before"]     { --hero-src: url("../assets/heroes/crane.svg"); }
+.place-hero[data-hero="inbound"]    { --hero-src: url("../assets/heroes/haneda.svg"); }
+.place-hero[data-hero="shinjuku"]   { --hero-src: url("../assets/heroes/senso-ji.svg"); }
+.place-hero[data-hero="kyoto"]      { --hero-src: url("../assets/heroes/fushimi-inari.svg"); }
+.place-hero[data-hero="osaka"]      { --hero-src: url("../assets/heroes/osaka-castle.svg"); }
+.place-hero[data-hero="hiroshima"]  { --hero-src: url("../assets/heroes/peace-memorial.svg"); }
+.place-hero[data-hero="miyajima"]   { --hero-src: url("../assets/heroes/itsukushima.svg"); }
+.place-hero[data-hero="kanazawa"]   { --hero-src: url("../assets/heroes/kenrokuen.svg"); }
+.place-hero[data-hero="takayama"]   { --hero-src: url("../assets/heroes/sanmachi.svg"); }
+.place-hero[data-hero="kiso"]       { --hero-src: url("../assets/heroes/magome.svg"); }
+.place-hero[data-hero="tokyo"]      { --hero-src: url("../assets/heroes/tokyo-tower.svg"); }
+.place-hero[data-hero="outbound"]   { --hero-src: url("../assets/heroes/haneda.svg"); }
+.place-hero[data-hero="after"]      { --hero-src: url("../assets/heroes/crane.svg"); }
+
+.day-list__group > .place-hero--compact {
+  margin: calc(-1 * var(--sp-4)) calc(-1 * var(--sp-4)) var(--sp-4);
+  width: calc(100% + 2 * var(--sp-4));
+  max-width: none;
+  border-radius: var(--radius) var(--radius) 0 0;
+}
+
+.place-hero[data-leg="outbound"] .place-hero__art {
+  transform: scaleX(-1);
+}
+
+@media (max-width: 40rem) {
+  .place-hero { min-height: 9rem; }
+  .place-hero--compact { min-height: 6.5rem; }
+}

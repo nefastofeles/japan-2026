@@ -22,6 +22,7 @@ import {
   weatherLine, watchlistSection, packingSection, weatherTable,
 } from "../components/reference.js";
 import { bindLiveWeather } from "../weather.js";
+import { destinationHero } from "../components/hero-banner.js";
 
 function header(day) {
   const counter = dayNumber(day);
@@ -121,7 +122,7 @@ export async function dayPage({ date }) {
 
   const cover = day.coverUrl
     ? `<div class="day-cover"><img src="${esc(day.coverUrl)}" alt=""></div>`
-    : "";
+    : destinationHero(day.leg);
 
   const photosSection = unattachedPhotos.length
     ? `<section>
