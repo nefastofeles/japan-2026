@@ -1,7 +1,7 @@
 /* ==========================================================================
    Destination hero banners
-   A coloured sky and a landmark silhouette, one per city. The drawing is a
-   CSS mask so it picks up --leg without editing the SVG.
+   A real photograph of the local landmark, with the name and a credit
+   over a dark wash so grandparents can still read it.
    ========================================================================== */
 
 .place-hero {
@@ -11,35 +11,30 @@
   margin: 0 0 var(--sp-5);
   border-radius: var(--radius-lg);
   overflow: hidden;
-  background:
-    radial-gradient(ellipse 48% 42% at 78% 24%,
-      color-mix(in srgb, var(--leg) 40%, #fff) 0%,
-      transparent 70%),
-    linear-gradient(180deg,
-      var(--leg-tint) 0%,
-      var(--leg-wash) 42%,
-      color-mix(in srgb, var(--leg) 32%, var(--paper)) 100%);
+  background: var(--leg-wash);
   box-shadow: var(--shadow);
 }
 
-.place-hero__sun {
+.place-hero__photo {
   position: absolute;
-  right: 11%;
-  top: 12%;
-  width: clamp(3.5rem, 16%, 7rem);
-  aspect-ratio: 1;
-  border-radius: 50%;
-  background: color-mix(in srgb, var(--leg) 38%, #fff);
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  object-position: center 40%;
 }
 
-.place-hero__art {
-  position: absolute;
-  inset: auto 0 0;
-  height: 78%;
-  background: var(--leg-deep);
-  -webkit-mask: var(--hero-src) center bottom / contain no-repeat;
-  mask: var(--hero-src) center bottom / contain no-repeat;
-}
+/* Keep the landmark in the crop when the banner is a short strip. */
+.place-hero[data-hero="shinjuku"] .place-hero__photo { object-position: center 22%; }
+.place-hero[data-hero="osaka"] .place-hero__photo { object-position: center 38%; }
+.place-hero[data-hero="hiroshima"] .place-hero__photo { object-position: center 36%; }
+.place-hero[data-hero="kanazawa"] .place-hero__photo { object-position: 62% 48%; }
+.place-hero[data-hero="tokyo"] .place-hero__photo { object-position: 58% 42%; }
+.place-hero[data-hero="inbound"] .place-hero__photo,
+.place-hero[data-hero="outbound"] .place-hero__photo { object-position: 55% 42%; }
+.place-hero[data-hero="before"] .place-hero__photo,
+.place-hero[data-hero="after"] .place-hero__photo { object-position: center 58%; }
 
 .place-hero__caption {
   position: absolute;
@@ -47,17 +42,29 @@
   right: 0;
   bottom: 0;
   display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: var(--sp-3);
+  flex-direction: column;
+  gap: var(--sp-2);
   padding: var(--sp-4) var(--sp-5);
-  background: linear-gradient(transparent, color-mix(in srgb, var(--ink) 52%, transparent));
+  background: linear-gradient(transparent, color-mix(in srgb, var(--ink) 68%, transparent));
   color: var(--paper-raised);
   margin: 0;
 }
 
+.place-hero__names {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--sp-3);
+}
+
 .place-hero__place { font-weight: 700; }
-.place-hero__jp { opacity: 0.9; }
+
+.place-hero__credit,
+.place-hero__credit a {
+  color: color-mix(in srgb, var(--paper-raised) 88%, transparent);
+}
+
+.place-hero__credit a:hover { color: var(--paper-raised); }
 
 .place-hero--compact {
   aspect-ratio: 3 / 1;
@@ -70,30 +77,11 @@
   padding: var(--sp-3) var(--sp-4);
 }
 
-/* Mask URLs are resolved against this stylesheet, not the page. */
-.place-hero[data-hero="before"]     { --hero-src: url("../assets/heroes/crane.svg"); }
-.place-hero[data-hero="inbound"]    { --hero-src: url("../assets/heroes/haneda.svg"); }
-.place-hero[data-hero="shinjuku"]   { --hero-src: url("../assets/heroes/senso-ji.svg"); }
-.place-hero[data-hero="kyoto"]      { --hero-src: url("../assets/heroes/fushimi-inari.svg"); }
-.place-hero[data-hero="osaka"]      { --hero-src: url("../assets/heroes/osaka-castle.svg"); }
-.place-hero[data-hero="hiroshima"]  { --hero-src: url("../assets/heroes/peace-memorial.svg"); }
-.place-hero[data-hero="miyajima"]   { --hero-src: url("../assets/heroes/itsukushima.svg"); }
-.place-hero[data-hero="kanazawa"]   { --hero-src: url("../assets/heroes/kenrokuen.svg"); }
-.place-hero[data-hero="takayama"]   { --hero-src: url("../assets/heroes/sanmachi.svg"); }
-.place-hero[data-hero="kiso"]       { --hero-src: url("../assets/heroes/magome.svg"); }
-.place-hero[data-hero="tokyo"]      { --hero-src: url("../assets/heroes/tokyo-tower.svg"); }
-.place-hero[data-hero="outbound"]   { --hero-src: url("../assets/heroes/haneda.svg"); }
-.place-hero[data-hero="after"]      { --hero-src: url("../assets/heroes/crane.svg"); }
-
 .day-list__group > .place-hero--compact {
   margin: calc(-1 * var(--sp-4)) calc(-1 * var(--sp-4)) var(--sp-4);
   width: calc(100% + 2 * var(--sp-4));
   max-width: none;
   border-radius: var(--radius) var(--radius) 0 0;
-}
-
-.place-hero[data-leg="outbound"] .place-hero__art {
-  transform: scaleX(-1);
 }
 
 @media (max-width: 40rem) {
