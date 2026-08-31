@@ -1,6 +1,6 @@
 /* ==========================================================================
    Destination hero banners
-   A real photograph of the local landmark, with the name and a credit
+   A real photograph of the local landmark, with the place name
    over a dark wash so grandparents can still read it.
    ========================================================================== */
 
@@ -42,29 +42,16 @@
   right: 0;
   bottom: 0;
   display: flex;
-  flex-direction: column;
-  gap: var(--sp-2);
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--sp-3);
   padding: var(--sp-4) var(--sp-5);
   background: linear-gradient(transparent, color-mix(in srgb, var(--ink) 68%, transparent));
   color: var(--paper-raised);
   margin: 0;
 }
 
-.place-hero__names {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: var(--sp-3);
-}
-
 .place-hero__place { font-weight: 700; }
-
-.place-hero__credit,
-.place-hero__credit a {
-  color: color-mix(in srgb, var(--paper-raised) 88%, transparent);
-}
-
-.place-hero__credit a:hover { color: var(--paper-raised); }
 
 .place-hero--compact {
   aspect-ratio: 3 / 1;
