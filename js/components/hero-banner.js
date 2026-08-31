@@ -4,8 +4,9 @@
    Open-licensed photos from Wikimedia Commons, resized and hosted here so
    the banners work offline. These are not trip photos. Once a day has a
    cover photograph from the family album it replaces the banner.
-   Credits stay on the picture: the licences ask for the photographer's
-   name. Full TASL lives in assets/heroes/ATTRIBUTION.md.
+   Credits stay on the picture as plain text: the licences ask for the
+   photographer's name. Full TASL, including source URLs, lives in
+   assets/heroes/ATTRIBUTION.md so grandparents are not sent off-site.
    ========================================================================== */
 
 import { esc } from "../util.js";
@@ -18,8 +19,6 @@ const PHOTOS = {
     alt: "Two origami paper cranes on a pale surface",
     credit: "Laitche",
     license: "Public domain",
-    licenseUrl: "https://commons.wikimedia.org/wiki/File:Cranes_made_by_Origami_paper.jpg",
-    sourceUrl: "https://commons.wikimedia.org/wiki/File:Cranes_made_by_Origami_paper.jpg",
   },
   haneda: {
     file: "haneda.jpg",
@@ -28,8 +27,6 @@ const PHOTOS = {
     alt: "An ANA airliner at a gate at Haneda Airport",
     credit: "Ka23 13",
     license: "CC BY-SA 4.0",
-    licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0/",
-    sourceUrl: "https://commons.wikimedia.org/wiki/File:Haneda_Airport_20160716_070223.jpg",
   },
   "senso-ji": {
     file: "senso-ji.jpg",
@@ -38,9 +35,6 @@ const PHOTOS = {
     alt: "The Hōzōmon gate and five-storey pagoda at Sensō-ji in Asakusa",
     credit: "LMP 2001",
     license: "CC BY-SA 4.0",
-    licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0/",
-    sourceUrl:
-      "https://commons.wikimedia.org/wiki/File:Sensoji_Temple_(Asakusa,_Tokyo,_Japan)_2023-07-02.jpg",
   },
   "fushimi-inari": {
     file: "fushimi-inari.jpg",
@@ -49,8 +43,6 @@ const PHOTOS = {
     alt: "The vermillion torii tunnel at Fushimi Inari in Kyoto",
     credit: "Paul Vlaar",
     license: "CC BY-SA 3.0",
-    licenseUrl: "https://creativecommons.org/licenses/by-sa/3.0/",
-    sourceUrl: "https://commons.wikimedia.org/wiki/File:KyotoFushimiInariLarge.jpg",
   },
   "osaka-castle": {
     file: "osaka-castle.jpg",
@@ -59,8 +51,6 @@ const PHOTOS = {
     alt: "Osaka Castle keep above the stone walls, with the city skyline behind",
     credit: "663highland",
     license: "CC BY 2.5",
-    licenseUrl: "https://creativecommons.org/licenses/by/2.5/",
-    sourceUrl: "https://commons.wikimedia.org/wiki/File:Osaka_Castle_02bs3200.jpg",
   },
   "peace-memorial": {
     file: "peace-memorial.jpg",
@@ -69,9 +59,6 @@ const PHOTOS = {
     alt: "The Hiroshima Peace Memorial, also called the Genbaku Dome",
     credit: "Jakub Hałun",
     license: "CC BY 4.0",
-    licenseUrl: "https://creativecommons.org/licenses/by/4.0/",
-    sourceUrl:
-      "https://commons.wikimedia.org/wiki/File:Hiroshima_Peace_Memorial_(Genbaku_Dome),_20240817_1050_4231.jpg",
   },
   itsukushima: {
     file: "itsukushima.jpg",
@@ -80,8 +67,6 @@ const PHOTOS = {
     alt: "The floating torii gate at Itsukushima Shrine on Miyajima",
     credit: "JordyMeow",
     license: "CC BY-SA 3.0",
-    licenseUrl: "https://creativecommons.org/licenses/by-sa/3.0/",
-    sourceUrl: "https://commons.wikimedia.org/wiki/File:Itsukushima_Gate.jpg",
   },
   kenrokuen: {
     file: "kenrokuen.jpg",
@@ -90,9 +75,6 @@ const PHOTOS = {
     alt: "The Kotoji lantern beside the pond at Kenroku-en in Kanazawa",
     credit: "663highland",
     license: "CC BY 2.5",
-    licenseUrl: "https://creativecommons.org/licenses/by/2.5/",
-    sourceUrl:
-      "https://commons.wikimedia.org/wiki/File:131109_Kenrokuen_Kanazawa_Ishikawa_pref_Japan01s3.jpg",
   },
   sanmachi: {
     file: "sanmachi.jpg",
@@ -101,9 +83,6 @@ const PHOTOS = {
     alt: "A wooden merchant street in Sanmachi Suji, Takayama",
     credit: "Raita Futo",
     license: "CC BY 2.0",
-    licenseUrl: "https://creativecommons.org/licenses/by/2.0/",
-    sourceUrl:
-      "https://commons.wikimedia.org/wiki/File:Hida_Takayama_old_town_streets_(48519369602).jpg",
   },
   magome: {
     file: "magome.jpg",
@@ -112,9 +91,6 @@ const PHOTOS = {
     alt: "The stone-paved slope through Magome-juku on the Nakasendo",
     credit: "663highland",
     license: "CC BY-SA 4.0",
-    licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0/",
-    sourceUrl:
-      "https://commons.wikimedia.org/wiki/File:220727_Nakasendo_Magome-juku_Nakatsugawa_Gifu_pref_Japan02s3.jpg",
   },
   "tokyo-tower": {
     file: "tokyo-tower.jpg",
@@ -123,8 +99,6 @@ const PHOTOS = {
     alt: "Tokyo Tower lit orange above the Minato skyline at night",
     credit: "David Kernan",
     license: "CC BY 4.0",
-    licenseUrl: "https://creativecommons.org/licenses/by/4.0/",
-    sourceUrl: "https://commons.wikimedia.org/wiki/File:Tokyo_Tower,_Minato_City.jpg",
   },
 };
 
@@ -164,12 +138,7 @@ export function destinationHero(leg, { compact = false } = {}) {
                 <span class="place-hero__place">${esc(hero.place)}</span>
                 <span class="place-hero__jp jp">${esc(hero.placeJp)}</span>
               </span>
-              <span class="place-hero__credit">
-                Photo
-                <a href="${esc(photo.sourceUrl)}" rel="noreferrer" target="_blank">${esc(photo.credit)}</a>
-                ·
-                <a href="${esc(photo.licenseUrl)}" rel="noreferrer" target="_blank">${esc(photo.license)}</a>
-              </span>
+              <span class="place-hero__credit">Photo ${esc(photo.credit)} · ${esc(photo.license)}</span>
             </figcaption>
           </figure>`;
 }

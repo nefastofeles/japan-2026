@@ -59,12 +59,9 @@
 
 .place-hero__place { font-weight: 700; }
 
-.place-hero__credit,
-.place-hero__credit a {
+.place-hero__credit {
   color: color-mix(in srgb, var(--paper-raised) 88%, transparent);
 }
-
-.place-hero__credit a:hover { color: var(--paper-raised); }
 
 .place-hero--compact {
   aspect-ratio: 3 / 1;
