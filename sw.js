@@ -8,7 +8,7 @@
    Bump CACHE when you change the shell, otherwise phones keep the old copy.
    ========================================================================== */
 
-const CACHE = "japan-2026-v7";
+const CACHE = "japan-2026-v8";
 
 const SHELL = [
   "./",
@@ -53,17 +53,17 @@ const SHELL = [
   "data/people.json",
   "assets/fonts/AtkinsonHyperlegible-Regular.woff2",
   "assets/fonts/AtkinsonHyperlegible-Bold.woff2",
-  "assets/heroes/crane.svg",
-  "assets/heroes/haneda.svg",
-  "assets/heroes/senso-ji.svg",
-  "assets/heroes/fushimi-inari.svg",
-  "assets/heroes/osaka-castle.svg",
-  "assets/heroes/peace-memorial.svg",
-  "assets/heroes/itsukushima.svg",
-  "assets/heroes/kenrokuen.svg",
-  "assets/heroes/sanmachi.svg",
-  "assets/heroes/magome.svg",
-  "assets/heroes/tokyo-tower.svg",
+  "assets/heroes/crane.jpg",
+  "assets/heroes/haneda.jpg",
+  "assets/heroes/senso-ji.jpg",
+  "assets/heroes/fushimi-inari.jpg",
+  "assets/heroes/osaka-castle.jpg",
+  "assets/heroes/peace-memorial.jpg",
+  "assets/heroes/itsukushima.jpg",
+  "assets/heroes/kenrokuen.jpg",
+  "assets/heroes/sanmachi.jpg",
+  "assets/heroes/magome.jpg",
+  "assets/heroes/tokyo-tower.jpg",
 ];
 
 self.addEventListener("install", (event) => {

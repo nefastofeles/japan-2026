@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 420" fill="#000">
-  <!-- Tokyo Tower: two legs, diamond waist, the antenna -->
-  <path d="M430 420 L560 175 H640 L770 420 H700 L600 230 L500 420 Z"/>
-  <path d="M548 175 L575 110 H625 L652 175 Z"/>
-  <rect x="588" y="24" width="24" height="88"/>
-  <polygon points="600,8 612,24 588,24"/>
-  <rect x="520" y="250" width="160" height="22"/>
-  <rect x="545" y="320" width="110" height="16"/>
-</svg>
