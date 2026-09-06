@@ -9,11 +9,14 @@
 import { getReference } from "../store.js";
 import { esc } from "../util.js";
 import { cityForLeg, liveWeatherLine } from "../weather.js";
+import { PLACES } from "../places.js";
 
 export function weatherLine(day) {
   const weather = getReference().weather || {};
   const w = weather[day.leg];
-  const live = liveWeatherLine(day.city, day.date);
+  // Transit labels like "Copenhagen to Tokyo" are not weather stations.
+  const city = PLACES[day.city] ? day.city : cityForLeg(day.leg);
+  const live = liveWeatherLine(city, day.date);
   if (!w && !live) return "";
 
   const usual = w

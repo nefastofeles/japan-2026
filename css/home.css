@@ -101,12 +101,19 @@
 
 .japan-map__sea { fill: #c5d8de; }
 
+.japan-map__land-wash {
+  fill: #d9c4a0;
+  opacity: 0.45;
+}
+
 .japan-map__land {
-  fill: #efe6d2;
-  stroke: #3d3428;
-  stroke-width: 2.4;
+  fill: #f3ead3;
+  stroke: #2c2418;
+  stroke-width: 3;
   stroke-linejoin: round;
 }
+
+.japan-map__halo { opacity: 0.22; }
 
 .japan-map__route {
   fill: none;
@@ -126,7 +133,7 @@
 
 .japan-map__svg-label {
   font-family: var(--font-body);
-  font-size: 22px;
+  font-size: 26px;
   font-weight: 700;
   fill: #1a1a1a;
   paint-order: stroke;
@@ -139,6 +146,7 @@
   padding: 0;
   margin: 0;
   display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: var(--sp-3);
 }
 
@@ -186,6 +194,7 @@
 
 @media (max-width: 40rem) {
   .japan-map__svg-label { display: none; }
+  .japan-map__list { grid-template-columns: 1fr; }
   .japan-map__place {
     grid-template-columns: auto 1fr;
     grid-template-areas:

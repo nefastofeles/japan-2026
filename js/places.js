@@ -36,12 +36,14 @@ export const MAP_CITIES = [
     lat: 35.0116, lng: 135.7681, leg: "kyoto",
     wiki: "https://en.wikipedia.org/wiki/Kyoto",
     cities: ["Kyoto"], extraDates: [],
+    nudgeLat: 0.08, nudgeLng: 0.05,
   },
   {
     id: "osaka", name: "Osaka", jp: "大阪",
     lat: 34.6937, lng: 135.5023, leg: "osaka",
     wiki: "https://en.wikipedia.org/wiki/Osaka",
     cities: ["Osaka"], extraDates: [],
+    nudgeLat: -0.08, nudgeLng: -0.08,
   },
   {
     id: "hiroshima", name: "Hiroshima", jp: "広島",
@@ -54,6 +56,7 @@ export const MAP_CITIES = [
     lat: 34.296, lng: 132.3197, leg: "miyajima",
     wiki: "https://en.wikipedia.org/wiki/Itsukushima",
     cities: ["Miyajima"], extraDates: [],
+    nudgeLat: -0.08, nudgeLng: -0.18,
   },
   {
     id: "kanazawa", name: "Kanazawa", jp: "金沢",
@@ -66,30 +69,35 @@ export const MAP_CITIES = [
     lat: 36.2562, lng: 136.9062, leg: "takayama",
     wiki: "https://en.wikipedia.org/wiki/Shirakawa,_Gifu_(village)",
     cities: [], extraDates: ["2026-09-30"],
+    nudgeLat: 0.14, nudgeLng: -0.28,
   },
   {
     id: "takayama", name: "Takayama", jp: "高山",
     lat: 36.1461, lng: 137.2522, leg: "takayama",
     wiki: "https://en.wikipedia.org/wiki/Takayama,_Gifu",
     cities: ["Takayama"], extraDates: [],
+    nudgeLng: 0.18,
   },
   {
     id: "magome", name: "Magome", jp: "馬籠",
     lat: 35.5283, lng: 137.5694, leg: "kiso",
     wiki: "https://en.wikipedia.org/wiki/Magome-juku",
     cities: [], extraDates: ["2026-10-02"],
+    nudgeLat: -0.22, nudgeLng: -0.12,
   },
   {
     id: "tsumago", name: "Tsumago", jp: "妻籠",
     lat: 35.5772, lng: 137.595, leg: "kiso",
     wiki: "https://en.wikipedia.org/wiki/Tsumago-juku",
     cities: [], extraDates: ["2026-10-02"],
+    nudgeLat: 0.1, nudgeLng: 0.28,
   },
   {
     id: "tokoname", name: "Tokoname", jp: "常滑",
     lat: 34.8865, lng: 136.8323, leg: "tokyo",
     wiki: "https://en.wikipedia.org/wiki/Tokoname",
     cities: ["Tokoname to Tokyo"], extraDates: [],
+    nudgeLat: -0.14, nudgeLng: 0.1,
   },
 ];
 
@@ -102,6 +110,7 @@ export const MAP_ROUTE = [
 
 /** Overnight cities, used by the Before-page weather table. */
 export const CITY_FOR_LEG = {
+  inbound: "Tokyo",
   shinjuku: "Tokyo",
   kyoto: "Kyoto",
   osaka: "Osaka",
@@ -111,6 +120,7 @@ export const CITY_FOR_LEG = {
   takayama: "Takayama",
   kiso: "Magome to Tsumago",
   tokyo: "Tokyo, Ebisu",
+  outbound: "Tokyo",
 };
 
 export function coordsForCity(city) {

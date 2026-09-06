@@ -25,6 +25,11 @@ function project(lat, lng) {
   return [Math.round(x * 10) / 10, Math.round(y * 10) / 10];
 }
 
+/** Drawn position, nudged so close towns do not sit on top of each other. */
+function cityPoint(city) {
+  return project(city.lat + (city.nudgeLat || 0), city.lng + (city.nudgeLng || 0));
+}
+
 function cityById(id) {
   return MAP_CITIES.find((city) => city.id === id);
 }
@@ -79,7 +84,7 @@ function landPath() {
 function routePath() {
   return MAP_ROUTE.map((id, i) => {
     const city = cityById(id);
-    const [x, y] = project(city.lat, city.lng);
+    const [x, y] = cityPoint(city);
     return `${i === 0 ? "M" : "L"} ${x} ${y}`;
   }).join(" ");
 }
@@ -97,15 +102,17 @@ function photoDots(media) {
 
 function cityMarks() {
   return MAP_CITIES.map((city) => {
-    const [x, y] = project(city.lat, city.lng);
+    const [x, y] = cityPoint(city);
     const [dx, dy] = LABEL_NUDGE[city.id] || [10, -22];
     const href = firstDayHref(city);
     const colour = getLeg(city.leg).colour;
     return `
       <a href="${esc(href)}" data-leg="${esc(city.leg)}">
-        <circle class="japan-map__dot" cx="${x}" cy="${y}" r="9"
+        <circle class="japan-map__halo" cx="${x}" cy="${y}" r="16"
                 fill="${esc(colour)}" />
-        <circle cx="${x}" cy="${y}" r="4" fill="#FAF8F3" />
+        <circle class="japan-map__dot" cx="${x}" cy="${y}" r="11"
+                fill="${esc(colour)}" />
+        <circle cx="${x}" cy="${y}" r="5" fill="#FAF8F3" />
         <text class="japan-map__svg-label" x="${x + dx}" y="${y + dy}"
               text-anchor="middle">${esc(city.name)}</text>
       </a>`;
@@ -155,6 +162,7 @@ export async function mountRouteMap(element, { photos = false } = {}) {
          aria-label="Illustrated map of the Japan route">
       <svg viewBox="0 0 ${FRAME.w} ${FRAME.h}" xmlns="http://www.w3.org/2000/svg">
         <rect class="japan-map__sea" width="${FRAME.w}" height="${FRAME.h}" />
+        <path class="japan-map__land-wash" d="${landPath()}" transform="translate(8 10)" />
         <path class="japan-map__land" d="${landPath()}" />
         <ellipse class="japan-map__land" cx="${isleX}" cy="${isleY}"
                  rx="10" ry="6" />
