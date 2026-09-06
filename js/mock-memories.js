@@ -2,8 +2,8 @@
    Dress-rehearsal memories
    --------------------------------------------------------------------------
    Loaded only when Supabase is not set up. Two days have sample photos,
-   meals and comments so we can see how a full page looks. They are labelled
-   on the page: these are not our pictures.
+   meals and comments so we can see how a full page looks. They vanish
+   once Supabase is filled in.
    ========================================================================== */
 
 import { isConfigured, USE_MOCK_MEMORIES } from "./config.js";
@@ -57,6 +57,12 @@ export async function mockEntriesForDay(day) {
   return (data.entries || [])
     .filter((item) => item.day === dayKey(day))
     .sort((a, b) => (a.position || 0) - (b.position || 0));
+}
+
+export async function mockBestOfForDay(day) {
+  const data = await loadMocks();
+  if (!data) return [];
+  return (data.best_of || []).filter((item) => item.day === dayKey(day));
 }
 
 export async function mockCommentsForDay(day) {

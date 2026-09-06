@@ -8,7 +8,6 @@
 
 import { allFood, getReference, getTravelDays } from "../store.js";
 import { isConfigured } from "../config.js";
-import { mocksEnabled } from "../mock-memories.js";
 import { esc, yen, groupBy } from "../util.js";
 import { mealCard } from "../components/meal-card.js";
 import { averageScore } from "../components/rating-pips.js";
@@ -78,11 +77,6 @@ export async function foodPage() {
   return `
     <div class="page stack">
       <h1>Food</h1>
-      ${
-        mocksEnabled()
-          ? `<p class="notice"><strong>Sample memories.</strong> These meals are a dress rehearsal, not ours.</p>`
-          : ""
-      }
 
       <section class="stat-grid">
         <div class="stat"><span class="stat__n">${meals.length}</span>

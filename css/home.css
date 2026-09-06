@@ -1,8 +1,8 @@
 /* ==========================================================================
    Japan 2026 - home dashboard and route map
    --------------------------------------------------------------------------
-   Countdown, stats and the Leaflet map. Split out of media.css so photos,
-   food and this file each stay readable.
+   Countdown, stats and the illustrated Japan map. Split out of media.css
+   so photos, food and this file each stay readable.
    ========================================================================== */
 
 .hero {
@@ -84,19 +84,115 @@
 
 .stat__l { font-size: var(--size-sm); color: var(--ink-muted); }
 
-.route-map {
-  height: 60vh;
-  min-height: 380px;
+.japan-map-host {
+  display: grid;
+  gap: var(--sp-5);
+}
+
+.japan-map__art {
   border-radius: var(--radius-lg);
   overflow: hidden;
   border: 1px solid var(--rule);
-  background: var(--paper-raised);
+  background: #d7e4e8;
   box-shadow: var(--shadow);
 }
 
-.route-map--home {
-  height: 40vh;
-  min-height: 280px;
+.japan-map__art svg { display: block; width: 100%; height: auto; }
+
+.japan-map__sea { fill: #c5d8de; }
+
+.japan-map__land {
+  fill: #efe6d2;
+  stroke: #3d3428;
+  stroke-width: 2.4;
+  stroke-linejoin: round;
+}
+
+.japan-map__route {
+  fill: none;
+  stroke: #1a1a1a;
+  stroke-width: 2.2;
+  stroke-dasharray: 7 8;
+  stroke-linecap: round;
+  opacity: 0.55;
+}
+
+.japan-map__dot {
+  stroke: #faf8f3;
+  stroke-width: 2;
+}
+
+.japan-map__photo { fill: #eb6101; opacity: 0.85; }
+
+.japan-map__svg-label {
+  font-family: var(--font-body);
+  font-size: 22px;
+  font-weight: 700;
+  fill: #1a1a1a;
+  paint-order: stroke;
+  stroke: #faf8f3;
+  stroke-width: 5px;
+}
+
+.japan-map__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: var(--sp-3);
+}
+
+.japan-map__place {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  grid-template-areas:
+    "swatch name wiki"
+    "swatch day  wiki";
+  column-gap: var(--sp-3);
+  align-items: center;
+  padding: var(--sp-3) var(--sp-4);
+  border: 1px solid var(--leg-edge);
+  border-radius: var(--radius);
+  background: var(--paper-raised);
+}
+
+.japan-map__swatch {
+  grid-area: swatch;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--leg);
+}
+
+.japan-map__name {
+  grid-area: name;
+  font-weight: 700;
+  text-decoration: none;
+  color: inherit;
+}
+
+.japan-map__name .jp { margin-left: var(--sp-2); color: var(--ink-muted); font-weight: 400; }
+
+.japan-map__day {
+  grid-area: day;
+  color: var(--ink-muted);
+  text-decoration: none;
+}
+
+.japan-map__wiki {
+  grid-area: wiki;
+  font-weight: 700;
+}
+
+@media (max-width: 40rem) {
+  .japan-map__svg-label { display: none; }
+  .japan-map__place {
+    grid-template-columns: auto 1fr;
+    grid-template-areas:
+      "swatch name"
+      "swatch day"
+      "swatch wiki";
+  }
 }
 
 .weather-now {
@@ -127,8 +223,3 @@
 
 .weather-now__sky { margin: 0; }
 
-.leaflet-popup-content,
-.leaflet-container {
-  font-family: var(--font-body);
-  letter-spacing: var(--tracking);
-}

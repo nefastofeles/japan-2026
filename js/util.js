@@ -80,6 +80,24 @@ export function daysUntilStart() {
   return Math.max(0, Math.round((start - now) / 86400000));
 }
 
+/** Clock time as written on the photo, e.g. "14:10". Uses the stamp's
+    own offset so a Copenhagen departure stays on Danish time. */
+export function clockFromStamp(iso) {
+  const match = String(iso || "").match(/T(\d{2}):(\d{2})/);
+  return match ? `${match[1]}:${match[2]}` : "";
+}
+
+/** Move a "YYYY-MM-DD" string by a whole number of calendar days. */
+export function shiftISO(iso, days) {
+  const date = parseDate(iso);
+  if (!date) return "";
+  date.setDate(date.getDate() + days);
+  const y = date.getFullYear();
+  const m = String(date.getMonth() + 1).padStart(2, "0");
+  const d = String(date.getDate()).padStart(2, "0");
+  return `${y}-${m}-${d}`;
+}
+
 export function relativeTime(isoTimestamp) {
   const then = new Date(isoTimestamp);
   const mins = Math.round((Date.now() - then) / 60000);

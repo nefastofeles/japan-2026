@@ -8,7 +8,7 @@
    The forms themselves are in admin-forms.js. This file is only the wiring.
    ========================================================================== */
 
-import { dayId, getDay, getDays } from "../store.js";
+import { dayId, getDay, getDays, addBestOf } from "../store.js";
 import { isConfigured, TRIP } from "../config.js";
 import { getClient } from "../supabase.js";
 import { isAdmin, signIn, signOut, getSession } from "../auth.js";
@@ -85,6 +85,7 @@ function bindAdmin(root) {
 
     const category = pick("[data-category]").value;
     const shotBy = pick("[data-shotby]").value;
+    const place = pick("[data-photo-place]").value.trim();
     let done = 0;
     let failed = 0;
 
@@ -98,6 +99,7 @@ function bindAdmin(root) {
           category,
           shotBy,
           personId: shotBy,
+          place: place || null,
         });
         done += 1;
       } catch (error) {
@@ -109,6 +111,7 @@ function bindAdmin(root) {
     status.textContent = `Uploaded ${done} of ${files.length}.` +
       (failed ? ` ${failed} failed, try those again.` : "");
     pick("[data-files]").value = "";
+    if (!failed) pick("[data-photo-place]").value = "";
   });
 
   /* -------------------------------------------------------------- video */
@@ -155,6 +158,32 @@ function bindAdmin(root) {
 
     status.textContent = error ? error.message : "Story saved.";
     if (!error) pick("[data-story]").value = "";
+  });
+
+  /* ------------------------------------------------------ best of the day */
+  pick("[data-addbest]").addEventListener("click", async () => {
+    const status = pick("[data-best-status]");
+    const day = selectedDay();
+    const fields = root.querySelectorAll("[data-best]");
+    const notes = [...fields]
+      .map((field) => ({ personId: field.dataset.best, body: field.value.trim() }))
+      .filter((note) => note.body);
+
+    if (!notes.length) {
+      status.textContent = "Write at least one note first.";
+      return;
+    }
+
+    status.textContent = "Saving…";
+    try {
+      for (const note of notes) {
+        await addBestOf(day, note.personId, note.body);
+      }
+      status.textContent = "Saved.";
+      fields.forEach((field) => (field.value = ""));
+    } catch (error) {
+      status.textContent = error.message;
+    }
   });
 
   /* --------------------------------------------------------------- meal */

@@ -18,7 +18,7 @@ import { getClient } from "./supabase.js";
 import { isConfigured } from "./config.js";
 import {
   mockMediaForDay, mockMealsForDay, mockEntriesForDay, mockCommentsForDay,
-  mockAllMedia, mockAllFood, mocksEnabled,
+  mockBestOfForDay, mockAllMedia, mockAllFood, mocksEnabled,
 } from "./mock-memories.js";
 
 let itinerary = null;
@@ -165,6 +165,26 @@ export async function entriesForDay(day) {
   const id = await dayId(day);
   if (!id) return [];
   return query("entries", (t) => t.select("*").eq("day_id", id).order("position"));
+}
+
+export async function bestOfForDay(day) {
+  if (mocksEnabled()) return mockBestOfForDay(day);
+  const id = await dayId(day);
+  if (!id) return [];
+  const rows = await query("entries", (t) =>
+    t.select("*").eq("day_id", id).eq("kind", "best")
+  );
+  return rows.filter((row) => row.person_id && row.body);
+}
+
+export async function addBestOf(day, personId, body) {
+  const id = await dayId(day);
+  if (!id) throw new Error("This day does not exist in the database yet.");
+  const supabase = await getClient();
+  const { error } = await supabase
+    .from("entries")
+    .insert({ day_id: id, person_id: personId, kind: "best", body });
+  if (error) throw error;
 }
 
 export async function commentsForDay(day) {

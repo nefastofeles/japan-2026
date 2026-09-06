@@ -142,7 +142,7 @@ export async function homePage() {
       <section>
         <h2 class="section-title">The route</h2>
         <p class="measure muted">Tokyo down to Hiroshima, north to Kanazawa, into the Alps and back.</p>
-        <div id="home-map" class="route-map route-map--home"></div>
+        <div id="home-map" class="japan-map-host japan-map-host--home"></div>
       </section>
 
       <section>

@@ -216,6 +216,45 @@
 .day-nav__title { font-weight: 700; }
 .day-nav a:last-child { text-align: right; margin-left: auto; }
 
+.meal-board { display: grid; gap: var(--sp-6); }
+
+.meal-board__title {
+  margin-bottom: var(--sp-3);
+  color: var(--leg-deep);
+}
+
+.best-of {
+  padding: var(--sp-5);
+  border-radius: var(--radius-lg);
+  background: color-mix(in srgb, var(--leg-after) 20%, var(--paper-raised));
+  border: 2px solid color-mix(in srgb, var(--leg-after) 50%, var(--paper));
+}
+
+.best-of__title {
+  margin: 0 0 var(--sp-4);
+  font-size: var(--size-xl);
+}
+
+.best-of__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--sp-3);
+}
+
+.best-of__card {
+  padding: var(--sp-4);
+  border-radius: var(--radius);
+  background: var(--paper-raised);
+  border-left: 5px solid var(--person, var(--leg));
+}
+
+.best-of__who { font-weight: 700; margin: 0 0 var(--sp-2); }
+.best-of__body { margin: 0; }
+
+@media (min-width: 40rem) {
+  .best-of__grid { grid-template-columns: 1fr 1fr; }
+}
+
 @media (max-width: 40rem) {
   .day-strip__scroll { gap: var(--sp-4); padding: var(--sp-2) var(--sp-4) var(--sp-3); }
   .day-nav { flex-direction: column; }

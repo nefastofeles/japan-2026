@@ -179,7 +179,7 @@ function safeName(name) {
  * Upload one prepared image and create its media row.
  * Both objects share a path, so the thumbnail for photos/x.jpg is thumbs/x.jpg.
  */
-export async function uploadImage(prepared, { dayId, dayDate, category, shotBy, personId, caption }) {
+export async function uploadImage(prepared, { dayId, dayDate, category, shotBy, personId, caption, place }) {
   const supabase = await getClient();
   if (!supabase) throw new Error("Supabase is not configured.");
 
@@ -210,6 +210,7 @@ export async function uploadImage(prepared, { dayId, dayDate, category, shotBy, 
     taken_at: prepared.takenAt,
     lat: prepared.lat,
     lng: prepared.lng,
+    place: place || null,
     caption: caption || null,
   });
   if (error) throw error;

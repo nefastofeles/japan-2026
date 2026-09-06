@@ -8,22 +8,25 @@
 
 import {
   getDay, neighbours, dayNumber, getLeg,
-  mediaForDay, mealsForDay, entriesForDay, commentsForDay, addComment,
+  mediaForDay, mealsForDay, entriesForDay, commentsForDay, bestOfForDay,
+  addComment,
 } from "../store.js";
 import { esc, formatDate, youtubeId, relativeTime } from "../util.js";
 import { isConfigured } from "../config.js";
 import { dayStrip, centreActiveChip } from "../components/day-strip.js";
 import { bookings } from "../components/booking-card.js";
 import { videoEmbed, bindVideos } from "../components/video-embed.js";
-import { photoGrid, bindPhotoGrid } from "../components/photo-grid.js";
-import { mealList } from "../components/meal-card.js";
+import {
+  photoAlbum, bindPhotoGrid, DAY_PHOTO_LIMIT, DAY_VIDEO_LIMIT,
+} from "../components/photo-grid.js";
+import { mealBoard } from "../components/meal-card.js";
 import { markdown } from "../components/markdown.js";
 import {
   weatherLine, watchlistSection, packingSection, weatherTable,
 } from "../components/reference.js";
 import { bindLiveWeather } from "../weather.js";
 import { destinationHero } from "../components/hero-banner.js";
-import { dayHasMockMemories } from "../mock-memories.js";
+import { bestOfSection } from "../components/best-of.js";
 
 function header(day) {
   const counter = dayNumber(day);
@@ -44,7 +47,7 @@ function header(day) {
     </header>`;
 }
 
-function plan(day) {
+function daySummary(day) {
   const blocks = (day.activities || [])
     .map(
       (block) => `
@@ -59,7 +62,7 @@ function plan(day) {
 
   if (!blocks) return "";
   return `<section>
-            <h2 class="section-title">The plan</h2>
+            <h2 class="section-title">Day summary</h2>
             ${blocks}
           </section>`;
 }
@@ -99,18 +102,20 @@ export async function dayPage({ date }) {
   const leg = getLeg(day.leg);
   const { prev, next } = neighbours(day);
 
-  // The plan renders immediately; the memories only exist once Supabase is set
-  // up, and every one of these degrades to an empty list before then.
-  const [media, meals, entries, comments, sample] = await Promise.all([
+  const [media, meals, entries, comments, bestNotes] = await Promise.all([
     mediaForDay(day),
     mealsForDay(day),
     entriesForDay(day),
     commentsForDay(day),
-    dayHasMockMemories(day),
+    bestOfForDay(day),
   ]);
 
-  const photos = media.filter((m) => m.provider !== "youtube");
-  const videos = media.filter((m) => m.provider === "youtube");
+  const photos = media
+    .filter((m) => m.provider !== "youtube")
+    .slice(0, DAY_PHOTO_LIMIT);
+  const videos = media
+    .filter((m) => m.provider === "youtube")
+    .slice(0, DAY_VIDEO_LIMIT);
   const unattachedPhotos = photos.filter((p) => !p.meal_id);
 
   const story = entries
@@ -129,14 +134,14 @@ export async function dayPage({ date }) {
   const photosSection = unattachedPhotos.length
     ? `<section>
          <h2 class="section-title">Photos</h2>
-         ${await photoGrid(unattachedPhotos)}
+         ${await photoAlbum(unattachedPhotos, { fallbackPlace: day.city })}
        </section>`
     : "";
 
   const videoSection = videos.length
     ? `<section>
          <h2 class="section-title">Video</h2>
-         <div class="stack">${videos
+         <div class="video-board">${videos
            .map((v) => videoEmbed(v.external_id, v.caption))
            .join("")}</div>
        </section>`
@@ -146,7 +151,7 @@ export async function dayPage({ date }) {
   const foodSection = meals.length
     ? `<section>
          <h2 class="section-title">Food</h2>
-         ${await mealList(meals)}
+         ${await mealBoard(meals)}
        </section>`
     : plannedFood
       ? `<section>
@@ -179,27 +184,29 @@ export async function dayPage({ date }) {
          </section>`
       : "";
 
+  const hasBest = (bestNotes || []).some((note) => (note.body || "").trim());
   const storySection = story
-    ? `<section><h2 class="section-title">The story</h2>${story}</section>`
-    : "";
+    ? `<section>
+         <h2 class="section-title">The story</h2>
+         ${story}
+         ${bestOfSection(bestNotes)}
+       </section>`
+    : hasBest
+      ? `<section>${bestOfSection(bestNotes)}</section>`
+      : "";
 
   const html = `
     ${dayStrip(day.date || day.slug)}
     <div class="page stack" data-leg="${esc(day.leg)}">
       ${header(day)}
       ${cover}
-      ${
-        sample
-          ? `<p class="notice"><strong>Sample memories.</strong> Dress rehearsal so we can see how a full day looks. These pictures, clips and comments are not ours.</p>`
-          : ""
-      }
 
       ${day.transit ? `<p class="transit"><span aria-hidden="true">🚄</span><span>${esc(day.transit)}</span></p>` : ""}
       ${day.kind === "day" ? weatherLine(day) : ""}
       ${bookings(day.bookings)}
       ${day.special ? `<p class="notice"><strong>A special one.</strong> This is the day the whole trip bends around.</p>` : ""}
 
-      ${plan(day)}
+      ${daySummary(day)}
       ${storySection}
       ${photosSection}
       ${videoSection}
