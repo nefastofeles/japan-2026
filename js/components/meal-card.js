@@ -9,7 +9,7 @@
 
 import { esc, yen } from "../util.js";
 import { ratings, averageScore } from "./rating-pips.js";
-import { photoGrid } from "./photo-grid.js";
+import { photoGrid, MEAL_PHOTO_LIMIT } from "./photo-grid.js";
 
 const SLOT_LABEL = {
   breakfast: "Breakfast",
@@ -18,6 +18,13 @@ const SLOT_LABEL = {
   snack: "Snack",
   konbini: "Konbini",
 };
+
+const FOOD_SECTIONS = [
+  ["breakfast", "Breakfast", ["breakfast"]],
+  ["lunch", "Lunch", ["lunch"]],
+  ["dinner", "Dinner", ["dinner"]],
+  ["snacks", "Snacks", ["snack", "konbini"]],
+];
 
 export async function mealCard(meal) {
   const dishes = Array.isArray(meal.dishes) ? meal.dishes : [];
@@ -39,7 +46,10 @@ export async function mealCard(meal) {
       )}</a>`
     : `<span class="meal__place">${esc(meal.place_name || "Somewhere good")}</span>`;
 
-  const photos = meal.media && meal.media.length ? await photoGrid(meal.media) : "";
+  const mealPhotos = (meal.media || []).slice(0, MEAL_PHOTO_LIMIT);
+  const photos = mealPhotos.length
+    ? await photoGrid(mealPhotos, { bindable: false })
+    : "";
 
   return `
     <article class="meal">
@@ -62,4 +72,23 @@ export async function mealList(meals) {
   }
   const cards = await Promise.all(meals.map(mealCard));
   return `<div class="stack">${cards.join("")}</div>`;
+}
+
+/** Four slots on a day page: breakfast, lunch, dinner, snacks. */
+export async function mealBoard(meals) {
+  const sections = await Promise.all(
+    FOOD_SECTIONS.map(async ([id, label, slots]) => {
+      const list = meals.filter((meal) => slots.includes(meal.slot));
+      const cards = list.length
+        ? (await Promise.all(list.map(mealCard))).join("")
+        : `<p class="muted">Nothing logged yet.</p>`;
+      return `
+        <div class="meal-board__slot" data-meal-slot="${esc(id)}">
+          <h3 class="meal-board__title">${esc(label)}</h3>
+          <div class="stack">${cards}</div>
+        </div>`;
+    })
+  );
+
+  return `<div class="meal-board">${sections.join("")}</div>`;
 }

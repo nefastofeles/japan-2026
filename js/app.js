@@ -21,7 +21,7 @@ import { adminPage } from "./pages/admin.js";
 
 const NAV = [
   ["/", "Home"],
-  ["/before", "Before"],
+  ["/before", "Itinerary"],
   ["/food", "Food"],
   ["/photos", "Photos"],
   ["/map", "Map"],
@@ -83,12 +83,15 @@ function chromeLeg(path) {
 function afterRender(path) {
   renderNav(path);
 
+  const onHome = path === "/";
+  document.documentElement.toggleAttribute("data-home", onHome);
+
   const legId = chromeLeg(path);
   document.documentElement.dataset.leg = legId;
 
   const meta = document.querySelector('meta[name="theme-color"]');
-  const colour = store.getLeg(legId).colour;
-  if (meta) meta.content = washHex(colour);
+  const colour = onHome ? "#BC002D" : washHex(store.getLeg(legId).colour);
+  if (meta) meta.content = colour;
 
   syncHeaderHeight();
 }
@@ -99,7 +102,7 @@ async function boot() {
 
   const trip = store.getTrip();
   document.title = trip.name;
-  const title = document.querySelector(".site-title a");
+  const title = document.querySelector(".site-title-text");
   if (title) title.textContent = trip.name;
 
   window.addEventListener("resize", syncHeaderHeight);

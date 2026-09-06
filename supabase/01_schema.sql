@@ -63,7 +63,7 @@ create table if not exists entries (
   day_id    uuid not null references days(id) on delete cascade,
   person_id text references people(id),
   kind      text not null default 'text'
-            check (kind in ('text','photo','gallery','video','map','quote','voice')),
+            check (kind in ('text','photo','gallery','video','map','quote','voice','best')),
   position  int  not null default 0,
   title     text,
   body      text,
@@ -122,6 +122,7 @@ create table if not exists media (
   taken_at     timestamptz,
   lat          double precision,
   lng          double precision,
+  place        text,
   caption      text,
   is_favourite boolean not null default false,
   created_at   timestamptz not null default now()

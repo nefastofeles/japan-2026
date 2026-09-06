@@ -20,3 +20,4 @@ Cropping for the banner happens in CSS (`object-fit: cover`).
 | Sanmachi Suji | `sanmachi.jpg` | Raita Futo | [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/) | [Hida Takayama old town streets (48519369602).jpg](https://commons.wikimedia.org/wiki/File:Hida_Takayama_old_town_streets_(48519369602).jpg) |
 | Magome-juku | `magome.jpg` | 663highland | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) | [220727 Nakasendo Magome-juku Nakatsugawa Gifu pref Japan02s3.jpg](https://commons.wikimedia.org/wiki/File:220727_Nakasendo_Magome-juku_Nakatsugawa_Gifu_pref_Japan02s3.jpg) |
 | Tokyo Tower | `tokyo-tower.jpg` | David Kernan | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) | [Tokyo Tower, Minato City.jpg](https://commons.wikimedia.org/wiki/File:Tokyo_Tower,_Minato_City.jpg) |
+| Home postcard | `fuji.jpg` | Katsushika Hokusai | Public domain | [Hokusai-Red-Fuji.jpg](https://commons.wikimedia.org/wiki/File:Hokusai-Red-Fuji.jpg) |

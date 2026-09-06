@@ -58,7 +58,7 @@ function photoSection() {
       <h2 class="section-title">Photos</h2>
       <p class="small muted">
         Resized to 2000px and thumbnailed in the browser before anything is sent.
-        Pick as many as you like.
+        Pick as many as you like. A day page shows up to 24 photos.
       </p>
       <div>
         <label for="files">Choose photos</label>
@@ -80,6 +80,11 @@ function photoSection() {
           <select class="field" id="shotby" data-shotby>${peopleOptions()}</select>
         </div>
       </div>
+      <div>
+        <label for="photoplace">Place</label>
+        <input class="field" id="photoplace" data-photo-place
+               placeholder="Kaminarimon, Asakusa">
+      </div>
       <button class="btn" data-upload type="button">Upload</button>
       <p class="small" data-upload-status role="status"></p>
     </section>`;
@@ -91,6 +96,7 @@ function videoSection() {
       <h2 class="section-title">Video</h2>
       <p class="small muted">
         Upload to YouTube as <strong>Unlisted</strong> from the phone, then paste the link here.
+        A day page shows up to 12 videos.
       </p>
       <div>
         <label for="yt">YouTube link</label>
@@ -123,6 +129,28 @@ function storySection() {
     </section>`;
 }
 
+function bestOfSection() {
+  const fields = getPeople()
+    .map(
+      (p) => `<div>
+                <label for="best-${esc(p.id)}">${esc(p.name)}</label>
+                <textarea class="field" id="best-${esc(p.id)}" rows="2"
+                          data-best="${esc(p.id)}"
+                          placeholder="The one thing from today."></textarea>
+              </div>`
+    )
+    .join("");
+
+  return `
+    <section class="card stack">
+      <h2 class="section-title">The best of the day</h2>
+      <p class="small muted">One short note from each of us. Text only.</p>
+      ${fields}
+      <button class="btn" data-addbest type="button">Save the best of the day</button>
+      <p class="small" data-best-status role="status"></p>
+    </section>`;
+}
+
 function mealSection() {
   const scores = getPeople()
     .map(
@@ -137,6 +165,7 @@ function mealSection() {
   return `
     <section class="card stack">
       <h2 class="section-title">Meal</h2>
+      <p class="small muted">Breakfast, lunch, dinner or a snack. Up to 3 photos each, added from Photos.</p>
       <div class="row-wrap">
         <div>
           <label for="slot">When</label>
@@ -145,7 +174,7 @@ function mealSection() {
             <option value="lunch" selected>Lunch</option>
             <option value="dinner">Dinner</option>
             <option value="snack">Snack</option>
-            <option value="konbini">Konbini</option>
+            <option value="konbini">Snack / konbini</option>
           </select>
         </div>
         <div>
@@ -189,6 +218,7 @@ export function adminForms(defaultDay) {
       ${photoSection()}
       ${videoSection()}
       ${storySection()}
+      ${bestOfSection()}
       ${mealSection()}
     </div>`;
 }

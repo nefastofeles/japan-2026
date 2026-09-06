@@ -19,8 +19,13 @@ export function isConfigured() {
   return Boolean(SUPABASE_URL && SUPABASE_ANON_KEY);
 }
 
+/* Dress-rehearsal memories for two days, so we can see a full page
+   before anyone has posted. They vanish on their own once Supabase is
+   filled in. Set this to false if you want plan mode back sooner. */
+export const USE_MOCK_MEMORIES = true;
+
 export const TRIP = {
-  title: "Japan 2026",
+  title: "Japan Family Trip 2026",
   start: "2026-09-15",
   end: "2026-10-06",
   timezone: "Asia/Tokyo",

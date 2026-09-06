@@ -13,7 +13,7 @@
 import {
   getTrip, getTravelDays, getDay, getLeg, allMedia, allFood,
 } from "../store.js";
-import { TRIP, isConfigured } from "../config.js";
+import { TRIP } from "../config.js";
 import {
   esc, formatDate, timeIn, todayISO, tripPhase, daysUntilStart, yen,
 } from "../util.js";
@@ -25,21 +25,12 @@ import { weatherBoard, bindLiveWeather } from "../weather.js";
 
 function countdown() {
   const days = daysUntilStart();
-  const weeks = Math.floor(days / 7);
   return `
     <div class="countdown">
       <div class="countdown__unit">
         <span class="countdown__n">${days}</span>
         <span class="countdown__l">day${days === 1 ? "" : "s"} to go</span>
       </div>
-      ${
-        weeks
-          ? `<div class="countdown__unit">
-               <span class="countdown__n">${weeks}</span>
-               <span class="countdown__l">week${weeks === 1 ? "" : "s"}</span>
-             </div>`
-          : ""
-      }
       <div class="countdown__unit">
         <span class="countdown__n">${getTravelDays().length}</span>
         <span class="countdown__l">days in Japan</span>
@@ -72,8 +63,7 @@ export async function homePage() {
   if (phase === "before") {
     lead = `
       ${countdown()}
-      <p class="measure" style="margin-inline:auto;text-align:center">${esc(trip.dna)}</p>
-      <p style="text-align:center"><a class="btn" href="#/before">See what we are planning</a></p>`;
+      <p style="text-align:center"><a class="btn" href="#/before">See the itinerary</a></p>`;
   } else if (phase === "during") {
     const todaysBookings = todayDay && todayDay.bookings ? todayDay.bookings : [];
     recent = await allMedia({ limit: 12 });
@@ -119,8 +109,14 @@ export async function homePage() {
   }
 
   const html = `
-    <div class="page stack">
-      <header class="hero" data-leg="${esc(todayDay ? todayDay.leg : "inbound")}">
+    <div class="page stack page--home">
+      <figure class="fuji-card">
+        <img src="assets/heroes/fuji.jpg" alt="Mount Fuji, after Hokusai’s Red Fuji">
+        <figcaption class="fuji-card__caption">
+          <span class="jp">富士山</span> · A postcard of Mount Fuji
+        </figcaption>
+      </figure>
+      <header class="hero">
         <h1 class="hero__title">${esc(trip.name)}</h1>
         <p class="hero__sub">${esc(trip.subtitle)} ·
            ${esc(formatDate(trip.startDate, { weekday: false }))} to
@@ -129,24 +125,16 @@ export async function homePage() {
 
       ${lead}
 
-      ${
-        !isConfigured()
-          ? `<p class="notice"><strong>Plan mode.</strong> Supabase is not connected yet,
-             so this is the itinerary only. Photos, food and comments switch on
-             once the two values in <code>js/config.js</code> are filled in.</p>`
-          : ""
-      }
-
       ${weatherBoard()}
 
       <section>
         <h2 class="section-title">The route</h2>
         <p class="measure muted">Tokyo down to Hiroshima, north to Kanazawa, into the Alps and back.</p>
-        <div id="home-map" class="route-map route-map--home"></div>
+        <div id="home-map" class="japan-map-host japan-map-host--home"></div>
       </section>
 
       <section>
-        <h2 class="section-title">Every day</h2>
+        <h2 class="section-title">The Plan</h2>
         ${dayListByLeg()}
       </section>
     </div>`;

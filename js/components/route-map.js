@@ -1,108 +1,139 @@
 /* ==========================================================================
-   Route map - Japan stops only, coloured by leg.
+   Illustrated Japan map
    --------------------------------------------------------------------------
-   Leaflet is loaded from a CDN the first time a map is shown, so every other
-   page stays free of that cost. Copenhagen is deliberately left off: including
-   it zooms the map out to Eurasia and Japan becomes a blob.
+   A recognisable four-island silhouette. Each stop is a numbered stage,
+   not a street pin. Wikipedia sits next to each name in the list below.
    ========================================================================== */
 
 import { getTravelDays, getLeg, allMedia } from "../store.js";
 import { esc } from "../util.js";
-import { coordsForCity } from "../places.js";
+import { MAP_CITIES, MAP_ROUTE } from "../places.js";
+import {
+  JAPAN_FRAME as FRAME, HOKKAIDO, HONSHU, SHIKOKU, KYUSHU,
+} from "./japan-outline.js";
 
-const LEAFLET_CSS = "https://unpkg.com/leaflet@1.9.4/dist/leaflet.css";
-const LEAFLET_JS = "https://unpkg.com/leaflet@1.9.4/dist/leaflet.js";
-
-function loadLeaflet() {
-  if (window.L) return Promise.resolve(window.L);
-
-  if (!document.querySelector(`link[href="${LEAFLET_CSS}"]`)) {
-    const link = document.createElement("link");
-    link.rel = "stylesheet";
-    link.href = LEAFLET_CSS;
-    document.head.appendChild(link);
-  }
-
-  return new Promise((resolve, reject) => {
-    const script = document.createElement("script");
-    script.src = LEAFLET_JS;
-    script.onload = () => resolve(window.L);
-    script.onerror = () => reject(new Error("Could not load the map library."));
-    document.head.appendChild(script);
-  });
+function project(lat, lng) {
+  const x = ((lng - FRAME.west) / (FRAME.east - FRAME.west)) * FRAME.w;
+  const y = ((FRAME.north - lat) / (FRAME.north - FRAME.south)) * FRAME.h;
+  return [Math.round(x * 10) / 10, Math.round(y * 10) / 10];
 }
 
-function japanStops() {
-  return getTravelDays()
-    .map((day) => ({ day, coords: coordsForCity(day.city) }))
-    .filter((stop) => stop.coords);
+function cityPoint(city) {
+  const [x, y] = project(city.lat, city.lng);
+  return [x + (city.nudgeX || 0), y + (city.nudgeY || 0)];
+}
+
+function cityById(id) {
+  return MAP_CITIES.find((city) => city.id === id);
+}
+
+function daysForCity(city) {
+  return getTravelDays().filter(
+    (day) =>
+      (city.cities || []).includes(day.city) ||
+      (city.extraDates || []).includes(day.date)
+  );
+}
+
+function firstDayHref(city) {
+  const days = daysForCity(city);
+  return days[0] ? `#/day/${days[0].date}` : "#/map";
+}
+
+function ringPath(ring) {
+  return ring.map(([lat, lng], i) => {
+    const [x, y] = project(lat, lng);
+    return `${i === 0 ? "M" : "L"} ${x} ${y}`;
+  }).join(" ") + " Z";
+}
+
+function routePath() {
+  return MAP_ROUTE.map((id, i) => {
+    const city = cityById(id);
+    const [x, y] = cityPoint(city);
+    return `${i === 0 ? "M" : "L"} ${x} ${y}`;
+  }).join(" ");
+}
+
+function photoDots(media) {
+  return (media || [])
+    .filter((photo) => photo.lat && photo.lng)
+    .map((photo) => {
+      const [x, y] = project(photo.lat, photo.lng);
+      if (x < 0 || y < 0 || x > FRAME.w || y > FRAME.h) return "";
+      return `<circle class="japan-map__photo" cx="${x}" cy="${y}" r="3.5" />`;
+    })
+    .join("");
+}
+
+function cityMarks() {
+  return MAP_CITIES.map((city) => {
+    const [x, y] = cityPoint(city);
+    const href = firstDayHref(city);
+    const colour = getLeg(city.leg).colour;
+    const stage = city.stage;
+    return `
+      <a href="${esc(href)}" data-leg="${esc(city.leg)}">
+        <circle class="japan-map__halo" cx="${x}" cy="${y}" r="16"
+                fill="${esc(colour)}" />
+        <circle class="japan-map__dot" cx="${x}" cy="${y}" r="12"
+                fill="${esc(colour)}" />
+        <text class="japan-map__num" x="${x}" y="${y + 5}"
+              text-anchor="middle">${stage}</text>
+      </a>`;
+  }).join("");
+}
+
+function cityList() {
+  const ordered = [...MAP_CITIES].sort((a, b) => a.stage - b.stage);
+  return `
+    <ol class="japan-map__list">
+      ${ordered.map((city) => {
+        const days = daysForCity(city);
+        const href = firstDayHref(city);
+        return `
+          <li class="japan-map__place" data-leg="${esc(city.leg)}">
+            <span class="japan-map__stage" aria-hidden="true">${city.stage}</span>
+            <a class="japan-map__name" href="${esc(href)}">${esc(city.name)}
+              <span class="jp">${esc(city.jp)}</span></a>
+            ${
+              days[0]
+                ? `<a class="japan-map__day" href="${esc(href)}">${esc(days[0].title)}</a>`
+                : ""
+            }
+            <a class="japan-map__wiki" href="${esc(city.wiki)}"
+               target="_blank" rel="noopener">Wikipedia</a>
+          </li>`;
+      }).join("")}
+    </ol>`;
 }
 
 export async function mountRouteMap(element, { photos = false } = {}) {
   if (!element) return;
 
-  let L;
-  try {
-    L = await loadLeaflet();
-  } catch (error) {
-    element.innerHTML = `<p class="empty">${esc(error.message)}</p>`;
-    return;
-  }
-
-  const stops = japanStops();
-  if (!stops.length) {
-    element.innerHTML = `<p class="empty">The route will appear here.</p>`;
-    return;
-  }
-
-  const map = L.map(element, { scrollWheelZoom: false });
-  L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-    maxZoom: 18,
-    attribution: "&copy; OpenStreetMap",
-  }).addTo(map);
-
-  const line = [];
-  for (const { day, coords } of stops) {
-    const leg = getLeg(day.leg);
-    line.push(coords);
-
-    L.circleMarker(coords, {
-      radius: 8,
-      color: leg.colour,
-      fillColor: leg.colour,
-      fillOpacity: 0.85,
-      weight: 2,
-    })
-      .addTo(map)
-      .bindPopup(
-        `<strong>${esc(day.title)}</strong><br>${esc(day.city)}<br>
-         <a href="#/day/${esc(day.date)}">Open this day</a>`
-      );
-  }
-
-  L.polyline(line, { color: "#1A1A1A", weight: 2, opacity: 0.35, dashArray: "4 6" })
-    .addTo(map);
-
-  const bounds = L.latLngBounds(line);
-  map.fitBounds(bounds, { padding: [40, 40] });
-  // The map is inserted into a freshly rendered page, so Leaflet needs a
-  // second pass once the box has a real width.
-  requestAnimationFrame(() => {
-    map.invalidateSize();
-    map.fitBounds(bounds, { padding: [40, 40] });
-  });
-
-  if (!photos) return;
-
-  const media = await allMedia({ limit: 400 });
-  for (const photo of media) {
-    if (photo.lat && photo.lng) {
-      L.circleMarker([photo.lat, photo.lng], {
-        radius: 4,
-        color: "#EB6101",
-        fillOpacity: 0.9,
-        weight: 1,
-      }).addTo(map);
+  let media = [];
+  if (photos) {
+    try {
+      media = await allMedia({ limit: 400 });
+    } catch {
+      media = [];
     }
   }
+
+  element.classList.add("japan-map");
+  element.innerHTML = `
+    <div class="japan-map__art" role="img"
+         aria-label="Numbered stages on a map of Japan">
+      <svg viewBox="0 0 ${FRAME.w} ${FRAME.h}" xmlns="http://www.w3.org/2000/svg">
+        <rect class="japan-map__sea" width="${FRAME.w}" height="${FRAME.h}" />
+        <path class="japan-map__land" d="${ringPath(HOKKAIDO)}" />
+        <path class="japan-map__land" d="${ringPath(HONSHU)}" />
+        <path class="japan-map__land" d="${ringPath(SHIKOKU)}" />
+        <path class="japan-map__land" d="${ringPath(KYUSHU)}" />
+        <path class="japan-map__route" d="${routePath()}" />
+        ${photoDots(media)}
+        ${cityMarks()}
+      </svg>
+    </div>
+    ${cityList()}`;
 }

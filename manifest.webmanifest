@@ -1,13 +1,13 @@
 {
-  "name": "Japan 2026",
-  "short_name": "Japan 2026",
+  "name": "Japan Family Trip 2026",
+  "short_name": "Japan Family",
   "description": "A private family journal of our trip to Japan.",
   "start_url": "./index.html#/",
   "scope": "./",
   "display": "standalone",
   "orientation": "portrait-primary",
-  "background_color": "#FAF8F3",
-  "theme_color": "#FAF8F3",
+  "background_color": "#FFFFFF",
+  "theme_color": "#BC002D",
   "icons": [
     {
       "src": "assets/icon.svg",
