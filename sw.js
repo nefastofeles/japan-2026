@@ -8,7 +8,7 @@
    Bump CACHE when you change the shell, otherwise phones keep the old copy.
    ========================================================================== */
 
-const CACHE = "japan-2026-v13";
+const CACHE = "japan-2026-v14";
 
 const SHELL = [
   "./",
@@ -50,6 +50,9 @@ const SHELL = [
   "js/components/route-map.js",
   "js/components/hero-banner.js",
   "js/components/best-of.js",
+  "js/components/japan-outline.js",
+  "assets/logo.svg",
+  "assets/heroes/fuji.jpg",
   "data/itinerary.json",
   "data/people.json",
   "data/mock-memories.json",

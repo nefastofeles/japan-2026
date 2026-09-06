@@ -14,8 +14,8 @@ export async function mapPage() {
       <div class="page stack">
         <h1>The route</h1>
         <p class="measure muted">
-          Tokyo down to Hiroshima, north to Kanazawa, into the Alps and back.
-          Tap a city for that day, or open Wikipedia.
+          Numbered stages from Tokyo to Tokoname, including Nara and Nagoya.
+          Tap a number for that day, or open Wikipedia.
         </p>
         <div id="map" class="japan-map-host"></div>
       </div>`,

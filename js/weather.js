@@ -28,6 +28,19 @@ function skyFor(code) {
   return "thunder";
 }
 
+function skyIcon(code) {
+  if (code === 0) return "☀️";
+  if (code === 1) return "🌤️";
+  if (code <= 3) return "☁️";
+  if (code <= 48) return "🌫️";
+  if (code <= 57) return "🌦️";
+  if (code <= 67) return "🌧️";
+  if (code <= 77) return "❄️";
+  if (code <= 82) return "🌦️";
+  if (code <= 86) return "🌨️";
+  return "⛈️";
+}
+
 function readDaily(row) {
   const daily = {};
   const days = row.daily && row.daily.time ? row.daily.time : [];
@@ -146,14 +159,17 @@ export function weatherBoard() {
 
   return `
     <section>
-      <h2 class="section-title">Right now</h2>
+      <h2 class="section-title">Weather Right Now</h2>
       <p class="measure muted">Live weather at each place we stay.</p>
       <div class="weather-now">
         ${venues
           .map(
             (v) => `<div class="weather-now__card" data-leg="${esc(v.leg)}"
                          data-live-city="${esc(v.city)}">
-                      <p class="weather-now__place">${esc(v.label)}</p>
+                      <p class="weather-now__place">
+                        <span class="weather-now__icon" data-live-icon aria-hidden="true"></span>
+                        ${esc(v.label)}
+                      </p>
                       <p class="weather-now__temp" data-live-temp>—</p>
                       <p class="weather-now__sky muted" data-live-sky></p>
                     </div>`
@@ -189,8 +205,10 @@ export async function bindLiveWeather(root) {
 
     const temp = el.querySelector("[data-live-temp]");
     const sky = el.querySelector("[data-live-sky]");
+    const icon = el.querySelector("[data-live-icon]");
     if (temp) temp.textContent = `${snap.temp}°`;
     if (sky) sky.textContent = skyFor(snap.code);
+    if (icon) icon.textContent = skyIcon(snap.code);
 
     const lineText = el.querySelector("[data-live-line-text]");
     if (!lineText) return;

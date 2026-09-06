@@ -1,23 +1,16 @@
 /* ==========================================================================
    Illustrated Japan map
    --------------------------------------------------------------------------
-   A washi-and-ink drawing, not a street map. Cities stay as large labelled
-   chips so Magome, Tsumago, Shirakawa-go and Tokoname do not disappear into
-   a neighbour. Wikipedia sits next to each name. Leaflet is gone on purpose.
+   A recognisable four-island silhouette. Each stop is a numbered stage,
+   not a street pin. Wikipedia sits next to each name in the list below.
    ========================================================================== */
 
 import { getTravelDays, getLeg, allMedia } from "../store.js";
 import { esc } from "../util.js";
 import { MAP_CITIES, MAP_ROUTE } from "../places.js";
-
-const FRAME = {
-  west: 131.35,
-  east: 140.7,
-  south: 33.82,
-  north: 37.18,
-  w: 720,
-  h: 520,
-};
+import {
+  JAPAN_FRAME as FRAME, HOKKAIDO, HONSHU, SHIKOKU, KYUSHU,
+} from "./japan-outline.js";
 
 function project(lat, lng) {
   const x = ((lng - FRAME.west) / (FRAME.east - FRAME.west)) * FRAME.w;
@@ -25,9 +18,9 @@ function project(lat, lng) {
   return [Math.round(x * 10) / 10, Math.round(y * 10) / 10];
 }
 
-/** Drawn position, nudged so close towns do not sit on top of each other. */
 function cityPoint(city) {
-  return project(city.lat + (city.nudgeLat || 0), city.lng + (city.nudgeLng || 0));
+  const [x, y] = project(city.lat, city.lng);
+  return [x + (city.nudgeX || 0), y + (city.nudgeY || 0)];
 }
 
 function cityById(id) {
@@ -47,35 +40,8 @@ function firstDayHref(city) {
   return days[0] ? `#/day/${days[0].date}` : "#/map";
 }
 
-/* Soft Honshu outline in the trip window, drawn as lat/lng so the ink
-   sits under the cities instead of tracing a coastline. */
-const LAND = [
-  [34.12, 132.05], [34.4, 131.55], [34.85, 131.7], [35.35, 132.35],
-  [35.85, 133.4], [36.25, 134.7], [36.7, 135.55], [37.12, 136.85],
-  [36.75, 137.55], [36.85, 138.35], [36.45, 139.15], [35.95, 140.15],
-  [35.45, 140.55], [35.15, 139.85], [34.85, 139.25], [34.55, 138.15],
-  [34.4, 136.95], [34.2, 136.15], [34.28, 135.15], [34.18, 134.2],
-  [34.22, 133.15], [34.12, 132.05],
-];
-
-const MIYAJIMA = [34.27, 132.3];
-
-const LABEL_NUDGE = {
-  tokyo: [8, -28],
-  kyoto: [-8, 22],
-  osaka: [-6, 22],
-  hiroshima: [10, -26],
-  miyajima: [-18, 24],
-  kanazawa: [0, -28],
-  "shirakawa-go": [-22, -26],
-  takayama: [18, -10],
-  magome: [-22, 22],
-  tsumago: [20, -26],
-  tokoname: [8, 22],
-};
-
-function landPath() {
-  return LAND.map(([lat, lng], i) => {
+function ringPath(ring) {
+  return ring.map(([lat, lng], i) => {
     const [x, y] = project(lat, lng);
     return `${i === 0 ? "M" : "L"} ${x} ${y}`;
   }).join(" ") + " Z";
@@ -103,31 +69,31 @@ function photoDots(media) {
 function cityMarks() {
   return MAP_CITIES.map((city) => {
     const [x, y] = cityPoint(city);
-    const [dx, dy] = LABEL_NUDGE[city.id] || [10, -22];
     const href = firstDayHref(city);
     const colour = getLeg(city.leg).colour;
+    const stage = city.stage;
     return `
       <a href="${esc(href)}" data-leg="${esc(city.leg)}">
         <circle class="japan-map__halo" cx="${x}" cy="${y}" r="16"
                 fill="${esc(colour)}" />
-        <circle class="japan-map__dot" cx="${x}" cy="${y}" r="11"
+        <circle class="japan-map__dot" cx="${x}" cy="${y}" r="12"
                 fill="${esc(colour)}" />
-        <circle cx="${x}" cy="${y}" r="5" fill="#FAF8F3" />
-        <text class="japan-map__svg-label" x="${x + dx}" y="${y + dy}"
-              text-anchor="middle">${esc(city.name)}</text>
+        <text class="japan-map__num" x="${x}" y="${y + 5}"
+              text-anchor="middle">${stage}</text>
       </a>`;
   }).join("");
 }
 
 function cityList() {
+  const ordered = [...MAP_CITIES].sort((a, b) => a.stage - b.stage);
   return `
-    <ul class="japan-map__list">
-      ${MAP_CITIES.map((city) => {
+    <ol class="japan-map__list">
+      ${ordered.map((city) => {
         const days = daysForCity(city);
         const href = firstDayHref(city);
         return `
           <li class="japan-map__place" data-leg="${esc(city.leg)}">
-            <span class="japan-map__swatch" aria-hidden="true"></span>
+            <span class="japan-map__stage" aria-hidden="true">${city.stage}</span>
             <a class="japan-map__name" href="${esc(href)}">${esc(city.name)}
               <span class="jp">${esc(city.jp)}</span></a>
             ${
@@ -139,7 +105,7 @@ function cityList() {
                target="_blank" rel="noopener">Wikipedia</a>
           </li>`;
       }).join("")}
-    </ul>`;
+    </ol>`;
 }
 
 export async function mountRouteMap(element, { photos = false } = {}) {
@@ -154,18 +120,16 @@ export async function mountRouteMap(element, { photos = false } = {}) {
     }
   }
 
-  const [isleX, isleY] = project(MIYAJIMA[0], MIYAJIMA[1]);
-
   element.classList.add("japan-map");
   element.innerHTML = `
     <div class="japan-map__art" role="img"
-         aria-label="Illustrated map of the Japan route">
+         aria-label="Numbered stages on a map of Japan">
       <svg viewBox="0 0 ${FRAME.w} ${FRAME.h}" xmlns="http://www.w3.org/2000/svg">
         <rect class="japan-map__sea" width="${FRAME.w}" height="${FRAME.h}" />
-        <path class="japan-map__land-wash" d="${landPath()}" transform="translate(8 10)" />
-        <path class="japan-map__land" d="${landPath()}" />
-        <ellipse class="japan-map__land" cx="${isleX}" cy="${isleY}"
-                 rx="10" ry="6" />
+        <path class="japan-map__land" d="${ringPath(HOKKAIDO)}" />
+        <path class="japan-map__land" d="${ringPath(HONSHU)}" />
+        <path class="japan-map__land" d="${ringPath(SHIKOKU)}" />
+        <path class="japan-map__land" d="${ringPath(KYUSHU)}" />
         <path class="japan-map__route" d="${routePath()}" />
         ${photoDots(media)}
         ${cityMarks()}
