@@ -10,11 +10,16 @@
                                        Created during the trip.
 
    The plan is always available. The memories are only there once Supabase is
-   configured, so every read below degrades to an empty list.
+   configured. Until then, two days can show dress-rehearsal sample
+   memories from data/mock-memories.json so we can see a full page.
    ========================================================================== */
 
 import { getClient } from "./supabase.js";
 import { isConfigured } from "./config.js";
+import {
+  mockMediaForDay, mockMealsForDay, mockEntriesForDay, mockCommentsForDay,
+  mockAllMedia, mockAllFood, mocksEnabled,
+} from "./mock-memories.js";
 
 let itinerary = null;
 let people = null;
@@ -118,7 +123,16 @@ async function query(table, build) {
   return data || [];
 }
 
+function attachDay(item) {
+  const day = getDay(item.day);
+  return {
+    ...item,
+    days: day ? { date: day.date, city: day.city, leg: day.leg } : null,
+  };
+}
+
 export async function mediaForDay(day) {
+  if (mocksEnabled()) return mockMediaForDay(day);
   const id = await dayId(day);
   if (!id) return [];
   return query("media", (t) =>
@@ -127,6 +141,7 @@ export async function mediaForDay(day) {
 }
 
 export async function mealsForDay(day) {
+  if (mocksEnabled()) return mockMealsForDay(day);
   const id = await dayId(day);
   if (!id) return [];
   const meals = await query("meals", (t) =>
@@ -146,24 +161,34 @@ export async function mealsForDay(day) {
 }
 
 export async function entriesForDay(day) {
+  if (mocksEnabled()) return mockEntriesForDay(day);
   const id = await dayId(day);
   if (!id) return [];
   return query("entries", (t) => t.select("*").eq("day_id", id).order("position"));
 }
 
 export async function commentsForDay(day) {
+  if (mocksEnabled()) return mockCommentsForDay(day);
   const id = await dayId(day);
   if (!id) return [];
   return query("comments", (t) => t.select("*").eq("day_id", id).order("created_at"));
 }
 
 export async function allFood() {
+  if (mocksEnabled()) {
+    const meals = await mockAllFood();
+    return meals.map(attachDay);
+  }
   return query("meals", (t) =>
     t.select("*, meal_ratings(*), days(date, city, leg)").order("created_at")
   );
 }
 
 export async function allMedia({ limit = 500 } = {}) {
+  if (mocksEnabled()) {
+    const media = await mockAllMedia({ limit });
+    return media.map(attachDay);
+  }
   return query("media", (t) =>
     t.select("*, days(date, city, leg)")
       .order("taken_at", { ascending: false, nullsFirst: false })

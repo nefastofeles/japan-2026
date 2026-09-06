@@ -12,6 +12,8 @@ let node = null;
 const fullCache = new Map();
 
 async function fullUrl(item) {
+  const path = item.storage_path || item.thumb_path || "";
+  if (path.startsWith("assets/") || /^https?:\/\//.test(path)) return path;
   if (!item.storage_path) return "";
   if (fullCache.has(item.storage_path)) return fullCache.get(item.storage_path);
   const signed = await signPaths("photos", [item.storage_path]);

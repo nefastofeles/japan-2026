@@ -23,6 +23,7 @@ import {
 } from "../components/reference.js";
 import { bindLiveWeather } from "../weather.js";
 import { destinationHero } from "../components/hero-banner.js";
+import { dayHasMockMemories } from "../mock-memories.js";
 
 function header(day) {
   const counter = dayNumber(day);
@@ -100,11 +101,12 @@ export async function dayPage({ date }) {
 
   // The plan renders immediately; the memories only exist once Supabase is set
   // up, and every one of these degrades to an empty list before then.
-  const [media, meals, entries, comments] = await Promise.all([
+  const [media, meals, entries, comments, sample] = await Promise.all([
     mediaForDay(day),
     mealsForDay(day),
     entriesForDay(day),
     commentsForDay(day),
+    dayHasMockMemories(day),
   ]);
 
   const photos = media.filter((m) => m.provider !== "youtube");
@@ -186,6 +188,11 @@ export async function dayPage({ date }) {
     <div class="page stack" data-leg="${esc(day.leg)}">
       ${header(day)}
       ${cover}
+      ${
+        sample
+          ? `<p class="notice"><strong>Sample memories.</strong> Dress rehearsal so we can see how a full day looks. These pictures, clips and comments are not ours.</p>`
+          : ""
+      }
 
       ${day.transit ? `<p class="transit"><span aria-hidden="true">🚄</span><span>${esc(day.transit)}</span></p>` : ""}
       ${day.kind === "day" ? weatherLine(day) : ""}

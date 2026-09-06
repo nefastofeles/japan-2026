@@ -4,6 +4,7 @@
 
 import { allMedia, getLeg } from "../store.js";
 import { isConfigured } from "../config.js";
+import { mocksEnabled } from "../mock-memories.js";
 import { esc } from "../util.js";
 import { photoGrid, bindPhotoGrid } from "../components/photo-grid.js";
 
@@ -44,6 +45,11 @@ export async function photosPage() {
     html: `
       <div class="page stack">
         <h1>Photos</h1>
+        ${
+          mocksEnabled()
+            ? `<p class="notice"><strong>Sample memories.</strong> These pictures are a dress rehearsal, not ours.</p>`
+            : ""
+        }
         <p class="muted">${photos.length} photos across the trip.</p>
         <div class="reactions" role="group" aria-label="Filter photos">${filters}</div>
         <div data-gallery>${await photoGrid(photos)}</div>

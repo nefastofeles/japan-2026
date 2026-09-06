@@ -1,0 +1,200 @@
+{
+  "days": ["2026-09-15", "2026-09-16"],
+  "entries": [
+    {
+      "day": "2026-09-15",
+      "kind": "text",
+      "position": 1,
+      "body": "Bags on the scale, passports in the front pocket, predictions sealed in an envelope Leo is not allowed to open. The departure board said Tokyo and everyone went quiet for a second."
+    },
+    {
+      "day": "2026-09-15",
+      "kind": "quote",
+      "position": 2,
+      "body": "I am going to eat seven kinds of onigiri before lunch. — Saga"
+    },
+    {
+      "day": "2026-09-16",
+      "kind": "text",
+      "position": 1,
+      "body": "Landed at 07:55 looking like laundry. Suica on the phone, bags in a locker, then the first konbini — onigiri, egg sandwiches, canned coffee. Rikke cried a bit at Kaminarimon, in a good way. We were in bed by eight."
+    },
+    {
+      "day": "2026-09-16",
+      "kind": "quote",
+      "position": 2,
+      "body": "The egg sandwich is the best thing that has ever happened."
+    }
+  ],
+  "media": [
+    {
+      "id": "mock-cph-1",
+      "day": "2026-09-15",
+      "provider": "supabase",
+      "category": "place",
+      "thumb_path": "assets/mock/cph-outside.jpg",
+      "storage_path": "assets/mock/cph-outside.jpg",
+      "caption": "Kastrup, before the long one.",
+      "taken_at": "2026-09-15T10:40:00+02:00"
+    },
+    {
+      "id": "mock-cph-2",
+      "day": "2026-09-15",
+      "provider": "supabase",
+      "category": "place",
+      "thumb_path": "assets/mock/cph-terminal.jpg",
+      "storage_path": "assets/mock/cph-terminal.jpg",
+      "caption": "Terminal 2. Predictions sealed.",
+      "taken_at": "2026-09-15T11:20:00+02:00"
+    },
+    {
+      "id": "mock-cph-3",
+      "day": "2026-09-15",
+      "provider": "supabase",
+      "category": "place",
+      "thumb_path": "assets/mock/cph-hall.jpg",
+      "storage_path": "assets/mock/cph-hall.jpg",
+      "caption": "The board said Tokyo.",
+      "taken_at": "2026-09-15T12:10:00+02:00"
+    },
+    {
+      "id": "mock-cph-vid",
+      "day": "2026-09-15",
+      "provider": "youtube",
+      "external_id": "Ar7yAMYwchI",
+      "caption": "What Haneda looks like at night. Sample clip, not ours."
+    },
+    {
+      "id": "mock-asakusa-1",
+      "day": "2026-09-16",
+      "provider": "supabase",
+      "category": "place",
+      "thumb_path": "assets/mock/kaminarimon.jpg",
+      "storage_path": "assets/mock/kaminarimon.jpg",
+      "caption": "Kaminarimon. Rikke's first temple gate.",
+      "taken_at": "2026-09-16T14:10:00+09:00"
+    },
+    {
+      "id": "mock-asakusa-2",
+      "day": "2026-09-16",
+      "provider": "supabase",
+      "category": "place",
+      "thumb_path": "assets/mock/nakamise.jpg",
+      "storage_path": "assets/mock/nakamise.jpg",
+      "caption": "Nakamise-dori, slow because of the snacks.",
+      "taken_at": "2026-09-16T14:40:00+09:00"
+    },
+    {
+      "id": "mock-konbini-1",
+      "day": "2026-09-16",
+      "provider": "supabase",
+      "category": "food",
+      "meal_id": "mock-meal-konbini",
+      "thumb_path": "assets/mock/onigiri.jpg",
+      "storage_path": "assets/mock/onigiri.jpg",
+      "caption": "First konbini haul.",
+      "taken_at": "2026-09-16T09:30:00+09:00"
+    },
+    {
+      "id": "mock-izakaya-1",
+      "day": "2026-09-16",
+      "provider": "supabase",
+      "category": "food",
+      "meal_id": "mock-meal-izakaya",
+      "thumb_path": "assets/mock/yakitori.jpg",
+      "storage_path": "assets/mock/yakitori.jpg",
+      "caption": "Yakitori before we fell over.",
+      "taken_at": "2026-09-16T18:20:00+09:00"
+    },
+    {
+      "id": "mock-asakusa-vid",
+      "day": "2026-09-16",
+      "provider": "youtube",
+      "external_id": "hJ0vOUuzlz8",
+      "caption": "A walk through Asakusa. Sample clip, not ours."
+    }
+  ],
+  "meals": [
+    {
+      "id": "mock-meal-air",
+      "day": "2026-09-15",
+      "slot": "dinner",
+      "place_name": "Somewhere over Siberia",
+      "dishes": [
+        { "en": "Whatever the airline calls dinner", "jp": "機内食" }
+      ],
+      "price_yen": 0,
+      "notes": "Leo ate the roll and left the rest. Saga swapped desserts with Javier.",
+      "meal_ratings": [
+        { "person_id": "javier", "score": 3 },
+        { "person_id": "rikke", "score": 3 },
+        { "person_id": "saga", "score": 2 },
+        { "person_id": "leo", "score": 4 }
+      ]
+    },
+    {
+      "id": "mock-meal-konbini",
+      "day": "2026-09-16",
+      "slot": "konbini",
+      "place_name": "FamilyMart, Shinjuku",
+      "dishes": [
+        { "en": "Salmon onigiri", "jp": "鮭おにぎり" },
+        { "en": "Egg sandwich", "jp": "たまごサンド" },
+        { "en": "Canned coffee", "jp": "缶コーヒー" }
+      ],
+      "price_yen": 680,
+      "notes": "The ritual. Not a compromise.",
+      "meal_ratings": [
+        { "person_id": "javier", "score": 4 },
+        { "person_id": "rikke", "score": 5 },
+        { "person_id": "saga", "score": 5 },
+        { "person_id": "leo", "score": 5 }
+      ]
+    },
+    {
+      "id": "mock-meal-izakaya",
+      "day": "2026-09-16",
+      "slot": "dinner",
+      "place_name": "A small izakaya near the hotel",
+      "dishes": [
+        { "en": "Yakitori", "jp": "焼き鳥" },
+        { "en": "Edamame", "jp": "枝豆" },
+        { "en": "Gyoza", "jp": "餃子" }
+      ],
+      "price_yen": 8200,
+      "notes": "Home by eight. Jet lag won.",
+      "meal_ratings": [
+        { "person_id": "javier", "score": 5 },
+        { "person_id": "rikke", "score": 4 },
+        { "person_id": "saga", "score": 4 },
+        { "person_id": "leo", "score": 3 }
+      ]
+    }
+  ],
+  "comments": [
+    {
+      "day": "2026-09-15",
+      "author_name": "Farmor",
+      "body": "Safe flight my loves. Text when you land, even if it is the middle of our night.",
+      "created_at": "2026-09-15T14:05:00+02:00"
+    },
+    {
+      "day": "2026-09-15",
+      "author_name": "Farfar",
+      "body": "Leo, the plane does go over Greenland if the wind is kind.",
+      "created_at": "2026-09-15T14:22:00+02:00"
+    },
+    {
+      "day": "2026-09-16",
+      "author_name": "Farmor",
+      "body": "The lantern! I have a postcard of that gate from 1979.",
+      "created_at": "2026-09-16T16:40:00+09:00"
+    },
+    {
+      "day": "2026-09-16",
+      "author_name": "Mormor",
+      "body": "Egg sandwiches for breakfast every day, please. We are living through Leo now.",
+      "created_at": "2026-09-16T17:05:00+09:00"
+    }
+  ]
+}
