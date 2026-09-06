@@ -9,18 +9,30 @@ html[data-home] {
   background: #ffffff;
   --paper: #ffffff;
   --paper-raised: #ffffff;
-  --paper-sunk: #fff5f5;
-  --leg-wash: #fff7f7;
+  --paper-sunk: #fff4f4;
+  --leg-wash: #ffffff;
   --leg: #bc002d;
   --leg-deep: #9a0026;
   --leg-tint: #fde8ea;
   --leg-edge: #f3b4bc;
 }
 
-html[data-home] body {
-  background:
-    radial-gradient(circle at 88% -8%, #ffd0d6 0 28%, transparent 46%),
-    #ffffff;
+html[data-home] body { background: #ffffff; }
+
+.page--home { position: relative; }
+
+.page--home::before {
+  content: "";
+  position: absolute;
+  top: -7rem;
+  right: -5rem;
+  width: 24rem;
+  height: 24rem;
+  border-radius: 50%;
+  background: #bc002d;
+  opacity: 0.16;
+  pointer-events: none;
+  z-index: 0;
 }
 
 html[data-home] .site-header {
