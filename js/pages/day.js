@@ -89,12 +89,12 @@ export async function dayPage({ date }) {
   ]);
 
   const photos = media
-    .filter((m) => m.provider !== "youtube")
+    .filter((m) => m.provider !== "youtube" && m.category !== "food" && !m.meal_id)
     .slice(0, DAY_PHOTO_LIMIT);
   const videos = media
     .filter((m) => m.provider === "youtube")
     .slice(0, DAY_VIDEO_LIMIT);
-  const unattachedPhotos = photos.filter((p) => !p.meal_id);
+  const unattachedPhotos = photos;
 
   const story = entries
     .filter((e) => e.kind === "text" || e.kind === "quote")

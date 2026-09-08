@@ -17,9 +17,15 @@ function dayKey(day) {
 
 function loadMeta() {
   try {
-    return JSON.parse(localStorage.getItem(META_KEY)) || { photos: [], videos: [], entries: [] };
+    const parsed = JSON.parse(localStorage.getItem(META_KEY)) || {};
+    return {
+      photos: parsed.photos || [],
+      videos: parsed.videos || [],
+      entries: parsed.entries || [],
+      meals: parsed.meals || [],
+    };
   } catch {
-    return { photos: [], videos: [], entries: [] };
+    return { photos: [], videos: [], entries: [], meals: [] };
   }
 }
 
@@ -83,17 +89,18 @@ function asVideo(item) {
   return { ...item, provider: "youtube", category: "other" };
 }
 
-export async function addLocalPhoto(day, prepared, { category, shotBy, place } = {}) {
+export async function addLocalPhoto(day, prepared, { category, place, mealId } = {}) {
   const id = newId();
   await putBlobs(id, { full: prepared.full, thumb: prepared.thumb });
 
   const meta = loadMeta();
+  if (!meta.meals) meta.meals = [];
   meta.photos.push({
     id,
     day: dayKey(day),
-    category: category || "other",
-    shot_by: shotBy || null,
+    category: category || (mealId ? "food" : "place"),
     place: place || null,
+    meal_id: mealId || null,
     taken_at: prepared.takenAt || null,
     lat: prepared.lat ?? null,
     lng: prepared.lng ?? null,
@@ -140,6 +147,51 @@ export async function localMediaForDay(day) {
 
 export async function localEntriesForDay(day) {
   return loadMeta().entries.filter((item) => item.day === dayKey(day));
+}
+
+export async function addLocalMeal(day, { slot, placeName, priceYen, dishes, ratings, photos }) {
+  const id = newId();
+  const meta = loadMeta();
+  meta.meals.push({
+    id,
+    day: dayKey(day),
+    slot,
+    place_name: placeName || null,
+    price_yen: priceYen || null,
+    dishes: dishes || [],
+    meal_ratings: ratings || [],
+  });
+  saveMeta(meta);
+
+  for (const prepared of (photos || []).slice(0, 3)) {
+    await addLocalPhoto(day, prepared, {
+      category: "food",
+      place: placeName || null,
+      mealId: id,
+    });
+  }
+  return id;
+}
+
+function mealsWithPhotos(meals, photos) {
+  return meals.map((meal) => ({
+    ...meal,
+    media: photos.filter((item) => item.meal_id === meal.id),
+  }));
+}
+
+export async function localMealsForDay(day) {
+  const key = dayKey(day);
+  const media = await localMediaForDay(day);
+  return mealsWithPhotos(
+    loadMeta().meals.filter((meal) => meal.day === key),
+    media
+  );
+}
+
+export async function localAllMeals() {
+  const media = await localAllMedia();
+  return mealsWithPhotos(loadMeta().meals, media);
 }
 
 export async function localAllMedia() {

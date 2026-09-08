@@ -140,3 +140,10 @@
 }
 
 .score-row__input { max-width: 6rem; }
+
+.photo-batch {
+  padding: var(--sp-4);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  background: var(--paper-sunk);
+}

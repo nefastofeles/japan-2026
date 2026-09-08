@@ -8,13 +8,13 @@
    The forms themselves are in admin-forms.js. This file is only the wiring.
    ========================================================================== */
 
-import { dayId, getDay, getDays, addBestOf, addStory, addVideo, addPhoto } from "../store.js";
+import { getDay, getDays } from "../store.js";
+import { addBestOf, addStory, addVideo, addPhoto, addMeal } from "../posts.js";
 import { isConfigured, TRIP } from "../config.js";
-import { getClient } from "../supabase.js";
 import { isAdmin, signOut, getSession } from "../auth.js";
 import { todayISO, youtubeId } from "../util.js";
 import { prepareImage } from "../media.js";
-import { loginPage, adminForms } from "./admin-forms.js";
+import { loginPage, adminForms, photoBatchMarkup } from "./admin-forms.js";
 
 export async function adminPage() {
   if (!getSession()) return loginPage();
@@ -41,41 +41,58 @@ function bindAdmin(root) {
   });
 
   /* ------------------------------------------------------------- photos */
+  const batches = pick("[data-photo-batches]");
+  pick("[data-add-batch]").addEventListener("click", () => {
+    batches.insertAdjacentHTML("beforeend", photoBatchMarkup(true));
+  });
+  batches.addEventListener("click", (event) => {
+    const button = event.target.closest("[data-remove-batch]");
+    if (!button) return;
+    button.closest("[data-photo-batch]").remove();
+    if (!batches.querySelector("[data-photo-batch]")) {
+      batches.insertAdjacentHTML("beforeend", photoBatchMarkup(false));
+    }
+  });
+
   pick("[data-upload]").addEventListener("click", async () => {
     const status = pick("[data-upload-status]");
-    const files = Array.from(pick("[data-files]").files || []);
-    if (!files.length) {
+    const groups = [...batches.querySelectorAll("[data-photo-batch]")].map((batch) => ({
+      files: Array.from(batch.querySelector("[data-files]").files || []),
+      place: batch.querySelector("[data-photo-place]").value.trim(),
+      category: batch.querySelector("[data-photo-category]").value,
+    }));
+    const total = groups.reduce((sum, group) => sum + group.files.length, 0);
+    if (!total) {
       status.textContent = "Pick some photos first.";
       return;
     }
 
     const day = selectedDay();
-    const category = pick("[data-category]").value;
-    const shotBy = pick("[data-shotby]").value;
-    const place = pick("[data-photo-place]").value.trim();
     let done = 0;
     let failed = 0;
 
-    for (const file of files) {
-      status.textContent = `Uploading ${done + failed + 1} of ${files.length}…`;
-      try {
-        const prepared = await prepareImage(file);
-        await addPhoto(day, prepared, {
-          category,
-          shotBy,
-          place: place || null,
-        });
-        done += 1;
-      } catch (error) {
-        console.error(file.name, error);
-        failed += 1;
+    for (const group of groups) {
+      for (const file of group.files) {
+        status.textContent = `Uploading ${done + failed + 1} of ${total}…`;
+        try {
+          const prepared = await prepareImage(file);
+          await addPhoto(day, prepared, {
+            category: group.category,
+            place: group.place || null,
+          });
+          done += 1;
+        } catch (error) {
+          console.error(file.name, error);
+          failed += 1;
+        }
       }
     }
 
-    status.textContent = `Uploaded ${done} of ${files.length}.` +
+    status.textContent = `Uploaded ${done} of ${total}.` +
       (failed ? ` ${failed} failed, try those again.` : "");
-    pick("[data-files]").value = "";
-    if (!failed) pick("[data-photo-place]").value = "";
+    batches.querySelectorAll("[data-files]").forEach((input) => {
+      input.value = "";
+    });
   });
 
   /* -------------------------------------------------------------- video */
@@ -151,50 +168,43 @@ function bindAdmin(root) {
   /* --------------------------------------------------------------- meal */
   pick("[data-addmeal]").addEventListener("click", async () => {
     const status = pick("[data-meal-status]");
-    if (!isConfigured()) {
-      status.textContent = "Meals need the database. Photos, story and video save on this phone for now.";
-      return;
-    }
-    const dbDay = await dayId(selectedDay());
-    const supabase = await getClient();
-
+    const files = Array.from(pick("[data-meal-files]").files || []).slice(0, 3);
     const dishes = pick("[data-dishes]").value
       .split(",")
       .map((s) => s.trim())
       .filter(Boolean)
       .map((en) => ({ en }));
 
-    const { data, error } = await supabase
-      .from("meals")
-      .insert({
-        day_id: dbDay,
-        slot: pick("[data-slot]").value,
-        place_name: pick("[data-place]").value || null,
-        price_yen: Number(pick("[data-price]").value) || null,
-        dishes,
-      })
-      .select("id")
-      .single();
-
-    if (error) {
-      status.textContent = error.message;
-      return;
-    }
-
-    const scores = root.querySelectorAll("[data-score]");
     const ratings = [];
-    scores.forEach((input) => {
+    root.querySelectorAll("[data-score]").forEach((input) => {
       const score = Number(input.value);
       if (score >= 1 && score <= 5) {
-        ratings.push({ meal_id: data.id, person_id: input.dataset.score, score });
+        ratings.push({ person_id: input.dataset.score, score });
       }
     });
-    if (ratings.length) await supabase.from("meal_ratings").insert(ratings);
 
-    status.textContent = "Meal saved.";
-    pick("[data-place]").value = "";
-    pick("[data-dishes]").value = "";
-    pick("[data-price]").value = "";
-    scores.forEach((i) => (i.value = ""));
+    status.textContent = "Saving…";
+    try {
+      const photos = [];
+      for (const file of files) photos.push(await prepareImage(file));
+      await addMeal(selectedDay(), {
+        slot: pick("[data-slot]").value,
+        placeName: pick("[data-place]").value.trim(),
+        priceYen: Number(pick("[data-price]").value) || null,
+        dishes,
+        ratings,
+        photos,
+      });
+      status.textContent = "Meal saved.";
+      pick("[data-place]").value = "";
+      pick("[data-dishes]").value = "";
+      pick("[data-price]").value = "";
+      pick("[data-meal-files]").value = "";
+      root.querySelectorAll("[data-score]").forEach((i) => {
+        i.value = "";
+      });
+    } catch (error) {
+      status.textContent = error.message;
+    }
   });
 }

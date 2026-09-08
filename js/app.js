@@ -45,7 +45,6 @@ function renderNav(path) {
           path === href ? 'aria-current="page"' : ""
         }>${esc(label)}</a>`
     ).join("") +
-    `<a href="#/admin">Admin</a>` +
     `<button type="button" class="site-signout" data-signout>Sign out</button>`;
 }
 
@@ -94,6 +93,12 @@ function afterRender(path) {
   const onHome = path === "/" && signedIn;
   document.documentElement.toggleAttribute("data-home", onHome);
   document.documentElement.toggleAttribute("data-locked", !signedIn);
+
+  const adminLink = document.querySelector("[data-footer-admin]");
+  if (adminLink) {
+    adminLink.hidden = !signedIn;
+    adminLink.setAttribute("aria-current", path === "/admin" ? "page" : "false");
+  }
 
   const signOutButton = document.querySelector("[data-signout]");
   if (signOutButton) {

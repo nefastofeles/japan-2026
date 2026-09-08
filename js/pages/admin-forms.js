@@ -74,41 +74,45 @@ function peopleOptions() {
     .join("");
 }
 
+export function photoBatchMarkup(canRemove) {
+  return `
+    <div class="photo-batch stack" data-photo-batch>
+      <div>
+        <label>Photos for one place</label>
+        <input class="field" type="file" accept="image/*" multiple data-files>
+      </div>
+      <div>
+        <label>Place</label>
+        <input class="field" data-photo-place placeholder="Kaminarimon, Asakusa">
+      </div>
+      <div>
+        <label>Kind</label>
+        <select class="field" data-photo-category>
+          <option value="place">Places</option>
+          <option value="people">Us</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+      ${
+        canRemove
+          ? `<button type="button" class="btn btn--ghost" data-remove-batch>Remove this place</button>`
+          : ""
+      }
+    </div>`;
+}
+
 function photoSection() {
   return `
     <section class="card stack">
       <h2 class="section-title">Photos</h2>
       <p class="small muted">
-        Resized to 2000px and thumbnailed in the browser before anything is sent.
-        Pick as many as you like. A day page shows up to 24 photos.
-        Until the database is on, photos stay on this phone.
+        Add a place, pick the photos from there, then add another place if you
+        need to. Location from the iPhone is kept and shown on the map link.
+        Food photos belong in the meal section below.
       </p>
-      <div>
-        <label for="files">Choose photos</label>
-        <input class="field" id="files" type="file" accept="image/*" multiple data-files>
-      </div>
-      <div class="row-wrap">
-        <div>
-          <label for="category">Category</label>
-          <select class="field" id="category" data-category>
-            <option value="place">Places</option>
-            <option value="food">Food</option>
-            <option value="people">Us</option>
-            <option value="stamp">Stamps</option>
-            <option value="other">Other</option>
-          </select>
-        </div>
-        <div>
-          <label for="shotby">Shot by</label>
-          <select class="field" id="shotby" data-shotby>${peopleOptions()}</select>
-        </div>
-      </div>
-      <div>
-        <label for="photoplace">Place</label>
-        <input class="field" id="photoplace" data-photo-place
-               placeholder="Kaminarimon, Asakusa">
-      </div>
-      <button class="btn" data-upload type="button">Upload</button>
+      <div class="stack" data-photo-batches>${photoBatchMarkup(false)}</div>
+      <button class="btn btn--ghost" type="button" data-add-batch>Add another place</button>
+      <button class="btn" data-upload type="button">Upload photos</button>
       <p class="small" data-upload-status role="status"></p>
     </section>`;
 }
@@ -188,7 +192,7 @@ function mealSection() {
   return `
     <section class="card stack">
       <h2 class="section-title">Meal</h2>
-      <p class="small muted">Breakfast, lunch, dinner or a snack. Up to 3 photos each, added from Photos.</p>
+      <p class="small muted">Breakfast, lunch, dinner or a snack. Photos of the meal stay in Food, not in Photos. Up to 3.</p>
       <div class="row-wrap">
         <div>
           <label for="slot">When</label>
@@ -212,6 +216,10 @@ function mealSection() {
       <div>
         <label for="dishes">Dishes, comma separated</label>
         <input class="field" id="dishes" data-dishes placeholder="Tsukemen, gyoza">
+      </div>
+      <div>
+        <label for="mealfiles">Photos of this meal</label>
+        <input class="field" id="mealfiles" type="file" accept="image/*" multiple data-meal-files>
       </div>
       <fieldset class="scores">
         <legend class="small">Scores out of 5</legend>

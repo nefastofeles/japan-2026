@@ -179,6 +179,27 @@ strong { font-weight: 700; }
 
 html[data-locked] .site-footer { display: none; }
 
+.footer-admin {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--tap);
+  padding: 0 var(--sp-4);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  background: var(--paper-raised);
+  color: var(--ink-soft);
+  font-size: var(--size-base);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.footer-admin:hover,
+.footer-admin[aria-current="page"] {
+  border-color: var(--leg-edge);
+  color: var(--leg-deep);
+  background: var(--leg-tint);
+}
+
 main { padding: var(--sp-6) 0 var(--sp-8); min-height: 60vh; }
 
 .site-footer {
