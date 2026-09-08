@@ -162,8 +162,11 @@ boot().catch((error) => {
 });
 
 /* The service worker only caches the shell, and only when served over http(s).
-   It is what lets the site open on a shinkansen with no signal. */
-if ("serviceWorker" in navigator && location.protocol.startsWith("http")) {
+   It is what lets the site open on a shinkansen with no signal.
+   Skip it on localhost: python’s one-request-at-a-time server deadlocks
+   while the worker tries to cache the whole shell. */
+const onLoopback = ["localhost", "127.0.0.1"].includes(location.hostname);
+if ("serviceWorker" in navigator && location.protocol.startsWith("http") && !onLoopback) {
   window.addEventListener("load", () => {
     navigator.serviceWorker.register("sw.js").catch(() => {
       /* offline support is a bonus, never a requirement */
