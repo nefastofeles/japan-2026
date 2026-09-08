@@ -56,12 +56,11 @@ This is the one idea worth understanding before changing anything.
 accommodation, bookings, what we intend to do. It exists before the trip, it
 can be edited in a pull request, and the site works with nothing else.
 
-**The memories** live in Supabase. Photos, videos, meals, ratings, comments.
+**The memories** live in Supabase. Photos, videos, meals, ratings.
 They only exist during and after the trip.
 
 The journal still opens without a database, but it always asks for a login
-first. Two accounts: the shared family login for reading, and the admin
-login for posting. See `SETUP.md` for the emails.
+first. See `SETUP.md` for the username and password.
 
 ## The 24 pages
 
@@ -109,7 +108,7 @@ See `SETUP.md`. Until it is done, the plan still opens after you sign in.
 - [ ] Set both iPhones to Settings, Camera, Formats, **Most Compatible**
 - [ ] Two 256GB V30 microSD cards for the Pocket 3, set to 4K/30 in H.264
 - [ ] A separate Google account for the trip's YouTube channel
-- [ ] Send the family login round (`family` / the password in SETUP.md) and
+- [ ] Send the gate login round (username and password in SETUP.md) and
       check a grandparent can sign in on their own phone
 - [ ] Everyone writes their predictions before the airport
 

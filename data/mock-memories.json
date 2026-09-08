@@ -267,31 +267,5 @@
       "person_id": "leo",
       "body": "The egg sandwich is the best thing that has ever happened."
     }
-  ],
-  "comments": [
-    {
-      "day": "2026-09-15",
-      "author_name": "Farmor",
-      "body": "Safe flight my loves. Text when you land, even if it is the middle of our night.",
-      "created_at": "2026-09-15T14:05:00+02:00"
-    },
-    {
-      "day": "2026-09-15",
-      "author_name": "Farfar",
-      "body": "Leo, the plane does go over Greenland if the wind is kind.",
-      "created_at": "2026-09-15T14:22:00+02:00"
-    },
-    {
-      "day": "2026-09-16",
-      "author_name": "Farmor",
-      "body": "The lantern! I have a postcard of that gate from 1979.",
-      "created_at": "2026-09-16T16:40:00+09:00"
-    },
-    {
-      "day": "2026-09-16",
-      "author_name": "Mormor",
-      "body": "Egg sandwiches for breakfast every day, please. We are living through Leo now.",
-      "created_at": "2026-09-16T17:05:00+09:00"
-    }
   ]
 }

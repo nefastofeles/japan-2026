@@ -177,6 +177,8 @@ strong { font-weight: 700; }
   color: var(--ink);
 }
 
+html[data-locked] .site-footer { display: none; }
+
 main { padding: var(--sp-6) 0 var(--sp-8); min-height: 60vh; }
 
 .site-footer {

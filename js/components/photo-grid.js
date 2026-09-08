@@ -21,16 +21,22 @@ export const MEAL_PHOTO_LIMIT = 3;
    days does not re-sign the same thumbnails over and over. */
 const thumbCache = new Map();
 
+function isLocalPath(path) {
+  return (
+    path &&
+    (path.startsWith("assets/") ||
+      path.startsWith("blob:") ||
+      /^https?:\/\//.test(path))
+  );
+}
+
 export async function photoGrid(items, { emptyMessage = "No photos yet.", bindable = true } = {}) {
   const photos = items.filter((m) => m.provider !== "youtube");
   if (!photos.length) return `<p class="empty">${esc(emptyMessage)}</p>`;
 
-  const isLocal = (path) =>
-    path && (path.startsWith("assets/") || /^https?:\/\//.test(path));
-
   const missing = photos
     .map((p) => p.thumb_path)
-    .filter((path) => path && !isLocal(path) && !thumbCache.has(path));
+    .filter((path) => path && !isLocalPath(path) && !thumbCache.has(path));
 
   if (missing.length) {
     const signed = await signPaths("thumbs", missing);
@@ -39,7 +45,7 @@ export async function photoGrid(items, { emptyMessage = "No photos yet.", bindab
 
   const cells = photos
     .map((photo, index) => {
-      const url = isLocal(photo.thumb_path)
+      const url = isLocalPath(photo.thumb_path)
         ? photo.thumb_path
         : thumbCache.get(photo.thumb_path) || "";
       const alt = photo.caption || "Trip photo";
@@ -92,12 +98,9 @@ export async function photoAlbum(items, { fallbackPlace = "" } = {}) {
   const photos = items.filter((m) => m.provider !== "youtube").slice(0, DAY_PHOTO_LIMIT);
   if (!photos.length) return `<p class="empty">No photos yet.</p>`;
 
-  const isLocal = (path) =>
-    path && (path.startsWith("assets/") || /^https?:\/\//.test(path));
-
   const missing = photos
     .map((p) => p.thumb_path)
-    .filter((path) => path && !isLocal(path) && !thumbCache.has(path));
+    .filter((path) => path && !isLocalPath(path) && !thumbCache.has(path));
 
   if (missing.length) {
     const signed = await signPaths("thumbs", missing);
@@ -106,7 +109,7 @@ export async function photoAlbum(items, { fallbackPlace = "" } = {}) {
 
   const cards = photos
     .map((photo, index) => {
-      const url = isLocal(photo.thumb_path)
+      const url = isLocalPath(photo.thumb_path)
         ? photo.thumb_path
         : thumbCache.get(photo.thumb_path) || "";
       const alt = photo.caption || photo.place || "Trip photo";

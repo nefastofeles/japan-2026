@@ -4,7 +4,7 @@
    Fill in the two Supabase values once the project exists. See SETUP.md.
 
    Until then the site still runs from data/itinerary.json, but the journal
-   stays behind the two family logins. See SETUP.md for the emails.
+   stays behind the gate login. See SETUP.md.
 
    The anon key is safe to commit. It is designed to be public and every table
    is protected by row level security. NEVER put the service_role key here.
@@ -23,15 +23,13 @@ export function isConfigured() {
    filled in. Set this to false if you want plan mode back sooner. */
 export const USE_MOCK_MEMORIES = true;
 
-/* SHA-256 of the two local passwords, used only until Supabase is wired up.
-   Change them by hashing a new password:
-     python3 -c "import hashlib; print(hashlib.sha256(b'YOUR-PASSWORD').hexdigest())"
-   Then send the new password round the family. Do not put the password itself
-   in this file. */
-export const FAMILY_PASSWORD_SHA256 =
-  "2eed43c318dbc66eb679efca47058c36ce5cb45933fb790965bddd2dd9056e52";
-export const ADMIN_PASSWORD_SHA256 =
-  "f6c68dd93c4263b2984394b19a1e722b15d4e2e8a581d2147a88bfc0e6d5a49b";
+/* SHA-256 of the gate username and password. Generate a new pair with:
+     python3 -c "import hashlib; print(hashlib.sha256(b'YOUR-VALUE').hexdigest())"
+   Do not put the password itself in this file. */
+export const GATE_USER_SHA256 =
+  "7e00584b3ba41733c2a09ed3fc6d51aeaee2eb190f579488e56b88bdf2bc34e8";
+export const GATE_PASSWORD_SHA256 =
+  "873479ed6b03a9df412689d1488bc5844b35b1544d9eb2a2a4d66304c515084f";
 
 export const TRIP = {
   title: "Japan Family Trip 2026",

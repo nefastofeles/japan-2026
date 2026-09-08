@@ -191,18 +191,6 @@
 
 .pip--on { background: var(--leg); border-color: var(--leg); }
 
-/* -------------------------------------------------------------- comments */
-
-.comment {
-  padding: var(--sp-4);
-  border-left: 3px solid var(--leg-edge);
-  background: var(--paper-sunk);
-  border-radius: 0 var(--radius) var(--radius) 0;
-}
-
-.comment__who { font-weight: 700; }
-.comment__when { color: var(--ink-muted); font-size: var(--size-sm); }
-
 .reactions { display: flex; gap: var(--sp-2); flex-wrap: wrap; }
 
 .reaction {

@@ -4,24 +4,20 @@ Three services, in this order. Each one is a few minutes. Until they are done
 the site still shows the plan (and any dress-rehearsal memories), but the
 journal is locked. Nothing is visible until someone signs in.
 
-### The two logins (now)
+### The gate login
 
-These work before Supabase is set up. Send the family one round; keep the
-admin one for posting.
+One username and password. Send it round the family. The same login opens
+Admin, where photos, story text and videos are added.
 
-| Email | Password | Opens |
-|---|---|---|
-| `family` | `Konnichiwa2026` | the journal |
-| `admin` | `Shinkansen2026` | the journal, and Post |
+| Username | Password |
+|---|---|
+| `1edgXWXFJALPwSD4` | `W4oZcabh6s1LBOjp` |
 
-To change a password, hash it and put the hex in `js/config.js`:
+To change them, hash each value and put the hex in `js/config.js`:
 
 ```bash
-python3 -c "import hashlib; print(hashlib.sha256(b'YOUR-PASSWORD').hexdigest())"
+python3 -c "import hashlib; print(hashlib.sha256(b'YOUR-VALUE').hexdigest())"
 ```
-
-Once Supabase is wired up, these local logins switch off and the two real
-accounts below take over. Use different passwords there.
 
 The GitHub repo should be **private**. A login on the website does not hide
 files that are public on GitHub.
@@ -90,8 +86,7 @@ If you later change `data/itinerary.json`, regenerate the last one:
 python3 tools/generate-seed.py
 ```
 
-and run it again. It is an upsert, so re-running never destroys photos or
-comments.
+and run it again. It is an upsert, so re-running never destroys photos.
 
 ### Create the two accounts
 
@@ -100,7 +95,7 @@ comments.
 | Account | Purpose |
 |---|---|
 | your own email | admin. Uploads and writes. |
-| something like `family@…` | the shared viewer login. Reads, comments, reacts. |
+| something like `family@…` | the shared viewer login. Reads. |
 
 Then make yourself the admin. In the SQL editor:
 
@@ -110,7 +105,7 @@ select id, 'Javier' from auth.users where email = 'YOUR-EMAIL-HERE';
 ```
 
 Only accounts in `app_admins` can write anything. The viewer account can read
-everything and leave comments, and nothing else.
+everything, and nothing else.
 
 ### Make sessions last
 
@@ -139,11 +134,9 @@ Commit, push, and the site is live with photos switched on.
 ## Checking it worked
 
 - Open the site signed out and confirm you only see the sign-in screen
-- Sign in as `family` and confirm the journal opens, and Post says you need
-  the admin login
-- Sign in as `admin` and confirm the posting forms appear (or the
-  “Supabase is not configured” note, until step 3 is done)
-- Upload one photo to any day and confirm it shows up on that day's page
+- Sign in with the gate username and password
+- Open **Admin**, add a photo, a short story and a YouTube link, then open
+  that day and confirm they appear
 - Sign out entirely and confirm you see nothing again
 
 That last one is the important test.

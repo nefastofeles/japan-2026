@@ -8,12 +8,12 @@
    The forms themselves are in admin-forms.js. This file is only the wiring.
    ========================================================================== */
 
-import { dayId, getDay, getDays, addBestOf } from "../store.js";
+import { dayId, getDay, getDays, addBestOf, addStory, addVideo, addPhoto } from "../store.js";
 import { isConfigured, TRIP } from "../config.js";
 import { getClient } from "../supabase.js";
 import { isAdmin, signOut, getSession } from "../auth.js";
 import { todayISO, youtubeId } from "../util.js";
-import { prepareImage, uploadImage } from "../media.js";
+import { prepareImage } from "../media.js";
 import { loginPage, adminForms } from "./admin-forms.js";
 
 export async function adminPage() {
@@ -21,14 +21,8 @@ export async function adminPage() {
 
   if (!(await isAdmin())) {
     return `<div class="page stack">
-              <p class="notice">You are signed in as a viewer, which is the right account
-              for reading the site. Posting needs the admin login.</p>
+              <p class="notice">This login can read the journal. Posting needs the admin login.</p>
             </div>`;
-  }
-
-  if (!isConfigured()) {
-    return `<div class="page"><p class="notice"><strong>Supabase is not configured.</strong>
-            Fill in the two values in <code>js/config.js</code> first. See SETUP.md.</p></div>`;
   }
 
   const today = todayISO(TRIP.timezone);
@@ -56,12 +50,6 @@ function bindAdmin(root) {
     }
 
     const day = selectedDay();
-    const id = await dayId(day);
-    if (!id) {
-      status.textContent = "That day is not in the database yet. Run 04_seed.sql.";
-      return;
-    }
-
     const category = pick("[data-category]").value;
     const shotBy = pick("[data-shotby]").value;
     const place = pick("[data-photo-place]").value.trim();
@@ -72,12 +60,9 @@ function bindAdmin(root) {
       status.textContent = `Uploading ${done + failed + 1} of ${files.length}…`;
       try {
         const prepared = await prepareImage(file);
-        await uploadImage(prepared, {
-          dayId: id,
-          dayDate: day.date,
+        await addPhoto(day, prepared, {
           category,
           shotBy,
-          personId: shotBy,
           place: place || null,
         });
         done += 1;
@@ -103,20 +88,13 @@ function bindAdmin(root) {
     }
 
     const day = selectedDay();
-    const dbDay = await dayId(day);
-    const supabase = await getClient();
-    const { error } = await supabase.from("media").insert({
-      day_id: dbDay,
-      provider: "youtube",
-      external_id: id,
-      category: "other",
-      caption: pick("[data-ytcap]").value || null,
-    });
-
-    status.textContent = error ? error.message : "Video added.";
-    if (!error) {
+    try {
+      await addVideo(day, id, pick("[data-ytcap]").value.trim());
+      status.textContent = "Video added.";
       pick("[data-yt]").value = "";
       pick("[data-ytcap]").value = "";
+    } catch (error) {
+      status.textContent = error.message;
     }
   });
 
@@ -126,17 +104,17 @@ function bindAdmin(root) {
     const body = pick("[data-story]").value.trim();
     if (!body) return;
 
-    const dbDay = await dayId(selectedDay());
-    const supabase = await getClient();
-    const { error } = await supabase.from("entries").insert({
-      day_id: dbDay,
-      person_id: root.querySelector("[data-storywho]").value,
-      kind: "text",
-      body,
-    });
-
-    status.textContent = error ? error.message : "Story saved.";
-    if (!error) pick("[data-story]").value = "";
+    try {
+      await addStory(
+        selectedDay(),
+        root.querySelector("[data-storywho]").value,
+        body
+      );
+      status.textContent = "Story saved.";
+      pick("[data-story]").value = "";
+    } catch (error) {
+      status.textContent = error.message;
+    }
   });
 
   /* ------------------------------------------------------ best of the day */
@@ -150,6 +128,11 @@ function bindAdmin(root) {
 
     if (!notes.length) {
       status.textContent = "Write at least one note first.";
+      return;
+    }
+
+    if (!isConfigured()) {
+      status.textContent = "Best of the day needs the database. Photos, story and video save on this phone for now.";
       return;
     }
 
@@ -168,6 +151,10 @@ function bindAdmin(root) {
   /* --------------------------------------------------------------- meal */
   pick("[data-addmeal]").addEventListener("click", async () => {
     const status = pick("[data-meal-status]");
+    if (!isConfigured()) {
+      status.textContent = "Meals need the database. Photos, story and video save on this phone for now.";
+      return;
+    }
     const dbDay = await dayId(selectedDay());
     const supabase = await getClient();
 

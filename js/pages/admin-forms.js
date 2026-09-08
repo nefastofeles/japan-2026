@@ -18,13 +18,12 @@ export function loginForm(message = "") {
     <div class="page">
       <form class="login stack" data-login>
         <h1>Sign in</h1>
-        <p class="small muted">This journal is just for the family. Ask Javier
-          for the login if you do not have it.</p>
+        <p class="small muted">This journal is private. Nothing inside is shown
+          until you sign in.</p>
         <div>
-          <label for="email">Email</label>
-          <input class="field" id="email" name="email" type="text" required
-                 autocomplete="username" inputmode="email"
-                 placeholder="family">
+          <label for="user">Username</label>
+          <input class="field" id="user" name="user" type="text" required
+                 autocomplete="username" autocapitalize="off" spellcheck="false">
         </div>
         <div>
           <label for="password">Password</label>
@@ -49,7 +48,7 @@ export function bindLogin(root) {
     const status = form.querySelector("[data-login-status]");
     status.textContent = "Signing in…";
     try {
-      await signIn(form.elements.email.value, form.elements.password.value);
+      await signIn(form.elements.user.value, form.elements.password.value);
       location.reload();
     } catch (error) {
       status.textContent = error.message;
@@ -82,6 +81,7 @@ function photoSection() {
       <p class="small muted">
         Resized to 2000px and thumbnailed in the browser before anything is sent.
         Pick as many as you like. A day page shows up to 24 photos.
+        Until the database is on, photos stay on this phone.
       </p>
       <div>
         <label for="files">Choose photos</label>
@@ -226,8 +226,8 @@ export function adminForms(defaultDay) {
   return `
     <div class="page stack">
       <header>
-        <h1>Post</h1>
-        <p class="small muted">Signed in as admin.
+        <h1>Admin</h1>
+        <p class="small muted">Add the day's photos, story and videos.
           <button class="reaction" data-signout type="button">Sign out</button></p>
       </header>
 
@@ -239,8 +239,8 @@ export function adminForms(defaultDay) {
       </div>
 
       ${photoSection()}
-      ${videoSection()}
       ${storySection()}
+      ${videoSection()}
       ${bestOfSection()}
       ${mealSection()}
     </div>`;

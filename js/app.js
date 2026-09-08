@@ -45,7 +45,7 @@ function renderNav(path) {
           path === href ? 'aria-current="page"' : ""
         }>${esc(label)}</a>`
     ).join("") +
-    `<a href="#/admin">Post</a>` +
+    `<a href="#/admin">Admin</a>` +
     `<button type="button" class="site-signout" data-signout>Sign out</button>`;
 }
 
