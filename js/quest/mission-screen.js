@@ -10,7 +10,8 @@ import {
   questShell, typeMark, peopleChecks, listenBar,
   memoryLabels, playLabels,
 } from "../components/quest-chrome.js";
-import { isMemoryMode, memoryPlace, isComplete } from "./engine.js";
+import { isMemoryMode, memoryPlace } from "./engine.js";
+import { isComplete } from "./state.js";
 import { codexById, badgeById } from "./content.js";
 
 export function screenLabels(quest, mission, chapter) {
