@@ -121,7 +121,13 @@ export async function adventureCodexPage() {
                   return `
                     <article class="quest-entry ${open ? "" : "quest-entry--locked"}">
                       ${typeMark(open ? "discovery" : "discovery")}
-                      <h3>${open ? esc(entry.name) : "Not yet"}</h3>
+                      <h3>${
+                        open
+                          ? esc(entry.name)
+                          : findable?.findable
+                            ? esc(entry.name)
+                            : "Not yet"
+                      }</h3>
                       ${
                         open
                           ? `<p class="jp">${esc(entry.japaneseName || "")}</p>
