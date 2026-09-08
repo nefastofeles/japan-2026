@@ -155,19 +155,19 @@ html[data-home] .japan-map__art {
   border-radius: var(--radius-lg);
   overflow: hidden;
   border: 1px solid var(--rule);
-  /* Asagi washed into washi, so the drawing sits on the same paper as the rest. */
-  background: #e7eeea;
+  /* Asagi washed into washi, a little cooler than the land so the islands lift. */
+  background: #d8e6e1;
   box-shadow: var(--shadow);
 }
 
 .japan-map__art svg { display: block; width: 100%; height: auto; }
 
-.japan-map__sea { fill: #e4ece8; }
+.japan-map__sea { fill: #d3e2dc; }
 
 .japan-map__land {
-  fill: #f7f1e4;
+  fill: #faf6ec;
   stroke: #1a1a1a;
-  stroke-width: 1.7;
+  stroke-width: 1.9;
   stroke-linejoin: round;
 }
 
@@ -183,10 +183,10 @@ html[data-home] .japan-map__art {
 .japan-map__route {
   fill: none;
   stroke: #bc002d;
-  stroke-width: 2;
+  stroke-width: 2.3;
   stroke-linecap: round;
   stroke-linejoin: round;
-  opacity: 0.88;
+  opacity: 0.9;
 }
 
 .japan-map__dot {
