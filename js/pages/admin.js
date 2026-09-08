@@ -11,51 +11,30 @@
 import { dayId, getDay, getDays, addBestOf } from "../store.js";
 import { isConfigured, TRIP } from "../config.js";
 import { getClient } from "../supabase.js";
-import { isAdmin, signIn, signOut, getSession } from "../auth.js";
+import { isAdmin, signOut, getSession } from "../auth.js";
 import { todayISO, youtubeId } from "../util.js";
 import { prepareImage, uploadImage } from "../media.js";
-import { loginForm, adminForms } from "./admin-forms.js";
+import { loginPage, adminForms } from "./admin-forms.js";
 
 export async function adminPage() {
-  if (!isConfigured()) {
-    return `<div class="page"><p class="notice"><strong>Supabase is not configured.</strong>
-            Fill in the two values in <code>js/config.js</code> first. See SETUP.md.</p></div>`;
-  }
-
-  if (!getSession()) {
-    return {
-      html: loginForm(),
-      mount: bindLogin,
-    };
-  }
+  if (!getSession()) return loginPage();
 
   if (!(await isAdmin())) {
     return `<div class="page stack">
               <p class="notice">You are signed in as a viewer, which is the right account
               for reading the site. Posting needs the admin login.</p>
-              <p><button class="btn btn--ghost" onclick="location.reload()">Reload</button></p>
             </div>`;
+  }
+
+  if (!isConfigured()) {
+    return `<div class="page"><p class="notice"><strong>Supabase is not configured.</strong>
+            Fill in the two values in <code>js/config.js</code> first. See SETUP.md.</p></div>`;
   }
 
   const today = todayISO(TRIP.timezone);
   const defaultDay = getDay(today) ? today : getDays()[0].date || getDays()[0].slug;
 
   return { html: adminForms(defaultDay), mount: bindAdmin };
-}
-
-function bindLogin(root) {
-  const form = root.querySelector("[data-login]");
-  form.addEventListener("submit", async (event) => {
-    event.preventDefault();
-    const status = form.querySelector("[data-login-status]");
-    status.textContent = "Signing in…";
-    try {
-      await signIn(form.elements.email.value, form.elements.password.value);
-      location.reload();
-    } catch (error) {
-      status.textContent = error.message;
-    }
-  });
 }
 
 function bindAdmin(root) {

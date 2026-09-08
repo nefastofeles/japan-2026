@@ -1,8 +1,30 @@
 # Setup
 
 Three services, in this order. Each one is a few minutes. Until they are done
-the site runs in plan mode, which is genuinely useful on its own, so there is
-no rush and nothing breaks if you stop halfway.
+the site still shows the plan (and any dress-rehearsal memories), but the
+journal is locked. Nothing is visible until someone signs in.
+
+### The two logins (now)
+
+These work before Supabase is set up. Send the family one round; keep the
+admin one for posting.
+
+| Email | Password | Opens |
+|---|---|---|
+| `family` | `Konnichiwa2026` | the journal |
+| `admin` | `Shinkansen2026` | the journal, and Post |
+
+To change a password, hash it and put the hex in `js/config.js`:
+
+```bash
+python3 -c "import hashlib; print(hashlib.sha256(b'YOUR-PASSWORD').hexdigest())"
+```
+
+Once Supabase is wired up, these local logins switch off and the two real
+accounts below take over. Use different passwords there.
+
+The GitHub repo should be **private**. A login on the website does not hide
+files that are public on GitHub.
 
 ---
 
@@ -116,11 +138,13 @@ Commit, push, and the site is live with photos switched on.
 
 ## Checking it worked
 
-- Open `#/admin`, sign in with the admin account, and the posting forms appear
-- Sign in with the family account instead and you should be told, politely,
-  that posting needs the admin login
+- Open the site signed out and confirm you only see the sign-in screen
+- Sign in as `family` and confirm the journal opens, and Post says you need
+  the admin login
+- Sign in as `admin` and confirm the posting forms appear (or the
+  “Supabase is not configured” note, until step 3 is done)
 - Upload one photo to any day and confirm it shows up on that day's page
-- Sign out entirely and confirm you see nothing
+- Sign out entirely and confirm you see nothing again
 
 That last one is the important test.
 

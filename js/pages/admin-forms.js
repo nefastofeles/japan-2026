@@ -1,15 +1,16 @@
 /* ==========================================================================
    Admin - the markup half.
    --------------------------------------------------------------------------
-   Only strings live here. Nothing in this file talks to Supabase or listens
-   for a click; that is all in admin.js. Keeping them apart means you can
-   redesign the forms without going anywhere near the upload logic.
+   Markup for the login screen and the posting forms. The login submit
+   handler lives here so the lock screen can run before the rest of the
+   journal is loaded. Upload wiring stays in admin.js.
 
    Every control is found later by its data- attribute, so if you rename one
    here, rename it in admin.js too.
    ========================================================================== */
 
 import { getDays, getPeople } from "../store.js";
+import { signIn } from "../auth.js";
 import { esc } from "../util.js";
 
 export function loginForm(message = "") {
@@ -17,11 +18,13 @@ export function loginForm(message = "") {
     <div class="page">
       <form class="login stack" data-login>
         <h1>Sign in</h1>
-        <p class="small muted">Family login for viewing, admin login for posting.</p>
+        <p class="small muted">This journal is just for the family. Ask Javier
+          for the login if you do not have it.</p>
         <div>
           <label for="email">Email</label>
-          <input class="field" id="email" name="email" type="email" required
-                 autocomplete="username" inputmode="email">
+          <input class="field" id="email" name="email" type="text" required
+                 autocomplete="username" inputmode="email"
+                 placeholder="family">
         </div>
         <div>
           <label for="password">Password</label>
@@ -32,6 +35,26 @@ export function loginForm(message = "") {
         <p class="small" data-login-status role="status">${esc(message)}</p>
       </form>
     </div>`;
+}
+
+export function loginPage(message = "") {
+  return { html: loginForm(message), mount: bindLogin };
+}
+
+export function bindLogin(root) {
+  const form = root.querySelector("[data-login]");
+  if (!form) return;
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const status = form.querySelector("[data-login-status]");
+    status.textContent = "Signing in…";
+    try {
+      await signIn(form.elements.email.value, form.elements.password.value);
+      location.reload();
+    } catch (error) {
+      status.textContent = error.message;
+    }
+  });
 }
 
 function dayOptions(selected) {

@@ -59,9 +59,9 @@ can be edited in a pull request, and the site works with nothing else.
 **The memories** live in Supabase. Photos, videos, meals, ratings, comments.
 They only exist during and after the trip.
 
-That is why the site runs perfectly well with no database at all. It calls
-that "plan mode", and it is what you are looking at until `js/config.js` is
-filled in.
+The journal still opens without a database, but it always asks for a login
+first. Two accounts: the shared family login for reading, and the admin
+login for posting. See `SETUP.md` for the emails.
 
 ## The 24 pages
 
@@ -100,7 +100,7 @@ YouTube does the transcoding and the streaming, for free.
 
 ## Setting up the backend
 
-See `SETUP.md`. Until it is done, everything still works in plan mode.
+See `SETUP.md`. Until it is done, the plan still opens after you sign in.
 
 ## Before we fly
 
@@ -109,7 +109,8 @@ See `SETUP.md`. Until it is done, everything still works in plan mode.
 - [ ] Set both iPhones to Settings, Camera, Formats, **Most Compatible**
 - [ ] Two 256GB V30 microSD cards for the Pocket 3, set to 4K/30 in H.264
 - [ ] A separate Google account for the trip's YouTube channel
-- [ ] Send the family password round and check a grandparent can sign in
+- [ ] Send the family login round (`family` / the password in SETUP.md) and
+      check a grandparent can sign in on their own phone
 - [ ] Everyone writes their predictions before the airport
 
 ### Trip decisions still open
