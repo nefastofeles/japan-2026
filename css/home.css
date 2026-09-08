@@ -40,6 +40,10 @@ html[data-home] .site-header {
   border-bottom-color: #bc002d;
 }
 
+html[data-home] .japan-map__art {
+  border-color: #e8d6d8;
+}
+
 .fuji-card {
   margin: 0;
   padding: var(--sp-3);
@@ -151,42 +155,50 @@ html[data-home] .site-header {
   border-radius: var(--radius-lg);
   overflow: hidden;
   border: 1px solid var(--rule);
-  background: #d7e4e8;
+  /* Asagi washed into washi, so the drawing sits on the same paper as the rest. */
+  background: #e7eeea;
   box-shadow: var(--shadow);
 }
 
 .japan-map__art svg { display: block; width: 100%; height: auto; }
 
-.japan-map__sea { fill: #c5d8de; }
+.japan-map__sea { fill: #e4ece8; }
 
 .japan-map__land {
-  fill: #f3ead3;
-  stroke: #2c2418;
-  stroke-width: 2.2;
+  fill: #f7f1e4;
+  stroke: #1a1a1a;
+  stroke-width: 1.7;
   stroke-linejoin: round;
 }
 
-.japan-map__halo { opacity: 0.22; }
+.japan-map__fuji {
+  fill: #faf8f3;
+  stroke: #1a1a1a;
+  stroke-width: 1.5;
+  stroke-linejoin: round;
+}
+
+.japan-map__halo { opacity: 0.2; }
 
 .japan-map__route {
   fill: none;
-  stroke: #1a1a1a;
-  stroke-width: 2.2;
-  stroke-dasharray: 7 8;
+  stroke: #bc002d;
+  stroke-width: 2;
   stroke-linecap: round;
-  opacity: 0.55;
+  stroke-linejoin: round;
+  opacity: 0.88;
 }
 
 .japan-map__dot {
   stroke: #faf8f3;
-  stroke-width: 2;
+  stroke-width: 1.6;
 }
 
 .japan-map__photo { fill: #eb6101; opacity: 0.85; }
 
 .japan-map__num {
   font-family: var(--font-body);
-  font-size: 15px;
+  font-size: 12px;
   font-weight: 700;
   fill: #fff;
 }

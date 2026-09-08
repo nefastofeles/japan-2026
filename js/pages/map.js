@@ -14,8 +14,8 @@ export async function mapPage() {
       <div class="page stack">
         <h1>The route</h1>
         <p class="measure muted">
-          Numbered stages from Tokyo to Tokoname, including Nara and Nagoya.
-          Tap a number for that day, or open Wikipedia.
+          Japan, drawn in ink on washi. Numbered stages from Tokyo to
+          Tokoname. Tap a number for that day, or open Wikipedia.
         </p>
         <div id="map" class="japan-map-host"></div>
       </div>`,
