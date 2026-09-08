@@ -1,0 +1,37 @@
+{
+  "chapterId": "tokyo",
+  "moduleId": "tokyo-shinkansen",
+  "items": [
+    {
+      "id": "train-nose",
+      "title": "Why the Long Nose?",
+      "type": "observation",
+      "status": "approved",
+      "exactLocation": "Shinkansen platform",
+      "task": "Look at the train’s nose. Why would engineers make it this shape?",
+      "reveal": "A long nose helps the train move air aside. That cuts noise and the punch of air in tunnels.",
+      "moreInfo": {
+        "title": "Tunnel boom",
+        "text": "A fast train entering a tunnel squeezes air. The long nose spreads that squeeze so nearby towns hear less boom. Check the exact engineering words before live."
+      },
+      "visualIdea": "Simple tunnel-pressure diagram",
+      "media": [
+        { "id": "media-shinkansen-nose", "role": "hero" },
+        { "id": "media-shinkansen-tunnel", "role": "diagram" }
+      ],
+      "mediaId": "media-shinkansen-nose",
+      "codexUnlock": "shinkansen",
+      "xp": 90,
+      "factCheck": "needed"
+    },
+    {
+      "id": "train-platform",
+      "title": "Platform Choreography",
+      "type": "observation",
+      "status": "approved",
+      "task": "Before boarding, watch how passengers, markings and staff line up.",
+      "physicalObservation": "Queue positions, car numbers, platform marks, staff gestures.",
+      "xp": 60
+    }
+  ]
+}

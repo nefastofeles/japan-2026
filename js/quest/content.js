@@ -32,7 +32,7 @@ async function loadScript() {
 
 export async function loadQuest() {
   if (cache) return cache;
-  const [chapters, missions, codex, badges, story, discoveries, modules, rewards, script] =
+  const [chapters, missions, codex, badges, story, discoveries, modules, rewards, media, script] =
     await Promise.all([
       readJson("data/quest/chapters.json"),
       readJson("data/quest/missions.json"),
@@ -42,9 +42,10 @@ export async function loadQuest() {
       readJson("data/quest/discoveries.json"),
       readJson("data/quest/modules.json"),
       readJson("data/quest/rewards.json"),
+      readJson("data/quest/media.json").catch(() => []),
       loadScript(),
     ]);
-  cache = { chapters, missions, codex, badges, story, discoveries, modules, rewards, script };
+  cache = { chapters, missions, codex, badges, story, discoveries, modules, rewards, media, script };
   return cache;
 }
 

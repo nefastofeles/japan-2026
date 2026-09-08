@@ -1,0 +1,33 @@
+{
+  "chapterId": "tokyo",
+  "moduleId": "tokyo-imperial",
+  "items": [
+    {
+      "id": "imp-green-heart",
+      "title": "The Green Hole in Tokyo",
+      "type": "observation",
+      "status": "approved",
+      "priority": "must",
+      "exactLocation": "Imperial Palace / East Gardens",
+      "task": "Why does one of the world’s biggest cities keep this huge green hole in its middle?",
+      "question": {
+        "type": "multipleChoice",
+        "text": "Why is this park here?",
+        "choices": [
+          { "id": "never", "text": "It was never developed", "response": "People did build here. Look older." },
+          { "id": "castle", "text": "It is tied to the palace and old Edo Castle", "response": "Yes. The castle grounds became this green." },
+          { "id": "ground", "text": "The ground cannot hold buildings", "response": "Tokyo builds on harder sites than this." },
+          { "id": "recent", "text": "It was created recently", "response": "The empty centre is much older than a new park." }
+        ],
+        "correctChoiceId": "castle",
+        "retryAllowed": true
+      },
+      "followUp": "Find one defensive feature: moat, wall or gate.",
+      "visualIdea": "Edo Castle map next to today’s palace green",
+      "mediaId": "media-edo-castle-compare",
+      "xp": 100,
+      "factCheck": "needed",
+      "notes": "Confirm how much of the green is former castle, and what the East Gardens allow visitors to see."
+    }
+  ]
+}

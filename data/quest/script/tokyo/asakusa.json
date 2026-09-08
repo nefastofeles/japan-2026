@@ -3,14 +3,46 @@
   "moduleId": "tokyo-asakusa",
   "items": [
     {
-      "id": "script-sensoji-lantern",
-      "title": "The lantern with a name",
+      "id": "asa-thunder-gate",
+      "title": "The Thunder Gate",
+      "type": "find",
+      "status": "approved",
+      "priority": "must",
+      "exactLocation": "Kaminarimon",
+      "task": "Find the enormous lantern. Then look underneath it. What detail do most visitors miss?",
+      "photo": true,
+      "xp": 90,
+      "mediaId": "media-kaminarimon-lantern",
+      "notes": "Do not print the missed detail in the hook. Keep it for the family."
+    },
+    {
+      "id": "asa-commerce",
+      "title": "Temple + Shopping?",
+      "type": "riddle",
+      "status": "approved",
+      "exactLocation": "Nakamise-dori",
+      "question": "Why would a busy shopping street grow directly in front of a temple?",
+      "reveal": "Pilgrims brought crowds. Crowds brought merchants.",
+      "moreInfo": {
+        "title": "The road to the temple",
+        "text": "In Edo, people travelled to Sensō-ji. Shops grew along the last stretch because the visitors were already walking there."
+      },
+      "xp": 80,
+      "mediaId": "media-asakusa-historic",
+      "factCheck": "needed",
+      "notes": "Check how old Nakamise is as a named street before live."
+    },
+    {
+      "id": "asa-smoke",
+      "title": "Why Is Everyone Waving Smoke?",
       "type": "observation",
-      "status": "idea",
-      "exactLocation": "Kaminarimon, Sens\u014d-ji",
-      "physicalObservation": "Read the character on the giant lantern",
-      "visualIdea": "Red lantern filling the gate",
-      "mythologyTheme": "Thunder and wind gods at the threshold"
+      "status": "approved",
+      "exactLocation": "Sensō-ji incense burner",
+      "task": "Watch what people do with the incense smoke. What do you think it means?",
+      "reveal": "Some people waft the smoke toward a part of the body as a blessing. It is a folk practice, not medicine.",
+      "xp": 70,
+      "factCheck": "needed",
+      "notes": "Do not claim medical effect. Confirm the usual explanation before live."
     }
   ]
 }

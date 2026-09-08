@@ -84,7 +84,7 @@ export function renderMissionPage({ quest, mission, chapter, state, people, lock
       ${typeMark(memory ? "memory" : mission.type)}
       <p class="quest-kicker">${esc(labels.kicker)} · ${esc(chapter.destination)}</p>
       <h2>${esc(mission.title)}</h2>
-      ${visualHtml(mission)}
+      ${visualHtml(mission, quest)}
 
       <section class="quest-panel${start === "story" ? " is-on" : ""}" data-panel="story">
         ${listenBar("story")}
@@ -173,7 +173,7 @@ export function renderDiscoveryPage({ quest, discovery, chapter, entry, people, 
       ${typeMark("discovery")}
       <p class="quest-kicker">Discovery · ${esc(chapter?.destination || "")}</p>
       <h2>${esc(discovery.name)}</h2>
-      ${visualHtml(discovery)}
+      ${visualHtml(discovery, quest)}
       ${
         found
           ? `<section class="quest-panel is-on">
@@ -225,7 +225,7 @@ export function missionSpeech(mission, stepText = "") {
     task: [mission.task, mission.observeWhat, mission.question?.text].filter(Boolean).join(" "),
     reveal: mission.reveal,
     story: stepText || (mission.storySteps?.[0]?.text || mission.intro),
-    more: mission.moreInfo?.text || "",
+    more: mission.moreInfo?.audioText || mission.moreInfo?.text || "",
   };
 }
 

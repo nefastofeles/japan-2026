@@ -14,10 +14,15 @@
     "tokyo/akihabara.json",
     "tokyo/asakusa.json",
     "tokyo/core.json",
+    "tokyo/food.json",
+    "tokyo/imperial-palace.json",
     "tokyo/meiji-harajuku.json",
     "tokyo/shibuya.json",
+    "tokyo/shinkansen.json",
     "tokyo/shinjuku.json",
+    "tokyo/side-quests.json",
     "tokyo/skytree.json",
-    "tokyo/teamlab.json"
+    "tokyo/teamlab.json",
+    "tokyo/tsukiji.json"
   ]
 }

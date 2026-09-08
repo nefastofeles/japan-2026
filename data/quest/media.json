@@ -1,0 +1,225 @@
+[
+  {
+    "id": "media-cph-tokyo-route",
+    "chapterId": "prologue",
+    "moduleId": "copenhagen-core",
+    "missionId": "cph-first-fragment",
+    "role": "hero",
+    "type": "diagram",
+    "alt": "Simple illustrated route from Copenhagen to Tokyo",
+    "status": "needed",
+    "notes": "Orientation only. No spoilers."
+  },
+  {
+    "id": "media-godzilla-clue",
+    "chapterId": "tokyo",
+    "moduleId": "tokyo-shinjuku",
+    "missionId": "shi-godzilla",
+    "role": "clue",
+    "type": "image",
+    "alt": "A silhouette of a huge creature above a city street, face hidden",
+    "status": "needed",
+    "notes": "Teaser only. Do not show Godzilla clearly before the find."
+  },
+  {
+    "id": "media-godzilla-reveal",
+    "chapterId": "tokyo",
+    "moduleId": "tokyo-shinjuku",
+    "missionId": "shi-godzilla",
+    "role": "reveal",
+    "type": "image",
+    "alt": "The Godzilla head on the Shinjuku Toho Building in Kabukicho",
+    "status": "needed"
+  },
+  {
+    "id": "media-shibuya-aerial",
+    "chapterId": "tokyo",
+    "moduleId": "tokyo-shibuya",
+    "missionId": "shb-human-tsunami",
+    "role": "reveal",
+    "type": "image",
+    "alt": "Aerial view of Shibuya Scramble Crossing packed with pedestrians",
+    "status": "needed",
+    "notes": "Show only after the family makes a prediction."
+  },
+  {
+    "id": "media-hachiko",
+    "chapterId": "tokyo",
+    "moduleId": "tokyo-shibuya",
+    "missionId": "shb-hachiko",
+    "role": "historical",
+    "type": "image",
+    "alt": "The Hachiko memorial statue at Shibuya Station",
+    "status": "needed"
+  },
+  {
+    "id": "media-edo-castle-compare",
+    "chapterId": "tokyo",
+    "moduleId": "tokyo-imperial",
+    "missionId": "imp-green-heart",
+    "role": "historical",
+    "type": "diagram",
+    "alt": "Edo Castle grounds compared with the green Imperial Palace site in modern Tokyo",
+    "status": "needed"
+  },
+  {
+    "id": "media-skytree-exterior",
+    "chapterId": "tokyo",
+    "moduleId": "tokyo-skytree",
+    "missionId": "sky-giant",
+    "role": "hero",
+    "type": "image",
+    "alt": "Tokyo Skytree standing above the city",
+    "status": "needed",
+    "notes": "Do not use Tokyo Tower photos by mistake."
+  },
+  {
+    "id": "media-skytree-structure",
+    "chapterId": "tokyo",
+    "moduleId": "tokyo-skytree",
+    "missionId": "sky-earthquake",
+    "role": "diagram",
+    "type": "diagram",
+    "alt": "Simple diagram of a tall tower that can sway, with a central column",
+    "status": "needed",
+    "notes": "Keep it simple. Check engineering copy before live."
+  },
+  {
+    "id": "media-kaminarimon-lantern",
+    "chapterId": "tokyo",
+    "moduleId": "tokyo-asakusa",
+    "missionId": "asa-thunder-gate",
+    "role": "clue",
+    "type": "image",
+    "alt": "The huge red lantern hanging in Kaminarimon, seen from below",
+    "status": "needed",
+    "notes": "Detail crop for after they look underneath. Do not spoil the missed detail."
+  },
+  {
+    "id": "media-asakusa-historic",
+    "chapterId": "tokyo",
+    "moduleId": "tokyo-asakusa",
+    "missionId": "asa-commerce",
+    "role": "historical",
+    "type": "image",
+    "src": "assets/heroes/senso-ji.jpg",
+    "alt": "Sensō-ji in Asakusa, with the temple beyond the gate",
+    "credit": "LMP 2001",
+    "license": "CC BY-SA 4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sensoji_Temple_(Asakusa,_Tokyo,_Japan)_2023-07-02.jpg",
+    "status": "candidate"
+  },
+  {
+    "id": "media-meiji-forest",
+    "chapterId": "tokyo",
+    "moduleId": "tokyo-meiji",
+    "missionId": "har-fake-forest",
+    "role": "hero",
+    "type": "image",
+    "alt": "Tall trees on the path into Meiji Jingu",
+    "status": "needed"
+  },
+  {
+    "id": "media-harajuku-pop",
+    "chapterId": "tokyo",
+    "moduleId": "tokyo-meiji",
+    "missionId": "har-two-japans",
+    "role": "clue",
+    "type": "image",
+    "alt": "A busy Harajuku street with bright shop signs",
+    "status": "needed",
+    "notes": "Orientation. Family photos are the real pair."
+  },
+  {
+    "id": "media-akihabara-electronics",
+    "chapterId": "tokyo",
+    "moduleId": "tokyo-akihabara",
+    "missionId": "aki-old-akihabara",
+    "role": "historical",
+    "type": "image",
+    "alt": "Akihabara shop displays of electronics and parts, not only characters",
+    "status": "needed"
+  },
+  {
+    "id": "media-tsukiji-seafood",
+    "chapterId": "tokyo",
+    "moduleId": "tokyo-tsukiji",
+    "missionId": "tsu-five-creatures",
+    "role": "hero",
+    "type": "image",
+    "alt": "Fresh seafood laid out at an outer-market stall",
+    "status": "needed"
+  },
+  {
+    "id": "media-tsukiji-reclaimed",
+    "chapterId": "tokyo",
+    "moduleId": "tokyo-tsukiji",
+    "missionId": "tsu-built-on-sea",
+    "role": "historical",
+    "type": "diagram",
+    "alt": "Simple map showing Tokyo Bay filled to make new land at Tsukiji",
+    "status": "needed"
+  },
+  {
+    "id": "media-teamlab-teaser",
+    "chapterId": "tokyo",
+    "moduleId": "tokyo-teamlab",
+    "missionId": "tlb-dont-understand",
+    "role": "hero",
+    "type": "image",
+    "alt": "Soft abstract light, no identifiable teamLab room",
+    "status": "needed",
+    "notes": "Teaser only. No spoilers of rooms or works."
+  },
+  {
+    "id": "media-brand-quiz",
+    "chapterId": "tokyo",
+    "moduleId": "tokyo-side",
+    "missionId": "jp-brand-quiz",
+    "role": "diagram",
+    "type": "diagram",
+    "alt": "A grid of brand marks for a family quiz: Japanese and not Japanese mixed",
+    "status": "needed",
+    "notes": "Do not copy trademarked logos into git until license is clear."
+  },
+  {
+    "id": "media-shinkansen-nose",
+    "chapterId": "tokyo",
+    "moduleId": "tokyo-shinkansen",
+    "missionId": "train-nose",
+    "role": "hero",
+    "type": "image",
+    "alt": "The long nose of a shinkansen at a platform",
+    "status": "needed"
+  },
+  {
+    "id": "media-shinkansen-tunnel",
+    "chapterId": "tokyo",
+    "moduleId": "tokyo-shinkansen",
+    "missionId": "train-nose",
+    "role": "diagram",
+    "type": "diagram",
+    "alt": "Simple diagram of a fast train entering a tunnel and the air being squeezed",
+    "status": "needed"
+  },
+  {
+    "id": "media-sushi-types",
+    "chapterId": "tokyo",
+    "moduleId": "tokyo-food",
+    "missionId": "sushi-family",
+    "role": "diagram",
+    "type": "diagram",
+    "alt": "Five plates: nigiri, maki, gunkan, temaki, and sashimi",
+    "status": "needed"
+  },
+  {
+    "id": "media-sampuru",
+    "chapterId": "tokyo",
+    "moduleId": "tokyo-food",
+    "missionId": "food-plastic",
+    "role": "hero",
+    "type": "image",
+    "alt": "A restaurant window display of plastic food that looks real",
+    "status": "needed"
+  }
+]

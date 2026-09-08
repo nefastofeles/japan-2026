@@ -3,6 +3,42 @@
   "moduleId": "tokyo-akihabara",
   "items": [
     {
+      "id": "aki-old-akihabara",
+      "title": "Find Old Akihabara",
+      "type": "find",
+      "status": "approved",
+      "task": "Find something for sale that has nothing to do with anime or manga.",
+      "hint": "Electronics, cables, parts or cameras.",
+      "reveal": "Before the character shops, Akihabara was famous for electronics.",
+      "xp": 80,
+      "mediaId": "media-akihabara-electronics",
+      "factCheck": "needed",
+      "notes": "Check the postwar electronics-market wording before live."
+    },
+    {
+      "id": "aki-character-overload",
+      "title": "Character Overload",
+      "type": "observation",
+      "status": "approved",
+      "task": "Which fictional character can you spot most often?",
+      "followUp": "Why can an imaginary character become valuable in the real world?",
+      "moreInfo": {
+        "title": "Why a drawing can cost money",
+        "text": "A character can be licensed. Shops pay to print it on bags, games and snacks. Fans keep the picture valuable by wanting it."
+      },
+      "xp": 80
+    },
+    {
+      "id": "aki-1000",
+      "title": "The ¥1,000 Challenge",
+      "type": "find",
+      "status": "approved",
+      "task": "Find the strangest thing you would genuinely buy for ¥1,000 or less.",
+      "photo": true,
+      "rewardIdea": "Family votes. Winner may buy it. Not a payment in the app.",
+      "xp": 100
+    },
+    {
       "id": "script-gachapon-wall",
       "title": "A wall of chances",
       "type": "photo",

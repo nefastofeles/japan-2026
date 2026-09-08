@@ -3,12 +3,80 @@
   "moduleId": "tokyo-core",
   "items": [
     {
+      "id": "tokyo-edo",
+      "title": "Tokyo Before Tokyo",
+      "type": "multipleChoice",
+      "status": "approved",
+      "hook": "This megacity had another name.",
+      "question": {
+        "type": "multipleChoice",
+        "text": "What was Tokyo previously called?",
+        "choices": [
+          { "id": "edo", "text": "Edo", "response": "Yes. Edo came first." },
+          { "id": "nara", "text": "Nara", "response": "Nara is an older capital. Try the city you are in." },
+          { "id": "fuji", "text": "Fuji", "response": "Fuji is a mountain. Look at the city name." },
+          { "id": "kamakura", "text": "Kamakura", "response": "Kamakura was a different seat of power." }
+        ],
+        "correctChoiceId": "edo",
+        "retryAllowed": true
+      },
+      "reveal": "Edo became Tokyo when the emperor moved here.",
+      "moreInfo": {
+        "title": "Edo",
+        "text": "Edo was the Tokugawa shogun’s city. In 1868 it was renamed Tokyo, eastern capital."
+      },
+      "codexUnlock": "edo",
+      "xp": 70,
+      "factCheck": "needed",
+      "notes": "Confirm the 1868 rename wording before live."
+    },
+    {
+      "id": "tokyo-60-second-silence",
+      "title": "The 60-Second Silence",
+      "type": "observation",
+      "status": "approved",
+      "task": "Stop somewhere busy. Stay silent for one minute. How many different sounds can you name?",
+      "reveal": "A loud city is also a listening city.",
+      "xp": 50
+    },
+    {
+      "id": "tokyo-konbini",
+      "title": "Konbini Roulette",
+      "type": "food",
+      "status": "approved",
+      "task": "Find one food or drink nobody has tried. Buy it. Everyone tastes it.",
+      "followUp": "Rate it together from 1 to 5.",
+      "photo": true,
+      "codexUnlock": "konbini",
+      "xp": 80,
+      "notes": "Intended replacement for live sample tokyo-konbini. Sample stays live."
+    },
+    {
+      "id": "tokyo-vending",
+      "title": "Machine Hunter",
+      "type": "photo",
+      "status": "approved",
+      "task": "Find the strangest vending machine or vending-machine product you see.",
+      "photo": true,
+      "xp": 50,
+      "notes": "Intended replacement for live sample tokyo-vending. Sample stays live."
+    },
+    {
+      "id": "tokyo-train-silence",
+      "title": "Millions of Quiet People",
+      "type": "observation",
+      "status": "approved",
+      "task": "On a busy train, notice what people do so they do not disturb each other.",
+      "reveal": "Tokyo trains work because people share the quiet, not only because of the rails.",
+      "xp": 60
+    },
+    {
       "id": "script-tokyo-stack",
       "title": "Why Tokyo stacks",
       "type": "story",
       "status": "draft",
       "historicalTheme": "Edo wetland to megacity",
-      "notes": "Core framing. Not a mission yet."
+      "notes": "Core framing leftover. tokyo-edo is the approved version."
     }
   ]
 }

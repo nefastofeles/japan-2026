@@ -23,6 +23,62 @@
       "notes": "Sample multiple-choice. Runtime in missions.json."
     },
     {
+      "id": "cph-first-fragment",
+      "title": "The First Fragment",
+      "type": "multipleChoice",
+      "status": "approved",
+      "priority": "anchor",
+      "exactLocation": "Copenhagen Airport",
+      "hook": "Japan is far away. But the adventure has already started.",
+      "question": {
+        "type": "multipleChoice",
+        "text": "What do you think will feel most different from Denmark?",
+        "choices": [
+          { "id": "food", "text": "Food", "response": "Keep that. We will ask again in Tokyo." },
+          { "id": "cities", "text": "Cities", "response": "Keep that. We will ask again in Tokyo." },
+          { "id": "religion", "text": "Religion", "response": "Keep that. We will ask again in Tokyo." },
+          { "id": "rules", "text": "Everyday rules", "response": "Keep that. We will ask again in Tokyo." }
+        ],
+        "retryAllowed": true
+      },
+      "reveal": "There is no right answer. Keep yours. We will ask again in Tokyo.",
+      "visualIdea": "Illustrated Copenhagen to Tokyo route",
+      "mediaId": "media-cph-tokyo-route",
+      "fragmentValue": 1,
+      "xp": 50,
+      "callbackKey": "cph-different",
+      "saveFor": ["tokyo-finale"],
+      "notes": "No correctChoiceId. Do not promote until the Tokyo callback exists."
+    },
+    {
+      "id": "cph-future-you",
+      "title": "Future You",
+      "type": "reflection",
+      "status": "approved",
+      "priority": "anchor",
+      "exactLocation": "Copenhagen Airport",
+      "hook": "Before Japan changes your mind, make one prediction.",
+      "task": "Each of you: one thing you most want to discover.",
+      "reveal": "Keep these four wishes. Tokyo will read them back.",
+      "fragmentValue": 1,
+      "xp": 50,
+      "callbackKey": "cph-want-to-discover",
+      "saveFor": ["tokyo-finale"]
+    },
+    {
+      "id": "cph-spot-japan",
+      "title": "Japan Before Japan",
+      "type": "find",
+      "status": "approved",
+      "exactLocation": "Copenhagen Airport",
+      "task": "Before boarding, find something Japanese.",
+      "hint": "Writing, a brand, or Japan on a departures screen.",
+      "reveal": "Japan leaked into this building. You caught one piece.",
+      "codexUnlock": "journey-east",
+      "xp": 40,
+      "notes": "Close to live sample prologue-already-here. Keep the sample live. Do not promote this yet."
+    },
+    {
       "id": "script-gate-riddle",
       "title": "The gate that is not a torii",
       "type": "riddle",

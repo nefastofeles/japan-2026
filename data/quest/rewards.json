@@ -23,11 +23,17 @@
     "hidden": true
   },
   {
-    "id": "kyoto-spirit",
-    "fragmentThreshold": 3,
-    "chapterId": "kyoto",
-    "title": "Spirit chapter",
-    "description": "Kyoto’s required fragments are in. Optional shrines can wait.",
-    "type": "digital"
+    "id": "sky-guardian",
+    "title": "Sky guardian",
+    "description": "A digital badge idea for the Skytree engineering page. Hidden until that mission is live.",
+    "type": "digital",
+    "hidden": true
+  },
+  {
+    "id": "borderless-fragment-1",
+    "title": "Borderless fragment",
+    "description": "A digital fragment idea for the teamLab photograph question. Hidden until that mission is live.",
+    "type": "digital",
+    "hidden": true
   }
 ]

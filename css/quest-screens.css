@@ -269,3 +269,8 @@
   color: var(--paper-raised);
   border-color: var(--leg-deep);
 }
+
+.quest-fact {
+  padding-left: var(--sp-3);
+  border-left: 4px solid var(--leg);
+}

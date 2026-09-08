@@ -17,6 +17,49 @@
       "status": "live",
       "liveMissionId": "tokyo-beckoning",
       "physicalObservation": "A maneki-neko paw"
+    },
+    {
+      "id": "shi-godzilla",
+      "title": "Something Is Watching Shinjuku",
+      "type": "find",
+      "status": "approved",
+      "priority": "must",
+      "exactLocation": "Shinjuku Toho Building / Kabukicho",
+      "task": "Find the enormous creature hiding above street level before anyone points it out.",
+      "photo": true,
+      "reveal": "Godzilla. A kaiju: a giant screen-monster that Japan made famous.",
+      "moreInfo": {
+        "title": "Kaiju",
+        "text": "Godzilla began as a film about fear and the sea. The head on this building is a shop-sign and a local joke."
+      },
+      "codexUnlock": "kaiju",
+      "xp": 100,
+      "mediaId": "media-godzilla-clue",
+      "media": [
+        { "id": "media-godzilla-clue", "role": "clue" },
+        { "id": "media-godzilla-reveal", "role": "reveal" }
+      ]
+    },
+    {
+      "id": "shi-station",
+      "title": "How Do You Control This?",
+      "type": "observation",
+      "status": "approved",
+      "exactLocation": "Shinjuku Station",
+      "task": "Find two design tricks that help huge numbers of people move through the station.",
+      "physicalObservation": "Colours, numbers, floor marks, queues, sounds.",
+      "xp": 80,
+      "notes": "Do not quote passenger counts until checked."
+    },
+    {
+      "id": "shi-tiny-tokyo",
+      "title": "Tiny Tokyo",
+      "type": "photo",
+      "status": "approved",
+      "task": "Find the smallest restaurant, alley or shop space you can.",
+      "photo": true,
+      "reveal": "Tokyo often solves tight land by going small and stacking up.",
+      "xp": 60
     }
   ]
 }

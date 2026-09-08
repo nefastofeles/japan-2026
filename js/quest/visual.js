@@ -5,9 +5,10 @@
 
 import { esc } from "../util.js";
 import { listenBar } from "../components/quest-chrome.js";
+import { resolveVisual } from "./media.js";
 
-export function visualHtml(item) {
-  const picture = item?.visual;
+export function visualHtml(item, quest) {
+  const picture = resolveVisual(item, quest);
   if (picture?.src) {
     const kind = picture.type || "image";
     return `
@@ -39,8 +40,8 @@ export function moreInfoHtml(info) {
 }
 
 export function bindMoreInfo(root, texts, info) {
-  if (!info?.text) return;
-  texts.more = info.text;
+  if (!info?.text && !info?.audioText) return;
+  texts.more = info.audioText || info.text;
   root.querySelector("[data-more]")?.addEventListener("click", (event) => {
     const panel = root.querySelector("[data-more-panel]");
     if (panel) panel.hidden = false;

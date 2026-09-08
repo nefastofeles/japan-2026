@@ -3,11 +3,43 @@
   "moduleId": "tokyo-meiji",
   "items": [
     {
-      "id": "script-meiji-forest",
-      "title": "A forest planted on purpose",
-      "type": "observation",
-      "status": "idea",
-      "historicalTheme": "The shrine woods were planted after 1920"
+      "id": "har-fake-forest",
+      "title": "Is This Forest Fake?",
+      "type": "multipleChoice",
+      "status": "approved",
+      "priority": "must",
+      "exactLocation": "Meiji Jingu",
+      "question": {
+        "type": "multipleChoice",
+        "text": "Is this forest ancient wilderness, or did people make it?",
+        "choices": [
+          { "id": "ancient", "text": "Ancient natural forest", "response": "It looks old. Look at who planted it." },
+          { "id": "made", "text": "Deliberately created forest", "response": "Yes. People planned these trees." }
+        ],
+        "correctChoiceId": "made",
+        "retryAllowed": true
+      },
+      "reveal": "This forest was planned and planted. Trees were given from around Japan.",
+      "codexUnlock": "sacred-forest",
+      "xp": 100,
+      "mediaId": "media-meiji-forest",
+      "factCheck": "needed",
+      "notes": "Confirm planting dates and the donated-trees claim before live."
+    },
+    {
+      "id": "har-two-japans",
+      "title": "Two Japans",
+      "type": "photo",
+      "status": "approved",
+      "priority": "must",
+      "exactLocation": "Meiji Jingu + Harajuku",
+      "task": "Take one photo of old or sacred Japan, and one of modern or pop Japan.",
+      "photo": true,
+      "photoCount": 2,
+      "saveFor": ["tokyo-finale"],
+      "xp": 100,
+      "mediaId": "media-harajuku-pop",
+      "notes": "Engine currently stores one photo. Second photo may wait until a pair field exists."
     }
   ]
 }
