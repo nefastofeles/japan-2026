@@ -23,7 +23,7 @@
     "japaneseName": "デパ地下",
     "category": "Places",
     "rarity": "uncommon",
-    "chapterId": "shinjuku",
+    "chapterId": "tokyo",
     "description": "The city under the city: department-store basements packed with food. Tokyo stacked itself on old wetland. The sky is optional."
   },
   {
@@ -32,7 +32,7 @@
     "japaneseName": "自動販売機",
     "category": "Strange Japan",
     "rarity": "common",
-    "chapterId": "shinjuku",
+    "chapterId": "tokyo",
     "description": "Vending machines that sell eggs, umbrellas, manga or hot food. A city that stays open after the staff go home."
   },
   {
@@ -41,7 +41,7 @@
     "japaneseName": "おにぎり",
     "category": "Food",
     "rarity": "common",
-    "chapterId": "shinjuku",
+    "chapterId": "tokyo",
     "description": "A rice triangle wrapped in nori. Konbini food is how a megacity eats at odd hours — not a compromise, a system."
   },
   {
@@ -50,7 +50,7 @@
     "japaneseName": "招き猫",
     "category": "Objects",
     "rarity": "common",
-    "chapterId": "shinjuku",
+    "chapterId": "tokyo",
     "description": "The beckoning cat. The raised paw is an invitation, not a wave. Folklore says one cat saved a lord from lightning."
   },
   {
@@ -59,7 +59,7 @@
     "japaneseName": "武蔵",
     "category": "Modern Japan",
     "rarity": "uncommon",
-    "chapterId": "shinjuku",
+    "chapterId": "tokyo",
     "description": "Tokyo Skytree is 634 metres tall because 6-3-4 can be read mu-sa-shi, the old provincial name. A lightning rod that is also a word."
   },
   {
@@ -95,7 +95,7 @@
     "japaneseName": "駅弁",
     "category": "Food",
     "rarity": "common",
-    "chapterId": "shinjuku",
+    "chapterId": "tokyo",
     "description": "A packed train lunch. The box is the point: a meal that can leave with you."
   },
   {

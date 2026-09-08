@@ -1,0 +1,13 @@
+{
+  "chapterId": "osaka",
+  "moduleId": null,
+  "items": [
+    {
+      "id": "script-osaka-kitchen",
+      "title": "Eat until you drop",
+      "type": "food",
+      "status": "idea",
+      "notes": "Content freeze. Later."
+    }
+  ]
+}

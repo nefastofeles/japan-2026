@@ -1,0 +1,14 @@
+{
+  "chapterId": "tokyo",
+  "moduleId": "tokyo-core",
+  "items": [
+    {
+      "id": "script-tokyo-stack",
+      "title": "Why Tokyo stacks",
+      "type": "story",
+      "status": "draft",
+      "historicalTheme": "Edo wetland to megacity",
+      "notes": "Core framing. Not a mission yet."
+    }
+  ]
+}

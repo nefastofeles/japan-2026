@@ -10,6 +10,8 @@ import {
   speechAvailable, speakNormal, speakSlow, stopSpeech,
   pauseSpeech, resumeSpeech, isSpeaking, isSpeechPaused,
 } from "../quest/speech.js";
+import { familyXp } from "../quest/engine.js";
+import { chapterFragments, nextVisibleReward } from "../quest/progress.js";
 
 const TABS = [
   ["/adventure", "Quest"],
@@ -21,7 +23,11 @@ const TYPE_META = {
   find: { label: "Find", icon: "🔍" },
   photo: { label: "Photo", icon: "📷" },
   observe: { label: "Notice", icon: "👁" },
+  observation: { label: "Notice", icon: "👁" },
   solve: { label: "Solve", icon: "🧩" },
+  riddle: { label: "Riddle", icon: "🧩" },
+  multipleChoice: { label: "Choose", icon: "✋" },
+  trueFalse: { label: "True or false", icon: "✋" },
   food: { label: "Food", icon: "🍙" },
   story: { label: "Story", icon: "📖" },
   reflection: { label: "Sit with this", icon: "💭" },
@@ -59,16 +65,56 @@ export function questTabs(activePath) {
     </nav>`;
 }
 
-export function questShell(activePath, body) {
+export function questShell(activePath, body, options = {}) {
   return `
-    <div class="page stack quest-page">
-      <header class="quest-head">
+    <div class="page stack quest-page${options.compact ? " quest-page--compact" : ""}">
+      ${
+        options.compact
+          ? ""
+          : `<header class="quest-head">
         <p class="quest-kicker">Quest</p>
         <h1>The Missing Stories of Japan</h1>
-      </header>
+      </header>`
+      }
       ${questTabs(activePath)}
+      ${options.rail || ""}
       ${body}
     </div>`;
+}
+
+export function familyRail(quest, state, chapter) {
+  if (!chapter || !state || !quest) return "";
+  const xp = familyXp(quest, state);
+  return progressRail({
+    chapter,
+    fragments: chapterFragments(quest, state, chapter.id),
+    xp,
+    next: nextVisibleReward(quest, state, xp),
+    memory: chapter.tone === "memory",
+  });
+}
+
+export function progressRail({ chapter, fragments, xp, next, memory }) {
+  if (memory || !chapter) return "";
+  const pct = fragments?.pct || 0;
+  const nextLine = next
+    ? next.xpThreshold
+      ? `${next.xpThreshold} XP → ${next.title}`
+      : next.title
+    : "Nothing queued";
+  return `
+    <section class="quest-rail" aria-label="Family progress">
+      <p class="quest-rail__kicker">${esc(chapter.destination)} · ${esc(chapter.title)}</p>
+      <div class="quest-rail__bar" role="progressbar"
+           aria-valuemin="0" aria-valuemax="100" aria-valuenow="${pct}">
+        <span style="width:${pct}%"></span>
+      </div>
+      <p class="quest-rail__meta">
+        <span>${xp} XP</span>
+        <span>${fragments?.earned || 0}/${fragments?.target || 0} fragments</span>
+      </p>
+      <p class="quest-rail__next">Next reward · ${esc(nextLine)}</p>
+    </section>`;
 }
 
 export function peopleChecks(people, prefix = "who") {

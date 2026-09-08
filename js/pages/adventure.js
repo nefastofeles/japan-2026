@@ -11,10 +11,10 @@ import { loadQuest, missionsForChapter } from "../quest/content.js";
 import { hydrateQuestState } from "../quest/sync.js";
 import { isComplete } from "../quest/state.js";
 import {
-  currentChapter, nextChapter, familyXp, tripProgress, todaysMissions,
+  currentChapter, nextChapter, todaysMissions,
   chapterComplete, missionStatus, openDiscoveries, isMemoryMode,
 } from "../quest/engine.js";
-import { questShell, typeMark } from "../components/quest-chrome.js";
+import { questShell, typeMark, familyRail } from "../components/quest-chrome.js";
 
 function missionCard(mission, state, chapter) {
   const done = isComplete(state, mission.id);
@@ -50,7 +50,6 @@ export async function adventurePage() {
   const today = todayISO(TRIP.timezone);
   const chapter = currentChapter(quest, today);
   const following = nextChapter(quest, chapter);
-  const progress = tripProgress(quest, state);
   const open = todaysMissions(quest, state, chapter, today).filter((mission) => {
     const status = missionStatus(mission, state, { date: today });
     return status === "open" || status === "nearby" || status === "scheduled";
@@ -77,25 +76,6 @@ export async function adventurePage() {
         ${open.length ? "Continue" : "See the journey"}
       </a>
     </section>
-
-    <div class="quest-stats">
-      <div class="quest-stat">
-        <strong>${familyXp(quest, state)}</strong>
-        Family XP
-      </div>
-      <div class="quest-stat">
-        <strong>${progress.done}/${progress.total}</strong>
-        Pages
-      </div>
-      <div class="quest-stat">
-        <strong>${state.discovered.length}</strong>
-        Codex
-      </div>
-      <div class="quest-stat">
-        <strong>${state.badges.length}</strong>
-        Badges
-      </div>
-    </div>
 
     <section class="stack quest-section">
       <h2 class="section-title">${memoryChapter ? "Memories here" : "Out in the world"}</h2>
@@ -140,7 +120,7 @@ export async function adventurePage() {
       .map((person) => esc(person.name))
       .join(", ")}.</p>
     `
-  );
+  , { rail: familyRail(quest, state, chapter) });
 
   return { html };
 }

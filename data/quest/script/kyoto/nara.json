@@ -1,0 +1,15 @@
+{
+  "chapterId": "kyoto",
+  "moduleId": "kyoto-nara",
+  "items": [
+    {
+      "id": "script-deer-bow",
+      "title": "These deer appear to bow. Why?",
+      "type": "observation",
+      "status": "idea",
+      "physicalObservation": "Watch a deer dip its head near food",
+      "weirdFact": "They learned the bow from tourists with biscuits",
+      "mythologyTheme": "Messengers of the Kasuga shrine"
+    }
+  ]
+}

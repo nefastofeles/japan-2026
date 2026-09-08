@@ -19,6 +19,8 @@ import { questShell, wireListen } from "../components/quest-chrome.js";
 import {
   renderMissionPage, rewardHtml, screenLabels, missionSpeech,
 } from "../quest/mission-screen.js";
+import { bindMoreInfo } from "../quest/visual.js";
+import { isChoiceMission, gradeChoice } from "../quest/choices.js";
 
 export async function adventureMissionPage({ id }) {
   const quest = await loadQuest();
@@ -98,10 +100,43 @@ function bindStory(root, mission, texts) {
   paint();
 }
 
+function bindQuestion(root, mission) {
+  if (!isChoiceMission(mission)) return;
+  const box = root.querySelector("[data-question]");
+  const finish = root.querySelector("[data-finish]");
+  const feedback = root.querySelector("[data-choice-feedback]");
+  const hidden = root.querySelector("[data-choice-answer]");
+  if (!box) return;
+  box.addEventListener("click", (event) => {
+    const button = event.target.closest("[data-choice-id]");
+    if (!button) return;
+    if (box.dataset.locked === "true") return;
+    box.querySelectorAll("[data-choice-id]").forEach((item) => {
+      item.removeAttribute("aria-pressed");
+    });
+    button.setAttribute("aria-pressed", "true");
+    const result = gradeChoice(mission.question, button.getAttribute("data-choice-id"));
+    if (hidden) hidden.value = result.choice?.text || "";
+    if (feedback) {
+      feedback.hidden = false;
+      feedback.textContent = result.response;
+    }
+    if (!result.retry) {
+      box.dataset.locked = "true";
+      box.querySelectorAll("[data-choice-id]").forEach((item) => {
+        item.disabled = true;
+      });
+    }
+    if (finish) finish.disabled = !(result.correct || !result.retry);
+  });
+}
+
 function bindMission(root, quest, mission, chapter, state) {
   const texts = missionSpeech(mission);
   wireListen(root, texts);
   bindStory(root, mission, texts);
+  bindMoreInfo(root, texts, mission.moreInfo);
+  bindQuestion(root, mission);
 
   root.querySelector("[data-to-task]")?.addEventListener("click", () => {
     showPanel(root, "task");
@@ -146,6 +181,13 @@ function bindMission(root, quest, mission, chapter, state) {
       return;
     }
     const answer = form.querySelector("[data-answer]")?.value.trim() || "";
+    const choiceId = form.querySelector("[data-choice-answer]")
+      ? root.querySelector("[data-choice-id][aria-pressed='true']")?.getAttribute("data-choice-id") || ""
+      : "";
+    if (isChoiceMission(mission) && !choiceId) {
+      status.textContent = "Pick one answer first.";
+      return;
+    }
     if (mission.accepted) {
       const ok = mission.accepted.some((needle) => answer.toLowerCase().includes(needle));
       if (!ok) {
@@ -175,6 +217,7 @@ function bindMission(root, quest, mission, chapter, state) {
     completeMission(quest, state, mission, {
       date: todayISO(TRIP.timezone),
       answer,
+      choiceId,
       photoId,
       participants,
       completedBy: participants[0] || "",

@@ -1,0 +1,12 @@
+{
+  "chapterId": "kyoto",
+  "moduleId": "kyoto-kiyomizu",
+  "items": [
+    {
+      "id": "script-kiyomizu-stage",
+      "title": "The stage with no nails you can see",
+      "type": "observation",
+      "status": "idea"
+    }
+  ]
+}

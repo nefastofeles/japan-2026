@@ -40,8 +40,8 @@ export function locateOnce() {
 export function gpsGate(mission, here) {
   const spot = mission.location;
   if (!spot) return "open";
-  const nearby = spot.nearbyMeters || 500;
-  const unlock = spot.unlockMeters || 200;
+  const nearby = spot.nearbyMeters || spot.radiusMeters || 500;
+  const unlock = spot.unlockMeters || spot.radiusMeters || 200;
   if (!here || here.error) return "unknown";
   const meters = haversineMeters(here, spot);
   if (meters <= unlock) return "unlocked";

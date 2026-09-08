@@ -1,8 +1,9 @@
 /**
  * Quest content loader.
  *
- * Authored JSON, not the itinerary. Chapters point at itinerary legs and
- * date ranges so destinations are not copied out of itinerary.json.
+ * Live playable content stays in missions / discoveries JSON.
+ * The Adventure Script is an editorial notebook; status "live" items
+ * usually point at a liveMissionId instead of duplicating the page.
  */
 
 let cache = null;
@@ -13,17 +14,37 @@ async function readJson(path) {
   return response.json();
 }
 
+async function loadScript() {
+  try {
+    const manifest = await readJson("data/quest/script/manifest.json");
+    const packs = await Promise.all(
+      (manifest.files || []).map(async (file) => {
+        const pack = await readJson(`data/quest/script/${file}`);
+        return { file, ...pack };
+      })
+    );
+    return packs;
+  } catch (error) {
+    console.warn("Adventure Script not loaded:", error.message);
+    return [];
+  }
+}
+
 export async function loadQuest() {
   if (cache) return cache;
-  const [chapters, missions, codex, badges, story, discoveries] = await Promise.all([
-    readJson("data/quest/chapters.json"),
-    readJson("data/quest/missions.json"),
-    readJson("data/quest/codex.json"),
-    readJson("data/quest/badges.json"),
-    readJson("data/quest/story.json"),
-    readJson("data/quest/discoveries.json"),
-  ]);
-  cache = { chapters, missions, codex, badges, story, discoveries };
+  const [chapters, missions, codex, badges, story, discoveries, modules, rewards, script] =
+    await Promise.all([
+      readJson("data/quest/chapters.json"),
+      readJson("data/quest/missions.json"),
+      readJson("data/quest/codex.json"),
+      readJson("data/quest/badges.json"),
+      readJson("data/quest/story.json"),
+      readJson("data/quest/discoveries.json"),
+      readJson("data/quest/modules.json"),
+      readJson("data/quest/rewards.json"),
+      loadScript(),
+    ]);
+  cache = { chapters, missions, codex, badges, story, discoveries, modules, rewards, script };
   return cache;
 }
 
@@ -37,6 +58,10 @@ export function missionById(quest, id) {
 
 export function missionsForChapter(quest, chapterId) {
   return quest.missions.filter((mission) => mission.chapterId === chapterId);
+}
+
+export function missionsForModule(quest, moduleId) {
+  return quest.missions.filter((mission) => mission.moduleId === moduleId);
 }
 
 export function codexById(quest, id) {

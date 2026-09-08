@@ -67,6 +67,10 @@ export function mergeQuestState(local, remote) {
     badges,
     answers,
     memories,
+    activatedModules: [...new Set([
+      ...(local.activatedModules || []),
+      ...(remote.activatedModules || []),
+    ])],
   };
 }
 

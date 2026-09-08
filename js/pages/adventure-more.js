@@ -6,9 +6,10 @@ import { esc, todayISO } from "../util.js";
 import { loadQuest, discoveryForCodex } from "../quest/content.js";
 import { hydrateQuestState } from "../quest/sync.js";
 import { isComplete, isDiscovered, hasBadge } from "../quest/state.js";
-import { currentChapter, chapterComplete } from "../quest/engine.js";
+import { currentChapter, chapterComplete, chapterFragments } from "../quest/engine.js";
 import { TRIP } from "../config.js";
-import { questShell, typeMark, wireListen, listenBar } from "../components/quest-chrome.js";
+import { questShell, typeMark, wireListen, listenBar, familyRail } from "../components/quest-chrome.js";
+import { modulesForChapter, activateModule, moduleEligible } from "../quest/modules.js";
 
 export async function adventureMapPage() {
   const quest = await loadQuest();
@@ -31,18 +32,54 @@ export async function adventureMapPage() {
           const done = chapterComplete(quest, state, chapter.id);
           const here = chapter.id === current.id;
           const memory = chapter.tone === "memory";
+          const bits = chapterFragments(quest, state, chapter.id);
+          const packs = modulesForChapter(quest, chapter.id);
           return `
             <li class="quest-mission" data-tone="${memory ? "memory" : ""}">
               ${typeMark(memory ? "memory" : "story")}
               <p class="quest-kicker">${index + 1} · ${esc(chapter.destination)}</p>
               <h3>${esc(chapter.title)}</h3>
+              ${
+                packs.length
+                  ? `<p class="quest-prose">${packs.map((pack) => esc(pack.title)).join(" · ")}</p>`
+                  : ""
+              }
               <span class="quest-pill">${
-                done ? (memory ? "Kept" : "Complete") : here ? "You are here" : "Waiting"
+                done
+                  ? memory
+                    ? "Kept"
+                    : "Complete"
+                  : bits.target
+                    ? `${bits.earned}/${bits.target} fragments`
+                    : here
+                      ? "Here"
+                      : "Waiting"
               }</span>
             </li>`;
         })
         .join("")}
     </ol>
+
+    <section class="stack quest-section">
+      <h2 class="section-title">Modules here</h2>
+      <p class="quest-prose">No required order. Optional areas can wait.</p>
+      ${modulesForChapter(quest, current.id)
+        .map((pack) => {
+          const on = moduleEligible(pack, state, { date: today });
+          return `
+            <article class="quest-entry">
+              <p class="quest-kicker">${pack.optional ? "Optional" : "Core"} · ${esc(pack.activation || "core")}</p>
+              <h3>${esc(pack.title)}</h3>
+              ${pack.subtitle ? `<p class="quest-prose">${esc(pack.subtitle)}</p>` : ""}
+              ${
+                pack.optional && !on
+                  ? `<button class="btn" type="button" data-activate-module="${esc(pack.id)}">Open this module</button>`
+                  : `<p class="quest-pill">${on ? "Open" : ""}</p>`
+              }
+            </article>`;
+        })
+        .join("")}
+    </section>
 
     <section class="stack quest-section">
       <h2 class="section-title">Recovered chronicle</h2>
@@ -79,7 +116,7 @@ export async function adventureMapPage() {
           </section>`
         : ""
     }`
-  );
+  , { rail: familyRail(quest, state, current) });
 
   const texts = {};
   openStory.forEach((fragment, index) => {
@@ -89,6 +126,15 @@ export async function adventureMapPage() {
     html,
     mount(root) {
       wireListen(root, texts);
+      root.querySelectorAll("[data-activate-module]").forEach((button) => {
+        button.addEventListener("click", () => {
+          activateModule(state, button.getAttribute("data-activate-module"));
+          const note = document.createElement("p");
+          note.className = "quest-pill";
+          note.textContent = "Open";
+          button.replaceWith(note);
+        });
+      });
     },
   };
 }
@@ -97,6 +143,7 @@ export async function adventureCodexPage() {
   const quest = await loadQuest();
   const state = await hydrateQuestState();
   const cats = [...new Set(quest.codex.map((entry) => entry.category))];
+  const chapter = currentChapter(quest, todayISO(TRIP.timezone));
   const visibleBadges = quest.badges.filter(
     (badge) => !badge.hidden || hasBadge(state, badge.id)
   );
@@ -164,7 +211,7 @@ export async function adventureCodexPage() {
         })
         .join("")}
     </section>`
-  );
+  , { rail: familyRail(quest, state, chapter) });
   return { html };
 }
 

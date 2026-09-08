@@ -1,0 +1,35 @@
+{
+  "chapterId": "prologue",
+  "moduleId": "copenhagen-core",
+  "items": [
+    {
+      "id": "script-already-here",
+      "title": "Japan is already here",
+      "type": "find",
+      "status": "live",
+      "liveMissionId": "prologue-already-here",
+      "locationDescription": "Copenhagen Airport, before boarding",
+      "physicalObservation": "A word, snack or tag that came from Japan",
+      "visualIdea": "Paper cranes / airport light",
+      "notes": "Runtime lives in missions.json. Do not duplicate."
+    },
+    {
+      "id": "script-sun",
+      "title": "The sun that does not set",
+      "type": "multipleChoice",
+      "status": "live",
+      "liveMissionId": "prologue-sun",
+      "question": "What is the red circle on the flag?",
+      "notes": "Sample multiple-choice. Runtime in missions.json."
+    },
+    {
+      "id": "script-gate-riddle",
+      "title": "The gate that is not a torii",
+      "type": "riddle",
+      "status": "idea",
+      "locationDescription": "The boarding gate screen",
+      "riddle": "This gate has a number, not a name on wood. What country still leaks through it?",
+      "notes": "Editorial only. Not live."
+    }
+  ]
+}

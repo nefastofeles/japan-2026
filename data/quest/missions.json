@@ -2,12 +2,25 @@
   {
     "id": "prologue-already-here",
     "chapterId": "prologue",
+    "moduleId": "copenhagen-core",
     "title": "Japan is already here",
     "type": "find",
     "xp": 20,
+    "fragmentValue": 1,
+    "icon": "✈️",
+    "visual": {
+      "type": "image",
+      "src": "assets/heroes/crane.jpg",
+      "alt": "Paper cranes folded from origami paper",
+      "credit": "Laitche, public domain"
+    },
     "intro": "Japan is already in this building.",
     "task": "Find one thing from Japan. A word, a snack, a tag.",
     "hint": "Try a snack shelf, or a suitcase.",
+    "moreInfo": {
+      "title": "Why look here?",
+      "text": "Airports leak other countries. Snacks, stickers and bags travel ahead of people. The first missing page is that Japan does not start when the wheels go down."
+    },
     "reveal": "Stories travel ahead of people. You just caught one.",
     "codexUnlock": "artefact",
     "badgeUnlock": "first-discovery"
@@ -15,9 +28,11 @@
   {
     "id": "prologue-witnesses",
     "chapterId": "prologue",
+    "moduleId": "copenhagen-core",
     "title": "Four witnesses",
     "type": "photo",
     "xp": 15,
+    "fragmentValue": 0,
     "intro": "The chronicle needs faces, not only places.",
     "task": "Take one photo of the four of you. Still in Copenhagen.",
     "hint": "Ask someone nearby, or use the front camera.",
@@ -27,20 +42,45 @@
   {
     "id": "prologue-sun",
     "chapterId": "prologue",
+    "moduleId": "copenhagen-core",
     "title": "The sun that does not set",
-    "type": "solve",
+    "type": "multipleChoice",
     "xp": 25,
+    "fragmentValue": 1,
     "intro": "The flag is a red circle on white.",
-    "task": "What is the circle? Why is it on the flag?",
+    "task": "What is the circle?",
     "hint": "Think of morning, not evening.",
-    "accepted": ["sun", "hinomaru", "nippon", "nihon", "origin"],
+    "question": {
+      "type": "multipleChoice",
+      "text": "What is the red circle on the flag?",
+      "choices": [
+        {
+          "id": "sunset",
+          "text": "A sunset",
+          "response": "Look again. The country’s name is a clue."
+        },
+        {
+          "id": "sun",
+          "text": "The sun",
+          "response": "Yes. Origin of the sun."
+        },
+        {
+          "id": "moon",
+          "text": "The moon",
+          "response": "Not the moon. Think of morning."
+        }
+      ],
+      "correctChoiceId": "sun",
+      "retryAllowed": true
+    },
     "reveal": "It is the sun. Nihon means origin of the sun.",
     "codexUnlock": "hinomaru",
-    "requiresMission": ["prologue-witnesses"]
+    "requiresMission": ["prologue-already-here"]
   },
   {
     "id": "tokyo-under",
-    "chapterId": "shinjuku",
+    "chapterId": "tokyo",
+    "moduleId": "tokyo-shinjuku",
     "title": "The city under the city",
     "type": "find",
     "xp": 25,
@@ -59,7 +99,8 @@
   },
   {
     "id": "tokyo-vending",
-    "chapterId": "shinjuku",
+    "chapterId": "tokyo",
+    "moduleId": "tokyo-shinjuku",
     "title": "A machine that is not thirsty",
     "type": "photo",
     "xp": 20,
@@ -71,7 +112,8 @@
   },
   {
     "id": "tokyo-konbini",
-    "chapterId": "shinjuku",
+    "chapterId": "tokyo",
+    "moduleId": "tokyo-shinjuku",
     "title": "The shop that is not convenient",
     "type": "food",
     "xp": 25,
@@ -85,27 +127,52 @@
   },
   {
     "id": "tokyo-beckoning",
-    "chapterId": "shinjuku",
+    "chapterId": "tokyo",
+    "moduleId": "tokyo-shinjuku",
     "title": "The cat that is not waving hello",
-    "type": "observe",
+    "type": "trueFalse",
     "xp": 20,
+    "fragmentValue": 1,
     "intro": "You will see a cat with one paw up.",
-    "task": "Find a maneki-neko. Which paw is up? Left, right, or both?",
+    "task": "Find a maneki-neko. Then answer.",
+    "exactLocation": "A shop door, restaurant or station kiosk",
+    "observeWhat": "Which paw is up, and what is it doing?",
     "hint": "Shop doors, restaurants, station kiosks.",
+    "question": {
+      "type": "trueFalse",
+      "text": "The raised paw means goodbye.",
+      "choices": [
+        {
+          "id": "true",
+          "text": "True",
+          "response": "It looks like a wave. It is not saying goodbye."
+        },
+        {
+          "id": "false",
+          "text": "False",
+          "response": "Yes. The paw is calling you in."
+        }
+      ],
+      "correctChoiceId": "false",
+      "retryAllowed": true
+    },
     "reveal": "The raised paw is an invitation. It is asking you in, not waving goodbye.",
     "codexUnlock": "maneki-neko"
   },
   {
     "id": "tokyo-skytree",
-    "chapterId": "shinjuku",
+    "chapterId": "tokyo",
+    "moduleId": "tokyo-skytree",
     "date": "2026-09-17",
     "title": "634",
-    "type": "solve",
+    "type": "riddle",
     "difficulty": "special",
     "anchorEvent": true,
     "xp": 40,
     "intro": "The tallest tower is also a pun.",
     "task": "How tall is Tokyo Skytree, in metres? Why that number?",
+    "exactLocation": "Tickets, signs or the lift at Tokyo Skytree",
+    "observeWhat": "Find the large patch of forest visible from the tower if you can.",
     "hint": "Look on tickets, signs, or the lift.",
     "accepted": ["634", "musashi", "mu sa shi"],
     "reveal": "634 metres. In old counting, 6-3-4 can be read Musashi, the old name of this place.",
@@ -121,7 +188,8 @@
   },
   {
     "id": "tokyo-teamlab",
-    "chapterId": "shinjuku",
+    "chapterId": "tokyo",
+    "moduleId": "tokyo-teamlab",
     "date": "2026-09-18",
     "title": "What felt like art?",
     "type": "reflection",
@@ -137,12 +205,27 @@
   {
     "id": "kyoto-fox",
     "chapterId": "kyoto",
+    "moduleId": "kyoto-fushimi",
     "title": "The messengers",
     "type": "find",
     "xp": 30,
+    "fragmentValue": 1,
+    "icon": "🦊",
+    "visual": {
+      "type": "image",
+      "src": "assets/heroes/fushimi-inari.jpg",
+      "alt": "The orange torii tunnel at Fushimi Inari in Kyoto",
+      "credit": "Paul Vlaar, CC BY-SA 3.0"
+    },
     "intro": "Inari’s messengers are not dogs. Look at the ears.",
     "task": "Find a fox statue holding something. What is in its mouth?",
+    "exactLocation": "Fox statues by the gates at Fushimi Inari Taisha",
+    "observeWhat": "Look at the fox in front of you. What is it carrying?",
     "hint": "Look at the statues by the gates, not only on the mountain.",
+    "moreInfo": {
+      "title": "Kitsune",
+      "text": "Fox spirits carry messages for Inari, kami of rice and success. A key, a jewel or a rice bale is a gift. Farmers once left the first harvest for them."
+    },
     "reveal": "Kitsune. Fox spirits. The key, jewel or rice is a gift from Inari.",
     "codexUnlock": "kitsune",
     "badgeUnlock": "yokai-hunter",
@@ -157,6 +240,7 @@
   {
     "id": "kyoto-gates",
     "chapterId": "kyoto",
+    "moduleId": "kyoto-fushimi",
     "title": "Who paid for a thousand gates?",
     "type": "story",
     "xp": 25,
@@ -194,6 +278,7 @@
   {
     "id": "kyoto-matcha",
     "chapterId": "kyoto",
+    "moduleId": "kyoto-core",
     "title": "Bitter, then sweet",
     "type": "food",
     "xp": 20,
@@ -206,6 +291,7 @@
   {
     "id": "kyoto-teamlab",
     "chapterId": "kyoto",
+    "moduleId": "kyoto-teamlab",
     "date": "2026-09-21",
     "title": "Has the sentence changed?",
     "type": "reflection",
@@ -222,6 +308,7 @@
   {
     "id": "hiroshima-remember",
     "chapterId": "hiroshima",
+    "moduleId": "hiroshima-memory",
     "title": "What should be remembered",
     "type": "reflection",
     "sensitive": true,

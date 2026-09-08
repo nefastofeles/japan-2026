@@ -1,0 +1,13 @@
+{
+  "chapterId": "tokyo",
+  "moduleId": "tokyo-akihabara",
+  "items": [
+    {
+      "id": "script-gachapon-wall",
+      "title": "A wall of chances",
+      "type": "photo",
+      "status": "idea",
+      "weirdFact": "A machine that sells a secret in a plastic egg"
+    }
+  ]
+}

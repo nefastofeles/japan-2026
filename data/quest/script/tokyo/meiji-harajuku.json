@@ -1,0 +1,13 @@
+{
+  "chapterId": "tokyo",
+  "moduleId": "tokyo-meiji",
+  "items": [
+    {
+      "id": "script-meiji-forest",
+      "title": "A forest planted on purpose",
+      "type": "observation",
+      "status": "idea",
+      "historicalTheme": "The shrine woods were planted after 1920"
+    }
+  ]
+}

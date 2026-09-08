@@ -184,6 +184,51 @@
 
 .quest-section { margin-top: var(--sp-6); }
 
+.quest-page--compact .quest-tabs {
+  padding-top: 0;
+}
+
+.quest-rail {
+  padding: var(--sp-3) var(--sp-4);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  background: var(--paper-raised);
+}
+
+.quest-rail__kicker {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--leg-deep);
+  margin: 0 0 var(--sp-2);
+}
+
+.quest-rail__bar {
+  height: 0.7rem;
+  border-radius: 999px;
+  background: var(--paper-sunk);
+  overflow: hidden;
+}
+
+.quest-rail__bar span {
+  display: block;
+  height: 100%;
+  background: var(--leg-deep);
+}
+
+.quest-rail__meta {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--sp-3);
+  margin: var(--sp-2) 0 0;
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+
+.quest-rail__next {
+  margin: var(--sp-2) 0 0;
+  font-size: 1.125rem;
+}
+
 @media (max-width: 40rem) {
   .quest-head h1 { font-size: 1.5rem; }
 }

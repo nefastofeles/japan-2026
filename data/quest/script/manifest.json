@@ -1,0 +1,23 @@
+{
+  "files": [
+    "copenhagen.json",
+    "hiroshima.json",
+    "kyoto/arashiyama.json",
+    "kyoto/core.json",
+    "kyoto/fushimi-inari.json",
+    "kyoto/gion.json",
+    "kyoto/kiyomizu.json",
+    "kyoto/nara.json",
+    "kyoto/nijo.json",
+    "kyoto/teamlab.json",
+    "osaka.json",
+    "tokyo/akihabara.json",
+    "tokyo/asakusa.json",
+    "tokyo/core.json",
+    "tokyo/meiji-harajuku.json",
+    "tokyo/shibuya.json",
+    "tokyo/shinjuku.json",
+    "tokyo/skytree.json",
+    "tokyo/teamlab.json"
+  ]
+}

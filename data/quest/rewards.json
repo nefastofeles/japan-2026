@@ -1,0 +1,33 @@
+[
+  {
+    "id": "first-pages",
+    "xpThreshold": 40,
+    "title": "Kids choose dessert",
+    "description": "The family recovered enough pages. Kids pick the next sweet.",
+    "type": "realWorld"
+  },
+  {
+    "id": "mystery-snack",
+    "xpThreshold": 80,
+    "title": "Mystery snack",
+    "description": "A small surprise from Javier’s pocket. Not money.",
+    "type": "mystery"
+  },
+  {
+    "id": "gachapon-allowance",
+    "xpThreshold": 150,
+    "chapterId": "tokyo",
+    "title": "One gachapon",
+    "description": "One capsule machine, family choice.",
+    "type": "realWorld",
+    "hidden": true
+  },
+  {
+    "id": "kyoto-spirit",
+    "fragmentThreshold": 3,
+    "chapterId": "kyoto",
+    "title": "Spirit chapter",
+    "description": "Kyoto’s required fragments are in. Optional shrines can wait.",
+    "type": "digital"
+  }
+]

@@ -12,6 +12,10 @@ import { todayISO } from "../util.js";
 import { loadState, isComplete, isDiscovered } from "./state.js";
 import { queueQuestSync } from "./sync.js";
 import { gpsGate } from "./location.js";
+import { moduleById, moduleEligible } from "./modules.js";
+import { chapterFragments } from "./progress.js";
+
+export { chapterComplete, chapterFragments, nextVisibleReward } from "./progress.js";
 
 export function isMemoryMode(chapter, mission) {
   return Boolean(mission?.sensitive || chapter?.tone === "memory");
@@ -46,7 +50,8 @@ export function familyXp(quest, state) {
   return xp;
 }
 
-export function tripProgress(quest, state) {
+export function tripProgress(quest, state, chapter) {
+  if (chapter) return chapterFragments(quest, state, chapter.id);
   const total = quest.missions.length;
   const done = Object.keys(state.completed).length;
   return { done, total, pct: total ? Math.round((done / total) * 100) : 0 };
@@ -71,12 +76,6 @@ function prereqsMet(mission, state) {
   return (mission.requiresMission || []).every((id) => isComplete(state, id));
 }
 
-export function chapterComplete(quest, state, chapterId) {
-  const list = quest.missions.filter((mission) => mission.chapterId === chapterId);
-  if (!list.length) return false;
-  return list.every((mission) => isComplete(state, mission.id));
-}
-
 export function missionStatus(mission, state, { here, date } = {}) {
   if (isComplete(state, mission.id)) return "done";
   if (!prereqsMet(mission, state)) return "locked";
@@ -91,10 +90,15 @@ export function missionStatus(mission, state, { here, date } = {}) {
 
 export function todaysMissions(quest, state, chapter, date) {
   return quest.missions.filter((mission) => {
-    if (mission.chapterId !== chapter.id) {
-      return mission.date === date && !isComplete(state, mission.id);
+    if (isComplete(state, mission.id)) return false;
+    if (mission.moduleId) {
+      const pack = moduleById(quest, mission.moduleId);
+      if (!moduleEligible(pack, state, { date })) return false;
     }
-    return !isComplete(state, mission.id);
+    if (mission.chapterId !== chapter.id) {
+      return mission.date === date;
+    }
+    return true;
   });
 }
 
@@ -139,6 +143,7 @@ export function completeMission(quest, state, mission, payload = {}) {
     participants: payload.participants || [],
     completedBy: payload.completedBy || (payload.participants || [])[0] || "",
     answer: payload.answer || "",
+    choiceId: payload.choiceId || "",
     photoId: payload.photoId || null,
     summary: payload.summary || mission.title,
   };

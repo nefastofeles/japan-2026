@@ -1,0 +1,13 @@
+{
+  "chapterId": "tokyo",
+  "moduleId": "tokyo-teamlab",
+  "items": [
+    {
+      "id": "script-teamlab-tokyo",
+      "title": "What felt like art?",
+      "type": "reflection",
+      "status": "live",
+      "liveMissionId": "tokyo-teamlab"
+    }
+  ]
+}

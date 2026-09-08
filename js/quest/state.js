@@ -16,6 +16,7 @@ function emptyState() {
     badges: [],
     answers: {},
     memories: [],
+    activatedModules: [],
   };
 }
 
@@ -37,6 +38,7 @@ export function loadState() {
       badges: asIdList(parsed.badges),
       answers: parsed.answers || {},
       memories: parsed.memories || [],
+      activatedModules: asIdList(parsed.activatedModules),
     };
   } catch {
     return emptyState();

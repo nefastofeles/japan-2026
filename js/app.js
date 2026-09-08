@@ -20,6 +20,7 @@ import { adminPage } from "./pages/admin.js";
 import { adventurePage } from "./pages/adventure.js";
 import { adventureMissionPage } from "./pages/adventure-mission.js";
 import { adventureDiscoveryPage } from "./pages/adventure-discovery.js";
+import { adventureScriptPage } from "./pages/adventure-script.js";
 import {
   adventureMapPage, adventureCodexPage, adventureBadgesPage, adventureStoryPage,
 } from "./pages/adventure-more.js";
@@ -124,6 +125,7 @@ function registerPages() {
   router.route("/adventure/story", adventureStoryPage);
   router.route("/adventure/mission/:id", adventureMissionPage);
   router.route("/adventure/discovery/:id", adventureDiscoveryPage);
+  router.route("/adventure/script", adventureScriptPage);
 
   router.setNotFound(
     (path) => `<div class="page">

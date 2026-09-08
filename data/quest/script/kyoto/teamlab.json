@@ -1,0 +1,13 @@
+{
+  "chapterId": "kyoto",
+  "moduleId": "kyoto-teamlab",
+  "items": [
+    {
+      "id": "script-teamlab-kyoto",
+      "title": "Has the sentence changed?",
+      "type": "reflection",
+      "status": "approved",
+      "liveMissionId": "kyoto-teamlab"
+    }
+  ]
+}

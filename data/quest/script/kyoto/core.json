@@ -1,0 +1,13 @@
+{
+  "chapterId": "kyoto",
+  "moduleId": "kyoto-core",
+  "items": [
+    {
+      "id": "script-matcha",
+      "title": "Bitter, then sweet",
+      "type": "food",
+      "status": "live",
+      "liveMissionId": "kyoto-matcha"
+    }
+  ]
+}

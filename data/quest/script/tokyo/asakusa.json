@@ -1,0 +1,16 @@
+{
+  "chapterId": "tokyo",
+  "moduleId": "tokyo-asakusa",
+  "items": [
+    {
+      "id": "script-sensoji-lantern",
+      "title": "The lantern with a name",
+      "type": "observation",
+      "status": "idea",
+      "exactLocation": "Kaminarimon, Sens\u014d-ji",
+      "physicalObservation": "Read the character on the giant lantern",
+      "visualIdea": "Red lantern filling the gate",
+      "mythologyTheme": "Thunder and wind gods at the threshold"
+    }
+  ]
+}

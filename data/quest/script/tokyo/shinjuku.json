@@ -1,0 +1,22 @@
+{
+  "chapterId": "tokyo",
+  "moduleId": "tokyo-shinjuku",
+  "items": [
+    {
+      "id": "script-depachika",
+      "title": "The city under the city",
+      "type": "find",
+      "status": "live",
+      "liveMissionId": "tokyo-under",
+      "exactLocation": "Shinjuku Station basement food halls"
+    },
+    {
+      "id": "script-cat",
+      "title": "The cat that is not waving hello",
+      "type": "trueFalse",
+      "status": "live",
+      "liveMissionId": "tokyo-beckoning",
+      "physicalObservation": "A maneki-neko paw"
+    }
+  ]
+}

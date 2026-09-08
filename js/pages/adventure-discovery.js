@@ -28,7 +28,7 @@ export async function adventureDiscoveryPage({ id }) {
   const people = getPeople();
 
   return {
-    html: renderDiscoveryPage({ quest, discovery, chapter, entry, people, found }),
+    html: renderDiscoveryPage({ quest, discovery, chapter, entry, people, found, state }),
     mount(root) {
       const texts = discoverySpeech(discovery, entry);
       wireListen(root, texts);

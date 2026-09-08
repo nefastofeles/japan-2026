@@ -1,0 +1,12 @@
+{
+  "chapterId": "kyoto",
+  "moduleId": "kyoto-gion",
+  "items": [
+    {
+      "id": "script-gion-lantern",
+      "title": "Streets that dim on purpose",
+      "type": "observation",
+      "status": "idea"
+    }
+  ]
+}

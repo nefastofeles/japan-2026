@@ -1,0 +1,22 @@
+{
+  "chapterId": "kyoto",
+  "moduleId": "kyoto-fushimi",
+  "items": [
+    {
+      "id": "script-fox",
+      "title": "The messengers",
+      "type": "find",
+      "status": "live",
+      "liveMissionId": "kyoto-fox",
+      "exactLocation": "Fox statues by the gates",
+      "physicalObservation": "What is the fox carrying?"
+    },
+    {
+      "id": "script-thousand-gates",
+      "title": "Who paid for a thousand gates?",
+      "type": "story",
+      "status": "reviewed",
+      "liveMissionId": "kyoto-gates"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "chapterId": "tokyo",
+  "moduleId": "tokyo-skytree",
+  "items": [
+    {
+      "id": "script-634",
+      "title": "634",
+      "type": "riddle",
+      "status": "live",
+      "liveMissionId": "tokyo-skytree",
+      "question": "How tall, and why that number?",
+      "physicalObservation": "Forest visible from the tower"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "chapterId": "hiroshima",
+  "moduleId": "hiroshima-memory",
+  "items": [
+    {
+      "id": "script-remember",
+      "title": "What should be remembered",
+      "type": "reflection",
+      "status": "live",
+      "liveMissionId": "hiroshima-remember",
+      "notes": "Memory mode. No playful rewards."
+    }
+  ]
+}

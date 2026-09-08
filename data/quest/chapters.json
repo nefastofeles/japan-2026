@@ -12,13 +12,14 @@
     "weird": "Japan is already in this building if you look.",
     "startDate": "2026-09-15",
     "endDate": "2026-09-15",
-    "tone": "playful"
+    "tone": "playful",
+    "fragmentTarget": 2
   },
   {
-    "id": "shinjuku",
+    "id": "tokyo",
     "leg": "shinjuku",
     "title": "The Stacked City",
-    "destination": "Tokyo, Shinjuku",
+    "destination": "Tokyo",
     "theme": "Edo swamp to megacity",
     "intro": "Tokyo did not spread. It stacked. Under the neon is a wet-land village that learned to go vertical.",
     "history": "Edo became Tokyo in 1868. The swamp was filled, then layered with rails, basements and towers.",
@@ -27,7 +28,8 @@
     "weird": "A tower whose height is a pun.",
     "startDate": "2026-09-16",
     "endDate": "2026-09-18",
-    "tone": "playful"
+    "tone": "playful",
+    "fragmentTarget": 4
   },
   {
     "id": "kyoto",
@@ -42,7 +44,8 @@
     "weird": "A shrine that is also an account book.",
     "startDate": "2026-09-19",
     "endDate": "2026-09-22",
-    "tone": "playful"
+    "tone": "playful",
+    "fragmentTarget": 3
   },
   {
     "id": "osaka",
@@ -72,7 +75,8 @@
     "weird": "",
     "startDate": "2026-09-25",
     "endDate": "2026-09-25",
-    "tone": "memory"
+    "tone": "memory",
+    "fragmentTarget": 1
   },
   {
     "id": "miyajima",

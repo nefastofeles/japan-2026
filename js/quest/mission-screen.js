@@ -7,12 +7,14 @@
 
 import { esc } from "../util.js";
 import {
-  questShell, typeMark, peopleChecks, listenBar,
+  questShell, typeMark, peopleChecks, listenBar, familyRail,
   memoryLabels, playLabels,
 } from "../components/quest-chrome.js";
 import { isMemoryMode, memoryPlace } from "./engine.js";
 import { isComplete } from "./state.js";
 import { codexById, badgeById } from "./content.js";
+import { visualHtml, moreInfoHtml } from "./visual.js";
+import { isChoiceMission, questionHtml } from "./choices.js";
 
 export function screenLabels(quest, mission, chapter) {
   if (isMemoryMode(chapter, mission)) {
@@ -22,19 +24,20 @@ export function screenLabels(quest, mission, chapter) {
 }
 
 function actionFields(mission) {
+  if (isChoiceMission(mission)) return questionHtml(mission.question);
   if (mission.type === "photo") {
     return `
       <label class="quest-label" for="quest-photo">Photo</label>
       <input class="field" id="quest-photo" type="file" accept="image/*"
              capture="environment">`;
   }
-  if (mission.type === "solve") {
+  if (mission.type === "solve" || mission.type === "riddle") {
     return `
       <label class="quest-label" for="quest-answer">Your answer</label>
       <input class="field" id="quest-answer" data-answer
              autocomplete="off" autocapitalize="off">`;
   }
-  if (["food", "reflection", "find", "observe", "story"].includes(mission.type)) {
+  if (["food", "reflection", "find", "observe", "observation", "story"].includes(mission.type)) {
     const label = mission.type === "reflection" ? "The sentence to keep" : "What you found";
     return `
       <label class="quest-label" for="quest-answer">${esc(label)}</label>
@@ -81,6 +84,7 @@ export function renderMissionPage({ quest, mission, chapter, state, people, lock
       ${typeMark(memory ? "memory" : mission.type)}
       <p class="quest-kicker">${esc(labels.kicker)} · ${esc(chapter.destination)}</p>
       <h2>${esc(mission.title)}</h2>
+      ${visualHtml(mission)}
 
       <section class="quest-panel${start === "story" ? " is-on" : ""}" data-panel="story">
         ${listenBar("story")}
@@ -98,6 +102,7 @@ export function renderMissionPage({ quest, mission, chapter, state, people, lock
       <section class="quest-panel${start === "hook" ? " is-on" : ""}" data-panel="hook">
         ${listenBar("hook")}
         <div class="quest-prose"><p>${esc(mission.intro)}</p></div>
+        ${moreInfoHtml(mission.moreInfo)}
         ${prior ? `<p class="quest-hint">Last time you said: ${esc(prior)}</p>` : ""}
         <button class="btn" type="button" data-to-task>${esc(labels.yourMission)}</button>
       </section>
@@ -106,6 +111,16 @@ export function renderMissionPage({ quest, mission, chapter, state, people, lock
         <p class="quest-label">${esc(labels.yourMission)}</p>
         ${listenBar("task")}
         <div class="quest-prose"><p>${esc(mission.task)}</p></div>
+        ${
+          mission.observeWhat
+            ? `<p class="quest-prose">${esc(mission.observeWhat)}</p>`
+            : ""
+        }
+        ${
+          mission.exactLocation
+            ? `<p class="quest-prose">Look: ${esc(mission.exactLocation)}</p>`
+            : ""
+        }
         <form class="stack" data-quest-form>
           <fieldset class="scores">
             <legend class="quest-label">Who was looking</legend>
@@ -126,7 +141,8 @@ export function renderMissionPage({ quest, mission, chapter, state, people, lock
                  <button class="btn btn--ghost" type="button" data-here>We are here</button>`
               : ""
           }
-          <button class="btn" type="submit" data-finish>${esc(labels.finish)}</button>
+          <button class="btn" type="submit" data-finish
+            ${isChoiceMission(mission) ? "disabled" : ""}>${esc(labels.finish)}</button>
         </form>
       </section>
 
@@ -142,16 +158,22 @@ export function renderMissionPage({ quest, mission, chapter, state, people, lock
       </section>
     </article>`;
 
-  return questShell("/adventure", body);
+  const html = questShell(
+    "/adventure",
+    body,
+    { compact: true, rail: memory ? "" : familyRail(quest, state, chapter) }
+  );
+  return html;
 }
 
-export function renderDiscoveryPage({ quest, discovery, chapter, entry, people, found }) {
+export function renderDiscoveryPage({ quest, discovery, chapter, entry, people, found, state }) {
   const labels = playLabels("discovery");
   const body = `
     <article class="stack quest-stage">
       ${typeMark("discovery")}
       <p class="quest-kicker">Discovery · ${esc(chapter?.destination || "")}</p>
       <h2>${esc(discovery.name)}</h2>
+      ${visualHtml(discovery)}
       ${
         found
           ? `<section class="quest-panel is-on">
@@ -191,15 +213,19 @@ export function renderDiscoveryPage({ quest, discovery, chapter, entry, people, 
              </section>`
       }
     </article>`;
-  return questShell("/adventure/codex", body);
+  return questShell("/adventure/codex", body, {
+    compact: true,
+    rail: chapter?.tone === "memory" ? "" : familyRail(quest, state, chapter),
+  });
 }
 
 export function missionSpeech(mission, stepText = "") {
   return {
     hook: mission.intro,
-    task: mission.task,
+    task: [mission.task, mission.observeWhat, mission.question?.text].filter(Boolean).join(" "),
     reveal: mission.reveal,
     story: stepText || (mission.storySteps?.[0]?.text || mission.intro),
+    more: mission.moreInfo?.text || "",
   };
 }
 
