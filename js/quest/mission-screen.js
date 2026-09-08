@@ -122,11 +122,11 @@ export function renderMissionPage({ quest, mission, chapter, state, people, lock
             : ""
         }
         <form class="stack" data-quest-form>
+          ${actionFields(mission)}
           <fieldset class="scores">
             <legend class="quest-label">Who was looking</legend>
             ${peopleChecks(people)}
           </fieldset>
-          ${actionFields(mission)}
           <p class="quest-prose" data-status role="status"></p>
           ${
             mission.hint

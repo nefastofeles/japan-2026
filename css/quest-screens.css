@@ -245,6 +245,16 @@
   cursor: pointer;
   font-size: 1.125rem;
   line-height: 1.5;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 0.6rem;
+}
+
+.quest-script-item summary strong,
+.quest-script-item summary .quest-prose {
+  flex-basis: 100%;
+  margin: 0;
 }
 
 .quest-script-item[data-status="idea"] .quest-status { border-style: dashed; }

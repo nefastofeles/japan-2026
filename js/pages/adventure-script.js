@@ -89,8 +89,8 @@ export async function adventureScriptPage() {
                     <details class="quest-script-item" data-status="${esc(item.status || "idea")}">
                       <summary>
                         <span class="quest-status">${esc(STATUS_LABEL[item.status] || item.status || "Idea")}</span>
-                        <strong>${esc(item.title)}</strong>
                         <span class="quest-pill">${esc(item.type || "")}</span>
+                        <strong>${esc(item.title)}</strong>
                         ${
                           item.exactLocation
                             ? `<span class="quest-prose">${esc(item.exactLocation)}</span>`

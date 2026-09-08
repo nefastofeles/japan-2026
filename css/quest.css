@@ -125,6 +125,11 @@
   cursor: pointer;
 }
 
+.quest-page .btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
 .quest-page .btn--ghost {
   background: var(--paper-raised);
   color: var(--ink);
