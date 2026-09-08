@@ -59,8 +59,8 @@ can be edited in a pull request, and the site works with nothing else.
 **The memories** live in Supabase. Photos, videos, meals, ratings.
 They only exist during and after the trip.
 
-The journal still opens without a database, but it always asks for a login
-first. See `SETUP.md` for the username and password.
+The journal still opens without a database. A family login will come back
+in a later version.
 
 ## The 24 pages
 
@@ -99,7 +99,7 @@ YouTube does the transcoding and the streaming, for free.
 
 ## Setting up the backend
 
-See `SETUP.md`. Until it is done, the plan still opens after you sign in.
+See `SETUP.md`. Until it is done, the plan still opens.
 
 ## Before we fly
 
@@ -108,8 +108,7 @@ See `SETUP.md`. Until it is done, the plan still opens after you sign in.
 - [ ] Set both iPhones to Settings, Camera, Formats, **Most Compatible**
 - [ ] Two 256GB V30 microSD cards for the Pocket 3, set to 4K/30 in H.264
 - [ ] A separate Google account for the trip's YouTube channel
-- [ ] Send the gate login round (username and password in SETUP.md) and
-      check a grandparent can sign in on their own phone
+- [ ] Check a grandparent can open the site on their own phone
 - [ ] Everyone writes their predictions before the airport
 
 ### Trip decisions still open
