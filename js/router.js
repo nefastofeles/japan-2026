@@ -12,7 +12,10 @@
      #/map                 the route
      #/after               post-trip page
      #/adventure           Quest Game
+     #/adventure/codex     finds and badges
+     #/adventure/map       journey and recovered story
      #/adventure/mission/:id  one mission
+     #/adventure/discovery/:id  a lightweight find
    ========================================================================== */
 
 const routes = [];

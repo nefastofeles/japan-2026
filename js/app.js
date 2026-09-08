@@ -19,9 +19,11 @@ import { mapPage } from "./pages/map.js";
 import { adminPage } from "./pages/admin.js";
 import { adventurePage } from "./pages/adventure.js";
 import { adventureMissionPage } from "./pages/adventure-mission.js";
+import { adventureDiscoveryPage } from "./pages/adventure-discovery.js";
 import {
   adventureMapPage, adventureCodexPage, adventureBadgesPage, adventureStoryPage,
 } from "./pages/adventure-more.js";
+import { bindSpeechLifecycle } from "./quest/speech.js";
 
 const NAV = [
   ["/", "Home"],
@@ -121,6 +123,7 @@ function registerPages() {
   router.route("/adventure/badges", adventureBadgesPage);
   router.route("/adventure/story", adventureStoryPage);
   router.route("/adventure/mission/:id", adventureMissionPage);
+  router.route("/adventure/discovery/:id", adventureDiscoveryPage);
 
   router.setNotFound(
     (path) => `<div class="page">
@@ -141,6 +144,7 @@ async function boot() {
   window.addEventListener("resize", syncHeaderHeight);
 
   registerPages();
+  bindSpeechLifecycle();
   router.start(document.getElementById("app"), { afterRender });
 }
 

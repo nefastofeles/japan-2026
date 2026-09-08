@@ -5,9 +5,10 @@
     "title": "Japan is already here",
     "type": "find",
     "xp": 20,
-    "intro": "The artefact woke up at the gate. It says Japan is not waiting at the other end of the flight. It is already in this building.",
-    "task": "Before you board, find one thing that came from Japan. A word, a snack, a suitcase tag, a comic, a bowl. Do not ask a stranger. Just look. Write what you found.",
-    "reveal": "Airports leak other countries. The first missing page is this: Japan does not start when the wheels go down. Stories travel ahead of people. You just caught one.",
+    "intro": "Japan is already in this building.",
+    "task": "Find one thing from Japan. A word, a snack, a tag.",
+    "hint": "Try a snack shelf, or a suitcase.",
+    "reveal": "Stories travel ahead of people. You just caught one.",
     "codexUnlock": "artefact",
     "badgeUnlock": "first-discovery"
   },
@@ -17,9 +18,10 @@
     "title": "Four witnesses",
     "type": "photo",
     "xp": 15,
-    "intro": "The chronicle will not keep a story with no faces.",
-    "task": "Take one photograph of the four of you together, still in Copenhagen, still on this side of the world.",
-    "reveal": "That picture is page one. Everything after this is a continuation.",
+    "intro": "The chronicle needs faces, not only places.",
+    "task": "Take one photo of the four of you. Still in Copenhagen.",
+    "hint": "Ask someone nearby, or use the front camera.",
+    "reveal": "That picture is page one. Everything after this continues from it.",
     "requiresMission": ["prologue-already-here"]
   },
   {
@@ -28,10 +30,11 @@
     "title": "The sun that does not set",
     "type": "solve",
     "xp": 25,
-    "intro": "The artefact shows a red circle on white and asks a rude question.",
-    "task": "The Japanese flag is not a sunset. What is the circle, and why would a whole country put it on a flag?",
+    "intro": "The flag is a red circle on white.",
+    "task": "What is the circle? Why is it on the flag?",
+    "hint": "Think of morning, not evening.",
     "accepted": ["sun", "hinomaru", "nippon", "nihon", "origin"],
-    "reveal": "It is the sun. Japan’s own name, Nihon / Nippon, means origin of the sun. The flag is a claim about where the light comes from, not where it goes.",
+    "reveal": "It is the sun. Nihon means origin of the sun.",
     "codexUnlock": "hinomaru",
     "requiresMission": ["prologue-witnesses"]
   },
@@ -41,9 +44,10 @@
     "title": "The city under the city",
     "type": "find",
     "xp": 25,
-    "intro": "Tokyo has another city underneath it. Most visitors never go in on purpose.",
-    "task": "Find an entrance that goes down into shops, not only onto a train. Walk until you cannot see the sky. Write the name of the place.",
-    "reveal": "Under the stations are depachika: department-store basements that feed a megacity. Edo sat on wetlands. Tokyo did not spread. It stacked. You are in a floor that used to be swamp.",
+    "intro": "Tokyo has another city underneath it.",
+    "task": "Find a way down into shops, not only onto a train. Write the name.",
+    "hint": "Start at a big station. Follow the food signs down.",
+    "reveal": "These basements are depachika. Tokyo stacked itself. The sky is optional.",
     "codexUnlock": "depachika",
     "location": {
       "lat": 35.6896,
@@ -59,9 +63,10 @@
     "title": "A machine that is not thirsty",
     "type": "photo",
     "xp": 20,
-    "intro": "Tokyo has more vending machines than any other city. Most sell drinks. Some do not.",
-    "task": "Photograph a vending machine that sells something you cannot drink. Eggs, umbrellas, manga, hot food — anything odd.",
-    "reveal": "The machines are what happens when a city stays open after the people who staff it go home. The Codex files this under Strange Japan.",
+    "intro": "Most vending machines sell drinks. Some do not.",
+    "task": "Photograph a machine that sells something you cannot drink.",
+    "hint": "Eggs, umbrellas, comics, hot food.",
+    "reveal": "The city stays open after the staff go home. The machines keep working.",
     "codexUnlock": "weird-vending"
   },
   {
@@ -70,12 +75,13 @@
     "title": "The shop that is not convenient",
     "type": "food",
     "xp": 25,
-    "intro": "A Japanese convenience store is a tiny department store that also cooks.",
-    "task": "Each of you pick one thing you have never eaten. Write the four things. Eat them before you walk on.",
-    "reveal": "Konbini feed night workers, students and lost families at 1am. This is not a snack stop. It is infrastructure.",
+    "intro": "A konbini is a tiny kitchen that never sleeps.",
+    "task": "Each of you pick one new thing. Write the four things. Then eat.",
+    "hint": "Look for rice triangles, egg sandwiches, hot snacks.",
+    "reveal": "This is how a megacity eats at odd hours. Not a snack stop. A system.",
     "codexUnlock": "onigiri",
     "badgeUnlock": "food-explorer",
-    "realWorldReward": "Kids choose the next konbini dessert."
+    "realWorldReward": "Kids choose the next dessert."
   },
   {
     "id": "tokyo-beckoning",
@@ -83,9 +89,10 @@
     "title": "The cat that is not waving hello",
     "type": "observe",
     "xp": 20,
-    "intro": "You will see a cat with one paw up. It is not saying goodbye.",
-    "task": "Find a maneki-neko in a shop, restaurant or station. Which paw is up? Left, right, or both?",
-    "reveal": "The raised paw is an invitation. One story says a cat saved a lord from lightning by calling him through a gate. Another says it is calling money. Either way, it is asking you in.",
+    "intro": "You will see a cat with one paw up.",
+    "task": "Find a maneki-neko. Which paw is up? Left, right, or both?",
+    "hint": "Shop doors, restaurants, station kiosks.",
+    "reveal": "The raised paw is an invitation. It is asking you in, not waving goodbye.",
     "codexUnlock": "maneki-neko"
   },
   {
@@ -97,10 +104,11 @@
     "difficulty": "special",
     "anchorEvent": true,
     "xp": 40,
-    "intro": "The tallest tower on Earth is also a pun.",
-    "task": "How tall is Tokyo Skytree in metres, and why that exact number? Look on tickets, signs or the lift.",
+    "intro": "The tallest tower is also a pun.",
+    "task": "How tall is Tokyo Skytree, in metres? Why that number?",
+    "hint": "Look on tickets, signs, or the lift.",
     "accepted": ["634", "musashi", "mu sa shi"],
-    "reveal": "634 metres. In old counting, 6-3-4 can be read mu-sa-shi: Musashi, the old name of this province. The tower is a lightning rod that also says you are standing in Musashi.",
+    "reveal": "634 metres. In old counting, 6-3-4 can be read Musashi, the old name of this place.",
     "codexUnlock": "skytree-pun",
     "badgeUnlock": "sky-reader",
     "location": {
@@ -120,9 +128,10 @@
     "difficulty": "special",
     "anchorEvent": true,
     "xp": 30,
-    "intro": "After teamLab, before you sleep. The artefact wants a sentence, not a rating.",
-    "task": "What made something in there feel like art — not just lights? One sentence the family can stand behind.",
-    "reveal": "Keep that sentence. Kyoto will ask if it still holds. Osaka will ask you to compare all three.",
+    "intro": "After teamLab, before you sleep.",
+    "task": "What made something feel like art, not just lights? One sentence.",
+    "hint": "Pick one room. Say why it stayed with you.",
+    "reveal": "Keep that sentence. Kyoto will ask if it still holds.",
     "callbackKey": "teamlab-art"
   },
   {
@@ -131,9 +140,10 @@
     "title": "The messengers",
     "type": "find",
     "xp": 30,
-    "intro": "Inari’s messengers are not cute dogs. Look at the ears.",
-    "task": "At Fushimi Inari, find a fox statue holding something in its mouth. What is it holding?",
-    "reveal": "Kitsune. Fox spirits. The key, jewel or rice bale is a gift from Inari, kami of rice and success. Farmers once left the first harvest for the foxes. You just met the postal service of the gods.",
+    "intro": "Inari’s messengers are not dogs. Look at the ears.",
+    "task": "Find a fox statue holding something. What is in its mouth?",
+    "hint": "Look at the statues by the gates, not only on the mountain.",
+    "reveal": "Kitsune. Fox spirits. The key, jewel or rice is a gift from Inari.",
     "codexUnlock": "kitsune",
     "badgeUnlock": "yokai-hunter",
     "location": {
@@ -150,9 +160,33 @@
     "title": "Who paid for a thousand gates?",
     "type": "story",
     "xp": 25,
-    "intro": "The mountain is striped orange because of people, not emperors.",
-    "task": "Walk through the torii until they become a tunnel. Then guess: did a government build these, or did families? Write your guess.",
-    "reveal": "Families. Companies. Ordinary people. Each torii is a donated prayer with a name on the side. The mountain is a ledger of hope, not a royal monument.",
+    "intro": "The mountain is striped orange because of people.",
+    "task": "Write who you think paid for the gates.",
+    "hint": "Read a name on the side of a gate.",
+    "storySteps": [
+      {
+        "text": "Walk until the gates become a tunnel."
+      },
+      {
+        "text": "Stop at one gate. There is a name on the wood."
+      },
+      {
+        "text": "Who paid for these gates?",
+        "choices": [
+          {
+            "id": "government",
+            "label": "The government",
+            "response": "Not this mountain. The names are private."
+          },
+          {
+            "id": "people",
+            "label": "Families and companies",
+            "response": "Yes. Each gate is a donated prayer."
+          }
+        ]
+      }
+    ],
+    "reveal": "Ordinary people paid. The mountain is a ledger of hope, not a royal monument.",
     "codexUnlock": "torii",
     "badgeUnlock": "shrine-spotter",
     "requiresMission": ["kyoto-fox"]
@@ -164,8 +198,9 @@
     "type": "food",
     "xp": 20,
     "intro": "Matcha was monk fuel before it was ice cream.",
-    "task": "Drink or eat something with real matcha. Write whether it was bitter, sweet, or both — and who liked it.",
-    "reveal": "Zen monks used matcha to stay awake. The sweet exists because the tea is severe. Kyoto still serves both on the same tray so you remember the work.",
+    "task": "Eat or drink real matcha. Was it bitter, sweet, or both?",
+    "hint": "Tea, sweets, or ice cream. Say who liked it.",
+    "reveal": "The sweet exists because the tea is severe. Kyoto still serves both.",
     "codexUnlock": "matcha"
   },
   {
@@ -177,9 +212,10 @@
     "difficulty": "special",
     "anchorEvent": true,
     "xp": 25,
-    "intro": "You already answered this in Tokyo. The artefact reads it back.",
-    "task": "Has your answer to “what made something feel like art?” changed? Write the new sentence, or write “same” and why.",
-    "reveal": "Two rooms, two nights. The chronicle keeps both sentences. Osaka will make you pick a third.",
+    "intro": "You answered this in Tokyo. The artefact reads it back.",
+    "task": "Has “what felt like art?” changed? Write a new sentence, or write “same”.",
+    "hint": "You do not have to be clever. True is enough.",
+    "reveal": "Two rooms. Two nights. The chronicle keeps both sentences.",
     "callbackKey": "teamlab-art-kyoto",
     "callbackFrom": "tokyo-teamlab"
   },
@@ -190,8 +226,9 @@
     "type": "reflection",
     "sensitive": true,
     "xp": 0,
-    "intro": "This chapter is not a game. The artefact goes quiet here on purpose.",
-    "task": "After Peace Memorial Park, sit down. Each person says one thing they want remembered. Write one sentence the family agrees on.",
-    "reveal": "Hiroshima was a city of people. On 6 August 1945 it was destroyed by an atomic bomb. The park, the dome and the museum exist so the next sentence is harder to forget. Your sentence is now in the chronicle."
+    "intro": "This is not a game. Sit with what you saw.",
+    "task": "Each person says one thing to remember. Write one sentence you agree on.",
+    "hint": "Short is fine. True is better than complete.",
+    "reveal": "Hiroshima was a city of people. Your sentence is now in the chronicle."
   }
 ]

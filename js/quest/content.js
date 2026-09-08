@@ -15,14 +15,15 @@ async function readJson(path) {
 
 export async function loadQuest() {
   if (cache) return cache;
-  const [chapters, missions, codex, badges, story] = await Promise.all([
+  const [chapters, missions, codex, badges, story, discoveries] = await Promise.all([
     readJson("data/quest/chapters.json"),
     readJson("data/quest/missions.json"),
     readJson("data/quest/codex.json"),
     readJson("data/quest/badges.json"),
     readJson("data/quest/story.json"),
+    readJson("data/quest/discoveries.json"),
   ]);
-  cache = { chapters, missions, codex, badges, story };
+  cache = { chapters, missions, codex, badges, story, discoveries };
   return cache;
 }
 
@@ -44,4 +45,14 @@ export function codexById(quest, id) {
 
 export function badgeById(quest, id) {
   return quest.badges.find((badge) => badge.id === id) || null;
+}
+
+export function discoveryById(quest, id) {
+  return (quest.discoveries || []).find((item) => item.id === id) || null;
+}
+
+export function discoveryForCodex(quest, codexId) {
+  return (quest.discoveries || []).find(
+    (item) => item.codexId === codexId || item.id === codexId
+  ) || null;
 }

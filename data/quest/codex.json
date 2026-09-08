@@ -88,5 +88,23 @@
     "rarity": "common",
     "chapterId": "kyoto",
     "description": "Powdered green tea. Monks used it to stay awake. The sweet on the tray exists because the tea is severe."
+  },
+  {
+    "id": "ekiben",
+    "name": "Ekiben",
+    "japaneseName": "駅弁",
+    "category": "Food",
+    "rarity": "common",
+    "chapterId": "shinjuku",
+    "description": "A packed train lunch. The box is the point: a meal that can leave with you."
+  },
+  {
+    "id": "temizu",
+    "name": "Temizu",
+    "japaneseName": "手水",
+    "category": "Places",
+    "rarity": "common",
+    "chapterId": "kyoto",
+    "description": "A water basin by the shrine path. Hands and mouth are rinsed before you step closer."
   }
 ]

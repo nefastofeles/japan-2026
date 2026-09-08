@@ -1,45 +1,79 @@
 /* ==========================================================================
-   Quest Game — adventure layer on the family journal
+   Quest Game — page chrome
    --------------------------------------------------------------------------
-   Same paper and ink. A little more night-sky on the cards so the
-   chronicle feels found, not cartoon.
+   Atkinson Hyperlegible is the site font. Quest copy is extra large and
+   extra short because Saga is 12 and dyslexic: chunked screens, no
+   justified text, no italics, no sentence-length capitals.
    ========================================================================== */
 
-.quest-page { padding-bottom: var(--sp-8); }
+.quest-page {
+  padding-bottom: var(--sp-8);
+  max-width: 36rem;
+  font-size: 1.125rem; /* 18px floor */
+  line-height: 1.6;
+  text-align: left;
+}
+
+.quest-page em,
+.quest-page i,
+.quest-page cite {
+  font-style: normal;
+  font-weight: 700;
+}
+
+.quest-page .muted,
+.quest-page .small {
+  color: var(--ink-soft);
+  font-size: 1.125rem;
+}
+
+.quest-prose {
+  font-size: 1.25rem; /* 20px */
+  line-height: 1.65;
+  max-width: 32rem;
+  text-align: left;
+  font-style: normal;
+}
+
+.quest-prose p { margin: 0 0 0.9em; }
+.quest-prose p:last-child { margin-bottom: 0; }
 
 .quest-kicker {
-  font-size: var(--size-sm);
+  font-size: 1.125rem;
   font-weight: 700;
-  letter-spacing: var(--tracking-head);
-  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  text-transform: none;
   color: var(--leg-deep);
   margin: 0 0 var(--sp-2);
 }
 
-.quest-head h1 { margin-bottom: var(--sp-2); }
+.quest-head h1 {
+  margin-bottom: var(--sp-2);
+  font-size: var(--size-xl);
+  line-height: 1.3;
+  max-width: 18ch;
+}
 
 .quest-tabs {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
   gap: var(--sp-2);
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  padding: var(--sp-2) 0 var(--sp-4);
-  margin: 0 calc(var(--sp-2) * -1);
+  padding: var(--sp-2) 0 var(--sp-5);
 }
 
 .quest-tabs a {
-  flex: 0 0 auto;
-  min-height: var(--tap);
+  min-height: 3.25rem;
   display: inline-flex;
   align-items: center;
-  padding: 0 var(--sp-4);
+  justify-content: center;
+  padding: 0 var(--sp-3);
   border-radius: 999px;
   border: 1px solid var(--rule);
   background: var(--paper-raised);
   color: var(--ink);
   text-decoration: none;
   font-weight: 700;
-  font-size: var(--size-base);
+  font-size: 1.125rem;
 }
 
 .quest-tabs a[aria-current="page"] {
@@ -47,6 +81,17 @@
   border-color: var(--leg-deep);
   color: var(--paper-raised);
 }
+
+.quest-type {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--leg-deep);
+}
+
+.quest-type__icon { font-size: 1.25rem; }
 
 .quest-hero {
   padding: var(--sp-5);
@@ -57,21 +102,33 @@
   box-shadow: var(--shadow);
 }
 
-.quest-hero h2 { margin: 0 0 var(--sp-2); }
+.quest-hero h2 { margin: 0 0 var(--sp-3); font-size: var(--size-lg); }
+.quest-hero .quest-prose { margin-bottom: var(--sp-2); }
 
-.quest-cta {
+.quest-cta,
+.quest-page .btn {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: var(--tap);
+  min-height: 3.25rem;
   margin-top: var(--sp-4);
   padding: var(--sp-3) var(--sp-5);
   border-radius: var(--radius);
   background: var(--leg-deep);
+  border: 1px solid var(--leg-deep);
   color: var(--paper-raised);
   font-weight: 700;
-  font-size: var(--size-lg);
+  font-size: 1.125rem;
   text-decoration: none;
+  width: 100%;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.quest-page .btn--ghost {
+  background: var(--paper-raised);
+  color: var(--ink);
+  border-color: var(--rule);
 }
 
 .quest-stats {
@@ -93,9 +150,10 @@
   font-variant-numeric: tabular-nums;
 }
 
-.quest-mission {
+.quest-mission,
+.quest-find {
   display: block;
-  padding: var(--sp-4);
+  padding: var(--sp-5);
   border: 1px solid var(--rule);
   border-radius: var(--radius);
   background: var(--paper-raised);
@@ -104,84 +162,28 @@
 }
 
 .quest-mission[data-tone="memory"] {
-  border-color: #c5cdd8;
-  background: #f4f6f8;
+  border-color: #9aa6b5;
+  background: #f3f5f7;
+  box-shadow: none;
 }
 
-.quest-mission__type {
-  font-size: var(--size-sm);
-  font-weight: 700;
-  color: var(--leg-deep);
+.quest-mission h3,
+.quest-find h3 {
+  margin: var(--sp-2) 0 0;
+  font-size: 1.25rem;
+  line-height: 1.35;
 }
 
 .quest-pill {
   display: inline-block;
-  margin-top: var(--sp-2);
-  font-size: var(--size-sm);
+  margin-top: var(--sp-3);
+  font-size: 1.125rem;
   font-weight: 700;
-  color: var(--ink-muted);
+  color: var(--ink-soft);
 }
 
-.quest-stage textarea.field {
-  min-height: 6rem;
-  padding: var(--sp-3);
-}
-
-.quest-who {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--sp-2);
-  min-height: var(--tap);
-  margin-right: var(--sp-3);
-  font-weight: 700;
-}
-
-.quest-codex {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--sp-3);
-}
-
-.quest-entry {
-  min-height: 8rem;
-  padding: var(--sp-4);
-  border-radius: var(--radius);
-  border: 1px solid var(--rule);
-  background: var(--paper-raised);
-}
-
-.quest-entry--locked {
-  background: #1a1a1a;
-  color: #6b6660;
-  border-color: #1a1a1a;
-}
-
-.quest-entry--locked h3 {
-  color: transparent;
-  text-shadow: 0 0 8px #6b6660;
-}
-
-.quest-badge {
-  padding: var(--sp-4);
-  border: 1px solid var(--rule);
-  border-radius: var(--radius);
-  background: var(--paper-raised);
-}
-
-.quest-badge--locked { opacity: 0.55; }
-
-.quest-fragment {
-  padding: var(--sp-5);
-  border-left: 4px solid var(--leg);
-  background: var(--paper-raised);
-  border-radius: 0 var(--radius) var(--radius) 0;
-}
-
-.quest-fragment--locked {
-  color: var(--ink-muted);
-  border-left-color: var(--rule);
-}
+.quest-section { margin-top: var(--sp-6); }
 
 @media (max-width: 40rem) {
-  .quest-stats { grid-template-columns: 1fr 1fr; }
+  .quest-head h1 { font-size: 1.5rem; }
 }

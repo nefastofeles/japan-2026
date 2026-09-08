@@ -1,8 +1,9 @@
 /**
  * Family quest progress, on this phone.
  *
- * One family, one private URL. Supabase is not wired yet, so localStorage
- * is enough. Photos live in IndexedDB because they do not fit in JSON.
+ * Shared sync lives in sync.js. Until that backend exists, localStorage
+ * is the whole game. Photos stay in IndexedDB because they do not fit
+ * in JSON.
  */
 
 const KEY = "japan-2026-quest";
@@ -18,6 +19,12 @@ function emptyState() {
   };
 }
 
+function asIdList(value) {
+  if (Array.isArray(value)) return value.filter(Boolean);
+  if (value && typeof value === "object") return Object.keys(value);
+  return [];
+}
+
 export function loadState() {
   try {
     const parsed = JSON.parse(localStorage.getItem(KEY));
@@ -26,8 +33,8 @@ export function loadState() {
       ...emptyState(),
       ...parsed,
       completed: parsed.completed || {},
-      discovered: parsed.discovered || [],
-      badges: parsed.badges || [],
+      discovered: asIdList(parsed.discovered),
+      badges: asIdList(parsed.badges),
       answers: parsed.answers || {},
       memories: parsed.memories || [],
     };

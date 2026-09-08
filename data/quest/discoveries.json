@@ -1,0 +1,24 @@
+[
+  {
+    "id": "ekiben",
+    "codexId": "ekiben",
+    "chapterId": "shinjuku",
+    "findable": true,
+    "xp": 15,
+    "name": "Ekiben",
+    "hook": "Trains here sell lunch in a box.",
+    "hint": "Look on a platform, or in a station hall.",
+    "reveal": "Ekiben is a meal packed for a journey. The box is the point: food that can leave with you."
+  },
+  {
+    "id": "temizu",
+    "codexId": "temizu",
+    "chapterId": "kyoto",
+    "findable": true,
+    "xp": 15,
+    "name": "Temizu",
+    "hook": "Before the shrine, there is water.",
+    "hint": "Look near the gate, to the side of the path.",
+    "reveal": "Temizu is a rinse of hands and mouth. You clean yourself before you step closer."
+  }
+]
