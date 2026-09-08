@@ -1,0 +1,9 @@
+# Keep this family journal out of search engines.
+User-agent: *
+Disallow: /
+
+User-agent: Googlebot
+Disallow: /
+
+User-agent: Bingbot
+Disallow: /

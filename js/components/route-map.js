@@ -1,25 +1,21 @@
 /* ==========================================================================
    Illustrated Japan map
    --------------------------------------------------------------------------
-   A recognisable four-island silhouette. Each stop is a numbered stage,
-   not a street pin. Wikipedia sits next to each name in the list below.
+   A recognisable island silhouette on washi, with a vermilion thread for
+   the trip. Each stop is a numbered stage. Wikipedia sits in the list
+   below, not on the drawing.
    ========================================================================== */
 
 import { getTravelDays, getLeg, allMedia } from "../store.js";
 import { esc } from "../util.js";
 import { MAP_CITIES, MAP_ROUTE } from "../places.js";
-import {
-  JAPAN_FRAME as FRAME, HOKKAIDO, HONSHU, SHIKOKU, KYUSHU,
-} from "./japan-outline.js";
+import { LAND_RINGS, FUJI, MAP_VIEWBOX, project } from "./japan-outline.js";
 
-function project(lat, lng) {
-  const x = ((lng - FRAME.west) / (FRAME.east - FRAME.west)) * FRAME.w;
-  const y = ((FRAME.north - lat) / (FRAME.north - FRAME.south)) * FRAME.h;
-  return [Math.round(x * 10) / 10, Math.round(y * 10) / 10];
-}
+const MAP_W = 640;
+const MAP_H = 760;
 
 function cityPoint(city) {
-  const [x, y] = project(city.lat, city.lng);
+  const [x, y] = project(city.lng, city.lat);
   return [x + (city.nudgeX || 0), y + (city.nudgeY || 0)];
 }
 
@@ -41,27 +37,31 @@ function firstDayHref(city) {
 }
 
 function ringPath(ring) {
-  return ring.map(([lat, lng], i) => {
-    const [x, y] = project(lat, lng);
-    return `${i === 0 ? "M" : "L"} ${x} ${y}`;
-  }).join(" ") + " Z";
+  return ring.map(([x, y], i) => `${i === 0 ? "M" : "L"} ${x} ${y}`).join(" ") + " Z";
 }
 
 function routePath() {
   return MAP_ROUTE.map((id, i) => {
-    const city = cityById(id);
-    const [x, y] = cityPoint(city);
+    const [x, y] = cityPoint(cityById(id));
     return `${i === 0 ? "M" : "L"} ${x} ${y}`;
   }).join(" ");
+}
+
+function fujiMark() {
+  const [x, y] = FUJI;
+  return `
+    <g class="japan-map__fuji" aria-hidden="true">
+      <path d="M ${x - 12} ${y + 5} L ${x} ${y - 16} L ${x + 12} ${y + 5} Z" />
+    </g>`;
 }
 
 function photoDots(media) {
   return (media || [])
     .filter((photo) => photo.lat && photo.lng)
     .map((photo) => {
-      const [x, y] = project(photo.lat, photo.lng);
-      if (x < 0 || y < 0 || x > FRAME.w || y > FRAME.h) return "";
-      return `<circle class="japan-map__photo" cx="${x}" cy="${y}" r="3.5" />`;
+      const [x, y] = project(photo.lng, photo.lat);
+      if (x < 0 || y < 0 || x > MAP_W || y > MAP_H) return "";
+      return `<circle class="japan-map__photo" cx="${x}" cy="${y}" r="3" />`;
     })
     .join("");
 }
@@ -71,15 +71,14 @@ function cityMarks() {
     const [x, y] = cityPoint(city);
     const href = firstDayHref(city);
     const colour = getLeg(city.leg).colour;
-    const stage = city.stage;
     return `
       <a href="${esc(href)}" data-leg="${esc(city.leg)}">
-        <circle class="japan-map__halo" cx="${x}" cy="${y}" r="16"
+        <circle class="japan-map__halo" cx="${x}" cy="${y}" r="11"
                 fill="${esc(colour)}" />
-        <circle class="japan-map__dot" cx="${x}" cy="${y}" r="12"
+        <circle class="japan-map__dot" cx="${x}" cy="${y}" r="7.5"
                 fill="${esc(colour)}" />
-        <text class="japan-map__num" x="${x}" y="${y + 5}"
-              text-anchor="middle">${stage}</text>
+        <text class="japan-map__num" x="${x}" y="${y + 4}"
+              text-anchor="middle">${city.stage}</text>
       </a>`;
   }).join("");
 }
@@ -123,13 +122,11 @@ export async function mountRouteMap(element, { photos = false } = {}) {
   element.classList.add("japan-map");
   element.innerHTML = `
     <div class="japan-map__art" role="img"
-         aria-label="Numbered stages on a map of Japan">
-      <svg viewBox="0 0 ${FRAME.w} ${FRAME.h}" xmlns="http://www.w3.org/2000/svg">
-        <rect class="japan-map__sea" width="${FRAME.w}" height="${FRAME.h}" />
-        <path class="japan-map__land" d="${ringPath(HOKKAIDO)}" />
-        <path class="japan-map__land" d="${ringPath(HONSHU)}" />
-        <path class="japan-map__land" d="${ringPath(SHIKOKU)}" />
-        <path class="japan-map__land" d="${ringPath(KYUSHU)}" />
+         aria-label="Japan, with numbered stages of the family trip">
+      <svg viewBox="${MAP_VIEWBOX}" xmlns="http://www.w3.org/2000/svg">
+        <rect class="japan-map__sea" width="${MAP_W}" height="${MAP_H}" />
+        ${LAND_RINGS.map((ring) => `<path class="japan-map__land" d="${ringPath(ring)}" />`).join("")}
+        ${fujiMark()}
         <path class="japan-map__route" d="${routePath()}" />
         ${photoDots(media)}
         ${cityMarks()}

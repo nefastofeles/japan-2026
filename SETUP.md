@@ -1,8 +1,26 @@
 # Setup
 
 Three services, in this order. Each one is a few minutes. Until they are done
-the site runs in plan mode, which is genuinely useful on its own, so there is
-no rush and nothing breaks if you stop halfway.
+the site still shows the plan (and any dress-rehearsal memories), but the
+journal is locked. Nothing is visible until someone signs in.
+
+### The gate login
+
+One username and password. Send it round the family. The same login opens
+Admin, where photos, story text and videos are added.
+
+| Username | Password |
+|---|---|
+| `1edgXWXFJALPwSD4` | `W4oZcabh6s1LBOjp` |
+
+To change them, hash each value and put the hex in `js/config.js`:
+
+```bash
+python3 -c "import hashlib; print(hashlib.sha256(b'YOUR-VALUE').hexdigest())"
+```
+
+The GitHub repo should be **private**. A login on the website does not hide
+files that are public on GitHub.
 
 ---
 
@@ -68,8 +86,7 @@ If you later change `data/itinerary.json`, regenerate the last one:
 python3 tools/generate-seed.py
 ```
 
-and run it again. It is an upsert, so re-running never destroys photos or
-comments.
+and run it again. It is an upsert, so re-running never destroys photos.
 
 ### Create the two accounts
 
@@ -78,7 +95,7 @@ comments.
 | Account | Purpose |
 |---|---|
 | your own email | admin. Uploads and writes. |
-| something like `family@…` | the shared viewer login. Reads, comments, reacts. |
+| something like `family@…` | the shared viewer login. Reads. |
 
 Then make yourself the admin. In the SQL editor:
 
@@ -88,7 +105,7 @@ select id, 'Javier' from auth.users where email = 'YOUR-EMAIL-HERE';
 ```
 
 Only accounts in `app_admins` can write anything. The viewer account can read
-everything and leave comments, and nothing else.
+everything, and nothing else.
 
 ### Make sessions last
 
@@ -116,11 +133,11 @@ Commit, push, and the site is live with photos switched on.
 
 ## Checking it worked
 
-- Open `#/admin`, sign in with the admin account, and the posting forms appear
-- Sign in with the family account instead and you should be told, politely,
-  that posting needs the admin login
-- Upload one photo to any day and confirm it shows up on that day's page
-- Sign out entirely and confirm you see nothing
+- Open the site signed out and confirm you only see the sign-in screen
+- Sign in with the gate username and password
+- Open **Admin**, add a photo, a short story and a YouTube link, then open
+  that day and confirm they appear
+- Sign out entirely and confirm you see nothing again
 
 That last one is the important test.
 

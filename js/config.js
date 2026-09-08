@@ -3,9 +3,8 @@
    --------------------------------------------------------------------------
    Fill in the two Supabase values once the project exists. See SETUP.md.
 
-   Until then the site runs in "plan mode": every day page renders from
-   data/itinerary.json, with no login and no photos. That is deliberate, so
-   the site is useful and shareable before any backend is set up.
+   Until then the site still runs from data/itinerary.json, but the journal
+   stays behind the gate login. See SETUP.md.
 
    The anon key is safe to commit. It is designed to be public and every table
    is protected by row level security. NEVER put the service_role key here.
@@ -23,6 +22,14 @@ export function isConfigured() {
    before anyone has posted. They vanish on their own once Supabase is
    filled in. Set this to false if you want plan mode back sooner. */
 export const USE_MOCK_MEMORIES = true;
+
+/* SHA-256 of the gate username and password. Generate a new pair with:
+     python3 -c "import hashlib; print(hashlib.sha256(b'YOUR-VALUE').hexdigest())"
+   Do not put the password itself in this file. */
+export const GATE_USER_SHA256 =
+  "7e00584b3ba41733c2a09ed3fc6d51aeaee2eb190f579488e56b88bdf2bc34e8";
+export const GATE_PASSWORD_SHA256 =
+  "873479ed6b03a9df412689d1488bc5844b35b1544d9eb2a2a4d66304c515084f";
 
 export const TRIP = {
   title: "Japan Family Trip 2026",

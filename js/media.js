@@ -15,99 +15,149 @@ import { IMAGE } from "./config.js";
 import { getClient } from "./supabase.js";
 
 /* ------------------------------------------------------------ EXIF reader */
-/* Just enough of the spec to pull out when a photo was taken and where.
-   No dependency, about a hundred lines. GPS is what pins photos on the map;
-   note the Pocket 3 has no GPS, so its clips fall back to the day's city. */
+/* iPhone photos (JPEG and HEIC) put GPS in an Exif TIFF block, sometimes
+   after XMP, sometimes inside the HEIC container. Walking JPEG APP1 markers
+   misses that, so we search for the Exif header anywhere in the first megabyte. */
+
+function findExifTiff(buffer) {
+  const bytes = new Uint8Array(buffer);
+  for (let i = 0; i <= bytes.length - 8; i += 1) {
+    if (
+      bytes[i] === 0x45 &&
+      bytes[i + 1] === 0x78 &&
+      bytes[i + 2] === 0x69 &&
+      bytes[i + 3] === 0x66 &&
+      bytes[i + 4] === 0x00 &&
+      bytes[i + 5] === 0x00
+    ) {
+      return i + 6;
+    }
+  }
+  return -1;
+}
+
+function readTiffGps(view, tiff) {
+  const little = view.getUint16(tiff) === 0x4949;
+  const u16 = (p) => view.getUint16(p, little);
+  const u32 = (p) => view.getUint32(p, little);
+
+  const entries = (ifd) => {
+    if (ifd < 0 || ifd + 2 > view.byteLength) return {};
+    const found = {};
+    const count = u16(ifd);
+    for (let i = 0; i < count; i += 1) {
+      const entry = ifd + 2 + i * 12;
+      if (entry + 12 > view.byteLength) break;
+      found[u16(entry)] = {
+        type: u16(entry + 2),
+        count: u32(entry + 4),
+        value: entry + 8,
+      };
+    }
+    return found;
+  };
+
+  const ascii = (tag) => {
+    if (!tag) return null;
+    const start = tag.count > 4 ? tiff + u32(tag.value) : tag.value;
+    let out = "";
+    for (let i = 0; i < tag.count - 1 && start + i < view.byteLength; i += 1) {
+      const code = view.getUint8(start + i);
+      if (!code) break;
+      out += String.fromCharCode(code);
+    }
+    return out;
+  };
+
+  const gpsRef = (tag) => {
+    if (!tag) return "";
+    const start = tag.count > 4 ? tiff + u32(tag.value) : tag.value;
+    if (start >= view.byteLength) return "";
+    return String.fromCharCode(view.getUint8(start));
+  };
+
+  const rationals = (tag) => {
+    if (!tag) return null;
+    const start = tiff + u32(tag.value);
+    const out = [];
+    for (let i = 0; i < tag.count; i += 1) {
+      const at = start + i * 8;
+      if (at + 8 > view.byteLength) break;
+      const num = u32(at);
+      const den = u32(at + 4);
+      out.push(den ? num / den : 0);
+    }
+    return out;
+  };
+
+  const ifd0 = entries(tiff + u32(tiff + 4));
+  const result = {};
+
+  if (ifd0[0x8769]) {
+    const exif = entries(tiff + u32(ifd0[0x8769].value));
+    const taken = ascii(exif[0x9003]) || ascii(exif[0x9004]);
+    if (taken) {
+      // EXIF writes "2026:09:18 14:23:05". Keep it as local wall-clock time.
+      const [date, clock] = taken.split(" ");
+      if (date && clock) result.takenAt = `${date.replace(/:/g, "-")}T${clock}`;
+    }
+  }
+
+  if (ifd0[0x8825]) {
+    const gps = entries(tiff + u32(ifd0[0x8825].value));
+    const lat = rationals(gps[0x0002]);
+    const lng = rationals(gps[0x0004]);
+    const latRef = gpsRef(gps[0x0001]) || ascii(gps[0x0001]) || "N";
+    const lngRef = gpsRef(gps[0x0003]) || ascii(gps[0x0003]) || "E";
+    const toDegrees = (parts) =>
+      parts && parts.length ? parts[0] + (parts[1] || 0) / 60 + (parts[2] || 0) / 3600 : null;
+    if (lat && lng) {
+      result.lat = toDegrees(lat) * (latRef === "S" ? -1 : 1);
+      result.lng = toDegrees(lng) * (lngRef === "W" ? -1 : 1);
+    }
+  }
+
+  return result;
+}
+
+function gpsFromXmp(buffer) {
+  const text = new TextDecoder("utf-8", { fatal: false }).decode(buffer);
+  const parse = (raw) => {
+    if (!raw) return null;
+    const compact = raw.trim();
+    const decimal = Number(compact);
+    if (Number.isFinite(decimal) && Math.abs(decimal) <= 180) return decimal;
+    const match = compact.match(/^(\d+(?:\.\d+)?)\s*,\s*(\d+(?:\.\d+)?)(?:\s*,\s*(\d+(?:\.\d+)?))?\s*([NSEW])?$/i);
+    if (!match) return null;
+    const deg = Number(match[1]) + Number(match[2]) / 60 + Number(match[3] || 0) / 3600;
+    const ref = (match[4] || "").toUpperCase();
+    return deg * (ref === "S" || ref === "W" ? -1 : 1);
+  };
+  const lat = parse((text.match(/GPSLatitude(?:>|=")([^<"]+)/i) || [])[1]);
+  const lng = parse((text.match(/GPSLongitude(?:>|=")([^<"]+)/i) || [])[1]);
+  if (lat == null || lng == null) return {};
+  return { lat, lng };
+}
 
 function readExif(buffer) {
   const view = new DataView(buffer);
-  if (view.getUint16(0) !== 0xffd8) return {}; // not a JPEG
-
-  let offset = 2;
-  while (offset < view.byteLength - 4) {
-    if (view.getUint16(offset) !== 0xffe1) {
-      const size = view.getUint16(offset + 2);
-      offset += 2 + size;
-      continue;
-    }
-    const tiff = offset + 10;
-    if (view.getUint32(offset + 4) !== 0x45786966) return {};
-
-    const little = view.getUint16(tiff) === 0x4949;
-    const u16 = (p) => view.getUint16(p, little);
-    const u32 = (p) => view.getUint32(p, little);
-
-    const entries = (ifd) => {
-      const found = {};
-      const count = u16(ifd);
-      for (let i = 0; i < count; i += 1) {
-        const entry = ifd + 2 + i * 12;
-        found[u16(entry)] = { type: u16(entry + 2), count: u32(entry + 4), value: entry + 8 };
-      }
-      return found;
-    };
-
-    const ascii = (tag) => {
-      if (!tag) return null;
-      const start = tag.count > 4 ? tiff + u32(tag.value) : tag.value;
-      let out = "";
-      for (let i = 0; i < tag.count - 1; i += 1) {
-        out += String.fromCharCode(view.getUint8(start + i));
-      }
-      return out;
-    };
-
-    const rationals = (tag) => {
-      if (!tag) return null;
-      const start = tiff + u32(tag.value);
-      const out = [];
-      for (let i = 0; i < tag.count; i += 1) {
-        const num = u32(start + i * 8);
-        const den = u32(start + i * 8 + 4);
-        out.push(den ? num / den : 0);
-      }
-      return out;
-    };
-
-    const ifd0 = entries(tiff + u32(tiff + 4));
-    const result = {};
-
-    if (ifd0[0x8769]) {
-      const exif = entries(tiff + u32(ifd0[0x8769].value));
-      const taken = ascii(exif[0x9003]) || ascii(exif[0x9004]);
-      if (taken) {
-        // EXIF writes "2026:09:18 14:23:05". Keep it as local wall-clock time.
-        const [date, clock] = taken.split(" ");
-        if (date && clock) result.takenAt = `${date.replace(/:/g, "-")}T${clock}`;
-      }
-    }
-
-    if (ifd0[0x8825]) {
-      const gps = entries(tiff + u32(ifd0[0x8825].value));
-      const lat = rationals(gps[0x0002]);
-      const lng = rationals(gps[0x0004]);
-      const latRef = ascii(gps[0x0001]);
-      const lngRef = ascii(gps[0x0003]);
-
-      const toDegrees = (parts) =>
-        parts ? parts[0] + parts[1] / 60 + parts[2] / 3600 : null;
-
-      if (lat && lng) {
-        result.lat = toDegrees(lat) * (latRef === "S" ? -1 : 1);
-        result.lng = toDegrees(lng) * (lngRef === "W" ? -1 : 1);
-      }
-    }
-
-    return result;
-  }
-  return {};
+  const tiff = findExifTiff(buffer);
+  const fromTiff = tiff >= 0 ? readTiffGps(view, tiff) : {};
+  if (fromTiff.lat != null && fromTiff.lng != null) return fromTiff;
+  return { ...gpsFromXmp(buffer), ...fromTiff };
 }
 
 export async function exifOf(file) {
   try {
-    // The EXIF block lives at the front, so 256KB is always enough.
-    const head = await file.slice(0, 262144).arrayBuffer();
-    return readExif(head);
+    // HEIC keeps Exif further in than a JPEG APP1 block.
+    const head = await file.slice(0, 1048576).arrayBuffer();
+    const meta = readExif(head);
+    if (meta.lat != null && Number.isFinite(meta.lat)) return meta;
+    if (file.size > 1048576) {
+      const rest = await file.slice(1048576, Math.min(file.size, 2097152)).arrayBuffer();
+      return { ...readExif(rest), ...meta };
+    }
+    return meta;
   } catch {
     return {};
   }
@@ -179,7 +229,7 @@ function safeName(name) {
  * Upload one prepared image and create its media row.
  * Both objects share a path, so the thumbnail for photos/x.jpg is thumbs/x.jpg.
  */
-export async function uploadImage(prepared, { dayId, dayDate, category, shotBy, personId, caption, place }) {
+export async function uploadImage(prepared, { dayId, dayDate, category, caption, place, mealId }) {
   const supabase = await getClient();
   if (!supabase) throw new Error("Supabase is not configured.");
 
@@ -198,9 +248,8 @@ export async function uploadImage(prepared, { dayId, dayDate, category, shotBy, 
 
   const { error } = await supabase.from("media").insert({
     day_id: dayId,
-    person_id: personId || null,
-    shot_by: shotBy || null,
-    category: category || "other",
+    meal_id: mealId || null,
+    category: category || (mealId ? "food" : "place"),
     provider: "supabase",
     storage_path: path,
     thumb_path: path,

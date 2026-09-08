@@ -9,15 +9,15 @@ import { photoGrid, bindPhotoGrid } from "../components/photo-grid.js";
 
 const CATEGORIES = [
   ["all", "Everything"],
-  ["food", "Food"],
   ["place", "Places"],
   ["people", "Us"],
-  ["stamp", "Stamps"],
 ];
 
 export async function photosPage() {
   const media = await allMedia({ limit: 1000 });
-  const photos = media.filter((m) => m.provider !== "youtube");
+  const photos = media.filter(
+    (m) => m.provider !== "youtube" && m.category !== "food" && !m.meal_id
+  );
 
   if (!photos.length) {
     return `

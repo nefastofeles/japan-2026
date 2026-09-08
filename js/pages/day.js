@@ -8,11 +8,9 @@
 
 import {
   getDay, neighbours, dayNumber, getLeg,
-  mediaForDay, mealsForDay, entriesForDay, commentsForDay, bestOfForDay,
-  addComment,
+  mediaForDay, mealsForDay, entriesForDay, bestOfForDay,
 } from "../store.js";
-import { esc, formatDate, youtubeId, relativeTime } from "../util.js";
-import { isConfigured } from "../config.js";
+import { esc, formatDate, youtubeId } from "../util.js";
 import { dayStrip, centreActiveChip } from "../components/day-strip.js";
 import { bookings } from "../components/booking-card.js";
 import { videoEmbed, bindVideos } from "../components/video-embed.js";
@@ -74,25 +72,6 @@ function foodPlan(day) {
     .join("")}</ul>`;
 }
 
-function commentForm() {
-  if (!isConfigured()) return "";
-  return `
-    <form class="card stack" data-comment-form>
-      <div>
-        <label for="c-name">Your name</label>
-        <input class="field" id="c-name" name="name" required maxlength="40"
-               placeholder="Farmor" autocomplete="name">
-      </div>
-      <div>
-        <label for="c-body">Say something</label>
-        <textarea class="field" id="c-body" name="body" required rows="3"
-                  placeholder="That bowl of ramen looks unbelievable"></textarea>
-      </div>
-      <button class="btn" type="submit">Leave a comment</button>
-      <p class="small muted" data-comment-status role="status"></p>
-    </form>`;
-}
-
 export async function dayPage({ date }) {
   const day = getDay(date);
   if (!day) {
@@ -102,21 +81,20 @@ export async function dayPage({ date }) {
   const leg = getLeg(day.leg);
   const { prev, next } = neighbours(day);
 
-  const [media, meals, entries, comments, bestNotes] = await Promise.all([
+  const [media, meals, entries, bestNotes] = await Promise.all([
     mediaForDay(day),
     mealsForDay(day),
     entriesForDay(day),
-    commentsForDay(day),
     bestOfForDay(day),
   ]);
 
   const photos = media
-    .filter((m) => m.provider !== "youtube")
+    .filter((m) => m.provider !== "youtube" && m.category !== "food" && !m.meal_id)
     .slice(0, DAY_PHOTO_LIMIT);
   const videos = media
     .filter((m) => m.provider === "youtube")
     .slice(0, DAY_VIDEO_LIMIT);
-  const unattachedPhotos = photos.filter((p) => !p.meal_id);
+  const unattachedPhotos = photos;
 
   const story = entries
     .filter((e) => e.kind === "text" || e.kind === "quote")
@@ -160,30 +138,6 @@ export async function dayPage({ date }) {
          </section>`
       : "";
 
-  const commentItems = comments.length
-    ? comments
-        .map(
-          (c) => `<div class="comment">
-                    <p class="comment__who">${esc(c.author_name)}
-                      <span class="comment__when">${esc(relativeTime(c.created_at))}</span>
-                    </p>
-                    <p>${esc(c.body)}</p>
-                  </div>`
-        )
-        .join("")
-    : "";
-
-  const commentsSection =
-    comments.length || isConfigured()
-      ? `<section>
-           <h2 class="section-title">Comments</h2>
-           <div class="stack">
-             ${commentItems}
-             ${commentForm()}
-           </div>
-         </section>`
-      : "";
-
   const hasBest = (bestNotes || []).some((note) => (note.body || "").trim());
   const storySection = story
     ? `<section>
@@ -218,8 +172,6 @@ export async function dayPage({ date }) {
           : ""
       }
 
-      ${commentsSection}
-
       <nav class="day-nav" aria-label="Day navigation">
         ${
           prev
@@ -248,26 +200,6 @@ export async function dayPage({ date }) {
       bindVideos(root);
       bindPhotoGrid(root, unattachedPhotos);
       bindLiveWeather(root);
-
-      const form = root.querySelector("[data-comment-form]");
-      if (form) {
-        form.addEventListener("submit", async (event) => {
-          event.preventDefault();
-          const status = form.querySelector("[data-comment-status]");
-          const name = form.elements.name.value.trim();
-          const body = form.elements.body.value.trim();
-          if (!name || !body) return;
-
-          status.textContent = "Sending…";
-          try {
-            await addComment(day, name, body);
-            status.textContent = "Thank you. Reload to see it.";
-            form.reset();
-          } catch (error) {
-            status.textContent = `Could not send: ${error.message}`;
-          }
-        });
-      }
     },
   };
 }

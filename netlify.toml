@@ -24,7 +24,7 @@
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
     # This is a family site, not a public one. Keep it out of search results.
-    X-Robots-Tag = "noindex, nofollow"
+    X-Robots-Tag = "noindex, nofollow, noarchive, nosnippet"
 
 [[headers]]
   for = "/data/*.json"

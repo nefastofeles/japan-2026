@@ -1,15 +1,16 @@
 /* ==========================================================================
    Admin - the markup half.
    --------------------------------------------------------------------------
-   Only strings live here. Nothing in this file talks to Supabase or listens
-   for a click; that is all in admin.js. Keeping them apart means you can
-   redesign the forms without going anywhere near the upload logic.
+   Markup for the login screen and the posting forms. The login submit
+   handler lives here so the lock screen can run before the rest of the
+   journal is loaded. Upload wiring stays in admin.js.
 
    Every control is found later by its data- attribute, so if you rename one
    here, rename it in admin.js too.
    ========================================================================== */
 
 import { getDays, getPeople } from "../store.js";
+import { signIn } from "../auth.js";
 import { esc } from "../util.js";
 
 export function loginForm(message = "") {
@@ -17,11 +18,12 @@ export function loginForm(message = "") {
     <div class="page">
       <form class="login stack" data-login>
         <h1>Sign in</h1>
-        <p class="small muted">Family login for viewing, admin login for posting.</p>
+        <p class="small muted">This journal is private. Nothing inside is shown
+          until you sign in.</p>
         <div>
-          <label for="email">Email</label>
-          <input class="field" id="email" name="email" type="email" required
-                 autocomplete="username" inputmode="email">
+          <label for="user">Username</label>
+          <input class="field" id="user" name="user" type="text" required
+                 autocomplete="username" autocapitalize="off" spellcheck="false">
         </div>
         <div>
           <label for="password">Password</label>
@@ -32,6 +34,26 @@ export function loginForm(message = "") {
         <p class="small" data-login-status role="status">${esc(message)}</p>
       </form>
     </div>`;
+}
+
+export function loginPage(message = "") {
+  return { html: loginForm(message), mount: bindLogin };
+}
+
+export function bindLogin(root) {
+  const form = root.querySelector("[data-login]");
+  if (!form) return;
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const status = form.querySelector("[data-login-status]");
+    status.textContent = "Signing in…";
+    try {
+      await signIn(form.elements.user.value, form.elements.password.value);
+      location.reload();
+    } catch (error) {
+      status.textContent = error.message;
+    }
+  });
 }
 
 function dayOptions(selected) {
@@ -52,40 +74,45 @@ function peopleOptions() {
     .join("");
 }
 
+export function photoBatchMarkup(canRemove) {
+  return `
+    <div class="photo-batch stack" data-photo-batch>
+      <div>
+        <label>Photos for one place</label>
+        <input class="field" type="file" accept="image/*" multiple data-files>
+      </div>
+      <div>
+        <label>Place</label>
+        <input class="field" data-photo-place placeholder="Kaminarimon, Asakusa">
+      </div>
+      <div>
+        <label>Kind</label>
+        <select class="field" data-photo-category>
+          <option value="place">Places</option>
+          <option value="people">Us</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+      ${
+        canRemove
+          ? `<button type="button" class="btn btn--ghost" data-remove-batch>Remove this place</button>`
+          : ""
+      }
+    </div>`;
+}
+
 function photoSection() {
   return `
     <section class="card stack">
       <h2 class="section-title">Photos</h2>
       <p class="small muted">
-        Resized to 2000px and thumbnailed in the browser before anything is sent.
-        Pick as many as you like. A day page shows up to 24 photos.
+        Add a place, pick the photos from there, then add another place if you
+        need to. Location from the iPhone is kept and shown on the map link.
+        Food photos belong in the meal section below.
       </p>
-      <div>
-        <label for="files">Choose photos</label>
-        <input class="field" id="files" type="file" accept="image/*" multiple data-files>
-      </div>
-      <div class="row-wrap">
-        <div>
-          <label for="category">Category</label>
-          <select class="field" id="category" data-category>
-            <option value="place">Places</option>
-            <option value="food">Food</option>
-            <option value="people">Us</option>
-            <option value="stamp">Stamps</option>
-            <option value="other">Other</option>
-          </select>
-        </div>
-        <div>
-          <label for="shotby">Shot by</label>
-          <select class="field" id="shotby" data-shotby>${peopleOptions()}</select>
-        </div>
-      </div>
-      <div>
-        <label for="photoplace">Place</label>
-        <input class="field" id="photoplace" data-photo-place
-               placeholder="Kaminarimon, Asakusa">
-      </div>
-      <button class="btn" data-upload type="button">Upload</button>
+      <div class="stack" data-photo-batches>${photoBatchMarkup(false)}</div>
+      <button class="btn btn--ghost" type="button" data-add-batch>Add another place</button>
+      <button class="btn" data-upload type="button">Upload photos</button>
       <p class="small" data-upload-status role="status"></p>
     </section>`;
 }
@@ -165,7 +192,7 @@ function mealSection() {
   return `
     <section class="card stack">
       <h2 class="section-title">Meal</h2>
-      <p class="small muted">Breakfast, lunch, dinner or a snack. Up to 3 photos each, added from Photos.</p>
+      <p class="small muted">Breakfast, lunch, dinner or a snack. Photos of the meal stay in Food, not in Photos. Up to 3.</p>
       <div class="row-wrap">
         <div>
           <label for="slot">When</label>
@@ -190,6 +217,10 @@ function mealSection() {
         <label for="dishes">Dishes, comma separated</label>
         <input class="field" id="dishes" data-dishes placeholder="Tsukemen, gyoza">
       </div>
+      <div>
+        <label for="mealfiles">Photos of this meal</label>
+        <input class="field" id="mealfiles" type="file" accept="image/*" multiple data-meal-files>
+      </div>
       <fieldset class="scores">
         <legend class="small">Scores out of 5</legend>
         ${scores}
@@ -203,8 +234,8 @@ export function adminForms(defaultDay) {
   return `
     <div class="page stack">
       <header>
-        <h1>Post</h1>
-        <p class="small muted">Signed in as admin.
+        <h1>Admin</h1>
+        <p class="small muted">Add the day's photos, story and videos.
           <button class="reaction" data-signout type="button">Sign out</button></p>
       </header>
 
@@ -216,8 +247,8 @@ export function adminForms(defaultDay) {
       </div>
 
       ${photoSection()}
-      ${videoSection()}
       ${storySection()}
+      ${videoSection()}
       ${bestOfSection()}
       ${mealSection()}
     </div>`;

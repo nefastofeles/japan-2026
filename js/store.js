@@ -6,7 +6,7 @@
      data/itinerary.json  the PLAN   - legs, dates, bookings, activities.
                                        Lives in git, editable in a pull
                                        request, present before the trip.
-     Supabase             the MEMORIES - photos, videos, meals, comments.
+     Supabase             the MEMORIES - photos, videos, meals.
                                        Created during the trip.
 
    The plan is always available. The memories are only there once Supabase is
@@ -17,9 +17,13 @@
 import { getClient } from "./supabase.js";
 import { isConfigured } from "./config.js";
 import {
-  mockMediaForDay, mockMealsForDay, mockEntriesForDay, mockCommentsForDay,
+  mockMediaForDay, mockMealsForDay, mockEntriesForDay,
   mockBestOfForDay, mockAllMedia, mockAllFood, mocksEnabled,
 } from "./mock-memories.js";
+import {
+  localMediaForDay, localEntriesForDay, localAllMedia,
+  localMealsForDay, localAllMeals,
+} from "./local-posts.js";
 
 let itinerary = null;
 let people = null;
@@ -132,22 +136,25 @@ function attachDay(item) {
 }
 
 export async function mediaForDay(day) {
-  if (mocksEnabled()) return mockMediaForDay(day);
+  const local = await localMediaForDay(day);
+  if (mocksEnabled()) return [...(await mockMediaForDay(day)), ...local];
   const id = await dayId(day);
-  if (!id) return [];
-  return query("media", (t) =>
+  if (!id) return local;
+  const remote = await query("media", (t) =>
     t.select("*").eq("day_id", id).order("taken_at", { ascending: true, nullsFirst: false })
   );
+  return [...remote, ...local];
 }
 
 export async function mealsForDay(day) {
-  if (mocksEnabled()) return mockMealsForDay(day);
+  const local = await localMealsForDay(day);
+  if (mocksEnabled()) return [...(await mockMealsForDay(day)), ...local];
   const id = await dayId(day);
-  if (!id) return [];
+  if (!id) return local;
   const meals = await query("meals", (t) =>
     t.select("*, meal_ratings(*)").eq("day_id", id).order("created_at")
   );
-  if (!meals.length) return [];
+  if (!meals.length) return local;
 
   const mediaByMeal = new Map();
   const shots = await query("media", (t) =>
@@ -157,14 +164,19 @@ export async function mealsForDay(day) {
     if (!mediaByMeal.has(shot.meal_id)) mediaByMeal.set(shot.meal_id, []);
     mediaByMeal.get(shot.meal_id).push(shot);
   }
-  return meals.map((m) => ({ ...m, media: mediaByMeal.get(m.id) || [] }));
+  return [
+    ...meals.map((m) => ({ ...m, media: mediaByMeal.get(m.id) || [] })),
+    ...local,
+  ];
 }
 
 export async function entriesForDay(day) {
-  if (mocksEnabled()) return mockEntriesForDay(day);
+  const local = await localEntriesForDay(day);
+  if (mocksEnabled()) return [...(await mockEntriesForDay(day)), ...local];
   const id = await dayId(day);
-  if (!id) return [];
-  return query("entries", (t) => t.select("*").eq("day_id", id).order("position"));
+  if (!id) return local;
+  const remote = await query("entries", (t) => t.select("*").eq("day_id", id).order("position"));
+  return [...remote, ...local];
 }
 
 export async function bestOfForDay(day) {
@@ -177,53 +189,30 @@ export async function bestOfForDay(day) {
   return rows.filter((row) => row.person_id && row.body);
 }
 
-export async function addBestOf(day, personId, body) {
-  const id = await dayId(day);
-  if (!id) throw new Error("This day does not exist in the database yet.");
-  const supabase = await getClient();
-  const { error } = await supabase
-    .from("entries")
-    .insert({ day_id: id, person_id: personId, kind: "best", body });
-  if (error) throw error;
-}
-
-export async function commentsForDay(day) {
-  if (mocksEnabled()) return mockCommentsForDay(day);
-  const id = await dayId(day);
-  if (!id) return [];
-  return query("comments", (t) => t.select("*").eq("day_id", id).order("created_at"));
-}
-
 export async function allFood() {
+  const local = await localAllMeals();
   if (mocksEnabled()) {
     const meals = await mockAllFood();
-    return meals.map(attachDay);
+    return [...meals, ...local].map(attachDay);
   }
-  return query("meals", (t) =>
+  const remote = await query("meals", (t) =>
     t.select("*, meal_ratings(*), days(date, city, leg)").order("created_at")
   );
+  return [...remote, ...local.map(attachDay)];
 }
 
 export async function allMedia({ limit = 500 } = {}) {
+  const local = await localAllMedia();
   if (mocksEnabled()) {
     const media = await mockAllMedia({ limit });
-    return media.map(attachDay);
+    return [...media, ...local].map(attachDay);
   }
-  return query("media", (t) =>
+  const remote = await query("media", (t) =>
     t.select("*, days(date, city, leg)")
       .order("taken_at", { ascending: false, nullsFirst: false })
       .limit(limit)
   );
-}
-
-export async function addComment(day, authorName, body) {
-  const id = await dayId(day);
-  if (!id) throw new Error("This day does not exist in the database yet.");
-  const supabase = await getClient();
-  const { error } = await supabase
-    .from("comments")
-    .insert({ day_id: id, author_name: authorName, body });
-  if (error) throw error;
+  return [...remote, ...local.map(attachDay)];
 }
 
 export async function addReaction(targetType, targetId, emoji) {
