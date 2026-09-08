@@ -1,0 +1,75 @@
+{
+  "chapterId": "miyajima",
+  "moduleId": "miyajima-misen",
+  "items": [
+    {
+      "id": "mis-enter",
+      "title": "Enter the Sacred Mountain",
+      "type": "find",
+      "status": "approved",
+      "task": "On the way up, find one unusual rock, one old tree, or one religious object.",
+      "notes": "Unlocks the rest of the Misen module when the family actually goes up.",
+      "xp": 40
+    },
+    {
+      "id": "mis-fire",
+      "title": "The Fire That Doesn't Go Out",
+      "type": "story",
+      "status": "approved",
+      "priority": "must",
+      "exactLocation": "Reikado, if visited",
+      "hook": "A hall that keeps a fire.",
+      "reveal": "Tradition ties it to Kūkai. Treat ‘eternal’ as a living practice, not a physics claim, until checked.",
+      "codexUnlock": "eternal-fire",
+      "xp": 120,
+      "factCheck": "needed"
+    },
+    {
+      "id": "mis-seven",
+      "title": "Seven Wonders",
+      "type": "observation",
+      "status": "approved",
+      "task": "Hear one Misen wonder. Which sounds believable? Which sounds impossible?",
+      "xp": 50,
+      "mediaId": "media-seven-wonders",
+      "factCheck": "needed"
+    },
+    {
+      "id": "mis-tengu",
+      "title": "Tengu",
+      "type": "story",
+      "status": "approved",
+      "hook": "Mountain goblins with long noses or bird faces.",
+      "codexUnlock": "tengu",
+      "xp": 60,
+      "mediaId": "media-tengu",
+      "notes": "Original illustration only."
+    },
+    {
+      "id": "mis-summit",
+      "title": "The Summit",
+      "type": "reflection",
+      "status": "approved",
+      "task": "Phones down for sixty seconds.",
+      "question": {
+        "type": "multipleChoice",
+        "text": "Why might this place feel sacred?",
+        "choices": [
+          { "id": "height", "text": "Height" },
+          { "id": "silence", "text": "Silence" },
+          { "id": "rocks", "text": "Rocks" },
+          { "id": "forest", "text": "Forest" },
+          { "id": "ocean", "text": "Ocean" },
+          { "id": "isolation", "text": "Isolation" },
+          { "id": "other", "text": "Other" }
+        ],
+        "retryAllowed": true
+      },
+      "fragmentValue": 1,
+      "callbackKey": "sacred-nature",
+      "xp": 80,
+      "mediaId": "media-misen",
+      "notes": "No correctChoiceId."
+    }
+  ]
+}

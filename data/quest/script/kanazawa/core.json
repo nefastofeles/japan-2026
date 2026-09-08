@@ -1,0 +1,88 @@
+{
+  "chapterId": "kanazawa",
+  "moduleId": "kanazawa-core",
+  "items": [
+    {
+      "id": "kan-samurai-walls",
+      "title": "Who Lived Behind These Walls?",
+      "type": "observation",
+      "status": "approved",
+      "priority": "must",
+      "exactLocation": "Nagamachi",
+      "task": "Find two things that hide a house: a wall, a canal, a bent lane, a small gate.",
+      "codexUnlock": "samurai-district",
+      "xp": 80,
+      "mediaId": "media-nagamachi"
+    },
+    {
+      "id": "kan-samurai-rich",
+      "title": "Samurai ≠ Rich?",
+      "type": "trueFalse",
+      "status": "approved",
+      "question": {
+        "type": "trueFalse",
+        "text": "Every samurai family here was rich.",
+        "choices": [
+          { "id": "true", "text": "True", "response": "Some were. Many were not." },
+          { "id": "false", "text": "False", "response": "Yes. Rank and pay varied." }
+        ],
+        "correctChoiceId": "false",
+        "retryAllowed": true
+      },
+      "xp": 50
+    },
+    {
+      "id": "kan-preservation",
+      "title": "Why Is Kanazawa Still Here?",
+      "type": "story",
+      "status": "approved",
+      "task": "This old town is not a rebuild after bombs. Why did it survive?",
+      "reveal": "Several causes: luck, distance, later choices to keep streets. Do not pick one simple reason until checked.",
+      "xp": 60,
+      "factCheck": "needed"
+    },
+    {
+      "id": "kan-maeda",
+      "title": "Too Rich for Your Own Good",
+      "type": "story",
+      "status": "approved",
+      "hook": "The Maeda were rich enough to make Edo nervous.",
+      "moreInfo": {
+        "title": "Patronage",
+        "text": "Wealth went into crafts and gardens as well as power. Avoid a cartoon of ‘hid gold so the shogun would not attack’ unless a source supports the exact claim."
+      },
+      "fragmentValue": 1,
+      "callbackKey": "power-without-war",
+      "xp": 80,
+      "factCheck": "needed"
+    },
+    {
+      "id": "kan-gold",
+      "title": "Why So Much Gold?",
+      "type": "find",
+      "status": "approved",
+      "task": "Find gold leaf used in a slightly unnecessary way. Photograph it.",
+      "photo": true,
+      "codexUnlock": "gold-leaf",
+      "xp": 80,
+      "mediaId": "media-maeda-gold"
+    },
+    {
+      "id": "kan-eat-gold",
+      "title": "Gold You Can Eat",
+      "type": "food",
+      "status": "approved",
+      "priority": "optional",
+      "task": "If you actually meet gold on ice cream or tea, say whether it tastes of anything.",
+      "xp": 40
+    },
+    {
+      "id": "kan-chaya",
+      "title": "Samurai City, Entertainment City",
+      "type": "observation",
+      "status": "approved",
+      "task": "If you walk a chaya district, compare it with Gion: same job, different city.",
+      "xp": 50
+    }
+  ]
+}

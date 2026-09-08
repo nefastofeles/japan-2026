@@ -1,0 +1,83 @@
+{
+  "chapterId": "tokoname",
+  "moduleId": "tokoname-core",
+  "items": [
+    {
+      "id": "tok-street-pottery",
+      "title": "The City Is Made of Pottery",
+      "type": "find",
+      "status": "approved",
+      "priority": "must",
+      "exactLocation": "Pottery Footpath / Dokanzaka",
+      "task": "Find pottery reused as path or wall. Photograph it.",
+      "photo": true,
+      "codexUnlock": "tokoname-ware",
+      "xp": 100,
+      "mediaId": "media-dokanzaka"
+    },
+    {
+      "id": "tok-pipe-wall",
+      "title": "Why Put Pipes in a Wall?",
+      "type": "observation",
+      "status": "approved",
+      "task": "If you see ceramic pipes in a wall, guess their first job: water, smoke, or show?",
+      "reveal": "Tokoname made industrial clay pipe as well as teapots.",
+      "xp": 50,
+      "factCheck": "needed"
+    },
+    {
+      "id": "tok-tokonyan",
+      "title": "Giant Cat Alert",
+      "type": "find",
+      "status": "approved",
+      "priority": "must",
+      "task": "Find Tokonyan without a photo first. Then a family picture.",
+      "photo": true,
+      "codexUnlock": "tokonyan",
+      "xp": 80,
+      "mediaId": "media-tokonyan",
+      "notes": "No teaser image. TOK-07 Ten Chimneys and TOK-08 Clay → Fire → Stone are cut."
+    },
+    {
+      "id": "tok-paw",
+      "title": "Which Paw?",
+      "type": "observation",
+      "status": "approved",
+      "task": "Compare with the Tokyo shop cat. Which paw is up? Meanings vary. Do not print one rule as law.",
+      "codexUnlock": "maneki-neko",
+      "xp": 40,
+      "mediaId": "media-maneki-paws",
+      "notes": "Live sample tokyo-beckoning stays live."
+    },
+    {
+      "id": "tok-cat-hunt",
+      "title": "Lucky Cat Hunt",
+      "type": "find",
+      "status": "approved",
+      "task": "Find the funniest, the weirdest, and one you would put by a bed.",
+      "xp": 80
+    },
+    {
+      "id": "tok-kiln",
+      "title": "Why Does an Oven Climb a Hill?",
+      "type": "observation",
+      "status": "approved",
+      "priority": "must",
+      "task": "A noborigama climbs. Why would fire want a slope?",
+      "codexUnlock": "noborigama",
+      "xp": 100,
+      "mediaId": "media-noborigama"
+    },
+    {
+      "id": "tok-workshop",
+      "title": "Make Something That Survives Us",
+      "type": "photo",
+      "status": "approved",
+      "priority": "optional",
+      "task": "Only if you actually take a workshop. Photograph the piece before firing. Save for the finale.",
+      "photo": true,
+      "saveFor": ["tokyo-finale"],
+      "xp": 60
+    }
+  ]
+}

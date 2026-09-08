@@ -1,0 +1,24 @@
+{
+  "chapterId": "kanazawa",
+  "moduleId": "kanazawa-food",
+  "items": [
+    {
+      "id": "food-kan-sea",
+      "title": "Seafood North",
+      "type": "food",
+      "status": "approved",
+      "task": "Find or try a Sea of Japan food you did not eat in Tokyo.",
+      "xp": 60
+    },
+    {
+      "id": "food-kan-jibuni",
+      "title": "Jibuni",
+      "type": "food",
+      "status": "approved",
+      "priority": "optional",
+      "task": "If jibuni is on a menu, try it. Duck and starch in a winter stew.",
+      "xp": 50,
+      "factCheck": "needed"
+    }
+  ]
+}

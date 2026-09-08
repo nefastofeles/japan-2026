@@ -1,0 +1,40 @@
+{
+  "chapterId": "osaka",
+  "moduleId": "osaka-food",
+  "items": [
+    {
+      "id": "food-osa-takoyaki",
+      "title": "Takoyaki Anatomy",
+      "type": "food",
+      "status": "approved",
+      "priority": "must",
+      "task": "Before you bite, guess the filling.",
+      "reveal": "Traditionally octopus. Other fillings exist. Check the stall.",
+      "codexUnlock": "takoyaki",
+      "xp": 70,
+      "mediaId": "media-takoyaki"
+    },
+    {
+      "id": "food-osa-okonomiyaki",
+      "title": "Okonomiyaki",
+      "type": "food",
+      "status": "approved",
+      "question": {
+        "type": "multipleChoice",
+        "text": "What is it closest to?",
+        "choices": [
+          { "id": "pizza", "text": "Pizza", "response": "Keep that. Then taste." },
+          { "id": "pancake", "text": "Pancake", "response": "Keep that. Then taste." },
+          { "id": "omelette", "text": "Omelette", "response": "Keep that. Then taste." },
+          { "id": "none", "text": "None of those", "response": "Keep that. Then taste." }
+        ],
+        "retryAllowed": true
+      },
+      "task": "Taste. Talk. There is no exam answer.",
+      "codexUnlock": "okonomiyaki",
+      "xp": 60,
+      "mediaId": "media-okonomiyaki",
+      "notes": "No correctChoiceId. FOOD-OSA-03 Sauce Detective is cut."
+    }
+  ]
+}

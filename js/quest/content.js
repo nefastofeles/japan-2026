@@ -30,9 +30,18 @@ async function loadScript() {
   }
 }
 
+async function readJsonArray(path) {
+  try {
+    const data = await readJson(path);
+    return Array.isArray(data) ? data : [];
+  } catch {
+    return [];
+  }
+}
+
 export async function loadQuest() {
   if (cache) return cache;
-  const [chapters, missions, codex, badges, story, discoveries, modules, rewards, media, script] =
+  const [chapters, missions, codex, badges, story, discoveries, modules, moreModules, rewards, media, moreMedia, script] =
     await Promise.all([
       readJson("data/quest/chapters.json"),
       readJson("data/quest/missions.json"),
@@ -41,11 +50,24 @@ export async function loadQuest() {
       readJson("data/quest/story.json"),
       readJson("data/quest/discoveries.json"),
       readJson("data/quest/modules.json"),
+      readJsonArray("data/quest/modules-more.json"),
       readJson("data/quest/rewards.json"),
-      readJson("data/quest/media.json").catch(() => []),
+      readJsonArray("data/quest/media.json"),
+      readJsonArray("data/quest/media-more.json"),
       loadScript(),
     ]);
-  cache = { chapters, missions, codex, badges, story, discoveries, modules, rewards, media, script };
+  cache = {
+    chapters,
+    missions,
+    codex,
+    badges,
+    story,
+    discoveries,
+    modules: [...modules, ...moreModules],
+    rewards,
+    media: [...media, ...moreMedia],
+    script,
+  };
   return cache;
 }
 

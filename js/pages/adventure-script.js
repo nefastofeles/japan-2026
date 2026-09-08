@@ -71,6 +71,7 @@ function itemFields(item) {
     ["Save for", asText(item.saveFor)],
     ["Reward idea", item.rewardIdea],
     ["Fact check", item.factCheck],
+    ["Memory", item.memory ? "yes — not Codex" : ""],
     ["Notes", item.notes],
     ["Live mission", item.liveMissionId],
   ].filter(([, value]) => value);

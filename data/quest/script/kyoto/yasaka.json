@@ -1,0 +1,29 @@
+{
+  "chapterId": "kyoto",
+  "moduleId": "kyoto-yasaka",
+  "items": [
+    {
+      "id": "yas-disease",
+      "title": "A Shrine Built Against Disease",
+      "type": "story",
+      "status": "approved",
+      "exactLocation": "Yasaka Shrine",
+      "hook": "This shrine is tied to keeping sickness away.",
+      "task": "Find one sign of the Gion festival: a float storehouse, a plaque, or a lion-dog.",
+      "reveal": "Gion Matsuri grew from rites meant to calm epidemic fear. Check dates and names before this is live.",
+      "codexUnlock": "gion-matsuri",
+      "xp": 100,
+      "factCheck": "needed"
+    },
+    {
+      "id": "yas-worship-sequence",
+      "title": "How Do You Wake a God?",
+      "type": "observation",
+      "status": "approved",
+      "task": "Watch worshippers. What do they do with coin, bell, bow and clap?",
+      "reveal": "Many people toss a coin, bow, clap, then bow again. Local habit varies. Do not correct strangers.",
+      "xp": 50,
+      "notes": "Do not teach one universal sequence as law."
+    }
+  ]
+}

@@ -8,7 +8,70 @@
       "type": "reflection",
       "status": "live",
       "liveMissionId": "hiroshima-remember",
+      "memory": true,
       "notes": "Memory mode. No playful rewards."
+    },
+    {
+      "id": "hiro-before",
+      "title": "Before",
+      "type": "story",
+      "status": "approved",
+      "memory": true,
+      "hook": "Hiroshima was a city of ordinary mornings.",
+      "moreInfo": {
+        "title": "A city",
+        "audioText": "Before 6 August 1945 this was a city of work, school, trams and breakfast. Remember that first. The bomb did not fall on an empty map."
+      },
+      "reveal": "Start from people, not from a weapon.",
+      "notes": "No XP. No Codex. Memory layer only."
+    },
+    {
+      "id": "hiro-815",
+      "title": "8:15",
+      "type": "story",
+      "status": "approved",
+      "memory": true,
+      "hook": "A time of day. Not a machine fact.",
+      "reveal": "At 8:15 people were already in their day. Keep the scale human. No weapon trivia.",
+      "notes": "No XP. HIRO-06 The Question for 2126 is cut."
+    },
+    {
+      "id": "hiro-dome",
+      "title": "The Building That Remained",
+      "type": "reflection",
+      "status": "approved",
+      "priority": "must",
+      "memory": true,
+      "exactLocation": "Atomic Bomb Dome",
+      "task": "Why keep a ruin? Write one sentence.",
+      "mediaId": "media-hiro-dome",
+      "notes": "No XP. No badge. No playful graphic."
+    },
+    {
+      "id": "hiro-one-object",
+      "title": "One Object",
+      "type": "reflection",
+      "status": "approved",
+      "memory": true,
+      "exactLocation": "Peace Memorial Museum",
+      "task": "Each person chooses one object or story. Write: I chose ___ because ___.",
+      "notes": "No Codex collectible. Memory only."
+    },
+    {
+      "id": "hiro-sadako",
+      "title": "Sadako",
+      "type": "story",
+      "status": "approved",
+      "priority": "optional",
+      "memory": true,
+      "exactLocation": "Children's Peace Monument",
+      "hook": "If you visit the children’s monument, read Sadako’s name slowly.",
+      "moreInfo": {
+        "title": "Cranes",
+        "text": "Sadako Sasaki folded paper cranes while ill after the bomb. Confirm the biography before live. Do not turn cranes into a cute badge."
+      },
+      "factCheck": "needed",
+      "notes": "Only if visiting. No XP."
     }
   ]
 }

@@ -1,0 +1,48 @@
+{
+  "chapterId": "kyoto",
+  "moduleId": "kyoto-weird",
+  "items": [
+    {
+      "id": "kyo-omikuji",
+      "title": "Omikuji",
+      "type": "discovery",
+      "status": "approved",
+      "task": "If you draw a fortune slip, read it. If it is bad luck, look how people tie them.",
+      "xp": 20
+    },
+    {
+      "id": "kyo-ema",
+      "title": "Ema",
+      "type": "discovery",
+      "status": "approved",
+      "task": "Find the wooden wish plaques. What are people asking for?",
+      "xp": 20
+    },
+    {
+      "id": "kyo-goshuin",
+      "title": "Goshuin",
+      "type": "discovery",
+      "status": "approved",
+      "task": "Find the stamp-and-brush office if it is open. This is a record, not a sticker shop.",
+      "xp": 20
+    },
+    {
+      "id": "kyo-temizu",
+      "title": "Purification basin",
+      "type": "discovery",
+      "status": "approved",
+      "task": "Watch the water pavilion. Hands, then mouth, then the ladle handle.",
+      "notes": "Live sample discovery temizu already exists. This is the Kyoto script twin. Do not promote both.",
+      "xp": 20
+    },
+    {
+      "id": "kyo-jizo",
+      "title": "Stone Jizo",
+      "type": "discovery",
+      "status": "approved",
+      "task": "Find a small stone figure in a bib or hat. A roadside guardian.",
+      "codexUnlock": "jizo",
+      "xp": 20
+    }
+  ]
+}

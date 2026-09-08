@@ -30,10 +30,24 @@
     "hidden": true
   },
   {
-    "id": "borderless-fragment-1",
-    "title": "Borderless fragment",
-    "description": "A digital fragment idea for the teamLab photograph question. Hidden until that mission is live.",
+    "id": "borderless-fragment-2",
+    "title": "Borderless fragment 2",
+    "description": "Digital fragment idea for teamLab Kyoto. Hidden until live.",
     "type": "digital",
+    "hidden": true
+  },
+  {
+    "id": "world-walker",
+    "title": "World Walker",
+    "description": "Digital idea for the teamLab trilogy. Hidden until live.",
+    "type": "digital",
+    "hidden": true
+  },
+  {
+    "id": "finale-ask-parents",
+    "title": "Ask Mum and Dad",
+    "description": "Final real-world reward. Hidden. No payment.",
+    "type": "realWorld",
     "hidden": true
   }
 ]

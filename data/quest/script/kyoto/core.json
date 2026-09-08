@@ -8,6 +8,50 @@
       "type": "food",
       "status": "live",
       "liveMissionId": "kyoto-matcha"
+    },
+    {
+      "id": "kyo-why-temples",
+      "title": "Why So Many Temples?",
+      "type": "story",
+      "status": "approved",
+      "hook": "Kyoto kept the old capital’s job: houses for gods and for monks.",
+      "task": "Count how many temple or shrine roofs you can see from one street.",
+      "reveal": "Emperors sat here for centuries. Temples and shrines stacked up around the court.",
+      "moreInfo": {
+        "title": "A long capital",
+        "text": "Kyoto was the imperial seat for about a thousand years. Power later moved. The religious houses stayed. Confirm the date range before live."
+      },
+      "xp": 60,
+      "factCheck": "needed"
+    },
+    {
+      "id": "kyo-shrine-or-temple",
+      "title": "Shrine or Temple?",
+      "type": "observation",
+      "status": "approved",
+      "task": "At the next holy place, decide: shrine or temple? Use what you can see.",
+      "physicalObservation": "Torii, rope, foxes, incense, cemetery, Buddha.",
+      "reveal": "Shrines are Shinto. Temples are Buddhist. The clues overlap. Guess, then check the name.",
+      "codexUnlock": "shrine-vs-temple",
+      "xp": 80,
+      "mediaId": "media-shrine-temple",
+      "notes": "Recurring. Do not teach one perfect checklist."
+    },
+    {
+      "id": "kyo-yokai-unlock",
+      "title": "Spot the Pokémon Ancestor",
+      "type": "discovery",
+      "status": "approved",
+      "task": "Find a statue or picture of a Japanese creature: fox, raccoon-dog, water-child, crow-goblin or ogre.",
+      "reveal": "Japan collected strange beings long before games. Pokémon borrowed a habit of cataloguing, not a one-to-one family tree.",
+      "moreInfo": {
+        "title": "Yōkai",
+        "text": "Kitsune, tanuki, kappa, tengu and oni are old names. Do not say a game monster is the same being. The Codex category is folklore, not merch."
+      },
+      "codexUnlock": "yokai-category",
+      "xp": 50,
+      "mediaId": "media-yokai-set",
+      "notes": "Unlocks Yokai & Spirits as a category idea. Not a Pokémon license."
     }
   ]
 }

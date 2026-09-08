@@ -1,0 +1,51 @@
+{
+  "chapterId": "tokyo",
+  "moduleId": "tokyo-manga",
+  "items": [
+    {
+      "id": "manga-biggest-ever",
+      "title": "The Biggest Manga Ever",
+      "type": "multipleChoice",
+      "status": "approved",
+      "question": {
+        "type": "multipleChoice",
+        "text": "Which of these has sold the most, as manga?",
+        "choices": [
+          { "id": "naruto", "text": "Naruto", "response": "Huge. Check which still leads in copies." },
+          { "id": "db", "text": "Dragon Ball", "response": "A giant. Look at lifetime copies." },
+          { "id": "ds", "text": "Demon Slayer", "response": "A recent wave. Look at the long count." },
+          { "id": "op", "text": "One Piece", "response": "Yes, by the usual circulation count." }
+        ],
+        "correctChoiceId": "op",
+        "retryAllowed": true
+      },
+      "reveal": "One Piece is usually listed as the biggest by copies. That number moves.",
+      "xp": 40,
+      "mediaId": "media-manga-quiz",
+      "factCheck": "needed",
+      "notes": "Time-sensitive. Recheck circulation before live. Do not print a number yet."
+    },
+    {
+      "id": "manga-current-japan",
+      "title": "What Is Japan Reading Right Now?",
+      "type": "observation",
+      "status": "approved",
+      "task": "In a bookshop or manga shop, look at what is on the front tables. What is being pushed this week?",
+      "reveal": "Charts change. The shop in front of you is the source, not last year’s list.",
+      "xp": 40,
+      "notes": "Do not hardcode an annual winner. Optional ranking link can wait."
+    },
+    {
+      "id": "manga-shelf-detective",
+      "title": "Manga Shelf Detective",
+      "type": "find",
+      "status": "approved",
+      "task": "Find three manga that look as if they are for different readers.",
+      "moreInfo": {
+        "title": "Different shelves",
+        "text": "Japanese magazines have long sorted stories by intended readers. The labels are rough. Faces, fashion and how busy the page is are clues. Do not treat the labels as rules about who is allowed to read."
+      },
+      "xp": 50
+    }
+  ]
+}
