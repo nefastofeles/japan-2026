@@ -1,9 +1,7 @@
 /* ==========================================================================
    Japan 2026 - authentication
    --------------------------------------------------------------------------
-   One shared login. Nothing in the journal is shown until it succeeds.
-   The username and password are compared as SHA-256 hashes from config.js,
-   so the password itself is not sitting in the file.
+   Unused until the family login comes back. The hashes live in config.js.
    ========================================================================== */
 
 import { GATE_USER_SHA256, GATE_PASSWORD_SHA256 } from "./config.js";

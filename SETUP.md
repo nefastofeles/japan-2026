@@ -1,26 +1,11 @@
 # Setup
 
 Three services, in this order. Each one is a few minutes. Until they are done
-the site still shows the plan (and any dress-rehearsal memories), but the
-journal is locked. Nothing is visible until someone signs in.
+the site still shows the plan (and any dress-rehearsal memories).
 
-### The gate login
-
-One username and password. Send it round the family. The same login opens
-Admin, where photos, story text and videos are added.
-
-| Username | Password |
-|---|---|
-| `1edgXWXFJALPwSD4` | `W4oZcabh6s1LBOjp` |
-
-To change them, hash each value and put the hex in `js/config.js`:
-
-```bash
-python3 -c "import hashlib; print(hashlib.sha256(b'YOUR-VALUE').hexdigest())"
-```
-
-The GitHub repo should be **private**. A login on the website does not hide
-files that are public on GitHub.
+A family login will come back in a later version. The hashes in `js/config.js`
+are kept for that. The GitHub repo should be **private** either way: a login
+on the website does not hide files that are public on GitHub.
 
 ---
 
@@ -133,13 +118,9 @@ Commit, push, and the site is live with photos switched on.
 
 ## Checking it worked
 
-- Open the site signed out and confirm you only see the sign-in screen
-- Sign in with the gate username and password
+- Open the site and confirm Home, a day page and the map load with no login
 - Open **Admin**, add a photo, a short story and a YouTube link, then open
   that day and confirm they appear
-- Sign out entirely and confirm you see nothing again
-
-That last one is the important test.
 
 ---
 

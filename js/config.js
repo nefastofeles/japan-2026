@@ -3,8 +3,8 @@
    --------------------------------------------------------------------------
    Fill in the two Supabase values once the project exists. See SETUP.md.
 
-   Until then the site still runs from data/itinerary.json, but the journal
-   stays behind the gate login. See SETUP.md.
+   Until then the site still runs from data/itinerary.json. The family
+   login is coming back in a later version; for now the plan is open.
 
    The anon key is safe to commit. It is designed to be public and every table
    is protected by row level security. NEVER put the service_role key here.
@@ -23,7 +23,7 @@ export function isConfigured() {
    filled in. Set this to false if you want plan mode back sooner. */
 export const USE_MOCK_MEMORIES = true;
 
-/* SHA-256 of the gate username and password. Generate a new pair with:
+/* SHA-256 of the family login, unused until the gate comes back.
      python3 -c "import hashlib; print(hashlib.sha256(b'YOUR-VALUE').hexdigest())"
    Do not put the password itself in this file. */
 export const GATE_USER_SHA256 =
