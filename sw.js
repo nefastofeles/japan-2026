@@ -8,7 +8,7 @@
    Bump CACHE when you change the shell, otherwise phones keep the old copy.
    ========================================================================== */
 
-const CACHE = "japan-2026-v20";
+const CACHE = "japan-2026-v21";
 
 const SHELL = [
   "./",
@@ -22,6 +22,7 @@ const SHELL = [
   "css/media.css",
   "css/home.css",
   "css/heroes.css",
+  "css/quest.css",
   "js/app.js",
   "js/config.js",
   "js/util.js",
@@ -41,6 +42,16 @@ const SHELL = [
   "js/pages/map.js",
   "js/pages/admin.js",
   "js/pages/admin-forms.js",
+  "js/pages/adventure.js",
+  "js/pages/adventure-mission.js",
+  "js/pages/adventure-more.js",
+  "js/quest/content.js",
+  "js/quest/state.js",
+  "js/quest/engine.js",
+  "js/quest/location.js",
+  "js/quest/photos.js",
+  "js/quest/ai.js",
+  "js/components/quest-chrome.js",
   "js/components/day-strip.js",
   "js/components/photo-grid.js",
   "js/components/lightbox.js",

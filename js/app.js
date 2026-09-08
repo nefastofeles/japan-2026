@@ -17,10 +17,16 @@ import { foodPage } from "./pages/food.js";
 import { photosPage } from "./pages/photos.js";
 import { mapPage } from "./pages/map.js";
 import { adminPage } from "./pages/admin.js";
+import { adventurePage } from "./pages/adventure.js";
+import { adventureMissionPage } from "./pages/adventure-mission.js";
+import {
+  adventureMapPage, adventureCodexPage, adventureBadgesPage, adventureStoryPage,
+} from "./pages/adventure-more.js";
 
 const NAV = [
   ["/", "Home"],
   ["/before", "Itinerary"],
+  ["/adventure", "Quest"],
   ["/food", "Food"],
   ["/photos", "Photos"],
   ["/map", "Map"],
@@ -31,12 +37,13 @@ function renderNav(path) {
   const nav = document.querySelector(".site-nav");
   if (!nav) return;
 
-  nav.innerHTML = NAV.map(
-    ([href, label]) =>
-      `<a href="#${href}" ${
-        path === href ? 'aria-current="page"' : ""
-      }>${esc(label)}</a>`
-  ).join("");
+  nav.innerHTML = NAV.map(([href, label]) => {
+    const on =
+      href === "/"
+        ? path === "/"
+        : path === href || path.startsWith(`${href}/`);
+    return `<a href="#${href}" ${on ? 'aria-current="page"' : ""}>${esc(label)}</a>`;
+  }).join("");
 }
 
 /** Mix a leg hex onto washi paper so the phone chrome matches the page wash. */
@@ -108,6 +115,12 @@ function registerPages() {
   router.route("/photos", photosPage);
   router.route("/map", mapPage);
   router.route("/admin", adminPage);
+  router.route("/adventure", adventurePage);
+  router.route("/adventure/map", adventureMapPage);
+  router.route("/adventure/codex", adventureCodexPage);
+  router.route("/adventure/badges", adventureBadgesPage);
+  router.route("/adventure/story", adventureStoryPage);
+  router.route("/adventure/mission/:id", adventureMissionPage);
 
   router.setNotFound(
     (path) => `<div class="page">

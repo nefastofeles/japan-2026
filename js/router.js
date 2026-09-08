@@ -11,7 +11,8 @@
      #/photos              every photo
      #/map                 the route
      #/after               post-trip page
-     #/admin               upload and edit (admin only)
+     #/adventure           Quest Game
+     #/adventure/mission/:id  one mission
    ========================================================================== */
 
 const routes = [];

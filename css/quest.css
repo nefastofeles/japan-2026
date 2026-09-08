@@ -1,0 +1,187 @@
+/* ==========================================================================
+   Quest Game — adventure layer on the family journal
+   --------------------------------------------------------------------------
+   Same paper and ink. A little more night-sky on the cards so the
+   chronicle feels found, not cartoon.
+   ========================================================================== */
+
+.quest-page { padding-bottom: var(--sp-8); }
+
+.quest-kicker {
+  font-size: var(--size-sm);
+  font-weight: 700;
+  letter-spacing: var(--tracking-head);
+  text-transform: uppercase;
+  color: var(--leg-deep);
+  margin: 0 0 var(--sp-2);
+}
+
+.quest-head h1 { margin-bottom: var(--sp-2); }
+
+.quest-tabs {
+  display: flex;
+  gap: var(--sp-2);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: var(--sp-2) 0 var(--sp-4);
+  margin: 0 calc(var(--sp-2) * -1);
+}
+
+.quest-tabs a {
+  flex: 0 0 auto;
+  min-height: var(--tap);
+  display: inline-flex;
+  align-items: center;
+  padding: 0 var(--sp-4);
+  border-radius: 999px;
+  border: 1px solid var(--rule);
+  background: var(--paper-raised);
+  color: var(--ink);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: var(--size-base);
+}
+
+.quest-tabs a[aria-current="page"] {
+  background: var(--leg-deep);
+  border-color: var(--leg-deep);
+  color: var(--paper-raised);
+}
+
+.quest-hero {
+  padding: var(--sp-5);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--leg-edge);
+  background:
+    linear-gradient(160deg, var(--leg-wash), var(--paper-raised) 70%);
+  box-shadow: var(--shadow);
+}
+
+.quest-hero h2 { margin: 0 0 var(--sp-2); }
+
+.quest-cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--tap);
+  margin-top: var(--sp-4);
+  padding: var(--sp-3) var(--sp-5);
+  border-radius: var(--radius);
+  background: var(--leg-deep);
+  color: var(--paper-raised);
+  font-weight: 700;
+  font-size: var(--size-lg);
+  text-decoration: none;
+}
+
+.quest-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-3);
+}
+
+.quest-stat {
+  padding: var(--sp-4);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  background: var(--paper-raised);
+}
+
+.quest-stat strong {
+  display: block;
+  font-size: var(--size-xl);
+  font-variant-numeric: tabular-nums;
+}
+
+.quest-mission {
+  display: block;
+  padding: var(--sp-4);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  background: var(--paper-raised);
+  text-decoration: none;
+  color: inherit;
+}
+
+.quest-mission[data-tone="memory"] {
+  border-color: #c5cdd8;
+  background: #f4f6f8;
+}
+
+.quest-mission__type {
+  font-size: var(--size-sm);
+  font-weight: 700;
+  color: var(--leg-deep);
+}
+
+.quest-pill {
+  display: inline-block;
+  margin-top: var(--sp-2);
+  font-size: var(--size-sm);
+  font-weight: 700;
+  color: var(--ink-muted);
+}
+
+.quest-stage textarea.field {
+  min-height: 6rem;
+  padding: var(--sp-3);
+}
+
+.quest-who {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  min-height: var(--tap);
+  margin-right: var(--sp-3);
+  font-weight: 700;
+}
+
+.quest-codex {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-3);
+}
+
+.quest-entry {
+  min-height: 8rem;
+  padding: var(--sp-4);
+  border-radius: var(--radius);
+  border: 1px solid var(--rule);
+  background: var(--paper-raised);
+}
+
+.quest-entry--locked {
+  background: #1a1a1a;
+  color: #6b6660;
+  border-color: #1a1a1a;
+}
+
+.quest-entry--locked h3 {
+  color: transparent;
+  text-shadow: 0 0 8px #6b6660;
+}
+
+.quest-badge {
+  padding: var(--sp-4);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  background: var(--paper-raised);
+}
+
+.quest-badge--locked { opacity: 0.55; }
+
+.quest-fragment {
+  padding: var(--sp-5);
+  border-left: 4px solid var(--leg);
+  background: var(--paper-raised);
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+
+.quest-fragment--locked {
+  color: var(--ink-muted);
+  border-left-color: var(--rule);
+}
+
+@media (max-width: 40rem) {
+  .quest-stats { grid-template-columns: 1fr 1fr; }
+}
