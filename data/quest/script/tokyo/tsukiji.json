@@ -81,7 +81,8 @@
       "codexUnlock": "reclaimed-tokyo",
       "xp": 100,
       "mediaId": "media-tsukiji-reclaimed",
-      "factCheck": "needed"
+      "factCheck": "needed",
+      "notes": "Confirm Tsukiji as reclaimed land. Do not invent fill dates."
     }
   ]
 }

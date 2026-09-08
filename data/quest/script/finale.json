@@ -19,6 +19,7 @@
       "status": "approved",
       "priority": "anchor",
       "task": "Each person: favourite discovery, strangest food, favourite place, favourite photo, favourite myth, biggest surprise.",
+      "mediaId": "media-finale-family",
       "notes": "Prefer family-generated media. No fireworks."
     },
     {
@@ -28,7 +29,8 @@
       "status": "approved",
       "task": "Show the Harajuku pair. Which feels more like Japan now?",
       "reveal": "Both.",
-      "callbackFrom": "har-two-japans"
+      "callbackFrom": "har-two-japans",
+      "mediaId": "media-finale-old-new"
     },
     {
       "id": "fin-art",

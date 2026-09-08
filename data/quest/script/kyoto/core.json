@@ -22,7 +22,8 @@
         "text": "Kyoto was the imperial seat for about a thousand years. Power later moved. The religious houses stayed. Confirm the date range before live."
       },
       "xp": 60,
-      "factCheck": "needed"
+      "factCheck": "needed",
+      "notes": "Confirm Heian-capital / temple-density wording before live."
     },
     {
       "id": "kyo-shrine-or-temple",

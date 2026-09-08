@@ -22,7 +22,8 @@
       "mediaId": "media-shinkansen-nose",
       "codexUnlock": "shinkansen",
       "xp": 90,
-      "factCheck": "needed"
+      "factCheck": "needed",
+      "notes": "Confirm tunnel-pressure / boom wording. Do not invent damper numbers or series names."
     },
     {
       "id": "train-platform",

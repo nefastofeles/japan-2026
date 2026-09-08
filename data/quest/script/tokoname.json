@@ -23,7 +23,8 @@
       "task": "If you see ceramic pipes in a wall, guess their first job: water, smoke, or show?",
       "reveal": "Tokoname made industrial clay pipe as well as teapots.",
       "xp": 50,
-      "factCheck": "needed"
+      "factCheck": "needed",
+      "notes": "Confirm ceramic-pipe industry history for Tokoname street walls."
     },
     {
       "id": "tok-tokonyan",

@@ -23,7 +23,8 @@
       "task": "Find the running man. Guess what he sells.",
       "reveal": "Glico. A sweets and food company. The pose is an advert that became a meeting point.",
       "xp": 70,
-      "factCheck": "needed"
+      "factCheck": "needed",
+      "notes": "Confirm Glico sign product/history wording. Keep it brief."
     },
     {
       "id": "nam-canal",
@@ -34,7 +35,8 @@
       "reveal": "A human-made canal. Named after people who paid to dig. Confirm Doton / Yasui Doton before live.",
       "codexUnlock": "dotonbori",
       "xp": 90,
-      "factCheck": "needed"
+      "factCheck": "needed",
+      "notes": "Confirm Doton / Yasui Doton canal history before live."
     },
     {
       "id": "nam-theatre",
@@ -45,7 +47,8 @@
       "reveal": "Dotonbori was a theatre quarter. Food signs came later.",
       "xp": 80,
       "mediaId": "media-dotonbori-theatre",
-      "factCheck": "needed"
+      "factCheck": "needed",
+      "notes": "Confirm Dotonbori as a theatre quarter before the food signs."
     },
     {
       "id": "nam-kuidaore",

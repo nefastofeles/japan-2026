@@ -22,7 +22,8 @@
       "reveal": "Tradition ties it to Kūkai. Treat ‘eternal’ as a living practice, not a physics claim, until checked.",
       "codexUnlock": "eternal-fire",
       "xp": 120,
-      "factCheck": "needed"
+      "factCheck": "needed",
+      "notes": "Confirm Kūkai / Reikado eternal-fire tradition wording before live."
     },
     {
       "id": "mis-seven",
@@ -32,7 +33,8 @@
       "task": "Hear one Misen wonder. Which sounds believable? Which sounds impossible?",
       "xp": 50,
       "mediaId": "media-seven-wonders",
-      "factCheck": "needed"
+      "factCheck": "needed",
+      "notes": "Confirm which ‘seven wonders’ are local tradition vs later tourist lists."
     },
     {
       "id": "mis-tengu",

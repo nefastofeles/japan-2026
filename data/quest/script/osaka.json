@@ -20,7 +20,8 @@
       "reveal": "A merchant town. Rice, canals, then street food. ‘Kitchen of Japan’ is a nickname. Confirm the history wording before live.",
       "codexUnlock": "kitchen-of-japan",
       "xp": 70,
-      "factCheck": "needed"
+      "factCheck": "needed",
+      "notes": "Confirm ‘kitchen of Japan’ as a historical nickname, not a slogan we invented."
     },
     {
       "id": "osa-comedy",
@@ -31,7 +32,8 @@
       "task": "Listen for jokes, signs, or a comedy theatre. Osaka is famous for manzai: two people, quick talk.",
       "codexUnlock": "manzai",
       "xp": 40,
-      "factCheck": "needed"
+      "factCheck": "needed",
+      "notes": "Confirm manzai / Osaka comedy association. Do not claim Osaka is the only funny city."
     }
   ]
 }

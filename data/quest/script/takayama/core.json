@@ -56,7 +56,8 @@
       "codexUnlock": "sarubobo",
       "xp": 100,
       "mediaId": "media-sarubobo",
-      "factCheck": "needed"
+      "factCheck": "needed",
+      "notes": "Confirm faceless-doll / protection tradition. Avoid overclaiming the name origin."
     },
     {
       "id": "tak-baby-monkey",
@@ -94,6 +95,7 @@
       "priority": "optional",
       "task": "If you eat it, predict: sweet, fatty, mild?",
       "codexUnlock": "hida-beef",
+      "mediaId": "media-hida-beef",
       "xp": 50
     },
     {

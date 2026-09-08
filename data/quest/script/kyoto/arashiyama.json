@@ -38,7 +38,8 @@
       "task": "Guess how much a bamboo culm can grow in a day. Then we check a careful number later.",
       "weirdFact": "Some bamboos can grow startlingly fast. Species and rates must be checked before live.",
       "xp": 40,
-      "factCheck": "needed"
+      "factCheck": "needed",
+      "notes": "Confirm species and growth-rate figures before quoting any number."
     },
     {
       "id": "ara-technology",

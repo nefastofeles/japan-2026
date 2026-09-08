@@ -39,7 +39,8 @@
       "task": "This old town is not a rebuild after bombs. Why did it survive?",
       "reveal": "Several causes: luck, distance, later choices to keep streets. Do not pick one simple reason until checked.",
       "xp": 60,
-      "factCheck": "needed"
+      "factCheck": "needed",
+      "notes": "Confirm why the historic districts survived. Do not reduce it to one cause."
     },
     {
       "id": "kan-maeda",
@@ -54,7 +55,8 @@
       "fragmentValue": 1,
       "callbackKey": "power-without-war",
       "xp": 80,
-      "factCheck": "needed"
+      "factCheck": "needed",
+      "notes": "Confirm Maeda wealth and patronage framing. Avoid cartoon politics."
     },
     {
       "id": "kan-gold",

@@ -40,7 +40,8 @@
       "task": "Stand near Yasaka and look toward the lanes of food and inns. Who was this street for?",
       "reveal": "Shrine visitors needed food, beds and shows. Gion grew to serve them.",
       "xp": 60,
-      "factCheck": "needed"
+      "factCheck": "needed",
+      "notes": "Confirm shrine visitors, lodging and entertainment without inventing a founding myth."
     }
   ]
 }

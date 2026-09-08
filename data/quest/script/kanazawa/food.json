@@ -18,7 +18,8 @@
       "priority": "optional",
       "task": "If jibuni is on a menu, try it. Duck and starch in a winter stew.",
       "xp": 50,
-      "factCheck": "needed"
+      "factCheck": "needed",
+      "notes": "Optional if encountered. Confirm jibuni as a Kanazawa dish before live."
     }
   ]
 }
