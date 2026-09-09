@@ -198,7 +198,7 @@ function bindAdmin(root) {
   pick("[data-reset-quest]").addEventListener("click", async () => {
     const status = pick("[data-reset-status]");
     const ok =
-      window.confirm("This clears the family's Quest progress on this phone and in the shared database. It cannot be undone.") &&
+      window.confirm("This clears Quest progress on this phone. If you are signed in as the facilitator it also clears the shared copy. It cannot be undone.") &&
       window.confirm("Really start the Quest over?");
     if (!ok) return;
     status.textContent = "Clearing…";

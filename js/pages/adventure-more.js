@@ -11,7 +11,6 @@ import { TRIP } from "../config.js";
 import { questShell, typeMark, wireListen, listenBar, familyRail } from "../components/quest-chrome.js";
 import { questIcon } from "../components/quest-icons.js";
 import { modulesForChapter, activateModule, moduleEligible } from "../quest/modules.js";
-import { resetQuestState } from "../quest/reset.js";
 import { visualHtml } from "../quest/visual.js";
 
 export async function adventureMapPage() {
@@ -83,8 +82,6 @@ export async function adventureMapPage() {
             </article>`;
         })
         .join("")}
-      <button class="btn btn--ghost" type="button" data-reset-quest>Start the Quest over</button>
-      <p class="quest-prose" data-reset-status role="status"></p>
     </section>
 
     <section class="stack quest-section">
@@ -140,17 +137,6 @@ export async function adventureMapPage() {
           note.textContent = "Open";
           button.replaceWith(note);
         });
-      });
-      const reset = root.querySelector("[data-reset-quest]");
-      reset?.addEventListener("click", async () => {
-        const status = root.querySelector("[data-reset-status]");
-        const ok =
-          window.confirm("This clears the family's Quest progress on this phone and in the shared database. It cannot be undone.") &&
-          window.confirm("Really start the Quest over?");
-        if (!ok) return;
-        if (status) status.textContent = "Clearing…";
-        await resetQuestState();
-        window.location.reload();
       });
     },
   };

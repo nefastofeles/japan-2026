@@ -1,22 +1,16 @@
 -- Japan 2026 - Quest shared progress
 --
--- Run after 01–04. It is not required for the journal. Quest keeps
--- working on one phone via localStorage until this file has been run
--- and js/config.js has the two keys. This file does not alter days,
--- entries, meals, media, comments or storage policies.
+-- Run after 01–04. It needs public.is_admin() from 01_schema.sql.
+-- It does not alter days, entries, meals, media, comments, reactions,
+-- people, or storage policies.
 --
--- Why a separate schema: Saga completing a mission on one iPhone must
--- show up on Rikke’s phone. Journal tables are the wrong place: they
--- are admin-write, day-scoped, and mixed with photos of the trip.
+-- Auth: reuse the planned shared family viewer (authenticated) and the
+-- facilitator in app_admins. Do not invent a second login. Anonymous
+-- visitors keep playing on this phone via localStorage; they must not
+-- read or wipe the family's shared Quest rows.
 --
--- Auth: reuse the planned shared family viewer account. Do not invent a
--- second login system. Writes here are allowed for any signed-in family
--- member because kids complete missions. Journal writes stay admin-only.
---
--- Photos: keep Quest snaps in IndexedDB for now. The existing photos
--- and thumbs buckets only accept admin uploads, which is correct for
--- the journal. Mixing mission photos into day galleries would leak
--- game shots into grandparents’ album. A quest-photos bucket can wait.
+-- Photos: keep Quest snaps in IndexedDB. The journal buckets stay
+-- admin-only.
 
 create table if not exists quest_progress (
   id            uuid primary key default gen_random_uuid(),
@@ -71,32 +65,99 @@ alter table quest_memories enable row level security;
 alter table quest_badges   enable row level security;
 alter table quest_control  enable row level security;
 
--- Signed-in family can read and write Quest state. Not the journal.
--- The journal sign-in wall is off, so anon is also allowed here only:
--- otherwise four phones cannot share progress without a second login.
+-- Family phones may keep generation in localStorage. They must not
+-- raise or lower the shared counter: that is the wipe signal.
+create or replace function public.quest_control_protect_generation()
+returns trigger
+language plpgsql
+as $$
+begin
+  if not public.is_admin() then
+    if TG_OP = 'INSERT' then
+      NEW.reset_generation := 0;
+    elsif NEW.reset_generation is distinct from OLD.reset_generation then
+      NEW.reset_generation := OLD.reset_generation;
+    end if;
+  end if;
+  return NEW;
+end;
+$$;
+
+drop trigger if exists quest_control_protect_generation on quest_control;
+create trigger quest_control_protect_generation
+  before insert or update on quest_control
+  for each row
+  execute procedure public.quest_control_protect_generation();
+
+-- Re-runs drop both the old open policies and the current names.
 do $$
 declare t text;
 begin
-  foreach t in array array['quest_progress', 'quest_memories', 'quest_badges', 'quest_control'] loop
+  foreach t in array array[
+    'quest_progress', 'quest_memories', 'quest_badges', 'quest_control'
+  ] loop
     execute format('drop policy if exists %I on %I', t || '_read', t);
-    execute format(
-      'create policy %I on %I for select to anon, authenticated using (true)',
-      t || '_read', t
-    );
     execute format('drop policy if exists %I on %I', t || '_write', t);
-    execute format(
-      'create policy %I on %I for insert to anon, authenticated with check (true)',
-      t || '_write', t
-    );
     execute format('drop policy if exists %I on %I', t || '_update', t);
-    execute format(
-      'create policy %I on %I for update to anon, authenticated using (true) with check (true)',
-      t || '_update', t
-    );
     execute format('drop policy if exists %I on %I', t || '_delete', t);
-    execute format(
-      'create policy %I on %I for delete to anon, authenticated using (true)',
-      t || '_delete', t
-    );
+    execute format('drop policy if exists %I on %I', t || '_select', t);
+    execute format('drop policy if exists %I on %I', t || '_insert', t);
   end loop;
 end $$;
+
+-- Signed-in family: play. Facilitator (is_admin): wipe. Anon: nothing.
+create policy quest_progress_select on quest_progress
+  for select to authenticated
+  using (trip_id = 'japan-2026');
+create policy quest_progress_insert on quest_progress
+  for insert to authenticated
+  with check (trip_id = 'japan-2026');
+create policy quest_progress_update on quest_progress
+  for update to authenticated
+  using (trip_id = 'japan-2026')
+  with check (trip_id = 'japan-2026');
+create policy quest_progress_delete on quest_progress
+  for delete to authenticated
+  using (trip_id = 'japan-2026' and public.is_admin());
+
+create policy quest_memories_select on quest_memories
+  for select to authenticated
+  using (trip_id = 'japan-2026');
+create policy quest_memories_insert on quest_memories
+  for insert to authenticated
+  with check (trip_id = 'japan-2026');
+create policy quest_memories_update on quest_memories
+  for update to authenticated
+  using (trip_id = 'japan-2026')
+  with check (trip_id = 'japan-2026');
+create policy quest_memories_delete on quest_memories
+  for delete to authenticated
+  using (trip_id = 'japan-2026' and public.is_admin());
+
+create policy quest_badges_select on quest_badges
+  for select to authenticated
+  using (trip_id = 'japan-2026');
+create policy quest_badges_insert on quest_badges
+  for insert to authenticated
+  with check (trip_id = 'japan-2026');
+create policy quest_badges_update on quest_badges
+  for update to authenticated
+  using (trip_id = 'japan-2026')
+  with check (trip_id = 'japan-2026');
+create policy quest_badges_delete on quest_badges
+  for delete to authenticated
+  using (trip_id = 'japan-2026' and public.is_admin());
+
+create policy quest_control_select on quest_control
+  for select to authenticated
+  using (trip_id = 'japan-2026');
+create policy quest_control_insert on quest_control
+  for insert to authenticated
+  with check (trip_id = 'japan-2026');
+create policy quest_control_update on quest_control
+  for update to authenticated
+  using (trip_id = 'japan-2026')
+  with check (trip_id = 'japan-2026');
+create policy quest_control_delete on quest_control
+  for delete to authenticated
+  using (trip_id = 'japan-2026' and public.is_admin());

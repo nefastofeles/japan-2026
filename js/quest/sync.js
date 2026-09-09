@@ -3,13 +3,12 @@
  *
  * Authored missions stay in git JSON. This module only moves mutable
  * state. Until Supabase is configured — or until the quest_* tables
- * exist — every write stays on this phone. Journal tables are never
- * touched. A facilitator reset bumps generation so a slower phone
- * cannot restore wiped pages.
+ * exist, or until a family session is signed in — every write stays
+ * on this phone. Journal tables are never touched. A facilitator
+ * reset bumps generation so a slower phone cannot restore wiped pages.
  */
 
-import { getClient } from "../supabase.js";
-import { isConfigured } from "../config.js";
+import { getAuthedClient } from "../supabase.js";
 import { emptyQuestState, loadState, saveState } from "./state.js";
 
 export const QUEST_TRIP_ID = "japan-2026";
@@ -156,9 +155,8 @@ async function readRemote(supabase) {
 }
 
 export async function pullQuestState() {
-  if (!isConfigured()) return null;
   try {
-    const supabase = await getClient();
+    const supabase = await getAuthedClient();
     if (!supabase) return null;
     return await readRemote(supabase);
   } catch (error) {
@@ -205,8 +203,7 @@ function progressRow(state, kind, itemId) {
 }
 
 async function pushState(state) {
-  if (!isConfigured()) return false;
-  const supabase = await getClient();
+  const supabase = await getAuthedClient();
   if (!supabase) return false;
 
   const remote = await readRemote(supabase);
