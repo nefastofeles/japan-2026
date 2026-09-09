@@ -6,7 +6,8 @@
       "id": "sushi-not-fish",
       "title": "Sushi Means Raw Fish",
       "type": "trueFalse",
-      "status": "approved",
+      "status": "live",
+      "liveMissionId": "sushi-not-fish",
       "question": {
         "type": "trueFalse",
         "text": "True or false: sushi means raw fish.",
@@ -19,13 +20,15 @@
       },
       "reveal": "Sushi is seasoned rice. Sashimi is sliced seafood without that rice.",
       "codexUnlock": "sushi",
-      "xp": 50
+      "xp": 50,
+      "notes": "Lightweight optional quiz. fragmentValue 0."
     },
     {
       "id": "sushi-family",
       "title": "Spot the Impostor",
       "type": "multipleChoice",
-      "status": "approved",
+      "status": "live",
+      "liveMissionId": "sushi-family",
       "visualIdea": "Nigiri, maki, gunkan, temaki, sashimi",
       "question": {
         "type": "multipleChoice",
@@ -41,22 +44,25 @@
         "retryAllowed": true
       },
       "mediaId": "media-sushi-types",
-      "xp": 60
+      "xp": 60,
+      "notes": "Lightweight optional quiz. fragmentValue 0."
     },
     {
       "id": "food-taste-map",
       "title": "Tokyo Taste Map",
       "type": "food",
-      "status": "approved",
+      "status": "live",
+      "liveMissionId": "food-taste-map",
       "task": "Across Tokyo, collect one sweet, one salty, one crunchy, one chewy, and one WHAT IS THAT?",
       "xp": 100,
-      "notes": "Progressive. The engine stores one answer today. A five-slot collector can wait."
+      "notes": "Lightweight optional. fragmentValue 0. Engine stores one answer today."
     },
     {
       "id": "food-plastic",
       "title": "Do Not Eat This",
       "type": "find",
-      "status": "approved",
+      "status": "live",
+      "liveMissionId": "food-plastic",
       "task": "Find the most convincing plastic food display outside a restaurant.",
       "photo": true,
       "reveal": "These replicas are sampuru. They show the dish without spoiling in the sun.",
@@ -64,7 +70,7 @@
       "xp": 60,
       "mediaId": "media-sampuru",
       "factCheck": "needed",
-      "notes": "Confirm sampuru wording before live."
+      "notes": "Lightweight optional find. fragmentValue 0. Confirm sampuru wording when convenient."
     }
   ]
 }

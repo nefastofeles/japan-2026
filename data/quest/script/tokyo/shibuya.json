@@ -6,7 +6,8 @@
       "id": "shb-human-tsunami",
       "title": "Human Tsunami",
       "type": "observation",
-      "status": "approved",
+      "status": "live",
+      "liveMissionId": "shb-human-tsunami",
       "priority": "must",
       "exactLocation": "Shibuya Scramble Crossing",
       "hook": "Guess first. Then watch one full crossing.",
@@ -21,17 +22,20 @@
         ],
         "retryAllowed": true
       },
-      "task": "Watch one complete crossing. Compare it with your guess.",
+      "task": "Watch one complete crossing. Compare it with your guess. You do not need an exact count.",
+      "reveal": "At busy times, the crossing can handle more than 1,000 pedestrians in a single cycle.",
       "visualIdea": "Aerial Shibuya only after the prediction",
       "mediaId": "media-shibuya-aerial",
       "xp": 90,
-      "notes": "No correctChoiceId. Do not show the aerial before they guess."
+      "factCheck": "verified",
+      "notes": "Prediction/observation only. Do not tell the family that 1,000 people always cross. Exact counting is not required."
     },
     {
       "id": "shb-hachiko",
       "title": "The Dog Who Kept Coming Back",
       "type": "story",
-      "status": "approved",
+      "status": "live",
+      "liveMissionId": "shb-hachiko",
       "exactLocation": "Hachiko Memorial Statue",
       "story": [
         "Every day Hachiko met his owner at this station.",
@@ -39,11 +43,15 @@
         "What do you think Hachiko did?"
       ],
       "reveal": "Hachiko kept coming back, for years.",
+      "moreInfo": {
+        "title": "How long",
+        "text": "He continued returning to Shibuya Station for 9 years after his owner died."
+      },
       "codexUnlock": "hachiko",
       "xp": 80,
       "mediaId": "media-hachiko",
-      "factCheck": "needed",
-      "notes": "Confirm the number of years and the owner’s name before live."
+      "factCheck": "verified",
+      "notes": "No exact numbers in the child-facing default text. Duration 9 years stays in moreInfo."
     }
   ]
 }

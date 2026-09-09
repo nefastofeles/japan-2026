@@ -1,0 +1,218 @@
+[
+  {
+    "id": "tokyo-edo",
+    "chapterId": "tokyo",
+    "moduleId": "tokyo-core",
+    "title": "Tokyo Before Tokyo",
+    "type": "multipleChoice",
+    "xp": 70,
+    "fragmentValue": 1,
+    "intro": "This megacity had another name.",
+    "task": "What was Tokyo previously called?",
+    "question": {
+      "type": "multipleChoice",
+      "text": "What was Tokyo previously called?",
+      "choices": [
+        { "id": "edo", "text": "Edo", "response": "Yes. Edo came first." },
+        { "id": "nara", "text": "Nara", "response": "Nara is an older capital. Try the city you are in." },
+        { "id": "fuji", "text": "Fuji", "response": "Fuji is a mountain. Look at the city name." },
+        { "id": "kamakura", "text": "Kamakura", "response": "Kamakura was a different seat of power." }
+      ],
+      "correctChoiceId": "edo",
+      "retryAllowed": true
+    },
+    "reveal": "Tokyo was previously Edo.",
+    "moreInfo": {
+      "title": "Edo",
+      "text": "Edo became the political center of the Tokugawa shogunate. During the Meiji transition it was renamed Tokyo."
+    },
+    "codexUnlock": "edo"
+  },
+  {
+    "id": "tokyo-konbini",
+    "chapterId": "tokyo",
+    "moduleId": "tokyo-core",
+    "title": "Konbini Roulette",
+    "type": "food",
+    "xp": 80,
+    "fragmentValue": 1,
+    "intro": "Find one food or drink nobody has tried.",
+    "task": "Buy it. Everyone tastes it. Rate it together from 1 to 5.",
+    "hint": "Look for rice triangles, egg sandwiches, hot snacks.",
+    "reveal": "This is how a megacity eats at odd hours. Not a snack stop. A system.",
+    "codexUnlock": "konbini",
+    "badgeUnlock": "food-explorer"
+  },
+  {
+    "id": "tokyo-vending",
+    "chapterId": "tokyo",
+    "moduleId": "tokyo-core",
+    "title": "Machine Hunter",
+    "type": "photo",
+    "xp": 50,
+    "fragmentValue": 1,
+    "intro": "Some machines sell drinks. Hunt for a stranger one.",
+    "task": "Find the strangest vending machine or vending-machine product you see.",
+    "reveal": "The city stays open after the staff go home. The machines keep working.",
+    "codexUnlock": "weird-vending"
+  },
+  {
+    "id": "tokyo-train-silence",
+    "chapterId": "tokyo",
+    "moduleId": "tokyo-core",
+    "title": "Millions of Quiet People",
+    "type": "observation",
+    "xp": 60,
+    "fragmentValue": 1,
+    "intro": "A packed train can still be quiet.",
+    "task": "On a busy train, notice what people do so they do not disturb each other.",
+    "reveal": "Tokyo trains work because people share the quiet, not only because of the rails."
+  },
+  {
+    "id": "shi-godzilla",
+    "chapterId": "tokyo",
+    "moduleId": "tokyo-shinjuku",
+    "title": "Something Is Watching Shinjuku",
+    "type": "photo",
+    "xp": 100,
+    "fragmentValue": 1,
+    "mediaId": "media-godzilla-clue",
+    "intro": "Something huge is hiding above street level.",
+    "task": "Find the enormous creature before anyone points it out. Photograph it.",
+    "exactLocation": "Shinjuku Toho Building / Kabukicho",
+    "reveal": "Godzilla. The head sits above the Shinjuku Toho Building in Kabukicho.",
+    "moreInfo": {
+      "title": "Kaiju",
+      "text": "Godzilla began as a film about fear and the sea. The head on this building is a shop-sign and a local joke."
+    },
+    "codexUnlock": "kaiju"
+  },
+  {
+    "id": "shi-station",
+    "chapterId": "tokyo",
+    "moduleId": "tokyo-shinjuku",
+    "title": "How Do You Control This?",
+    "type": "observation",
+    "xp": 80,
+    "fragmentValue": 1,
+    "intro": "Shinjuku Station moves a city through a building.",
+    "task": "Find two design tricks that help huge numbers of people move through the station.",
+    "exactLocation": "Shinjuku Station",
+    "observeWhat": "Colours, numbers, floor marks, queues, sounds.",
+    "reveal": "Marks, numbers and queues do the shouting so people do not have to."
+  },
+  {
+    "id": "sky-giant",
+    "chapterId": "tokyo",
+    "moduleId": "tokyo-skytree",
+    "date": "2026-09-17",
+    "anchorEvent": true,
+    "title": "The Giant",
+    "type": "multipleChoice",
+    "xp": 70,
+    "fragmentValue": 1,
+    "mediaId": "media-skytree-exterior",
+    "intro": "Three famous towers. Only one is this tall.",
+    "task": "Which is tallest?",
+    "exactLocation": "Tokyo Skytree",
+    "question": {
+      "type": "multipleChoice",
+      "text": "Which is tallest?",
+      "choices": [
+        { "id": "eiffel", "text": "Eiffel Tower", "response": "Famous, but shorter than this one." },
+        { "id": "tokyo-tower", "text": "Tokyo Tower", "response": "Close, and red. Look at the new one." },
+        { "id": "skytree", "text": "Tokyo Skytree", "response": "Yes. This is the tall one." }
+      ],
+      "correctChoiceId": "skytree",
+      "retryAllowed": true
+    },
+    "reveal": "Tokyo Skytree is 634 metres tall."
+  },
+  {
+    "id": "sky-find-old-tokyo",
+    "chapterId": "tokyo",
+    "moduleId": "tokyo-skytree",
+    "date": "2026-09-17",
+    "anchorEvent": true,
+    "title": "Find Old Tokyo",
+    "type": "find",
+    "xp": 100,
+    "fragmentValue": 1,
+    "intro": "New Tokyo is under your feet. Old Tokyo is still in view.",
+    "task": "Find the direction of Asakusa and Sensō-ji below.",
+    "exactLocation": "Tokyo Skytree observation deck",
+    "reveal": "From here you can see old Tokyo and new Tokyo at the same time.",
+    "codexUnlock": "past-future-tokyo"
+  },
+  {
+    "id": "sky-earthquake",
+    "chapterId": "tokyo",
+    "moduleId": "tokyo-skytree",
+    "date": "2026-09-17",
+    "anchorEvent": true,
+    "title": "Why Doesn't It Fall?",
+    "type": "multipleChoice",
+    "xp": 120,
+    "fragmentValue": 1,
+    "mediaId": "media-skytree-structure",
+    "intro": "A tower this tall has to live with earthquakes.",
+    "task": "How can something this tall survive strong movement?",
+    "question": {
+      "type": "multipleChoice",
+      "text": "How can something this tall survive strong movement?",
+      "choices": [
+        { "id": "rigid", "text": "It is completely rigid", "response": "Rigid towers fight the ground. This one is meant to move a little." },
+        { "id": "damp", "text": "It can absorb and control movement", "response": "Yes. It is built to sway and settle." },
+        { "id": "rebuild", "text": "It is rebuilt after earthquakes", "response": "It is meant to stay standing." }
+      ],
+      "correctChoiceId": "damp",
+      "retryAllowed": true
+    },
+    "reveal": "Tokyo Skytree uses modern structural damping. A reinforced-concrete central column moves somewhat independently from the outer structure, helping reduce earthquake motion.",
+    "moreInfo": {
+      "title": "Named after a pillar",
+      "text": "The designers named the concept in reference to the central pillar found in traditional five-story pagodas. That is a name for the idea, not a claim that ancient pagodas supplied this engineering solution."
+    }
+  },
+  {
+    "id": "tlb-dont-understand",
+    "chapterId": "tokyo",
+    "moduleId": "tokyo-teamlab",
+    "date": "2026-09-18",
+    "anchorEvent": true,
+    "title": "Don't Understand Anything",
+    "type": "observation",
+    "xp": 80,
+    "fragmentValue": 1,
+    "mediaId": "media-teamlab-teaser",
+    "intro": "Do not explain the rooms yet.",
+    "task": "For the first ten minutes, do not explain the art. Just walk. Then each person picks: most beautiful, strangest, most alive.",
+    "reveal": "Keep those three picks. Kyoto and Osaka will ask what changed.",
+    "callbackKey": "tlb-first-walk"
+  },
+  {
+    "id": "tlb-is-it-art",
+    "chapterId": "tokyo",
+    "moduleId": "tokyo-teamlab",
+    "date": "2026-09-18",
+    "anchorEvent": true,
+    "title": "Is It Still the Same Art?",
+    "type": "reflection",
+    "xp": 80,
+    "fragmentValue": 1,
+    "intro": "After teamLab, before you sleep.",
+    "task": "If this moving experience were frozen into one photograph, would it still be the same artwork?",
+    "question": {
+      "type": "multipleChoice",
+      "text": "If this moving experience were frozen into one photograph, would it still be the same artwork?",
+      "choices": [
+        { "id": "yes", "text": "Yes", "response": "Keep that. Kyoto and Osaka will ask again." },
+        { "id": "no", "text": "No", "response": "Keep that. Kyoto and Osaka will ask again." },
+        { "id": "partly", "text": "Partly", "response": "Keep that. Kyoto and Osaka will ask again." }
+      ],
+      "retryAllowed": true
+    },
+    "reveal": "Keep that. Kyoto will read it back.",
+    "callbackKey": "tlb-frozen-photo"
+  }
+]

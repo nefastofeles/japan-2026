@@ -6,28 +6,29 @@
       "id": "script-depachika",
       "title": "The city under the city",
       "type": "find",
-      "status": "live",
-      "liveMissionId": "tokyo-under",
-      "exactLocation": "Shinjuku Station basement food halls"
+      "status": "idea",
+      "exactLocation": "Shinjuku Station basement food halls",
+      "notes": "Old sample tokyo-under. Not in the first-stay shortlist. Progress on that id is not mapped."
     },
     {
       "id": "script-cat",
       "title": "The cat that is not waving hello",
       "type": "trueFalse",
-      "status": "live",
-      "liveMissionId": "tokyo-beckoning",
-      "physicalObservation": "A maneki-neko paw"
+      "status": "idea",
+      "physicalObservation": "A maneki-neko paw",
+      "notes": "Old sample tokyo-beckoning. Not in the first-stay shortlist. Progress on that id is not mapped."
     },
     {
       "id": "shi-godzilla",
       "title": "Something Is Watching Shinjuku",
       "type": "find",
-      "status": "approved",
+      "status": "live",
+      "liveMissionId": "shi-godzilla",
       "priority": "must",
       "exactLocation": "Shinjuku Toho Building / Kabukicho",
-      "task": "Find the enormous creature hiding above street level before anyone points it out.",
+      "task": "Find the enormous creature hiding above street level before anyone points it out. Photograph it.",
       "photo": true,
-      "reveal": "Godzilla. A kaiju: a giant screen-monster that Japan made famous.",
+      "reveal": "Godzilla. The head sits above the Shinjuku Toho Building in Kabukicho.",
       "moreInfo": {
         "title": "Kaiju",
         "text": "Godzilla began as a film about fear and the sea. The head on this building is a shop-sign and a local joke."
@@ -38,18 +39,21 @@
       "media": [
         { "id": "media-godzilla-clue", "role": "clue" },
         { "id": "media-godzilla-reveal", "role": "reveal" }
-      ]
+      ],
+      "factCheck": "verified",
+      "notes": "Find/photo mission. Do not show Godzilla clearly before the find."
     },
     {
       "id": "shi-station",
       "title": "How Do You Control This?",
       "type": "observation",
-      "status": "approved",
+      "status": "live",
+      "liveMissionId": "shi-station",
       "exactLocation": "Shinjuku Station",
       "task": "Find two design tricks that help huge numbers of people move through the station.",
       "physicalObservation": "Colours, numbers, floor marks, queues, sounds.",
       "xp": 80,
-      "notes": "Do not quote passenger counts until checked."
+      "notes": "Do not quote passenger counts."
     },
     {
       "id": "shi-tiny-tokyo",
@@ -59,7 +63,8 @@
       "task": "Find the smallest restaurant, alley or shop space you can.",
       "photo": true,
       "reveal": "Tokyo often solves tight land by going small and stacking up.",
-      "xp": 60
+      "xp": 60,
+      "notes": "Approved and dormant."
     }
   ]
 }

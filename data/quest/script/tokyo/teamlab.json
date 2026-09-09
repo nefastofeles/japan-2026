@@ -6,27 +6,29 @@
       "id": "script-teamlab-tokyo",
       "title": "What felt like art?",
       "type": "reflection",
-      "status": "live",
-      "liveMissionId": "tokyo-teamlab"
+      "status": "idea",
+      "notes": "Old sample tokyo-teamlab. Replaced by tlb-dont-understand and tlb-is-it-art. No 1:1 map. Kyoto sample callbackFrom now reads tlb-is-it-art."
     },
     {
       "id": "tlb-dont-understand",
       "title": "Don't Understand Anything",
       "type": "observation",
-      "status": "approved",
+      "status": "live",
+      "liveMissionId": "tlb-dont-understand",
       "priority": "anchor",
       "task": "For the first ten minutes, do not explain the art. Just walk.",
       "followUp": "Each person picks: most beautiful, strangest, most alive.",
       "xp": 80,
       "mediaId": "media-teamlab-teaser",
       "callbackKey": "tlb-first-walk",
-      "notes": "No spoilers in the teaser image."
+      "notes": "No spoilers in the teaser image. Save the walk for Kyoto/Osaka callbacks."
     },
     {
       "id": "tlb-is-it-art",
       "title": "Is It Still the Same Art?",
       "type": "reflection",
-      "status": "approved",
+      "status": "live",
+      "liveMissionId": "tlb-is-it-art",
       "priority": "anchor",
       "question": {
         "type": "multipleChoice",
@@ -43,7 +45,7 @@
       "xp": 80,
       "callbackKey": "tlb-frozen-photo",
       "saveFor": ["teamlab-kyoto", "teamlab-osaka"],
-      "notes": "No correctChoiceId. Sample reflection tokyo-teamlab stays live."
+      "notes": "No correctChoiceId. Live Kyoto sample reads this id back."
     }
   ]
 }

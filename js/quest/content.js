@@ -1,9 +1,10 @@
 /**
  * Quest content loader.
  *
- * Live playable content stays in missions / discoveries JSON.
- * The Adventure Script is an editorial notebook; status "live" items
- * usually point at a liveMissionId instead of duplicating the page.
+ * Live playable content stays in missions JSON (split so no file
+ * grows past a readable size). The Adventure Script is an editorial
+ * notebook; status "live" items usually point at a liveMissionId
+ * instead of duplicating the page.
  */
 
 let cache = null;
@@ -39,13 +40,22 @@ async function readJsonArray(path) {
   }
 }
 
+const EXTRA_MISSION_FILES = [
+  "data/quest/missions-copenhagen.json",
+  "data/quest/missions-tokyo.json",
+  "data/quest/missions-tokyo-places.json",
+  "data/quest/missions-tokyo-light.json",
+];
+
 export async function loadQuest() {
   if (cache) return cache;
-  const [chapters, missions, codex, badges, story, discoveries, modules, moreModules, rewards, media, moreMedia, script] =
+  const [chapters, missions, extraMissions, codex, moreCodex, badges, story, discoveries, modules, moreModules, rewards, media, moreMedia, script] =
     await Promise.all([
       readJson("data/quest/chapters.json"),
       readJson("data/quest/missions.json"),
+      Promise.all(EXTRA_MISSION_FILES.map(readJsonArray)),
       readJson("data/quest/codex.json"),
+      readJsonArray("data/quest/codex-more.json"),
       readJson("data/quest/badges.json"),
       readJson("data/quest/story.json"),
       readJson("data/quest/discoveries.json"),
@@ -58,8 +68,8 @@ export async function loadQuest() {
     ]);
   cache = {
     chapters,
-    missions,
-    codex,
+    missions: [...missions, ...extraMissions.flat()],
+    codex: [...codex, ...moreCodex],
     badges,
     story,
     discoveries,

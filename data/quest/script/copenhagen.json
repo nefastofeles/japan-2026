@@ -6,27 +6,25 @@
       "id": "script-already-here",
       "title": "Japan is already here",
       "type": "find",
-      "status": "live",
+      "status": "idea",
       "liveMissionId": "prologue-already-here",
       "locationDescription": "Copenhagen Airport, before boarding",
-      "physicalObservation": "A word, snack or tag that came from Japan",
-      "visualIdea": "Paper cranes / airport light",
-      "notes": "Runtime lives in missions.json. Do not duplicate."
+      "notes": "Superseded by cph-spot-japan. Same playable id so airport progress is kept."
     },
     {
       "id": "script-sun",
       "title": "The sun that does not set",
       "type": "multipleChoice",
-      "status": "live",
-      "liveMissionId": "prologue-sun",
+      "status": "idea",
       "question": "What is the red circle on the flag?",
-      "notes": "Sample multiple-choice. Runtime in missions.json."
+      "notes": "Old sample. Removed from playable missions; no safe map to the approved CPH shortlist."
     },
     {
       "id": "cph-first-fragment",
       "title": "The First Fragment",
       "type": "multipleChoice",
-      "status": "approved",
+      "status": "live",
+      "liveMissionId": "cph-first-fragment",
       "priority": "anchor",
       "exactLocation": "Copenhagen Airport",
       "hook": "Japan is far away. But the adventure has already started.",
@@ -48,13 +46,14 @@
       "xp": 50,
       "callbackKey": "cph-different",
       "saveFor": ["tokyo-finale"],
-      "notes": "No correctChoiceId. Do not promote until the Tokyo callback exists."
+      "notes": "No correctChoiceId. Answers are stored for a later Tokyo callback."
     },
     {
       "id": "cph-future-you",
       "title": "Future You",
       "type": "reflection",
-      "status": "approved",
+      "status": "live",
+      "liveMissionId": "cph-future-you",
       "priority": "anchor",
       "exactLocation": "Copenhagen Airport",
       "hook": "Before Japan changes your mind, make one prediction.",
@@ -69,14 +68,15 @@
       "id": "cph-spot-japan",
       "title": "Japan Before Japan",
       "type": "find",
-      "status": "approved",
+      "status": "live",
+      "liveMissionId": "prologue-already-here",
       "exactLocation": "Copenhagen Airport",
       "task": "Before boarding, find something Japanese.",
       "hint": "Writing, a brand, or Japan on a departures screen.",
       "reveal": "Japan leaked into this building. You caught one piece.",
       "codexUnlock": "journey-east",
       "xp": 40,
-      "notes": "Close to live sample prologue-already-here. Keep the sample live. Do not promote this yet."
+      "notes": "Playable id stays prologue-already-here so existing completions survive."
     },
     {
       "id": "script-gate-riddle",

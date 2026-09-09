@@ -6,7 +6,8 @@
       "id": "tsu-five-creatures",
       "title": "Five Creatures",
       "type": "find",
-      "status": "approved",
+      "status": "live",
+      "liveMissionId": "tsu-five-creatures",
       "priority": "must",
       "task": "Find five different sea creatures for sale. Photograph one you cannot name.",
       "photo": true,
@@ -18,7 +19,8 @@
       "id": "tsu-tamagoyaki",
       "title": "Looks Like Omelette...",
       "type": "food",
-      "status": "approved",
+      "status": "live",
+      "liveMissionId": "tsu-tamagoyaki",
       "question": {
         "type": "multipleChoice",
         "text": "Before tasting tamagoyaki, predict the main taste.",
@@ -51,15 +53,17 @@
         "correctChoiceId": "outer",
         "retryAllowed": true
       },
+      "reveal": "The wholesale fish market and famous tuna auctions moved to Toyosu, while Tsukiji’s Outer Market stayed and remains a major food district.",
       "xp": 70,
-      "factCheck": "needed",
-      "notes": "Confirm Outer Market vs Toyosu wording before live."
+      "factCheck": "verified",
+      "notes": "Wording verified. Keep approved and dormant; do not promote yet."
     },
     {
       "id": "tsu-built-on-sea",
       "title": "You Are Standing in the Sea",
       "type": "multipleChoice",
-      "status": "approved",
+      "status": "live",
+      "liveMissionId": "tsu-built-on-sea",
       "hook": "A few centuries ago, this was not land.",
       "question": {
         "type": "multipleChoice",
@@ -73,16 +77,15 @@
         "correctChoiceId": "land",
         "retryAllowed": true
       },
-      "reveal": "This ground was taken from the bay after a huge fire in Edo.",
+      "reveal": "Tsukiji roughly means constructed land. This ground was reclaimed from Tokyo Bay after the Great Fire of Meireki in 1657.",
       "moreInfo": {
         "title": "Filled land",
-        "text": "After a great fire in the 1600s, new land was packed into the bay here. Confirm the 1657 date and the reading of Tsukiji before this is live."
+        "text": "After the Meireki fire of 1657, new land was packed into the bay here. The name Tsukiji points to that constructed ground."
       },
       "codexUnlock": "reclaimed-tokyo",
       "xp": 100,
       "mediaId": "media-tsukiji-reclaimed",
-      "factCheck": "needed",
-      "notes": "Confirm Tsukiji as reclaimed land. Do not invent fill dates."
+      "factCheck": "verified"
     }
   ]
 }

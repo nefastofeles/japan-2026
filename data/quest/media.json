@@ -40,7 +40,7 @@
     "type": "image",
     "alt": "Aerial view of Shibuya Scramble Crossing packed with pedestrians",
     "status": "needed",
-    "notes": "Show only after the family makes a prediction."
+    "notes": "Highest-priority media for the live shortlist. Show only after the family makes a prediction."
   },
   {
     "id": "media-hachiko",
@@ -50,7 +50,8 @@
     "role": "historical",
     "type": "image",
     "alt": "The Hachiko memorial statue at Shibuya Station",
-    "status": "needed"
+    "status": "needed",
+    "notes": "Highest-priority media for the live shortlist. Story image for Hachiko."
   },
   {
     "id": "media-edo-castle-compare",
@@ -60,7 +61,8 @@
     "role": "historical",
     "type": "diagram",
     "alt": "Edo Castle grounds compared with the green Imperial Palace site in modern Tokyo",
-    "status": "needed"
+    "status": "needed",
+    "notes": "Highest-priority media for the live shortlist. Imperial Palace / Edo Castle comparison."
   },
   {
     "id": "media-skytree-exterior",
@@ -82,7 +84,7 @@
     "type": "diagram",
     "alt": "Simple diagram of a tall tower that can sway, with a central column",
     "status": "needed",
-    "notes": "Keep it simple. Check engineering copy before live."
+    "notes": "Highest-priority media for the live shortlist. Skytree damping diagram. Keep it simple. Copy is verified: modern damping, not a pagoda copy."
   },
   {
     "id": "media-kaminarimon-lantern",
@@ -93,7 +95,7 @@
     "type": "image",
     "alt": "The huge red lantern hanging in Kaminarimon, seen from below",
     "status": "needed",
-    "notes": "Detail crop for after they look underneath. Do not spoil the missed detail."
+    "notes": "Highest-priority media for the live shortlist. Kaminarimon lantern underside/detail. Do not spoil the missed detail."
   },
   {
     "id": "media-asakusa-historic",
@@ -117,7 +119,8 @@
     "role": "hero",
     "type": "image",
     "alt": "Tall trees on the path into Meiji Jingu",
-    "status": "needed"
+    "status": "needed",
+    "notes": "Highest-priority media for the live shortlist. Meiji forest image."
   },
   {
     "id": "media-harajuku-pop",
@@ -138,7 +141,8 @@
     "role": "historical",
     "type": "image",
     "alt": "Akihabara shop displays of electronics and parts, not only characters",
-    "status": "needed"
+    "status": "needed",
+    "notes": "Highest-priority media for the live shortlist. Electronics-history comparison."
   },
   {
     "id": "media-tsukiji-seafood",
@@ -158,7 +162,8 @@
     "role": "historical",
     "type": "diagram",
     "alt": "Simple map showing Tokyo Bay filled to make new land at Tsukiji",
-    "status": "needed"
+    "status": "needed",
+    "notes": "Highest-priority media for the live shortlist. Reclaimed-land historical map/diagram."
   },
   {
     "id": "media-teamlab-teaser",
@@ -180,7 +185,7 @@
     "type": "diagram",
     "alt": "A grid of brand marks for a family quiz: Japanese and not Japanese mixed",
     "status": "needed",
-    "notes": "Do not copy trademarked logos into git until license is clear."
+    "notes": "Highest-priority media for the live shortlist. Japanese-brand logo quiz. Do not copy trademarked logos into git until license is clear."
   },
   {
     "id": "media-shinkansen-nose",
@@ -210,7 +215,8 @@
     "role": "diagram",
     "type": "diagram",
     "alt": "Five plates: nigiri, maki, gunkan, temaki, and sashimi",
-    "status": "needed"
+    "status": "needed",
+    "notes": "Highest-priority media for the live shortlist. Sushi-type visual quiz."
   },
   {
     "id": "media-sampuru",

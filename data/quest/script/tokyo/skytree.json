@@ -6,16 +6,17 @@
       "id": "script-634",
       "title": "634",
       "type": "riddle",
-      "status": "live",
-      "liveMissionId": "tokyo-skytree",
+      "status": "idea",
       "question": "How tall, and why that number?",
-      "physicalObservation": "Forest visible from the tower"
+      "physicalObservation": "Forest visible from the tower",
+      "notes": "Old sample tokyo-skytree. Not the same as sky-giant. Progress on 634 does not map."
     },
     {
       "id": "sky-giant",
       "title": "The Giant",
       "type": "multipleChoice",
-      "status": "approved",
+      "status": "live",
+      "liveMissionId": "sky-giant",
       "priority": "anchor",
       "exactLocation": "Tokyo Skytree",
       "question": {
@@ -32,14 +33,15 @@
       "reveal": "Tokyo Skytree is 634 metres tall.",
       "mediaId": "media-skytree-exterior",
       "xp": 70,
-      "factCheck": "needed",
-      "notes": "634 m is the usual public figure. Confirm before live. Sample riddle 634 stays live."
+      "factCheck": "verified",
+      "notes": "Public height 634 metres. Quiz stays Eiffel / Tokyo Tower / Tokyo Skytree."
     },
     {
       "id": "sky-find-old-tokyo",
       "title": "Find Old Tokyo",
       "type": "find",
-      "status": "approved",
+      "status": "live",
+      "liveMissionId": "sky-find-old-tokyo",
       "priority": "anchor",
       "exactLocation": "Tokyo Skytree observation deck",
       "task": "Find the direction of Asakusa and Sensō-ji below.",
@@ -52,7 +54,8 @@
       "id": "sky-earthquake",
       "title": "Why Doesn't It Fall?",
       "type": "multipleChoice",
-      "status": "approved",
+      "status": "live",
+      "liveMissionId": "sky-earthquake",
       "priority": "anchor",
       "question": {
         "type": "multipleChoice",
@@ -65,17 +68,17 @@
         "correctChoiceId": "damp",
         "retryAllowed": true
       },
+      "reveal": "Tokyo Skytree uses modern structural damping. A reinforced-concrete central column moves somewhat independently from the outer structure, helping reduce earthquake motion.",
       "moreInfo": {
-        "title": "Built to move",
-        "text": "In earthquake country, a tall tower is safer if it can sway. Skytree uses a central column and dampers. Treat this as a sketch until an engineering source is checked.",
-        "audioText": "In earthquake country, a tall tower is safer if it can sway a little. Skytree uses a central column and dampers to control that movement. We will check the exact engineering before this page goes live."
+        "title": "Named after a pillar",
+        "text": "The designers named the concept in reference to the central pillar found in traditional five-story pagodas. That is a name for the idea, not a claim that ancient pagodas supplied this engineering solution."
       },
-      "visualIdea": "Simple structural diagram",
+      "visualIdea": "Simple Skytree structural/damping diagram",
       "mediaId": "media-skytree-structure",
       "rewardIdea": "sky-guardian",
       "xp": 120,
-      "factCheck": "needed",
-      "notes": "Do not invent damper numbers. Check central-column wording before live."
+      "factCheck": "verified",
+      "notes": "Do not say Skytree copies a pagoda. Keep default copy short; depth stays in moreInfo."
     }
   ]
 }

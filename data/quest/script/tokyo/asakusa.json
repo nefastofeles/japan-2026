@@ -6,7 +6,8 @@
       "id": "asa-thunder-gate",
       "title": "The Thunder Gate",
       "type": "find",
-      "status": "approved",
+      "status": "live",
+      "liveMissionId": "asa-thunder-gate",
       "priority": "must",
       "exactLocation": "Kaminarimon",
       "task": "Find the enormous lantern. Then look underneath it. What detail do most visitors miss?",
@@ -19,30 +20,36 @@
       "id": "asa-commerce",
       "title": "Temple + Shopping?",
       "type": "riddle",
-      "status": "approved",
+      "status": "live",
+      "liveMissionId": "asa-commerce",
       "exactLocation": "Nakamise-dori",
-      "question": "Why would a busy shopping street grow directly in front of a temple?",
-      "reveal": "Pilgrims brought crowds. Crowds brought merchants.",
+      "question": "Why would shops grow along a temple approach?",
+      "reveal": "Temple visitors created foot traffic. Where people gathered, merchants and food sellers followed.",
       "moreInfo": {
         "title": "The road to the temple",
-        "text": "In Edo, people travelled to Sensō-ji. Shops grew along the last stretch because the visitors were already walking there."
+        "text": "This is one strong reason streets like Nakamise filled with shops. It is not the sole historical explanation for every stall here."
       },
       "xp": 80,
       "mediaId": "media-asakusa-historic",
-      "factCheck": "needed",
-      "notes": "Check how old Nakamise is as a named street before live."
+      "factCheck": "verified",
+      "notes": "Do not present foot traffic as the only origin of every Nakamise shop."
     },
     {
       "id": "asa-smoke",
       "title": "Why Is Everyone Waving Smoke?",
       "type": "observation",
-      "status": "approved",
+      "status": "live",
+      "liveMissionId": "asa-smoke",
       "exactLocation": "Sensō-ji incense burner",
       "task": "Watch what people do with the incense smoke. What do you think it means?",
-      "reveal": "Some people waft the smoke toward a part of the body as a blessing. It is a folk practice, not medicine.",
+      "reveal": "Visitors often draw incense smoke toward themselves as part of a popular devotional custom.",
+      "moreInfo": {
+        "title": "A custom, not a rule",
+        "text": "The smoke is traditionally associated with blessing or purification. This is a popular custom, not a universal Buddhist rule, and it is not medicine for specific body parts."
+      },
       "xp": 70,
-      "factCheck": "needed",
-      "notes": "Do not claim medical effect. Confirm the usual explanation before live."
+      "factCheck": "verified",
+      "notes": "No medical-healing claim. Not presented as a universal Buddhist rule."
     }
   ]
 }

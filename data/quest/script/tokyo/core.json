@@ -6,7 +6,8 @@
       "id": "tokyo-edo",
       "title": "Tokyo Before Tokyo",
       "type": "multipleChoice",
-      "status": "approved",
+      "status": "live",
+      "liveMissionId": "tokyo-edo",
       "hook": "This megacity had another name.",
       "question": {
         "type": "multipleChoice",
@@ -20,15 +21,15 @@
         "correctChoiceId": "edo",
         "retryAllowed": true
       },
-      "reveal": "Edo became Tokyo when the emperor moved here.",
+      "reveal": "Tokyo was previously Edo.",
       "moreInfo": {
         "title": "Edo",
-        "text": "Edo was the Tokugawa shogun’s city. In 1868 it was renamed Tokyo, eastern capital."
+        "text": "Edo became the political center of the Tokugawa shogunate. During the Meiji transition it was renamed Tokyo."
       },
       "codexUnlock": "edo",
       "xp": 70,
-      "factCheck": "needed",
-      "notes": "Confirm the 1868 rename wording before live."
+      "factCheck": "verified",
+      "notes": "Core claim only: Tokyo was previously Edo. Rename wording stays conservative."
     },
     {
       "id": "tokyo-60-second-silence",
@@ -37,35 +38,39 @@
       "status": "approved",
       "task": "Stop somewhere busy. Stay silent for one minute. How many different sounds can you name?",
       "reveal": "A loud city is also a listening city.",
-      "xp": 50
+      "xp": 50,
+      "notes": "Approved and dormant. Do not promote yet."
     },
     {
       "id": "tokyo-konbini",
       "title": "Konbini Roulette",
       "type": "food",
-      "status": "approved",
+      "status": "live",
+      "liveMissionId": "tokyo-konbini",
       "task": "Find one food or drink nobody has tried. Buy it. Everyone tastes it.",
       "followUp": "Rate it together from 1 to 5.",
       "photo": true,
       "codexUnlock": "konbini",
       "xp": 80,
-      "notes": "Intended replacement for live sample tokyo-konbini. Sample stays live."
+      "notes": "Same playable id as the old sample. Live copy is buy + everyone tastes + rate 1–5."
     },
     {
       "id": "tokyo-vending",
       "title": "Machine Hunter",
       "type": "photo",
-      "status": "approved",
+      "status": "live",
+      "liveMissionId": "tokyo-vending",
       "task": "Find the strangest vending machine or vending-machine product you see.",
       "photo": true,
       "xp": 50,
-      "notes": "Intended replacement for live sample tokyo-vending. Sample stays live."
+      "notes": "Same playable id as the old sample. Live copy is Machine Hunter."
     },
     {
       "id": "tokyo-train-silence",
       "title": "Millions of Quiet People",
       "type": "observation",
-      "status": "approved",
+      "status": "live",
+      "liveMissionId": "tokyo-train-silence",
       "task": "On a busy train, notice what people do so they do not disturb each other.",
       "reveal": "Tokyo trains work because people share the quiet, not only because of the rails.",
       "xp": 60
@@ -76,7 +81,7 @@
       "type": "story",
       "status": "draft",
       "historicalTheme": "Edo wetland to megacity",
-      "notes": "Core framing leftover. tokyo-edo is the approved version."
+      "notes": "Core framing leftover. tokyo-edo is the live version."
     }
   ]
 }

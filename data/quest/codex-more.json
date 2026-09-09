@@ -1,0 +1,119 @@
+[
+  {
+    "id": "journey-east",
+    "name": "The Journey East",
+    "japaneseName": "東へ",
+    "category": "Objects",
+    "rarity": "common",
+    "chapterId": "prologue",
+    "description": "A scrap of Japan found before the plane left. Stories travel ahead of people."
+  },
+  {
+    "id": "edo",
+    "name": "Edo",
+    "japaneseName": "江戸",
+    "category": "Places",
+    "rarity": "uncommon",
+    "chapterId": "tokyo",
+    "description": "The old name of Tokyo. Edo was the Tokugawa shogunate’s political centre, then renamed Tokyo in the Meiji transition."
+  },
+  {
+    "id": "konbini",
+    "name": "Konbini",
+    "japaneseName": "コンビニ",
+    "category": "Food",
+    "rarity": "common",
+    "chapterId": "tokyo",
+    "description": "A tiny kitchen that never sleeps. Onigiri, egg sandwiches and hot snacks at odd hours are a system, not a compromise."
+  },
+  {
+    "id": "kaiju",
+    "name": "Kaiju",
+    "japaneseName": "怪獣",
+    "category": "Modern Japan",
+    "rarity": "uncommon",
+    "chapterId": "tokyo",
+    "description": "A giant screen-monster. Godzilla’s head watches Kabukicho from the Shinjuku Toho Building."
+  },
+  {
+    "id": "past-future-tokyo",
+    "name": "Old Tokyo, New Tokyo",
+    "japaneseName": "下町",
+    "category": "Places",
+    "rarity": "uncommon",
+    "chapterId": "tokyo",
+    "description": "From Skytree you can point toward Asakusa and see the low city still sitting under the new one."
+  },
+  {
+    "id": "hachiko",
+    "name": "Hachiko",
+    "japaneseName": "ハチ公",
+    "category": "Places",
+    "rarity": "uncommon",
+    "chapterId": "tokyo",
+    "description": "The Akita who kept returning to Shibuya Station for years after his owner died. The statue still waits."
+  },
+  {
+    "id": "sacred-forest",
+    "name": "Meiji Forest",
+    "japaneseName": "明治神宮",
+    "category": "Places",
+    "rarity": "uncommon",
+    "chapterId": "tokyo",
+    "description": "The woods at Meiji Jingu were planted on purpose, designed to become a forest that could keep itself."
+  },
+  {
+    "id": "seafood-hunter",
+    "name": "Five Creatures",
+    "japaneseName": "海鮮",
+    "category": "Food",
+    "rarity": "common",
+    "chapterId": "tokyo",
+    "description": "The outer market still sells the sea. Naming every creature is optional. Noticing them is the page."
+  },
+  {
+    "id": "reclaimed-tokyo",
+    "name": "Constructed Land",
+    "japaneseName": "築地",
+    "category": "Places",
+    "rarity": "uncommon",
+    "chapterId": "tokyo",
+    "description": "Tsukiji roughly means constructed land. After the Meireki fire of 1657, this ground was packed into Tokyo Bay."
+  },
+  {
+    "id": "sushi",
+    "name": "Sushi",
+    "japaneseName": "寿司",
+    "category": "Food",
+    "rarity": "common",
+    "chapterId": "tokyo",
+    "description": "Seasoned rice, not a synonym for raw fish. Sashimi is the slice without that rice."
+  },
+  {
+    "id": "sampuru",
+    "name": "Sampuru",
+    "japaneseName": "食品サンプル",
+    "category": "Strange Japan",
+    "rarity": "common",
+    "chapterId": "tokyo",
+    "description": "Plastic food in a restaurant window. It shows the dish without spoiling in the sun."
+  },
+  {
+    "id": "shinkansen",
+    "name": "Shinkansen Nose",
+    "japaneseName": "新幹線",
+    "category": "Modern Japan",
+    "rarity": "common",
+    "chapterId": "tokyo",
+    "description": "A long nose that moves air aside, so a fast train does not punch a tunnel as hard."
+  },
+  {
+    "id": "sumo",
+    "name": "Sumo",
+    "japaneseName": "相撲",
+    "category": "Modern Japan",
+    "rarity": "common",
+    "chapterId": "tokyo",
+    "description": "Commonly described as Japan’s national sport. The ring still carries Shinto ritual, including salt. That is not the same as most-watched."
+  }
+]

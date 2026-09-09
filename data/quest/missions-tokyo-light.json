@@ -1,0 +1,255 @@
+[
+  {
+    "id": "jp-sport-most-popular",
+    "chapterId": "tokyo",
+    "moduleId": "tokyo-side",
+    "title": "Japan's Favourite?",
+    "type": "multipleChoice",
+    "xp": 40,
+    "fragmentValue": 0,
+    "intro": "A playful sports question. Not a ranking of the whole country.",
+    "task": "Which sport has a huge modern spectator following in Japan?",
+    "question": {
+      "type": "multipleChoice",
+      "text": "Which sport has a huge modern spectator following in Japan?",
+      "choices": [
+        { "id": "baseball", "text": "Baseball", "response": "A strong guess. Baseball draws huge crowds." },
+        { "id": "sumo", "text": "Sumo", "response": "Sumo is famous. Check which fills stands most weeks." },
+        { "id": "rugby", "text": "Rugby", "response": "Rugby has big moments. Look at the weekly crowds." },
+        { "id": "judo", "text": "Judo", "response": "Judo is a Japanese gift to the Olympics. Look at spectators." }
+      ],
+      "correctChoiceId": "baseball",
+      "retryAllowed": true
+    },
+    "reveal": "Baseball is one of Japan’s most popular spectator sports."
+  },
+  {
+    "id": "jp-national-sport",
+    "chapterId": "tokyo",
+    "moduleId": "tokyo-side",
+    "title": "National Sport",
+    "type": "multipleChoice",
+    "xp": 50,
+    "fragmentValue": 0,
+    "intro": "A label is not the same as a TV rating.",
+    "task": "Which sport is commonly described as Japan’s national sport?",
+    "question": {
+      "type": "multipleChoice",
+      "text": "Which sport is commonly described as Japan’s national sport?",
+      "choices": [
+        { "id": "baseball", "text": "Baseball", "response": "Huge crowds. The ‘national’ label is usually used elsewhere." },
+        { "id": "sumo", "text": "Sumo", "response": "Yes. That is the usual phrase." },
+        { "id": "karate", "text": "Karate", "response": "Karate travelled the world from here. Check the national label." },
+        { "id": "judo", "text": "Judo", "response": "Judo is a Japanese art. Check the national label." }
+      ],
+      "correctChoiceId": "sumo",
+      "retryAllowed": true
+    },
+    "reveal": "Sumo is commonly described as Japan’s national sport.",
+    "moreInfo": {
+      "title": "Sumo and shrine",
+      "text": "Sumo includes Shinto ritual elements, including salt purification, and a long tradition. That label does not make it the country’s most-watched sport."
+    },
+    "codexUnlock": "sumo"
+  },
+  {
+    "id": "jp-brand-hunt",
+    "chapterId": "tokyo",
+    "moduleId": "tokyo-side",
+    "title": "Made in Japan",
+    "type": "find",
+    "xp": 60,
+    "fragmentValue": 0,
+    "intro": "Japanese names are already on this street.",
+    "task": "Find five Japanese brands while walking around Tokyo.",
+    "hint": "Nintendo, Sony, Uniqlo, Muji, Toyota, Canon, Casio, Asics.",
+    "reveal": "The country is in the logos as well as the temples."
+  },
+  {
+    "id": "jp-brand-quiz",
+    "chapterId": "tokyo",
+    "moduleId": "tokyo-side",
+    "title": "Japan or Not?",
+    "type": "multipleChoice",
+    "xp": 50,
+    "fragmentValue": 0,
+    "mediaId": "media-brand-quiz",
+    "intro": "Some famous marks are Japanese. Some only look nearby.",
+    "task": "Look at the marks. Talk through which ones are Japanese.",
+    "question": {
+      "type": "multipleChoice",
+      "text": "Which of these is not a Japanese brand?",
+      "choices": [
+        { "id": "nintendo", "text": "Nintendo", "response": "Japanese. Try a mark from elsewhere." },
+        { "id": "samsung", "text": "Samsung", "response": "Yes. That one is not Japanese." },
+        { "id": "sony", "text": "Sony", "response": "Japanese. Keep looking." },
+        { "id": "xiaomi", "text": "Xiaomi", "response": "Also not Japanese. Samsung is the sample answer." },
+        { "id": "muji", "text": "Muji", "response": "Japanese. Keep looking." },
+        { "id": "uniqlo", "text": "Uniqlo", "response": "Japanese. Keep looking." }
+      ],
+      "correctChoiceId": "samsung",
+      "retryAllowed": true
+    },
+    "reveal": "Nintendo, Sony, Muji and Uniqlo are Japanese. Samsung and Xiaomi are not."
+  },
+  {
+    "id": "train-nose",
+    "chapterId": "tokyo",
+    "moduleId": "tokyo-shinkansen",
+    "title": "Why the Long Nose?",
+    "type": "observation",
+    "xp": 90,
+    "fragmentValue": 0,
+    "mediaId": "media-shinkansen-nose",
+    "intro": "The front of the train is longer than it looks like it needs to be.",
+    "task": "Look at the train’s nose. Why would engineers make it this shape?",
+    "exactLocation": "Shinkansen platform",
+    "reveal": "A long nose helps the train move air aside. That cuts noise and the punch of air in tunnels.",
+    "moreInfo": {
+      "title": "Tunnel boom",
+      "text": "A fast train entering a tunnel squeezes air. The long nose spreads that squeeze so nearby towns hear less boom."
+    },
+    "codexUnlock": "shinkansen"
+  },
+  {
+    "id": "train-platform",
+    "chapterId": "tokyo",
+    "moduleId": "tokyo-shinkansen",
+    "title": "Platform Choreography",
+    "type": "observation",
+    "xp": 60,
+    "fragmentValue": 0,
+    "intro": "Boarding is a dance with marks on the floor.",
+    "task": "Before boarding, watch how passengers, markings and staff line up.",
+    "observeWhat": "Queue positions, car numbers, platform marks, staff gestures.",
+    "reveal": "The marks do the shouting. People only have to stand in them."
+  },
+  {
+    "id": "sushi-not-fish",
+    "chapterId": "tokyo",
+    "moduleId": "tokyo-food",
+    "title": "Sushi Means Raw Fish",
+    "type": "trueFalse",
+    "xp": 50,
+    "fragmentValue": 0,
+    "intro": "A sentence everyone thinks they know.",
+    "task": "True or false: sushi means raw fish.",
+    "question": {
+      "type": "trueFalse",
+      "text": "True or false: sushi means raw fish.",
+      "choices": [
+        { "id": "true", "text": "True", "response": "That is a common mix-up. Think about the rice." },
+        { "id": "false", "text": "False", "response": "Yes. The rice is the point." }
+      ],
+      "correctChoiceId": "false",
+      "retryAllowed": true
+    },
+    "reveal": "Sushi is seasoned rice. Sashimi is sliced seafood without that rice.",
+    "codexUnlock": "sushi"
+  },
+  {
+    "id": "sushi-family",
+    "chapterId": "tokyo",
+    "moduleId": "tokyo-food",
+    "title": "Spot the Impostor",
+    "type": "multipleChoice",
+    "xp": 60,
+    "fragmentValue": 0,
+    "mediaId": "media-sushi-types",
+    "intro": "Five plates. One of them is not sushi.",
+    "task": "Which one is not sushi?",
+    "question": {
+      "type": "multipleChoice",
+      "text": "Which one is not sushi?",
+      "choices": [
+        { "id": "nigiri", "text": "Nigiri", "response": "Rice plus topping. That is sushi." },
+        { "id": "maki", "text": "Maki", "response": "Rolled rice. That is sushi." },
+        { "id": "gunkan", "text": "Gunkan", "response": "A rice boat. That is sushi." },
+        { "id": "temaki", "text": "Temaki", "response": "A hand roll. That is sushi." },
+        { "id": "sashimi", "text": "Sashimi", "response": "Yes. No sushi rice." }
+      ],
+      "correctChoiceId": "sashimi",
+      "retryAllowed": true
+    },
+    "reveal": "Sashimi is sliced seafood without sushi rice."
+  },
+  {
+    "id": "food-taste-map",
+    "chapterId": "tokyo",
+    "moduleId": "tokyo-food",
+    "title": "Tokyo Taste Map",
+    "type": "food",
+    "xp": 100,
+    "fragmentValue": 0,
+    "intro": "Tokyo is a city you can eat in five textures.",
+    "task": "Across Tokyo, collect one sweet, one salty, one crunchy, one chewy, and one WHAT IS THAT?",
+    "reveal": "Write the five. The map is the tasting, not a score."
+  },
+  {
+    "id": "food-plastic",
+    "chapterId": "tokyo",
+    "moduleId": "tokyo-food",
+    "title": "Do Not Eat This",
+    "type": "photo",
+    "xp": 60,
+    "fragmentValue": 0,
+    "mediaId": "media-sampuru",
+    "intro": "The window lunch may not be food.",
+    "task": "Find the most convincing plastic food display outside a restaurant.",
+    "reveal": "These replicas are sampuru. They show the dish without spoiling in the sun.",
+    "codexUnlock": "sampuru"
+  },
+  {
+    "id": "manga-biggest-ever",
+    "chapterId": "tokyo",
+    "moduleId": "tokyo-manga",
+    "title": "The Biggest Manga Ever",
+    "type": "multipleChoice",
+    "xp": 40,
+    "fragmentValue": 0,
+    "mediaId": "media-manga-quiz",
+    "intro": "A time-sensitive count. Charts move.",
+    "task": "Which manga series has the highest reported worldwide circulation?",
+    "question": {
+      "type": "multipleChoice",
+      "text": "Which manga series has the highest reported worldwide circulation?",
+      "choices": [
+        { "id": "naruto", "text": "Naruto", "response": "Huge. Check which still leads in copies." },
+        { "id": "db", "text": "Dragon Ball", "response": "A giant. Look at lifetime copies." },
+        { "id": "ds", "text": "Demon Slayer", "response": "A recent wave. Look at the long count." },
+        { "id": "op", "text": "One Piece", "response": "Yes, by the usual circulation count." }
+      ],
+      "correctChoiceId": "op",
+      "retryAllowed": true
+    },
+    "reveal": "As of 2026, One Piece has reported more than 600 million copies in circulation worldwide."
+  },
+  {
+    "id": "manga-current-japan",
+    "chapterId": "tokyo",
+    "moduleId": "tokyo-manga",
+    "title": "What Is Japan Reading Right Now?",
+    "type": "observation",
+    "xp": 40,
+    "fragmentValue": 0,
+    "intro": "There is no hardcoded 2026 winner.",
+    "task": "Look at the featured manga shelf / current rankings.",
+    "reveal": "Charts change. The shop in front of you is the source, not last year’s list."
+  },
+  {
+    "id": "manga-shelf-detective",
+    "chapterId": "tokyo",
+    "moduleId": "tokyo-manga",
+    "title": "Manga Shelf Detective",
+    "type": "find",
+    "xp": 50,
+    "fragmentValue": 0,
+    "intro": "Different faces for different readers.",
+    "task": "Find three manga that look as if they are for different readers.",
+    "reveal": "The labels are clues, not rules about who is allowed to read.",
+    "moreInfo": {
+      "title": "Different shelves",
+      "text": "Japanese magazines have long sorted stories by intended readers. The labels are rough. Faces, fashion and how busy the page is are clues. Do not treat the labels as rules about who is allowed to read."
+    }
+  }
+]

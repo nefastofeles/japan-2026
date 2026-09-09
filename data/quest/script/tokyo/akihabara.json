@@ -6,20 +6,26 @@
       "id": "aki-old-akihabara",
       "title": "Find Old Akihabara",
       "type": "find",
-      "status": "approved",
+      "status": "live",
+      "liveMissionId": "aki-old-akihabara",
       "task": "Find something for sale that has nothing to do with anime or manga.",
       "hint": "Electronics, cables, parts or cameras.",
-      "reveal": "Before the character shops, Akihabara was famous for electronics.",
+      "reveal": "Akihabara became famous for electronics before it became equally famous for anime, manga, gaming and otaku culture.",
+      "moreInfo": {
+        "title": "Electric town",
+        "text": "After the war the streets around the station filled with radio and parts shops. Character shops came later and now share the same blocks. Both layers are still there if you look."
+      },
       "xp": 80,
       "mediaId": "media-akihabara-electronics",
-      "factCheck": "needed",
-      "notes": "Check the postwar electronics-market wording before live."
+      "factCheck": "verified",
+      "notes": "Keep deeper postwar history in moreInfo, not the default reveal."
     },
     {
       "id": "aki-character-overload",
       "title": "Character Overload",
       "type": "observation",
-      "status": "approved",
+      "status": "live",
+      "liveMissionId": "aki-character-overload",
       "task": "Which fictional character can you spot most often?",
       "followUp": "Why can an imaginary character become valuable in the real world?",
       "moreInfo": {
@@ -32,7 +38,8 @@
       "id": "aki-1000",
       "title": "The ¥1,000 Challenge",
       "type": "find",
-      "status": "approved",
+      "status": "live",
+      "liveMissionId": "aki-1000",
       "task": "Find the strangest thing you would genuinely buy for ¥1,000 or less.",
       "photo": true,
       "rewardIdea": "Family votes. Winner may buy it. Not a payment in the app.",

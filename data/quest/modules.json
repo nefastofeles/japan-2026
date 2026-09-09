@@ -129,14 +129,14 @@
     "chapterId": "tokyo",
     "title": "Tokyo food",
     "optional": true,
-    "activation": "core"
+    "activation": "facilitator"
   },
   {
     "id": "tokyo-side",
     "chapterId": "tokyo",
     "title": "Tokyo side quests",
     "optional": true,
-    "activation": "core"
+    "activation": "facilitator"
   },
   {
     "id": "kyoto-core",

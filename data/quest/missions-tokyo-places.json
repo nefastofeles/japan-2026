@@ -1,0 +1,286 @@
+[
+  {
+    "id": "shb-human-tsunami",
+    "chapterId": "tokyo",
+    "moduleId": "tokyo-shibuya",
+    "title": "Human Tsunami",
+    "type": "observation",
+    "xp": 90,
+    "fragmentValue": 1,
+    "mediaId": "media-shibuya-aerial",
+    "intro": "Guess first. Then watch one full crossing.",
+    "task": "Watch one complete crossing. Compare it with your guess. You do not need an exact count.",
+    "exactLocation": "Shibuya Scramble Crossing",
+    "question": {
+      "type": "multipleChoice",
+      "text": "How many people do you predict will cross during one cycle?",
+      "choices": [
+        { "id": "under-100", "text": "Under 100", "response": "Keep your guess. Now watch." },
+        { "id": "100-500", "text": "100–500", "response": "Keep your guess. Now watch." },
+        { "id": "500-1000", "text": "500–1,000", "response": "Keep your guess. Now watch." },
+        { "id": "over-1000", "text": "More than 1,000", "response": "Keep your guess. Now watch." }
+      ],
+      "retryAllowed": true
+    },
+    "reveal": "At busy times, the crossing can handle more than 1,000 pedestrians in a single cycle."
+  },
+  {
+    "id": "shb-hachiko",
+    "chapterId": "tokyo",
+    "moduleId": "tokyo-shibuya",
+    "title": "The Dog Who Kept Coming Back",
+    "type": "story",
+    "xp": 80,
+    "fragmentValue": 1,
+    "mediaId": "media-hachiko",
+    "intro": "A dog used to wait at this station.",
+    "task": "Stand by the statue. What do you think Hachiko did after his owner died?",
+    "exactLocation": "Hachiko Memorial Statue",
+    "storySteps": [
+      { "text": "Every day Hachiko met his owner at this station." },
+      { "text": "One day his owner never came home." },
+      { "text": "What do you think Hachiko did?" }
+    ],
+    "reveal": "Hachiko kept coming back, for years.",
+    "moreInfo": {
+      "title": "How long",
+      "text": "He continued returning to Shibuya Station for 9 years after his owner died."
+    },
+    "codexUnlock": "hachiko"
+  },
+  {
+    "id": "asa-thunder-gate",
+    "chapterId": "tokyo",
+    "moduleId": "tokyo-asakusa",
+    "title": "The Thunder Gate",
+    "type": "photo",
+    "xp": 90,
+    "fragmentValue": 1,
+    "mediaId": "media-kaminarimon-lantern",
+    "intro": "The lantern is easy. The missed detail is not.",
+    "task": "Find the enormous lantern. Then look underneath it. What detail do most visitors miss?",
+    "exactLocation": "Kaminarimon",
+    "reveal": "Most people photograph the lantern. Fewer look at what is under it."
+  },
+  {
+    "id": "asa-commerce",
+    "chapterId": "tokyo",
+    "moduleId": "tokyo-asakusa",
+    "title": "Temple + Shopping?",
+    "type": "riddle",
+    "xp": 80,
+    "fragmentValue": 1,
+    "mediaId": "media-asakusa-historic",
+    "intro": "A shopping street grows straight toward the temple.",
+    "task": "Why would shops grow along a temple approach?",
+    "exactLocation": "Nakamise-dori",
+    "reveal": "Temple visitors created foot traffic. Where people gathered, merchants and food sellers followed.",
+    "moreInfo": {
+      "title": "The road to the temple",
+      "text": "This is one strong reason streets like Nakamise filled with shops. It is not the sole historical explanation for every stall here."
+    }
+  },
+  {
+    "id": "asa-smoke",
+    "chapterId": "tokyo",
+    "moduleId": "tokyo-asakusa",
+    "title": "Why Is Everyone Waving Smoke?",
+    "type": "observation",
+    "xp": 70,
+    "fragmentValue": 1,
+    "intro": "People are pulling smoke toward themselves.",
+    "task": "Watch what people do with the incense smoke. What do you think it means?",
+    "exactLocation": "Sensō-ji incense burner",
+    "reveal": "Visitors often draw incense smoke toward themselves as part of a popular devotional custom.",
+    "moreInfo": {
+      "title": "A custom, not a rule",
+      "text": "The smoke is traditionally associated with blessing or purification. This is a popular custom, not a universal Buddhist rule, and it is not medicine for specific body parts."
+    }
+  },
+  {
+    "id": "imp-green-heart",
+    "chapterId": "tokyo",
+    "moduleId": "tokyo-imperial",
+    "title": "The Green Hole in Tokyo",
+    "type": "observation",
+    "xp": 100,
+    "fragmentValue": 1,
+    "mediaId": "media-edo-castle-compare",
+    "intro": "Tokyo keeps a huge green hole in its middle.",
+    "task": "Find a moat, wall or gate. Then answer why this park is here.",
+    "exactLocation": "Imperial Palace / East Gardens",
+    "question": {
+      "type": "multipleChoice",
+      "text": "Why is this park here?",
+      "choices": [
+        { "id": "never", "text": "It was never developed", "response": "People did build here. Look older." },
+        { "id": "castle", "text": "It is tied to the palace and old Edo Castle", "response": "Yes. Part of the old castle complex is still here." },
+        { "id": "ground", "text": "The ground cannot hold buildings", "response": "Tokyo builds on harder sites than this." },
+        { "id": "recent", "text": "It was created recently", "response": "The empty centre is much older than a new park." }
+      ],
+      "correctChoiceId": "castle",
+      "retryAllowed": true
+    },
+    "reveal": "The Imperial Palace area occupies part of the former Edo Castle complex.",
+    "moreInfo": {
+      "title": "Part of a castle",
+      "text": "The palace grounds cover part of the old Edo Castle site. The wide green today does not all have one simple origin."
+    }
+  },
+  {
+    "id": "har-fake-forest",
+    "chapterId": "tokyo",
+    "moduleId": "tokyo-meiji",
+    "title": "Is This Forest Fake?",
+    "type": "multipleChoice",
+    "xp": 100,
+    "fragmentValue": 1,
+    "mediaId": "media-meiji-forest",
+    "intro": "The trees look old. Ask how they got here.",
+    "task": "Is this forest ancient wilderness, or did people make it?",
+    "exactLocation": "Meiji Jingu",
+    "question": {
+      "type": "multipleChoice",
+      "text": "Is this forest ancient wilderness, or did people make it?",
+      "choices": [
+        { "id": "ancient", "text": "Ancient natural forest", "response": "It looks old. Look at who planted it." },
+        { "id": "made", "text": "Deliberately created forest", "response": "Yes. People planned these trees." }
+      ],
+      "correctChoiceId": "made",
+      "retryAllowed": true
+    },
+    "reveal": "Meiji Jingu’s forest was deliberately planted and designed to become a self-sustaining forest.",
+    "moreInfo": {
+      "title": "A forest people made",
+      "text": "Trees were donated from across Japan. About 110,000 volunteers helped plant them. The design was meant to grow into a forest that could keep itself."
+    },
+    "codexUnlock": "sacred-forest"
+  },
+  {
+    "id": "har-two-japans",
+    "chapterId": "tokyo",
+    "moduleId": "tokyo-meiji",
+    "title": "Two Japans",
+    "type": "photo",
+    "xp": 100,
+    "fragmentValue": 1,
+    "mediaId": "media-harajuku-pop",
+    "intro": "Sacred path and pop street sit next to each other.",
+    "task": "Take one photo of old or sacred Japan, and one of modern or pop Japan.",
+    "exactLocation": "Meiji Jingu + Harajuku",
+    "reveal": "Keep both pictures. Tokyo later will ask which Japan you will remember."
+  },
+  {
+    "id": "tsu-five-creatures",
+    "chapterId": "tokyo",
+    "moduleId": "tokyo-tsukiji",
+    "title": "Five Creatures",
+    "type": "photo",
+    "xp": 90,
+    "fragmentValue": 1,
+    "mediaId": "media-tsukiji-seafood",
+    "intro": "The outer market is still a fish street.",
+    "task": "Find five different sea creatures for sale. Photograph one you cannot name.",
+    "reveal": "You do not need the name. Noticing it is the page.",
+    "codexUnlock": "seafood-hunter"
+  },
+  {
+    "id": "tsu-tamagoyaki",
+    "chapterId": "tokyo",
+    "moduleId": "tokyo-tsukiji",
+    "title": "Looks Like Omelette...",
+    "type": "food",
+    "xp": 80,
+    "fragmentValue": 1,
+    "intro": "It looks like omelette. Taste is the test.",
+    "task": "Buy some tamagoyaki and test your prediction.",
+    "question": {
+      "type": "multipleChoice",
+      "text": "Before tasting tamagoyaki, predict the main taste.",
+      "choices": [
+        { "id": "sweet", "text": "Sweet", "response": "Keep your guess. Then taste." },
+        { "id": "salty", "text": "Salty", "response": "Keep your guess. Then taste." },
+        { "id": "spicy", "text": "Spicy", "response": "Keep your guess. Then taste." },
+        { "id": "sour", "text": "Sour", "response": "Keep your guess. Then taste." }
+      ],
+      "retryAllowed": true
+    },
+    "reveal": "Recipes vary. Some stalls lean sweet. There is no single right guess."
+  },
+  {
+    "id": "tsu-built-on-sea",
+    "chapterId": "tokyo",
+    "moduleId": "tokyo-tsukiji",
+    "title": "You Are Standing in the Sea",
+    "type": "multipleChoice",
+    "xp": 100,
+    "fragmentValue": 1,
+    "mediaId": "media-tsukiji-reclaimed",
+    "intro": "A few centuries ago, this was not land.",
+    "task": "What does the name Tsukiji refer to?",
+    "question": {
+      "type": "multipleChoice",
+      "text": "What does the name Tsukiji refer to?",
+      "choices": [
+        { "id": "fish", "text": "Fish town", "response": "Fish is why people come. The name is about the ground." },
+        { "id": "land", "text": "Constructed land", "response": "Yes. The name points to land that was made." },
+        { "id": "temple", "text": "Temple market", "response": "Temples matter in Tokyo. This name is about fill." },
+        { "id": "harbour", "text": "Eastern harbour", "response": "It sits by the bay. Check the name itself." }
+      ],
+      "correctChoiceId": "land",
+      "retryAllowed": true
+    },
+    "reveal": "Tsukiji roughly means constructed land. This ground was reclaimed from Tokyo Bay after the Great Fire of Meireki in 1657.",
+    "moreInfo": {
+      "title": "Filled land",
+      "text": "After the Meireki fire of 1657, new land was packed into the bay here. The name Tsukiji points to that constructed ground."
+    },
+    "codexUnlock": "reclaimed-tokyo"
+  },
+  {
+    "id": "aki-old-akihabara",
+    "chapterId": "tokyo",
+    "moduleId": "tokyo-akihabara",
+    "title": "Find Old Akihabara",
+    "type": "find",
+    "xp": 80,
+    "fragmentValue": 1,
+    "mediaId": "media-akihabara-electronics",
+    "intro": "The character shops are loud. Look for the older street.",
+    "task": "Find something for sale that has nothing to do with anime or manga.",
+    "hint": "Electronics, cables, parts or cameras.",
+    "reveal": "Akihabara became famous for electronics before it became equally famous for anime, manga, gaming and otaku culture.",
+    "moreInfo": {
+      "title": "Electric town",
+      "text": "After the war the streets around the station filled with radio and parts shops. Character shops came later and now share the same blocks. Both layers are still there if you look."
+    }
+  },
+  {
+    "id": "aki-character-overload",
+    "chapterId": "tokyo",
+    "moduleId": "tokyo-akihabara",
+    "title": "Character Overload",
+    "type": "observation",
+    "xp": 80,
+    "fragmentValue": 1,
+    "intro": "Imaginary people are for sale on every corner.",
+    "task": "Which fictional character can you spot most often? Why can an imaginary character become valuable in the real world?",
+    "reveal": "A drawing can be licensed. Fans keep it valuable by wanting it.",
+    "moreInfo": {
+      "title": "Why a drawing can cost money",
+      "text": "A character can be licensed. Shops pay to print it on bags, games and snacks. Fans keep the picture valuable by wanting it."
+    }
+  },
+  {
+    "id": "aki-1000",
+    "chapterId": "tokyo",
+    "moduleId": "tokyo-akihabara",
+    "title": "The ¥1,000 Challenge",
+    "type": "photo",
+    "xp": 100,
+    "fragmentValue": 1,
+    "intro": "A thousand yen is enough for something strange.",
+    "task": "Find the strangest thing you would genuinely buy for ¥1,000 or less.",
+    "reveal": "Family votes. Winner may buy it. Not a payment in the app."
+  }
+]
