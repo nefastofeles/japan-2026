@@ -15,8 +15,16 @@ import {
   chapterComplete, missionStatus, openDiscoveries, isMemoryMode,
 } from "../quest/engine.js";
 import { questShell, typeMark, familyRail } from "../components/quest-chrome.js";
+import { typeIcon } from "../components/quest-icons.js";
+import { visualHtml } from "../quest/visual.js";
 
-function missionCard(mission, state, chapter) {
+function hookLine(mission) {
+  const text = mission.intro || mission.task || "";
+  const cut = text.split(/(?<=\.)\s/)[0] || text;
+  return cut;
+}
+
+function missionCard(mission, state, chapter, quest) {
   const done = isComplete(state, mission.id);
   const memory = isMemoryMode(chapter, mission);
   const pill = memory
@@ -27,20 +35,27 @@ function missionCard(mission, state, chapter) {
       ? "Recovered"
       : `${mission.xp || 0} XP`;
   return `
-    <a class="quest-mission" data-tone="${memory ? "memory" : ""}"
+    <a class="quest-card quest-mission" data-tone="${memory ? "memory" : ""}"
        href="#/adventure/mission/${esc(mission.id)}">
-      ${typeMark(memory ? "memory" : mission.type)}
-      <h3>${esc(mission.title)}</h3>
-      <span class="quest-pill">${esc(pill)}</span>
+      ${visualHtml(mission, quest, { compact: true })}
+      <div class="quest-card__body">
+        ${typeMark(memory ? "memory" : mission.type)}
+        <h3>${esc(mission.title)}</h3>
+        <p class="quest-card__hook">${esc(hookLine(mission))}</p>
+        <span class="quest-pill">${esc(pill)}</span>
+      </div>
     </a>`;
 }
 
 function discoveryCard(discovery) {
   return `
-    <a class="quest-find" href="#/adventure/discovery/${esc(discovery.id)}">
-      ${typeMark("discovery")}
-      <h3>${esc(discovery.name)}</h3>
-      <span class="quest-pill">${discovery.xp || 0} XP</span>
+    <a class="quest-card quest-find quest-card--find" href="#/adventure/discovery/${esc(discovery.id)}">
+      <div class="quest-card__body">
+        ${typeIcon("discovery")}
+        ${typeMark("discovery")}
+        <h3>${esc(discovery.name)}</h3>
+        <span class="quest-pill">${discovery.xp || 0} XP</span>
+      </div>
     </a>`;
 }
 
@@ -69,11 +84,13 @@ export async function adventurePage() {
     "/adventure",
     `
     <section class="quest-hero" data-leg="${esc(chapter.leg)}" data-tone="${memoryChapter ? "memory" : ""}">
-      <p class="quest-kicker">${esc(leg.name)} · ${esc(formatDate(chapter.startDate, { weekday: false }))}</p>
+      <p class="quest-brand">Japan Quest</p>
       <h2>${esc(chapter.title)}</h2>
-      <div class="quest-prose"><p>${esc(chapter.theme)}</p></div>
+      <p class="quest-card__hook">${esc(chapter.theme)}</p>
+      <div class="quest-hero__art quest-motif" data-chapter="${esc(chapter.id)}" aria-hidden="true"></div>
+      ${memoryChapter ? "" : familyRail(quest, state, chapter)}
       <a class="quest-cta" href="${esc(continueHref)}">
-        ${open.length ? "Continue" : "See the journey"}
+        ${open.length ? "Continue adventure" : "See the journey"}
       </a>
     </section>
 
@@ -81,7 +98,7 @@ export async function adventurePage() {
       <h2 class="section-title">${memoryChapter ? "Memories here" : "Out in the world"}</h2>
       ${
         open.length
-          ? open.map((mission) => missionCard(mission, state, chapter)).join("")
+          ? open.map((mission) => missionCard(mission, state, chapter, quest)).join("")
           : `<p class="empty">${
               chapterComplete(quest, state, chapter.id)
                 ? "This chapter’s pages are in."
@@ -94,7 +111,6 @@ export async function adventurePage() {
       finds.length
         ? `<section class="stack quest-section">
             <h2 class="section-title">Nearby finds</h2>
-            <p class="quest-prose">Small things. Not full missions.</p>
             ${finds.map(discoveryCard).join("")}
           </section>`
         : ""
@@ -104,7 +120,7 @@ export async function adventurePage() {
       done.length
         ? `<section class="stack quest-section">
             <h2 class="section-title">${memoryChapter ? "Already kept" : "Recovered here"}</h2>
-            ${done.map((mission) => missionCard(mission, state, chapter)).join("")}
+            ${done.map((mission) => missionCard(mission, state, chapter, quest)).join("")}
           </section>`
         : ""
     }
@@ -120,7 +136,11 @@ export async function adventurePage() {
       .map((person) => esc(person.name))
       .join(", ")}.</p>
     `
-  , { rail: familyRail(quest, state, chapter) });
+  , {
+    hideHead: true,
+    memory: memoryChapter,
+    chapterId: chapter.id,
+  });
 
   return { html };
 }

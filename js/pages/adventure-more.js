@@ -9,7 +9,9 @@ import { isComplete, isDiscovered, hasBadge } from "../quest/state.js";
 import { currentChapter, chapterComplete, chapterFragments } from "../quest/engine.js";
 import { TRIP } from "../config.js";
 import { questShell, typeMark, wireListen, listenBar, familyRail } from "../components/quest-chrome.js";
+import { questIcon } from "../components/quest-icons.js";
 import { modulesForChapter, activateModule, moduleEligible } from "../quest/modules.js";
+import { visualHtml } from "../quest/visual.js";
 
 export async function adventureMapPage() {
   const quest = await loadQuest();
@@ -25,25 +27,23 @@ export async function adventureMapPage() {
   const html = questShell(
     "/adventure/map",
     `
-    <p class="quest-prose">Chapters follow the trip. The Japan map is still under Map in the main menu.</p>
-    <ol class="stack" style="list-style:none;padding:0">
+    <p class="quest-prose">Chapters follow the trip. No required order inside a city.</p>
+    <ol class="quest-path">
       ${quest.chapters
         .map((chapter, index) => {
           const done = chapterComplete(quest, state, chapter.id);
           const here = chapter.id === current.id;
           const memory = chapter.tone === "memory";
           const bits = chapterFragments(quest, state, chapter.id);
-          const packs = modulesForChapter(quest, chapter.id);
+          const waiting = !done && !here;
           return `
-            <li class="quest-mission" data-tone="${memory ? "memory" : ""}">
+            <li>
+            <article class="quest-card quest-mission${waiting ? " quest-card--locked" : ""}" data-tone="${memory ? "memory" : ""}">
+              ${visualHtml({ chapterId: chapter.id, type: memory ? "memory" : "story" }, quest, { compact: true })}
+              <div class="quest-card__body">
               ${typeMark(memory ? "memory" : "story")}
               <p class="quest-kicker">${index + 1} · ${esc(chapter.destination)}</p>
-              <h3>${esc(chapter.title)}</h3>
-              ${
-                packs.length
-                  ? `<p class="quest-prose">${packs.map((pack) => esc(pack.title)).join(" · ")}</p>`
-                  : ""
-              }
+              <h3>${esc(waiting ? chapter.destination : chapter.title)}</h3>
               <span class="quest-pill">${
                 done
                   ? memory
@@ -55,6 +55,8 @@ export async function adventureMapPage() {
                       ? "Here"
                       : "Waiting"
               }</span>
+              </div>
+            </article>
             </li>`;
         })
         .join("")}
@@ -67,15 +69,16 @@ export async function adventureMapPage() {
         .map((pack) => {
           const on = moduleEligible(pack, state, { date: today });
           return `
-            <article class="quest-entry">
+            <article class="quest-card ${on ? "" : "quest-card--locked"}">
+              <div class="quest-card__body">
               <p class="quest-kicker">${pack.optional ? "Optional" : "Core"} · ${esc(pack.activation || "core")}</p>
               <h3>${esc(pack.title)}</h3>
-              ${pack.subtitle ? `<p class="quest-prose">${esc(pack.subtitle)}</p>` : ""}
               ${
                 pack.optional && !on
                   ? `<button class="btn" type="button" data-activate-module="${esc(pack.id)}">Open this module</button>`
-                  : `<p class="quest-pill">${on ? "Open" : ""}</p>`
+                  : `<p class="quest-pill">${on ? "Open" : questIcon("locked")}</p>`
               }
+              </div>
             </article>`;
         })
         .join("")}
@@ -116,7 +119,7 @@ export async function adventureMapPage() {
           </section>`
         : ""
     }`
-  , { rail: familyRail(quest, state, current) });
+  , { rail: familyRail(quest, state, current), chapterId: current.id, memory: current.tone === "memory" });
 
   const texts = {};
   openStory.forEach((fragment, index) => {
@@ -167,14 +170,16 @@ export async function adventureCodexPage() {
                   const findable = discoveryForCodex(quest, entry.id);
                   return `
                     <article class="quest-entry ${open ? "" : "quest-entry--locked"}">
-                      ${typeMark(open ? "discovery" : "discovery")}
+                      ${visualHtml({ chapterId: entry.chapterId, type: "discovery" }, quest, { compact: true })}
+                      <div class="quest-entry__body">
                       <h3>${
                         open
                           ? esc(entry.name)
                           : findable?.findable
                             ? esc(entry.name)
-                            : "Not yet"
+                            : "???"
                       }</h3>
+                      <p class="quest-pill">${esc(entry.category)}</p>
                       ${
                         open
                           ? `<p class="jp">${esc(entry.japaneseName || "")}</p>
@@ -182,8 +187,9 @@ export async function adventureCodexPage() {
                           : findable?.findable
                             ? `<p class="quest-prose">${esc(findable.hook)}</p>
                                <a class="btn" href="#/adventure/discovery/${esc(findable.id)}">We found this</a>`
-                            : `<p class="quest-prose">A mission will open this.</p>`
+                            : ""
                       }
+                      </div>
                     </article>`;
                 })
                 .join("")}
@@ -200,7 +206,7 @@ export async function adventureCodexPage() {
           const open = hasBadge(state, badge.id);
           return `
             <article class="quest-badge ${open ? "" : "quest-badge--locked"}">
-              <h3>${esc(badge.name)}</h3>
+              <h3>${open ? esc(badge.name) : "???"}</h3>
               <p class="quest-prose">${open ? esc(badge.description) : "Still waiting."}</p>
               ${
                 open && badge.realWorldReward
@@ -211,7 +217,7 @@ export async function adventureCodexPage() {
         })
         .join("")}
     </section>`
-  , { rail: familyRail(quest, state, chapter) });
+  , { rail: familyRail(quest, state, chapter), chapterId: chapter.id });
   return { html };
 }
 

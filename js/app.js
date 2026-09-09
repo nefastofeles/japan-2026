@@ -93,6 +93,9 @@ function afterRender(path) {
   const onHome = path === "/";
   document.documentElement.toggleAttribute("data-home", onHome);
 
+  const onQuest = path.startsWith("/adventure");
+  document.documentElement.toggleAttribute("data-quest", onQuest);
+
   const adminLink = document.querySelector("[data-footer-admin]");
   if (adminLink) {
     adminLink.hidden = false;
@@ -103,7 +106,7 @@ function afterRender(path) {
   document.documentElement.dataset.leg = legId;
 
   const meta = document.querySelector('meta[name="theme-color"]');
-  const colour = onHome ? "#BC002D" : washHex(store.getLeg(legId).colour);
+  const colour = onHome || onQuest ? "#BC002D" : washHex(store.getLeg(legId).colour);
   if (meta) meta.content = colour;
 
   syncHeaderHeight();

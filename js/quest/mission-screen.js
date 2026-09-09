@@ -49,13 +49,13 @@ function actionFields(mission) {
 export function rewardHtml(quest, mission, labels) {
   const bits = [];
   if (labels.showXp && mission.xp) {
-    bits.push(`<p class="quest-xp">+${mission.xp} family XP</p>`);
+    bits.push(`<p class="quest-reward quest-xp">+${mission.xp} family XP</p>`);
   }
   if (mission.codexUnlock) {
     const entry = codexById(quest, mission.codexUnlock);
     if (entry) {
       bits.push(
-        `<p>Codex: <strong>${esc(entry.name)}</strong>
+        `<p class="quest-reward">Codex: <strong>${esc(entry.name)}</strong>
          <span class="jp">${esc(entry.japaneseName || "")}</span></p>`
       );
     }
@@ -79,12 +79,13 @@ export function renderMissionPage({ quest, mission, chapter, state, people, lock
   const start = locked ? "locked" : done ? "reveal" : steps.length ? "story" : "hook";
 
   const body = `
-    <article class="stack quest-stage" data-tone="${memory ? "memory" : ""}"
+    <article class="quest-stage" data-tone="${memory ? "memory" : ""}"
              data-start="${esc(start)}">
+      ${visualHtml(mission, quest)}
+      <div class="stack quest-stage__body">
       ${typeMark(memory ? "memory" : mission.type)}
       <p class="quest-kicker">${esc(labels.kicker)} · ${esc(chapter.destination)}</p>
       <h2>${esc(mission.title)}</h2>
-      ${visualHtml(mission, quest)}
 
       <section class="quest-panel${start === "story" ? " is-on" : ""}" data-panel="story">
         ${listenBar("story")}
@@ -102,7 +103,6 @@ export function renderMissionPage({ quest, mission, chapter, state, people, lock
       <section class="quest-panel${start === "hook" ? " is-on" : ""}" data-panel="hook">
         ${listenBar("hook")}
         <div class="quest-prose"><p>${esc(mission.intro)}</p></div>
-        ${moreInfoHtml(mission.moreInfo)}
         ${prior ? `<p class="quest-hint">Last time you said: ${esc(prior)}</p>` : ""}
         <button class="btn" type="button" data-to-task>${esc(labels.yourMission)}</button>
       </section>
@@ -147,21 +147,30 @@ export function renderMissionPage({ quest, mission, chapter, state, people, lock
       </section>
 
       <section class="quest-panel${start === "reveal" ? " is-on" : ""}" data-panel="reveal">
-        <p class="quest-label">${esc(done ? labels.doneTitle : labels.revealTitle)}</p>
-        ${listenBar("reveal")}
-        <div class="quest-prose">
-          <p data-reveal-text>${esc(mission.reveal)}</p>
-          ${record?.answer ? `<p>${esc(record.answer)}</p>` : ""}
+        <div class="quest-reveal">
+          <p class="quest-label">${esc(done ? labels.doneTitle : labels.revealTitle)}</p>
+          ${listenBar("reveal")}
+          <div class="quest-prose">
+            <p data-reveal-text>${esc(mission.reveal)}</p>
+            ${record?.answer ? `<p>${esc(record.answer)}</p>` : ""}
+          </div>
+          ${moreInfoHtml(mission.moreInfo)}
+          <div data-reward>${done ? rewardHtml(quest, mission, labels) : ""}</div>
         </div>
-        <div data-reward>${done ? rewardHtml(quest, mission, labels) : ""}</div>
         <a class="btn" href="#/adventure">${esc(labels.continueLabel)}</a>
       </section>
+      </div>
     </article>`;
 
   const html = questShell(
     "/adventure",
     body,
-    { compact: true, rail: memory ? "" : familyRail(quest, state, chapter) }
+    {
+      compact: true,
+      memory,
+      chapterId: chapter?.id || "",
+      rail: memory ? "" : familyRail(quest, state, chapter),
+    }
   );
   return html;
 }
@@ -169,11 +178,12 @@ export function renderMissionPage({ quest, mission, chapter, state, people, lock
 export function renderDiscoveryPage({ quest, discovery, chapter, entry, people, found, state }) {
   const labels = playLabels("discovery");
   const body = `
-    <article class="stack quest-stage">
+    <article class="quest-stage">
+      ${visualHtml(discovery, quest)}
+      <div class="stack quest-stage__body">
       ${typeMark("discovery")}
       <p class="quest-kicker">Discovery · ${esc(chapter?.destination || "")}</p>
       <h2>${esc(discovery.name)}</h2>
-      ${visualHtml(discovery, quest)}
       ${
         found
           ? `<section class="quest-panel is-on">
@@ -212,9 +222,12 @@ export function renderDiscoveryPage({ quest, discovery, chapter, entry, people, 
                <a class="btn" href="#/adventure/codex">${esc(labels.continueLabel)}</a>
              </section>`
       }
+      </div>
     </article>`;
   return questShell("/adventure/codex", body, {
     compact: true,
+    chapterId: chapter?.id || "",
+    memory: chapter?.tone === "memory",
     rail: chapter?.tone === "memory" ? "" : familyRail(quest, state, chapter),
   });
 }

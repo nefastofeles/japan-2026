@@ -43,7 +43,7 @@
   font-weight: 700;
   letter-spacing: 0.02em;
   text-transform: none;
-  color: var(--leg-deep);
+  color: var(--hinomaru-deep);
   margin: 0 0 var(--sp-2);
 }
 
@@ -88,10 +88,13 @@
   gap: var(--sp-2);
   font-size: 1.125rem;
   font-weight: 700;
-  color: var(--leg-deep);
+  color: var(--hinomaru-deep);
 }
 
-.quest-type__icon { font-size: 1.25rem; }
+.quest-type .quest-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+}
 
 .quest-hero {
   padding: var(--sp-5);
@@ -114,8 +117,8 @@
   margin-top: var(--sp-4);
   padding: var(--sp-3) var(--sp-5);
   border-radius: var(--radius);
-  background: var(--leg-deep);
-  border: 1px solid var(--leg-deep);
+  background: var(--hinomaru);
+  border: 1px solid var(--hinomaru);
   color: var(--paper-raised);
   font-weight: 700;
   font-size: 1.125rem;
@@ -156,27 +159,65 @@
 }
 
 .quest-mission,
-.quest-find {
+.quest-find,
+.quest-card {
   display: block;
-  padding: var(--sp-5);
-  border: 1px solid var(--rule);
-  border-radius: var(--radius);
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  border-radius: var(--radius-lg);
   background: var(--paper-raised);
   text-decoration: none;
   color: inherit;
+  box-shadow: var(--shadow-lg);
 }
 
-.quest-mission[data-tone="memory"] {
-  border-color: #9aa6b5;
+.quest-card__body {
+  padding: var(--sp-4) var(--sp-5) var(--sp-5);
+}
+
+.quest-mission[data-tone="memory"],
+.quest-card[data-tone="memory"] {
   background: #f3f5f7;
   box-shadow: none;
 }
 
 .quest-mission h3,
-.quest-find h3 {
+.quest-find h3,
+.quest-card h3 {
   margin: var(--sp-2) 0 0;
   font-size: 1.25rem;
   line-height: 1.35;
+  color: var(--ink);
+}
+
+.quest-card__hook {
+  margin: var(--sp-2) 0 0;
+  font-size: 1.125rem;
+  line-height: 1.5;
+  color: var(--ink-soft);
+}
+
+.quest-card--locked {
+  filter: saturate(0.35);
+}
+
+.quest-card--locked .quest-card__hook {
+  color: var(--ink-muted);
+}
+
+.quest-card--find .quest-card__body {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0 var(--sp-3);
+  align-items: center;
+}
+
+.quest-card--find .quest-icon {
+  width: 2.4rem;
+  height: 2.4rem;
+  color: var(--hinomaru);
+  grid-row: span 3;
 }
 
 .quest-pill {
@@ -185,6 +226,11 @@
   font-size: 1.125rem;
   font-weight: 700;
   color: var(--ink-soft);
+}
+
+.quest-mission:not(:has(.quest-card__body)),
+.quest-find:not(:has(.quest-card__body)) {
+  padding: var(--sp-5);
 }
 
 .quest-section { margin-top: var(--sp-6); }

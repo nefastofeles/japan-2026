@@ -11,8 +11,8 @@ html[data-home] {
   --paper-raised: #ffffff;
   --paper-sunk: #fff4f4;
   --leg-wash: #ffffff;
-  --leg: #bc002d;
-  --leg-deep: #9a0026;
+  --leg: var(--hinomaru);
+  --leg-deep: var(--hinomaru-deep);
   --leg-tint: #fde8ea;
   --leg-edge: #f3b4bc;
 }
@@ -29,7 +29,7 @@ html[data-home] body { background: #ffffff; }
   width: 24rem;
   height: 24rem;
   border-radius: 50%;
-  background: #bc002d;
+  background: var(--hinomaru);
   opacity: 0.16;
   pointer-events: none;
   z-index: 0;
@@ -37,7 +37,7 @@ html[data-home] body { background: #ffffff; }
 
 html[data-home] .site-header {
   background: rgb(255 255 255 / 92%);
-  border-bottom-color: #bc002d;
+  border-bottom-color: var(--hinomaru);
 }
 
 html[data-home] .japan-map__art {
@@ -64,7 +64,7 @@ html[data-home] .japan-map__art {
   margin: var(--sp-3) 0 0;
   text-align: center;
   font-weight: 700;
-  color: #9a0026;
+  color: var(--hinomaru-deep);
 }
 
 .hero {
@@ -182,7 +182,7 @@ html[data-home] .japan-map__art {
 
 .japan-map__route {
   fill: none;
-  stroke: #bc002d;
+  stroke: var(--hinomaru);
   stroke-width: 2.3;
   stroke-linecap: round;
   stroke-linejoin: round;

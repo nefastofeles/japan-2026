@@ -1,0 +1,299 @@
+/* ==========================================================================
+   Quest shell — hinomaru ground, washi cards
+   --------------------------------------------------------------------------
+   Same Japan red as Home (--hinomaru). Cards lift in cream. Memory pages
+   drop the red via :has(.quest-page--memory).
+   ========================================================================== */
+
+html[data-quest] {
+  background: var(--hinomaru);
+  --leg: var(--hinomaru);
+  --leg-deep: var(--hinomaru-deep);
+  --leg-tint: color-mix(in srgb, var(--hinomaru) 12%, var(--paper));
+  --leg-edge: color-mix(in srgb, var(--hinomaru) 28%, var(--paper));
+  --leg-wash: var(--hinomaru);
+}
+
+html[data-quest] body {
+  background: var(--hinomaru);
+  min-height: 100dvh;
+}
+
+html[data-quest] .site-header {
+  background: color-mix(in srgb, var(--paper) 94%, transparent);
+  border-bottom-color: var(--hinomaru);
+  padding-top: env(safe-area-inset-top);
+}
+
+html[data-quest] .site-nav a[aria-current="page"] {
+  background: var(--hinomaru);
+  color: var(--paper-raised);
+}
+
+html[data-quest] main {
+  padding-bottom: calc(var(--sp-8) + env(safe-area-inset-bottom));
+}
+
+html[data-quest] .site-footer {
+  border-top-color: color-mix(in srgb, var(--paper) 28%, transparent);
+  color: var(--paper);
+  padding-bottom: calc(var(--sp-6) + env(safe-area-inset-bottom));
+}
+
+html[data-quest] .site-footer .footer-admin {
+  background: var(--paper-raised);
+  color: var(--ink);
+  border-color: var(--paper);
+}
+
+html[data-quest]:has(.quest-page--memory) {
+  background: #5c6570;
+  --leg: #5c6570;
+  --leg-deep: #2c3a4d;
+  --leg-wash: #5c6570;
+}
+
+html[data-quest]:has(.quest-page--memory) body {
+  background: #5c6570;
+}
+
+html[data-quest]:has(.quest-page--memory) .site-header {
+  border-bottom-color: #9aa6b5;
+}
+
+html[data-quest] :focus-visible {
+  outline-color: var(--gold-leaf);
+}
+
+.quest-page .quest-head .quest-kicker,
+.quest-page .quest-brand {
+  color: var(--paper);
+}
+
+.quest-page .quest-head h1,
+.quest-page .quest-brand {
+  color: var(--paper-raised);
+  text-shadow: 0 1px 0 color-mix(in srgb, var(--ink) 18%, transparent);
+}
+
+.quest-page > .quest-prose,
+.quest-page > p.quest-prose {
+  color: var(--paper-raised);
+}
+
+.quest-page .section-title {
+  color: var(--paper-raised);
+}
+
+.quest-page .section-title::after {
+  background: color-mix(in srgb, var(--paper) 40%, transparent);
+}
+
+.quest-page .empty {
+  color: var(--paper-raised);
+  background: color-mix(in srgb, var(--ink) 12%, transparent);
+  border-radius: var(--radius);
+  padding: var(--sp-4);
+}
+
+.quest-page .muted {
+  color: color-mix(in srgb, var(--paper-raised) 80%, transparent);
+}
+
+.quest-entry--locked .quest-pill,
+.quest-entry--locked .quest-prose,
+.quest-entry--locked .jp {
+  color: color-mix(in srgb, var(--paper-raised) 88%, transparent);
+}
+
+.quest-page--memory .quest-head h1,
+.quest-page--memory .quest-brand,
+.quest-page--memory .section-title,
+.quest-page--memory > .quest-prose {
+  color: #f6f7f8;
+}
+
+.quest-tabs a {
+  box-shadow: var(--shadow);
+  border-color: transparent;
+}
+
+.quest-tabs a[aria-current="page"] {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--paper-raised);
+}
+
+.quest-icon {
+  display: inline-flex;
+  width: 1.35rem;
+  height: 1.35rem;
+  flex-shrink: 0;
+  color: currentColor;
+}
+
+.quest-icon__svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.quest-type {
+  color: var(--hinomaru-deep);
+}
+
+.quest-hero {
+  position: relative;
+  overflow: hidden;
+  padding: var(--sp-5);
+  border: 0;
+  background: var(--paper-raised);
+  box-shadow: var(--shadow-lg);
+}
+
+.quest-hero[data-tone="memory"] {
+  background: #f3f5f7;
+  box-shadow: none;
+}
+
+.quest-brand {
+  margin: 0 0 var(--sp-2);
+  font-size: 1.125rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.quest-hero .quest-brand {
+  color: var(--hinomaru);
+  text-shadow: none;
+}
+
+.quest-hero__art {
+  position: relative;
+  height: 7.5rem;
+  margin: var(--sp-4) 0;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--hinomaru);
+}
+
+.quest-hero .quest-rail {
+  box-shadow: none;
+  background: var(--paper-sunk);
+  margin-top: var(--sp-2);
+}
+
+.quest-rail {
+  border: 0;
+  background: var(--paper-raised);
+  box-shadow: var(--shadow);
+}
+
+.quest-rail__bar span {
+  background: var(--hinomaru);
+}
+
+.quest-rail__next {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  font-weight: 700;
+}
+
+.quest-rail__seal {
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 50%;
+  border: 2px solid var(--hinomaru);
+  color: var(--hinomaru);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.quest-rail__top {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  margin-bottom: var(--sp-2);
+}
+
+.quest-motif {
+  background: var(--hinomaru);
+}
+
+.quest-motif::before,
+.quest-visual--mark::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.28;
+  background:
+    radial-gradient(circle at 78% 22%, var(--paper-raised) 0 18%, transparent 19%),
+    linear-gradient(180deg, transparent 62%, color-mix(in srgb, var(--ink) 22%, transparent));
+}
+
+.quest-page[data-chapter="tokyo"] .quest-motif,
+.quest-page[data-chapter="tokyo"] .quest-visual--mark {
+  background:
+    repeating-linear-gradient(-28deg, var(--hinomaru) 0 10px, #8a001f 10px 12px);
+}
+
+.quest-page[data-chapter="kyoto"] .quest-motif,
+.quest-page[data-chapter="kyoto"] .quest-visual--mark {
+  background:
+    radial-gradient(circle at 50% 120%, #5b3d8c 0 28%, transparent 29%),
+    var(--hinomaru);
+}
+
+.quest-page[data-chapter="osaka"] .quest-motif,
+.quest-page[data-chapter="osaka"] .quest-visual--mark {
+  background:
+    radial-gradient(circle at 20% 30%, var(--gold-leaf) 0 8%, transparent 9%),
+    radial-gradient(circle at 80% 70%, var(--gold-leaf) 0 6%, transparent 7%),
+    var(--hinomaru);
+}
+
+.quest-page[data-chapter="miyajima"] .quest-motif,
+.quest-page[data-chapter="miyajima"] .quest-visual--mark {
+  background:
+    linear-gradient(180deg, #7a001c 0 42%, var(--hinomaru) 42%);
+}
+
+.quest-page[data-chapter="kanazawa"] .quest-motif,
+.quest-page[data-chapter="kanazawa"] .quest-visual--mark {
+  background:
+    radial-gradient(circle at 50% 40%, var(--gold-leaf) 0 22%, var(--hinomaru) 23%);
+}
+
+.quest-page[data-chapter="takayama"] .quest-motif,
+.quest-page[data-chapter="takayama"] .quest-visual--mark,
+.quest-page[data-chapter="tokoname"] .quest-motif,
+.quest-page[data-chapter="tokoname"] .quest-visual--mark {
+  background:
+    repeating-linear-gradient(90deg, #8b4a2b 0 8px, #a35a34 8px 16px);
+}
+
+.quest-page[data-chapter="tsumago"] .quest-motif,
+.quest-page[data-chapter="tsumago"] .quest-visual--mark {
+  background:
+    repeating-linear-gradient(90deg, transparent 0 10px, var(--paper) 10px 12px),
+    #3d5a24;
+}
+
+.quest-page[data-chapter="finale"] .quest-motif,
+.quest-page[data-chapter="finale"] .quest-visual--mark {
+  background:
+    radial-gradient(circle at 50% 50%, var(--gold-leaf) 0 16%, var(--hinomaru) 17%);
+}
+
+.quest-page--memory .quest-motif,
+.quest-page--memory .quest-visual--mark {
+  background: #6b7580;
+}
+
+@media (max-width: 40rem) {
+  .quest-hero__art { height: 6.2rem; }
+}

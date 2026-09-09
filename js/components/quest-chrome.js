@@ -12,6 +12,7 @@ import {
 } from "../quest/speech.js";
 import { familyXp } from "../quest/engine.js";
 import { chapterFragments, nextVisibleReward } from "../quest/progress.js";
+import { questIcon, typeIcon } from "./quest-icons.js";
 
 const TABS = [
   ["/adventure", "Quest"],
@@ -20,23 +21,23 @@ const TABS = [
 ];
 
 const TYPE_META = {
-  find: { label: "Find", icon: "🔍" },
-  photo: { label: "Photo", icon: "📷" },
-  observe: { label: "Notice", icon: "👁" },
-  observation: { label: "Notice", icon: "👁" },
-  solve: { label: "Solve", icon: "🧩" },
-  riddle: { label: "Riddle", icon: "🧩" },
-  multipleChoice: { label: "Choose", icon: "✋" },
-  trueFalse: { label: "True or false", icon: "✋" },
-  food: { label: "Food", icon: "🍙" },
-  story: { label: "Story", icon: "📖" },
-  reflection: { label: "Sit with this", icon: "💭" },
-  discovery: { label: "Discovery", icon: "✦" },
-  memory: { label: "Memory", icon: "🕯️" },
+  find: { label: "Find" },
+  photo: { label: "Photo" },
+  observe: { label: "Notice" },
+  observation: { label: "Notice" },
+  solve: { label: "Solve" },
+  riddle: { label: "Riddle" },
+  multipleChoice: { label: "Choose" },
+  trueFalse: { label: "True or false" },
+  food: { label: "Food" },
+  story: { label: "Story" },
+  reflection: { label: "Sit with this" },
+  discovery: { label: "Discovery" },
+  memory: { label: "Memory" },
 };
 
 export function typeMeta(type) {
-  return TYPE_META[type] || { label: type, icon: "✦" };
+  return TYPE_META[type] || { label: type };
 }
 
 export function typeLabel(type) {
@@ -46,7 +47,7 @@ export function typeLabel(type) {
 export function typeMark(type) {
   const meta = typeMeta(type);
   return `<span class="quest-type">
-    <span class="quest-type__icon" aria-hidden="true">${meta.icon}</span>
+    ${typeIcon(type)}
     <span>${esc(meta.label)}</span>
   </span>`;
 }
@@ -66,14 +67,17 @@ export function questTabs(activePath) {
 }
 
 export function questShell(activePath, body, options = {}) {
+  const memory = options.memory ? " quest-page--memory" : "";
+  const compact = options.compact ? " quest-page--compact" : "";
+  const chapterId = options.chapterId || "";
   return `
-    <div class="page stack quest-page${options.compact ? " quest-page--compact" : ""}">
+    <div class="page stack quest-page${compact}${memory}" data-chapter="${esc(chapterId)}">
       ${
-        options.compact
+        options.hideHead
           ? ""
           : `<header class="quest-head">
-        <p class="quest-kicker">Quest</p>
-        <h1>The Missing Stories of Japan</h1>
+        <p class="quest-brand">Japan Quest</p>
+        ${options.compact ? "" : `<h1>The Missing Stories of Japan</h1>`}
       </header>`
       }
       ${questTabs(activePath)}
@@ -104,16 +108,19 @@ export function progressRail({ chapter, fragments, xp, next, memory }) {
     : "Nothing queued";
   return `
     <section class="quest-rail" aria-label="Family progress">
-      <p class="quest-rail__kicker">${esc(chapter.destination)} · ${esc(chapter.title)}</p>
+      <div class="quest-rail__top">
+        <span class="quest-rail__seal">${questIcon("badge")}</span>
+        <p class="quest-rail__kicker">Current chapter<br>${esc(chapter.destination)}</p>
+      </div>
       <div class="quest-rail__bar" role="progressbar"
            aria-valuemin="0" aria-valuemax="100" aria-valuenow="${pct}">
         <span style="width:${pct}%"></span>
       </div>
       <p class="quest-rail__meta">
-        <span>${xp} XP</span>
-        <span>${fragments?.earned || 0}/${fragments?.target || 0} fragments</span>
+        <span class="quest-reward">${questIcon("xp")} Family XP ${xp}</span>
+        <span class="quest-reward">${questIcon("fragment")} ${fragments?.earned || 0}/${fragments?.target || 0}</span>
       </p>
-      <p class="quest-rail__next">Next reward · ${esc(nextLine)}</p>
+      <p class="quest-rail__next">${questIcon("badge")} Next reward · ${esc(nextLine)}</p>
     </section>`;
 }
 
@@ -137,7 +144,7 @@ export function listenBar(textId) {
   return `
     <div class="quest-listen" data-listen-root="${esc(textId)}">
       <button type="button" class="quest-listen__btn" data-listen="${esc(textId)}">
-        <span aria-hidden="true">🔊</span> Listen
+        ${questIcon("listen")} Listen
       </button>
       <button type="button" class="quest-listen__btn quest-listen__btn--ghost" data-listen-slow="${esc(textId)}">
         Slower
@@ -146,6 +153,12 @@ export function listenBar(textId) {
         Stop
       </button>
     </div>`;
+}
+
+function listenLabel(kind) {
+  if (kind === "resume") return `${questIcon("listen")} Resume`;
+  if (kind === "pause") return `${questIcon("listen")} Pause`;
+  return `${questIcon("listen")} Listen`;
 }
 
 function refreshListen(root, textId) {
@@ -157,11 +170,11 @@ function refreshListen(root, textId) {
   if (stop) stop.hidden = !speaking;
   if (!main) return;
   if (speaking && isSpeechPaused()) {
-    main.innerHTML = `<span aria-hidden="true">🔊</span> Resume`;
+    main.innerHTML = listenLabel("resume");
   } else if (speaking) {
-    main.innerHTML = `<span aria-hidden="true">🔊</span> Pause`;
+    main.innerHTML = listenLabel("pause");
   } else {
-    main.innerHTML = `<span aria-hidden="true">🔊</span> Listen`;
+    main.innerHTML = listenLabel("listen");
   }
 }
 

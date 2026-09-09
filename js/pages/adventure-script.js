@@ -155,7 +155,7 @@ export async function adventureScriptPage() {
           </section>`;
       })
       .join("")}`
-  );
+  , { chapterId: "prologue" });
 
   return {
     html,

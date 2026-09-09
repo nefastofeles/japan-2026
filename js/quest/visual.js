@@ -1,20 +1,24 @@
 /**
- * Optional hero visual and “Tell me more”. Missing media is fine.
- * The image is cropped short so the main button still fits on an iPhone.
+ * Optional hero visual and “Tell me more”. Missing media is an intentional
+ * chapter mark, never an empty hole.
  */
 
 import { esc } from "../util.js";
 import { listenBar } from "../components/quest-chrome.js";
+import { typeIcon } from "../components/quest-icons.js";
 import { resolveVisual } from "./media.js";
 
-export function visualHtml(item, quest) {
+export function visualHtml(item, quest, { compact } = {}) {
   const picture = resolveVisual(item, quest);
+  const chapterId = item?.chapterId || "";
+  const kind = item?.type || "quest";
+  const extra = compact ? " quest-visual--card" : "";
   if (picture?.src) {
-    const kind = picture.type || "image";
+    const mediaKind = picture.type || "image";
     return `
-      <figure class="quest-visual" data-visual="${esc(kind)}">
+      <figure class="quest-visual${extra}" data-visual="${esc(mediaKind)}" data-chapter="${esc(chapterId)}">
         <img src="${esc(picture.src)}" alt="${esc(picture.alt || "")}"
-             width="800" height="360">
+             width="800" height="450">
         ${
           picture.credit
             ? `<figcaption class="quest-visual__credit">${esc(picture.credit)}</figcaption>`
@@ -22,10 +26,11 @@ export function visualHtml(item, quest) {
         }
       </figure>`;
   }
-  if (item?.icon) {
-    return `<p class="quest-visual-icon" aria-hidden="true">${esc(item.icon)}</p>`;
-  }
-  return "";
+  return `
+    <div class="quest-visual quest-visual--mark${extra}" data-chapter="${esc(chapterId)}"
+         data-kind="${esc(kind)}" aria-hidden="true">
+      ${typeIcon(kind)}
+    </div>`;
 }
 
 export function moreInfoHtml(info) {
