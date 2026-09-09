@@ -65,9 +65,10 @@ whole:
 3. `supabase/03_storage.sql` — the two private buckets
 4. `supabase/04_seed.sql` — the four people and the 24 days
 
-Quest Game uses a fifth file later, `supabase/05_quest.sql`. Skip it until
-the family login exists. It adds Quest-only tables and does not change the
-journal. Until then, Quest progress stays on each phone.
+Quest Game uses a fifth file, `supabase/05_quest.sql`. Run it when you
+want shared Quest progress across phones. It adds Quest-only tables and
+does not change the journal. Safe to re-run. Until it has been run, or
+until `js/config.js` has the two keys, Quest progress stays on each phone.
 
 If you later change `data/itinerary.json`, regenerate the last one:
 

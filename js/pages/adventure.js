@@ -12,7 +12,7 @@ import { hydrateQuestState } from "../quest/sync.js";
 import { isComplete } from "../quest/state.js";
 import {
   currentChapter, nextChapter, todaysMissions,
-  chapterComplete, missionStatus, openDiscoveries, isMemoryMode,
+  chapterComplete, openDiscoveries, isMemoryMode,
 } from "../quest/engine.js";
 import { questShell, typeMark, familyRail } from "../components/quest-chrome.js";
 import { typeIcon } from "../components/quest-icons.js";
@@ -65,10 +65,7 @@ export async function adventurePage() {
   const today = todayISO(TRIP.timezone);
   const chapter = currentChapter(quest, today);
   const following = nextChapter(quest, chapter);
-  const open = todaysMissions(quest, state, chapter, today).filter((mission) => {
-    const status = missionStatus(mission, state, { date: today });
-    return status === "open" || status === "nearby" || status === "scheduled";
-  });
+  const open = todaysMissions(quest, state, chapter, today);
   const finds = openDiscoveries(quest, state, chapter);
   const done = missionsForChapter(quest, chapter.id).filter((mission) =>
     isComplete(state, mission.id)

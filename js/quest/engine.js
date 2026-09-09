@@ -14,6 +14,7 @@ import { queueQuestSync } from "./sync.js";
 import { gpsGate } from "./location.js";
 import { moduleById, moduleEligible } from "./modules.js";
 import { chapterFragments } from "./progress.js";
+import { surfaceMissions } from "./rank.js";
 
 export { chapterComplete, chapterFragments, nextVisibleReward } from "./progress.js";
 
@@ -89,7 +90,7 @@ export function missionStatus(mission, state, { here, date } = {}) {
 }
 
 export function todaysMissions(quest, state, chapter, date) {
-  return quest.missions.filter((mission) => {
+  const eligible = quest.missions.filter((mission) => {
     if (isComplete(state, mission.id)) return false;
     if (mission.moduleId) {
       const pack = moduleById(quest, mission.moduleId);
@@ -100,6 +101,9 @@ export function todaysMissions(quest, state, chapter, date) {
     }
     return true;
   });
+  return surfaceMissions(eligible, quest, date, (mission) =>
+    missionStatus(mission, state, { date })
+  );
 }
 
 export function openDiscoveries(quest, state, chapter) {

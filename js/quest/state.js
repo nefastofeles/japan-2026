@@ -3,12 +3,13 @@
  *
  * Shared sync lives in sync.js. Until that backend exists, localStorage
  * is the whole game. Photos stay in IndexedDB because they do not fit
- * in JSON.
+ * in JSON. generation rises when a facilitator resets, so a stale phone
+ * cannot push dress-rehearsal completions back over a wipe.
  */
 
 const KEY = "japan-2026-quest";
 
-function emptyState() {
+export function emptyQuestState() {
   return {
     xp: 0,
     completed: {},
@@ -17,6 +18,7 @@ function emptyState() {
     answers: {},
     memories: [],
     activatedModules: [],
+    generation: 0,
   };
 }
 
@@ -29,9 +31,9 @@ function asIdList(value) {
 export function loadState() {
   try {
     const parsed = JSON.parse(localStorage.getItem(KEY));
-    if (!parsed || typeof parsed !== "object") return emptyState();
+    if (!parsed || typeof parsed !== "object") return emptyQuestState();
     return {
-      ...emptyState(),
+      ...emptyQuestState(),
       ...parsed,
       completed: parsed.completed || {},
       discovered: asIdList(parsed.discovered),
@@ -39,9 +41,10 @@ export function loadState() {
       answers: parsed.answers || {},
       memories: parsed.memories || [],
       activatedModules: asIdList(parsed.activatedModules),
+      generation: Number(parsed.generation) || 0,
     };
   } catch {
-    return emptyState();
+    return emptyQuestState();
   }
 }
 

@@ -1,9 +1,9 @@
--- Japan 2026 - Quest shared progress (optional, later)
+-- Japan 2026 - Quest shared progress
 --
--- Do not run this until the family login exists. It is not required for
--- the journal. Quest keeps working on one phone via localStorage until
--- then. This file does not alter days, entries, meals, media, comments
--- or storage policies.
+-- Run after 01–04. It is not required for the journal. Quest keeps
+-- working on one phone via localStorage until this file has been run
+-- and js/config.js has the two keys. This file does not alter days,
+-- entries, meals, media, comments or storage policies.
 --
 -- Why a separate schema: Saga completing a mission on one iPhone must
 -- show up on Rikke’s phone. Journal tables are the wrong place: they
@@ -55,29 +55,48 @@ create table if not exists quest_badges (
   primary key (trip_id, badge_id)
 );
 
+-- One row per trip: reset generation, open modules, callback answers.
+-- Generation is how a facilitator wipe beats a stale phone that still
+-- has dress-rehearsal completions in localStorage.
+create table if not exists quest_control (
+  trip_id            text primary key default 'japan-2026',
+  reset_generation   int not null default 0,
+  activated_modules  text[] not null default '{}',
+  answers            jsonb not null default '{}',
+  updated_at         timestamptz not null default now()
+);
+
 alter table quest_progress enable row level security;
 alter table quest_memories enable row level security;
 alter table quest_badges   enable row level security;
+alter table quest_control  enable row level security;
 
 -- Signed-in family can read and write Quest state. Not the journal.
+-- The journal sign-in wall is off, so anon is also allowed here only:
+-- otherwise four phones cannot share progress without a second login.
 do $$
 declare t text;
 begin
-  foreach t in array array['quest_progress', 'quest_memories', 'quest_badges'] loop
+  foreach t in array array['quest_progress', 'quest_memories', 'quest_badges', 'quest_control'] loop
     execute format('drop policy if exists %I on %I', t || '_read', t);
     execute format(
-      'create policy %I on %I for select to authenticated using (true)',
+      'create policy %I on %I for select to anon, authenticated using (true)',
       t || '_read', t
     );
     execute format('drop policy if exists %I on %I', t || '_write', t);
     execute format(
-      'create policy %I on %I for insert to authenticated with check (true)',
+      'create policy %I on %I for insert to anon, authenticated with check (true)',
       t || '_write', t
     );
     execute format('drop policy if exists %I on %I', t || '_update', t);
     execute format(
-      'create policy %I on %I for update to authenticated using (true) with check (true)',
+      'create policy %I on %I for update to anon, authenticated using (true) with check (true)',
       t || '_update', t
+    );
+    execute format('drop policy if exists %I on %I', t || '_delete', t);
+    execute format(
+      'create policy %I on %I for delete to anon, authenticated using (true)',
+      t || '_delete', t
     );
   end loop;
 end $$;

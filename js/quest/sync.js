@@ -2,15 +2,15 @@
  * Shared Quest progress across family phones.
  *
  * Authored missions stay in git JSON. This module only moves mutable
- * state: completions, discoveries, badges, short memories.
- *
- * Until Supabase is configured — or until the quest_* tables exist —
- * every write stays on this phone. The journal tables are never touched.
+ * state. Until Supabase is configured — or until the quest_* tables
+ * exist — every write stays on this phone. Journal tables are never
+ * touched. A facilitator reset bumps generation so a slower phone
+ * cannot restore wiped pages.
  */
 
 import { getClient } from "../supabase.js";
 import { isConfigured } from "../config.js";
-import { loadState, saveState } from "./state.js";
+import { emptyQuestState, loadState, saveState } from "./state.js";
 
 export const QUEST_TRIP_ID = "japan-2026";
 
@@ -21,11 +21,9 @@ function emptyRemote() {
     badges: [],
     memories: [],
     answers: {},
+    activatedModules: [],
+    generation: 0,
   };
-}
-
-function recordFromLocal(state, missionId) {
-  return state.completed[missionId] || null;
 }
 
 /** First write wins so a slower phone cannot wipe Saga’s completion. */
@@ -38,6 +36,14 @@ function pickEarlier(a, b) {
 }
 
 export function mergeQuestState(local, remote) {
+  const localGen = Number(local?.generation) || 0;
+  const remoteGen = Number(remote?.generation) || 0;
+
+  if (remoteGen > localGen) {
+    // Family reset (or a newer wipe) beats anything still on this phone.
+    return applyRemote(remote);
+  }
+
   const completed = { ...remote.completed };
   for (const [id, record] of Object.entries(local.completed || {})) {
     completed[id] = pickEarlier(completed[id], record);
@@ -45,11 +51,10 @@ export function mergeQuestState(local, remote) {
 
   const discoveredSet = new Set([
     ...Object.keys(remote.discovered || {}),
-    ...(Array.isArray(local.discovered) ? local.discovered : Object.keys(local.discovered || {})),
+    ...(Array.isArray(local.discovered)
+      ? local.discovered
+      : Object.keys(local.discovered || {})),
   ]);
-
-  const badges = [...new Set([...(remote.badges || []), ...(local.badges || [])])];
-  const answers = { ...(remote.answers || {}), ...(local.answers || {}) };
 
   const memories = [];
   const seen = new Set();
@@ -62,20 +67,44 @@ export function mergeQuestState(local, remote) {
 
   return {
     ...local,
+    generation: Math.max(localGen, remoteGen),
     completed,
     discovered: [...discoveredSet],
-    badges,
-    answers,
+    badges: [...new Set([...(remote.badges || []), ...(local.badges || [])])],
+    answers: { ...(remote.answers || {}), ...(local.answers || {}) },
     memories,
     activatedModules: [...new Set([
-      ...(local.activatedModules || []),
       ...(remote.activatedModules || []),
+      ...(local.activatedModules || []),
     ])],
   };
 }
 
-function rowsToRemote(progressRows, memoryRows, badgeRows) {
+function applyRemote(remote) {
+  const discovered = Array.isArray(remote.discovered)
+    ? remote.discovered
+    : Object.keys(remote.discovered || {});
+  return {
+    ...emptyQuestState(),
+    generation: Number(remote.generation) || 0,
+    completed: remote.completed || {},
+    discovered,
+    badges: remote.badges || [],
+    answers: remote.answers || {},
+    memories: remote.memories || [],
+    activatedModules: remote.activatedModules || [],
+  };
+}
+
+function rowsToRemote(progressRows, memoryRows, badgeRows, control) {
   const remote = emptyRemote();
+  if (control) {
+    remote.generation = Number(control.reset_generation) || 0;
+    remote.activatedModules = control.activated_modules || [];
+    remote.answers = control.answers && typeof control.answers === "object"
+      ? control.answers
+      : {};
+  }
   for (const row of progressRows || []) {
     if (row.kind === "mission") {
       remote.completed[row.item_id] = {
@@ -86,7 +115,9 @@ function rowsToRemote(progressRows, memoryRows, badgeRows) {
         answer: row.answer || "",
         summary: row.summary || row.item_id,
       };
-      if (row.answer) remote.answers[row.item_id] = row.answer;
+      if (row.answer && !remote.answers[row.item_id]) {
+        remote.answers[row.item_id] = row.answer;
+      }
     }
     if (row.kind === "discovery") {
       remote.discovered[row.item_id] = {
@@ -114,19 +145,16 @@ function rowsToRemote(progressRows, memoryRows, badgeRows) {
 
 async function readRemote(supabase) {
   const trip = QUEST_TRIP_ID;
-  const [progress, memories, badges] = await Promise.all([
+  const [progress, memories, badges, control] = await Promise.all([
     supabase.from("quest_progress").select("*").eq("trip_id", trip),
     supabase.from("quest_memories").select("*").eq("trip_id", trip),
     supabase.from("quest_badges").select("*").eq("trip_id", trip),
+    supabase.from("quest_control").select("*").eq("trip_id", trip).maybeSingle(),
   ]);
   if (progress.error || memories.error || badges.error) return null;
-  return rowsToRemote(progress.data, memories.data, badges.data);
+  return rowsToRemote(progress.data, memories.data, badges.data, control.data);
 }
 
-/**
- * Pull family progress if the backend is ready. Missing tables or a
- * blank config are normal; we keep localStorage and do not throw.
- */
 export async function pullQuestState() {
   if (!isConfigured()) return null;
   try {
@@ -151,7 +179,7 @@ export async function hydrateQuestState() {
 function progressRow(state, kind, itemId) {
   const trip = QUEST_TRIP_ID;
   if (kind === "mission") {
-    const record = recordFromLocal(state, itemId);
+    const record = state.completed[itemId];
     if (!record) return null;
     return {
       trip_id: trip,
@@ -181,6 +209,13 @@ async function pushState(state) {
   const supabase = await getClient();
   if (!supabase) return false;
 
+  const remote = await readRemote(supabase);
+  if (remote && (remote.generation || 0) > (state.generation || 0)) {
+    // A wipe landed while we were offline. Do not restore old pages.
+    saveState(applyRemote(remote));
+    return false;
+  }
+
   const missionRows = Object.keys(state.completed || {})
     .map((id) => progressRow(state, "mission", id))
     .filter(Boolean);
@@ -203,7 +238,15 @@ async function pushState(state) {
     response: memory.answer || memory.interestingMoment || "",
   }));
 
-  const writes = [];
+  const writes = [
+    supabase.from("quest_control").upsert({
+      trip_id: QUEST_TRIP_ID,
+      reset_generation: state.generation || 0,
+      activated_modules: state.activatedModules || [],
+      answers: state.answers || {},
+      updated_at: new Date().toISOString(),
+    }),
+  ];
   if (missionRows.length || discoveryRows.length) {
     writes.push(
       supabase.from("quest_progress").upsert([...missionRows, ...discoveryRows], {

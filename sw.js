@@ -8,7 +8,7 @@
    Bump CACHE when you change the shell, otherwise phones keep the old copy.
    ========================================================================== */
 
-const CACHE = "japan-2026-v29";
+const CACHE = "japan-2026-v30";
 
 const SHELL = [
   "./",
@@ -63,6 +63,8 @@ const SHELL = [
   "js/quest/ai.js",
   "js/quest/speech.js",
   "js/quest/sync.js",
+  "js/quest/reset.js",
+  "js/quest/rank.js",
   "js/quest/mission-screen.js",
   "js/components/quest-chrome.js",
   "js/components/quest-icons.js",
