@@ -28,6 +28,20 @@
   <link rel="stylesheet" href="css/quest-screens.css">
   <link rel="stylesheet" href="css/quest-collect.css">
 
+  <!-- Paint Quest red before the router boots so #/adventure is not a teal flash. -->
+  <script>
+    (function () {
+      function syncQuestShell() {
+        document.documentElement.toggleAttribute(
+          "data-quest",
+          location.hash.startsWith("#/adventure")
+        );
+      }
+      syncQuestShell();
+      window.addEventListener("hashchange", syncQuestShell);
+    })();
+  </script>
+
   <!-- Leo's theme. Remove the comment markers around this line to switch it on. -->
   <!-- <link rel="stylesheet" href="css/themes/leo.css"> -->
 
