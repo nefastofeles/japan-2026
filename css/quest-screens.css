@@ -156,9 +156,13 @@
   display: block;
 }
 
-.quest-card .quest-visual,
+.quest-card .quest-visual {
+  aspect-ratio: 16 / 9;
+}
+
 .quest-entry .quest-visual {
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 3 / 2;
+  max-height: 5.25rem;
 }
 
 .quest-visual--mark {
