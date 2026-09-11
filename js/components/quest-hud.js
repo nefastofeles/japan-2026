@@ -27,7 +27,8 @@ export function questHud(quest, state, chapter) {
   const next = nextVisibleReward(quest, state, xp);
   const complete = bits.target > 0 && bits.earned >= bits.target;
   const nextTitle = next?.title || "—";
-  const chapterName = (chapter.destination || chapter.title || "").split(",")[0];
+  const rawName = chapter.destination || chapter.title || "";
+  const chapterName = rawName.split(/[,/]/)[0].trim().split(/\s+/)[0];
   const fragLabel = complete
     ? "Complete"
     : bits.target
