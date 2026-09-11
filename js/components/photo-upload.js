@@ -104,6 +104,10 @@ export function bindPhotoUpload(root, day) {
     status.textContent =
       `Uploaded ${result.done} of ${result.total}.` +
       (result.failed ? ` ${result.failed} failed. ${result.lastError}` : "");
-    if (result.done) location.reload();
+    if (result.done) {
+      status.textContent += " Showing them…";
+      // Give PostgREST a beat so the new row is there after reload.
+      setTimeout(() => location.reload(), 400);
+    }
   });
 }
