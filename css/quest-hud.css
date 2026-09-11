@@ -19,7 +19,7 @@ html[data-quest]:has(.quest-page--memory) .quest-sticky {
 
 .quest-hud {
   display: flex;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   align-items: center;
   gap: 0.4rem 0.65rem;
   min-height: var(--tap);
