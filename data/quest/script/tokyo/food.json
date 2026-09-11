@@ -1,0 +1,76 @@
+{
+  "chapterId": "tokyo",
+  "moduleId": "tokyo-food",
+  "items": [
+    {
+      "id": "sushi-not-fish",
+      "title": "Sushi Means Raw Fish",
+      "type": "trueFalse",
+      "status": "live",
+      "liveMissionId": "sushi-not-fish",
+      "question": {
+        "type": "trueFalse",
+        "text": "True or false: sushi means raw fish.",
+        "choices": [
+          { "id": "true", "text": "True", "response": "That is a common mix-up. Think about the rice." },
+          { "id": "false", "text": "False", "response": "Yes. The rice is the point." }
+        ],
+        "correctChoiceId": "false",
+        "retryAllowed": true
+      },
+      "reveal": "Sushi is seasoned rice. Sashimi is sliced seafood without that rice.",
+      "codexUnlock": "sushi",
+      "xp": 50,
+      "notes": "Lightweight optional quiz. fragmentValue 0."
+    },
+    {
+      "id": "sushi-family",
+      "title": "Spot the Impostor",
+      "type": "multipleChoice",
+      "status": "live",
+      "liveMissionId": "sushi-family",
+      "visualIdea": "Nigiri, maki, gunkan, temaki, sashimi",
+      "question": {
+        "type": "multipleChoice",
+        "text": "Which one is not sushi?",
+        "choices": [
+          { "id": "nigiri", "text": "Nigiri", "response": "Rice plus topping. That is sushi." },
+          { "id": "maki", "text": "Maki", "response": "Rolled rice. That is sushi." },
+          { "id": "gunkan", "text": "Gunkan", "response": "A rice boat. That is sushi." },
+          { "id": "temaki", "text": "Temaki", "response": "A hand roll. That is sushi." },
+          { "id": "sashimi", "text": "Sashimi", "response": "Yes. No sushi rice." }
+        ],
+        "correctChoiceId": "sashimi",
+        "retryAllowed": true
+      },
+      "mediaId": "media-sushi-types",
+      "xp": 60,
+      "notes": "Lightweight optional quiz. fragmentValue 0."
+    },
+    {
+      "id": "food-taste-map",
+      "title": "Tokyo Taste Map",
+      "type": "food",
+      "status": "live",
+      "liveMissionId": "food-taste-map",
+      "task": "Across Tokyo, collect one sweet, one salty, one crunchy, one chewy, and one WHAT IS THAT?",
+      "xp": 100,
+      "notes": "Lightweight optional. fragmentValue 0. Engine stores one answer today."
+    },
+    {
+      "id": "food-plastic",
+      "title": "Do Not Eat This",
+      "type": "find",
+      "status": "live",
+      "liveMissionId": "food-plastic",
+      "task": "Find the most convincing plastic food display outside a restaurant.",
+      "photo": true,
+      "reveal": "These replicas are sampuru. They show the dish without spoiling in the sun.",
+      "codexUnlock": "sampuru",
+      "xp": 60,
+      "mediaId": "media-sampuru",
+      "factCheck": "needed",
+      "notes": "Lightweight optional find. fragmentValue 0. Confirm sampuru wording when convenient."
+    }
+  ]
+}

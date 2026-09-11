@@ -1,0 +1,91 @@
+{
+  "chapterId": "prologue",
+  "moduleId": "copenhagen-core",
+  "items": [
+    {
+      "id": "script-already-here",
+      "title": "Japan is already here",
+      "type": "find",
+      "status": "idea",
+      "liveMissionId": "prologue-already-here",
+      "locationDescription": "Copenhagen Airport, before boarding",
+      "notes": "Superseded by cph-spot-japan. Same playable id so airport progress is kept."
+    },
+    {
+      "id": "script-sun",
+      "title": "The sun that does not set",
+      "type": "multipleChoice",
+      "status": "idea",
+      "question": "What is the red circle on the flag?",
+      "notes": "Old sample. Removed from playable missions; no safe map to the approved CPH shortlist."
+    },
+    {
+      "id": "cph-first-fragment",
+      "title": "The First Fragment",
+      "type": "multipleChoice",
+      "status": "live",
+      "liveMissionId": "cph-first-fragment",
+      "priority": "anchor",
+      "exactLocation": "Copenhagen Airport",
+      "hook": "Japan is far away. But the adventure has already started.",
+      "question": {
+        "type": "multipleChoice",
+        "text": "What do you think will feel most different from Denmark?",
+        "choices": [
+          { "id": "food", "text": "Food", "response": "Keep that. We will ask again in Tokyo." },
+          { "id": "cities", "text": "Cities", "response": "Keep that. We will ask again in Tokyo." },
+          { "id": "religion", "text": "Religion", "response": "Keep that. We will ask again in Tokyo." },
+          { "id": "rules", "text": "Everyday rules", "response": "Keep that. We will ask again in Tokyo." }
+        ],
+        "retryAllowed": true
+      },
+      "reveal": "There is no right answer. Keep yours. We will ask again in Tokyo.",
+      "visualIdea": "Illustrated Copenhagen to Tokyo route",
+      "mediaId": "media-cph-tokyo-route",
+      "fragmentValue": 1,
+      "xp": 50,
+      "callbackKey": "cph-different",
+      "saveFor": ["tokyo-finale"],
+      "notes": "No correctChoiceId. Answers are stored for a later Tokyo callback."
+    },
+    {
+      "id": "cph-future-you",
+      "title": "Future You",
+      "type": "reflection",
+      "status": "live",
+      "liveMissionId": "cph-future-you",
+      "priority": "anchor",
+      "exactLocation": "Copenhagen Airport",
+      "hook": "Before Japan changes your mind, make one prediction.",
+      "task": "Each of you: one thing you most want to discover.",
+      "reveal": "Keep these four wishes. Tokyo will read them back.",
+      "fragmentValue": 1,
+      "xp": 50,
+      "callbackKey": "cph-want-to-discover",
+      "saveFor": ["tokyo-finale"]
+    },
+    {
+      "id": "cph-spot-japan",
+      "title": "Japan Before Japan",
+      "type": "find",
+      "status": "live",
+      "liveMissionId": "prologue-already-here",
+      "exactLocation": "Copenhagen Airport",
+      "task": "Before boarding, find something Japanese.",
+      "hint": "Writing, a brand, or Japan on a departures screen.",
+      "reveal": "Japan leaked into this building. You caught one piece.",
+      "codexUnlock": "journey-east",
+      "xp": 40,
+      "notes": "Playable id stays prologue-already-here so existing completions survive."
+    },
+    {
+      "id": "script-gate-riddle",
+      "title": "The gate that is not a torii",
+      "type": "riddle",
+      "status": "idea",
+      "locationDescription": "The boarding gate screen",
+      "riddle": "This gate has a number, not a name on wood. What country still leaks through it?",
+      "notes": "Editorial only. Not live."
+    }
+  ]
+}

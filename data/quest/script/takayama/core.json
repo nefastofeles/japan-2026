@@ -1,0 +1,111 @@
+{
+  "chapterId": "takayama",
+  "moduleId": "takayama-core",
+  "items": [
+    {
+      "id": "tak-merchant",
+      "title": "Samurai or Merchant?",
+      "type": "observation",
+      "status": "approved",
+      "priority": "must",
+      "task": "Compare these wooden shop-houses with Kanazawa’s walled lanes. Who showed off here?",
+      "xp": 90,
+      "mediaId": "media-sanmachi"
+    },
+    {
+      "id": "tak-wood",
+      "title": "Why Is Everything Wood?",
+      "type": "observation",
+      "status": "approved",
+      "task": "Look up. Forests, carpenters, fire risk. Why wood anyway?",
+      "codexUnlock": "hida-woodcraft",
+      "xp": 50
+    },
+    {
+      "id": "tak-jinya",
+      "title": "Tokyo's Office in the Mountains",
+      "type": "story",
+      "status": "approved",
+      "priority": "must",
+      "exactLocation": "Takayama Jinya",
+      "hook": "The shogun’s office, far from Edo.",
+      "reveal": "A magistrate’s compound. Why keep one here? Check the motive before live.",
+      "codexUnlock": "takayama-jinya",
+      "xp": 80,
+      "factCheck": "needed",
+      "notes": "TAK-04 Government Without Computers is cut."
+    },
+    {
+      "id": "tak-market-old",
+      "title": "A Market More Than 300 Years Old",
+      "type": "discovery",
+      "status": "approved",
+      "task": "If the morning market is on, look. Do not require a shopping challenge.",
+      "xp": 40,
+      "factCheck": "needed",
+      "notes": "TAK-05 Breakfast Detective is cut."
+    },
+    {
+      "id": "tak-sarubobo",
+      "title": "The Faceless Doll",
+      "type": "find",
+      "status": "approved",
+      "priority": "must",
+      "task": "Find a sarubobo. What is missing?",
+      "reveal": "A face. The blank is part of the charm tradition. Check the luck story before live.",
+      "codexUnlock": "sarubobo",
+      "xp": 100,
+      "mediaId": "media-sarubobo",
+      "factCheck": "needed",
+      "notes": "Confirm faceless-doll / protection tradition. Avoid overclaiming the name origin."
+    },
+    {
+      "id": "tak-baby-monkey",
+      "title": "Baby Monkey?",
+      "type": "discovery",
+      "status": "approved",
+      "task": "The name can be read as baby monkey. A light leftover, not a zoology lesson.",
+      "xp": 20
+    },
+    {
+      "id": "tak-float",
+      "title": "This Is Not a Car",
+      "type": "find",
+      "status": "approved",
+      "task": "Find a festival float, in a hall or a storehouse. It is a yatai, not a truck.",
+      "codexUnlock": "yatai",
+      "xp": 90,
+      "mediaId": "media-yatai"
+    },
+    {
+      "id": "tak-karakuri",
+      "title": "Robots Before Electronics",
+      "type": "story",
+      "status": "approved",
+      "hook": "Mechanical puppets on festival floats.",
+      "reveal": "Karakuri are clockwork theatre. Do not say they caused modern robots.",
+      "xp": 60,
+      "notes": "TAK-11 Anime Was Here is cut."
+    },
+    {
+      "id": "tak-hida-beef",
+      "title": "Hida Beef Test",
+      "type": "food",
+      "status": "approved",
+      "priority": "optional",
+      "task": "If you eat it, predict: sweet, fatty, mild?",
+      "codexUnlock": "hida-beef",
+      "mediaId": "media-hida-beef",
+      "xp": 50
+    },
+    {
+      "id": "tak-mitarashi",
+      "title": "Mitarashi Surprise",
+      "type": "food",
+      "status": "approved",
+      "priority": "optional",
+      "task": "If you meet mitarashi dango, guess: only sweet, or also savoury soy?",
+      "xp": 40
+    }
+  ]
+}

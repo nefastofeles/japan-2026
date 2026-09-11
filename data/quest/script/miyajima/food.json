@@ -1,0 +1,26 @@
+{
+  "chapterId": "miyajima",
+  "moduleId": "miyajima-food",
+  "items": [
+    {
+      "id": "miy-momiji",
+      "title": "Momiji Manju",
+      "type": "food",
+      "status": "approved",
+      "task": "Predict the filling. Then taste.",
+      "codexUnlock": "momiji-manju",
+      "xp": 50
+    },
+    {
+      "id": "miy-spoon",
+      "title": "Giant Spoon",
+      "type": "discovery",
+      "status": "approved",
+      "priority": "optional",
+      "task": "If you see an enormous rice paddle, ask why it is here.",
+      "xp": 40,
+      "factCheck": "needed",
+      "notes": "Confirm the exact Miyajima paddle location before live."
+    }
+  ]
+}

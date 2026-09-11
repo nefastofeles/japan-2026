@@ -36,6 +36,12 @@
   --ink-muted:    #6B6660;
   --rule:         #E3DED2;
 
+  /* Hinomaru red already used on Home and the logo. Quest reuses this,
+     it does not invent a second red. */
+  --hinomaru:      #bc002d;
+  --hinomaru-deep: #9a0026;
+  --gold-leaf:     #e6b422;  /* 黄金 kogane, same as --leg-after */
+
   /* ------------------------------------------------- the eleven leg hues */
   /* Traditional Japanese colours, one per leg of the trip. The names are
      real: say them out loud. These drive the day strip, day headers, rules

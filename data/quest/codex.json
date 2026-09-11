@@ -1,0 +1,110 @@
+[
+  {
+    "id": "artefact",
+    "name": "The Artefact",
+    "japaneseName": "記録",
+    "category": "Objects",
+    "rarity": "story",
+    "chapterId": "prologue",
+    "description": "A broken chronicle that woke at Copenhagen Airport. It does not teach Japanese. It asks the family to notice things and fill the gaps."
+  },
+  {
+    "id": "hinomaru",
+    "name": "Hinomaru",
+    "japaneseName": "日の丸",
+    "category": "Symbols",
+    "rarity": "common",
+    "chapterId": "prologue",
+    "description": "The sun disc. Japan’s name, Nihon, means origin of the sun. The flag is not a sunset. It is a claim about where light begins."
+  },
+  {
+    "id": "depachika",
+    "name": "Depachika",
+    "japaneseName": "デパ地下",
+    "category": "Places",
+    "rarity": "uncommon",
+    "chapterId": "tokyo",
+    "description": "The city under the city: department-store basements packed with food. Tokyo stacked itself on old wetland. The sky is optional."
+  },
+  {
+    "id": "weird-vending",
+    "name": "The Unthirsty Machine",
+    "japaneseName": "自動販売機",
+    "category": "Strange Japan",
+    "rarity": "common",
+    "chapterId": "tokyo",
+    "description": "Vending machines that sell eggs, umbrellas, manga or hot food. A city that stays open after the staff go home."
+  },
+  {
+    "id": "onigiri",
+    "name": "Onigiri",
+    "japaneseName": "おにぎり",
+    "category": "Food",
+    "rarity": "common",
+    "chapterId": "tokyo",
+    "description": "A rice triangle wrapped in nori. Konbini food is how a megacity eats at odd hours — not a compromise, a system."
+  },
+  {
+    "id": "maneki-neko",
+    "name": "Maneki-neko",
+    "japaneseName": "招き猫",
+    "category": "Objects",
+    "rarity": "common",
+    "chapterId": "tokyo",
+    "description": "The beckoning cat. The raised paw is an invitation, not a wave. Folklore says one cat saved a lord from lightning."
+  },
+  {
+    "id": "skytree-pun",
+    "name": "634 / Musashi",
+    "japaneseName": "武蔵",
+    "category": "Modern Japan",
+    "rarity": "uncommon",
+    "chapterId": "tokyo",
+    "description": "Tokyo Skytree is 634 metres tall because 6-3-4 can be read mu-sa-shi, the old provincial name. A lightning rod that is also a word."
+  },
+  {
+    "id": "kitsune",
+    "name": "Kitsune",
+    "japaneseName": "狐",
+    "category": "Yokai & Spirits",
+    "rarity": "rare",
+    "chapterId": "kyoto",
+    "description": "Fox spirits. Messengers of Inari. Statues hold a key, a jewel or rice. Farmers once left the first harvest for them."
+  },
+  {
+    "id": "torii",
+    "name": "Torii",
+    "japaneseName": "鳥居",
+    "category": "Symbols",
+    "rarity": "common",
+    "chapterId": "kyoto",
+    "description": "A gate that marks the start of sacred ground. At Fushimi Inari the tunnel of gates is a ledger: each one paid for by a family or a company."
+  },
+  {
+    "id": "matcha",
+    "name": "Matcha",
+    "japaneseName": "抹茶",
+    "category": "Food",
+    "rarity": "common",
+    "chapterId": "kyoto",
+    "description": "Powdered green tea. Monks used it to stay awake. The sweet on the tray exists because the tea is severe."
+  },
+  {
+    "id": "ekiben",
+    "name": "Ekiben",
+    "japaneseName": "駅弁",
+    "category": "Food",
+    "rarity": "common",
+    "chapterId": "tokyo",
+    "description": "A packed train lunch. The box is the point: a meal that can leave with you."
+  },
+  {
+    "id": "temizu",
+    "name": "Temizu",
+    "japaneseName": "手水",
+    "category": "Places",
+    "rarity": "common",
+    "chapterId": "kyoto",
+    "description": "A water basin by the shrine path. Hands and mouth are rinsed before you step closer."
+  }
+]

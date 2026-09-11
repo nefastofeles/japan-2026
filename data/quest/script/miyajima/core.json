@@ -1,0 +1,39 @@
+{
+  "chapterId": "miyajima",
+  "moduleId": "miyajima-core",
+  "items": [
+    {
+      "id": "miy-gate",
+      "title": "The Gate in the Sea",
+      "type": "observation",
+      "status": "approved",
+      "priority": "must",
+      "task": "Why is the torii in the water?",
+      "reveal": "The shrine treats the island as holy. The gate stands in the tidal approach.",
+      "codexUnlock": "itsukushima",
+      "xp": 100,
+      "mediaId": "media-itsukushima-torii",
+      "factCheck": "needed",
+      "notes": "Confirm sacred-island / tide / torii placement wording before live."
+    },
+    {
+      "id": "miy-tide",
+      "title": "Where Did the Water Go?",
+      "type": "reflection",
+      "status": "approved",
+      "task": "If the tide is out, walk the sand. If it is in, watch the gate stand in the sea. Is the sea part of the architecture?",
+      "reveal": "No right answer. The building is designed with the tide.",
+      "xp": 60,
+      "mediaId": "media-torii-tide"
+    },
+    {
+      "id": "miy-deer",
+      "title": "Deer Again?",
+      "type": "discovery",
+      "status": "approved",
+      "task": "You met deer in Nara. These deer are not the same story. Do not feed them human snacks.",
+      "xp": 30,
+      "notes": "Callback only. Do not copy Kasuga symbolism here."
+    }
+  ]
+}

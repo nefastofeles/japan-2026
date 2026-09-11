@@ -184,6 +184,19 @@ function mealSection() {
     </section>`;
 }
 
+function questResetSection() {
+  return `
+    <section class="card stack">
+      <h2 class="section-title">Quest</h2>
+      <p class="small muted">
+        Clears Quest progress on this phone. Shared rows on other phones
+        clear only when you are signed in as the facilitator.
+      </p>
+      <button class="btn btn--ghost" type="button" data-reset-quest>Start the Quest over</button>
+      <p class="small" data-reset-status role="status"></p>
+    </section>`;
+}
+
 export function adminForms(defaultDay) {
   return `
     <div class="page stack">
@@ -204,5 +217,6 @@ export function adminForms(defaultDay) {
       ${videoSection()}
       ${bestOfSection()}
       ${mealSection()}
+      ${questResetSection()}
     </div>`;
 }

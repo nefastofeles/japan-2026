@@ -1,0 +1,70 @@
+{
+  "chapterId": "kyoto",
+  "moduleId": "kyoto-teamlab",
+  "items": [
+    {
+      "id": "script-teamlab-kyoto",
+      "title": "Has the sentence changed?",
+      "type": "reflection",
+      "status": "live",
+      "liveMissionId": "kyoto-teamlab",
+      "notes": "Existing sample. New tlk pages stay approved."
+    },
+    {
+      "id": "tlk-callback",
+      "title": "You Already Changed Your Mind",
+      "type": "reflection",
+      "status": "approved",
+      "priority": "anchor",
+      "task": "Before you go in, read back the Tokyo teamLab answers.",
+      "callbackFrom": "tlb-is-it-art",
+      "xp": 40
+    },
+    {
+      "id": "tlk-same-art",
+      "title": "Same Artists, Same Experience?",
+      "type": "reflection",
+      "status": "approved",
+      "priority": "anchor",
+      "question": {
+        "type": "multipleChoice",
+        "text": "Was this the same experience as Tokyo?",
+        "choices": [
+          { "id": "yes", "text": "Yes", "response": "Keep that for Osaka." },
+          { "id": "no", "text": "No", "response": "Keep that for Osaka." },
+          { "id": "partly", "text": "Partly", "response": "Keep that for Osaka." }
+        ],
+        "retryAllowed": true
+      },
+      "callbackKey": "tlk-same",
+      "saveFor": ["teamlab-osaka"],
+      "xp": 60,
+      "notes": "No correctChoiceId."
+    },
+    {
+      "id": "tlk-kyoto-added",
+      "title": "What Did Kyoto Add?",
+      "type": "reflection",
+      "status": "approved",
+      "question": {
+        "type": "multipleChoice",
+        "text": "What did Kyoto add?",
+        "choices": [
+          { "id": "nature", "text": "Nature" },
+          { "id": "tech", "text": "Technology" },
+          { "id": "dark", "text": "Darkness" },
+          { "id": "move", "text": "Movement" },
+          { "id": "surprise", "text": "Surprise" },
+          { "id": "emotion", "text": "Emotion" },
+          { "id": "other", "text": "Other" }
+        ],
+        "retryAllowed": true
+      },
+      "callbackKey": "tlk-added",
+      "saveFor": ["teamlab-osaka"],
+      "rewardIdea": "borderless-fragment-2",
+      "xp": 70,
+      "notes": "No correctChoiceId."
+    }
+  ]
+}

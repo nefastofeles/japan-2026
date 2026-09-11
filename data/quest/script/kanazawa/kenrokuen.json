@@ -1,0 +1,26 @@
+{
+  "chapterId": "kanazawa",
+  "moduleId": "kanazawa-kenrokuen",
+  "items": [
+    {
+      "id": "ken-six",
+      "title": "The Six Impossible Things",
+      "type": "find",
+      "status": "approved",
+      "priority": "must",
+      "task": "Kenrokuen is praised for six qualities. Find a plaque or map. Tick which you can actually see.",
+      "xp": 100,
+      "mediaId": "media-kenrokuen",
+      "factCheck": "needed",
+      "notes": "Do not invent the six names. Read them on site."
+    },
+    {
+      "id": "ken-nature",
+      "title": "Is This Nature?",
+      "type": "reflection",
+      "status": "approved",
+      "task": "teamLab asked where art stops. This garden is planted and pruned. Is it nature?",
+      "xp": 50
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "chapterId": "osaka",
+  "moduleId": "osaka-teamlab",
+  "items": [
+    {
+      "id": "tlo-nature-art",
+      "title": "Tokyo → Kyoto → Osaka",
+      "type": "reflection",
+      "status": "approved",
+      "priority": "anchor",
+      "task": "Read back Tokyo and Kyoto answers. Then walk. Where does artwork stop and nature begin?",
+      "xp": 60
+    },
+    {
+      "id": "tlo-tree",
+      "title": "Is the Tree Part of the Artwork?",
+      "type": "reflection",
+      "status": "approved",
+      "question": {
+        "type": "multipleChoice",
+        "text": "If a tree is in the room, who made the art?",
+        "choices": [
+          { "id": "artist", "text": "The artist", "response": "Keep that." },
+          { "id": "nature", "text": "Nature", "response": "Keep that." },
+          { "id": "both", "text": "Both", "response": "Keep that." }
+        ],
+        "retryAllowed": true
+      },
+      "xp": 60,
+      "notes": "No correctChoiceId. Only if a tree or living piece is actually there."
+    },
+    {
+      "id": "tlo-trilogy",
+      "title": "teamLab Trilogy",
+      "type": "reflection",
+      "status": "approved",
+      "priority": "anchor",
+      "task": "Rank Tokyo, Kyoto and Osaka: most beautiful, strangest, most surprising, favourite.",
+      "rewardIdea": "World Walker / Borderless Mind",
+      "xp": 80
+    }
+  ]
+}

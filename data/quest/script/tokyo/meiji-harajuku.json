@@ -1,0 +1,51 @@
+{
+  "chapterId": "tokyo",
+  "moduleId": "tokyo-meiji",
+  "items": [
+    {
+      "id": "har-fake-forest",
+      "title": "Is This Forest Fake?",
+      "type": "multipleChoice",
+      "status": "live",
+      "liveMissionId": "har-fake-forest",
+      "priority": "must",
+      "exactLocation": "Meiji Jingu",
+      "question": {
+        "type": "multipleChoice",
+        "text": "Is this forest ancient wilderness, or did people make it?",
+        "choices": [
+          { "id": "ancient", "text": "Ancient natural forest", "response": "It looks old. Look at who planted it." },
+          { "id": "made", "text": "Deliberately created forest", "response": "Yes. People planned these trees." }
+        ],
+        "correctChoiceId": "made",
+        "retryAllowed": true
+      },
+      "reveal": "Meiji Jingu’s forest was deliberately planted and designed to become a self-sustaining forest.",
+      "moreInfo": {
+        "title": "A forest people made",
+        "text": "Trees were donated from across Japan. About 110,000 volunteers helped plant them. The design was meant to grow into a forest that could keep itself."
+      },
+      "codexUnlock": "sacred-forest",
+      "xp": 100,
+      "mediaId": "media-meiji-forest",
+      "factCheck": "verified",
+      "notes": "Keep volunteer and donation numbers out of the main mission screen."
+    },
+    {
+      "id": "har-two-japans",
+      "title": "Two Japans",
+      "type": "photo",
+      "status": "live",
+      "liveMissionId": "har-two-japans",
+      "priority": "must",
+      "exactLocation": "Meiji Jingu + Harajuku",
+      "task": "Take one photo of old or sacred Japan, and one of modern or pop Japan.",
+      "photo": true,
+      "photoCount": 2,
+      "saveFor": ["tokyo-finale"],
+      "xp": 100,
+      "mediaId": "media-harajuku-pop",
+      "notes": "Engine currently stores one photo. Second photo may wait until a pair field exists."
+    }
+  ]
+}

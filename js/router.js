@@ -11,7 +11,11 @@
      #/photos              every photo
      #/map                 the route
      #/after               post-trip page
-     #/admin               upload and edit (admin only)
+     #/adventure           Quest Game
+     #/adventure/codex     finds and badges
+     #/adventure/map       journey and recovered story
+     #/adventure/mission/:id  one mission
+     #/adventure/discovery/:id  a lightweight find
    ========================================================================== */
 
 const routes = [];

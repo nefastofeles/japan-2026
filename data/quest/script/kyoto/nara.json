@@ -1,0 +1,56 @@
+{
+  "chapterId": "kyoto",
+  "moduleId": "kyoto-nara",
+  "items": [
+    {
+      "id": "nar-before-kyoto",
+      "title": "You Just Went Back Before Kyoto",
+      "type": "story",
+      "status": "approved",
+      "priority": "must",
+      "hook": "Nara held the capital before Kyoto did.",
+      "task": "Find one thing that feels older than Gion: a hall, a statue, a tree.",
+      "reveal": "The capital sat here first. Then it moved.",
+      "fragmentValue": 1,
+      "callbackKey": "ancient-capital",
+      "xp": 100,
+      "factCheck": "needed",
+      "notes": "Confirm the Nara-period dating before live."
+    },
+    {
+      "id": "nar-why-deer",
+      "title": "Why Are There Deer Everywhere?",
+      "type": "observation",
+      "status": "approved",
+      "priority": "must",
+      "task": "Watch the deer. Why would a city let them walk the park?",
+      "reveal": "They are treated as messengers of Kasuga. Sacred status is cultural, not a zoo rule.",
+      "codexUnlock": "sacred-deer",
+      "xp": 100,
+      "mediaId": "media-nara-deer",
+      "factCheck": "needed",
+      "notes": "Confirm Kasuga sacred-deer legend wording. Do not invent a one-to-one origin."
+    },
+    {
+      "id": "nar-bow",
+      "title": "Do Deer Really Bow?",
+      "type": "observation",
+      "status": "approved",
+      "priority": "must",
+      "task": "Watch several deer, not one. Do they bow without food?",
+      "reveal": "A dip of the head is often a learned ask for biscuits, not a court bow.",
+      "xp": 80,
+      "factCheck": "needed",
+      "notes": "Do not claim a magical bow. Replaces the old idea script-deer-bow."
+    },
+    {
+      "id": "nar-deer-rules",
+      "title": "Deer Rules",
+      "type": "discovery",
+      "status": "approved",
+      "task": "Read the park rules. Wild animals. No teasing. Shika senbei only. Show empty hands when you are done.",
+      "reveal": "They bite and knock. Treat them as wild.",
+      "xp": 30
+    }
+  ]
+}

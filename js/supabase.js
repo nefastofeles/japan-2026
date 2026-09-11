@@ -27,6 +27,17 @@ export async function getClient() {
 }
 
 /**
+ * Browser client only after the planned family (or admin) login.
+ * The anon key must never be enough to read or wipe Quest rows.
+ */
+export async function getAuthedClient() {
+  const supabase = await getClient();
+  if (!supabase) return null;
+  const { data } = await supabase.auth.getSession();
+  return data?.session ? supabase : null;
+}
+
+/**
  * Sign a batch of storage paths in one request.
  *
  * A photo grid with 300 thumbnails must never sign them one at a time; that

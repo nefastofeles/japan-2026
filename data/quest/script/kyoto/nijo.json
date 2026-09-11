@@ -1,0 +1,13 @@
+{
+  "chapterId": "kyoto",
+  "moduleId": "kyoto-nijo",
+  "items": [
+    {
+      "id": "script-nightingale",
+      "title": "Floors that sing",
+      "type": "observation",
+      "status": "draft",
+      "historicalTheme": "Warning floors in a castle palace"
+    }
+  ]
+}

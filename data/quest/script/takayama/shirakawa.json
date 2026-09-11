@@ -1,0 +1,90 @@
+{
+  "chapterId": "takayama",
+  "moduleId": "takayama-shirakawa",
+  "items": [
+    {
+      "id": "shirakawa-praying-roofs",
+      "title": "Why Do the Houses Pray?",
+      "type": "observation",
+      "status": "approved",
+      "priority": "must",
+      "task": "Look at the roof. What shape is it making?",
+      "reveal": "Gassho-zukuri: like hands in prayer. Steep, to shed snow.",
+      "codexUnlock": "gassho-zukuri",
+      "xp": 90,
+      "mediaId": "media-gassho-roof"
+    },
+    {
+      "id": "shirakawa-snow",
+      "title": "Build a Snow House",
+      "type": "multipleChoice",
+      "status": "approved",
+      "priority": "must",
+      "question": {
+        "type": "multipleChoice",
+        "text": "Which roof sheds a heavy snow load better?",
+        "choices": [
+          { "id": "flat", "text": "Flat", "response": "Snow sits. Think of a slide." },
+          { "id": "steep", "text": "Steep", "response": "Yes. A slide for snow." },
+          { "id": "round", "text": "Round like a dome", "response": "Not the local answer." }
+        ],
+        "correctChoiceId": "steep",
+        "retryAllowed": true
+      },
+      "xp": 100,
+      "mediaId": "media-snow-load"
+    },
+    {
+      "id": "shirakawa-nails",
+      "title": "No Nails?",
+      "type": "observation",
+      "status": "approved",
+      "task": "If a house is open, look at joints. Rope, wood, pegs.",
+      "reveal": "Some frames use joinery and rope more than big iron nails. Check the exact wording before live.",
+      "xp": 60,
+      "factCheck": "needed",
+      "notes": "Confirm joinery / ‘no nails’ wording. Later repairs may use metal."
+    },
+    {
+      "id": "shirakawa-silkworm",
+      "title": "What's Upstairs?",
+      "type": "story",
+      "status": "approved",
+      "priority": "must",
+      "task": "The attic was not only storage.",
+      "reveal": "Silkworms. A house that was also a workshop.",
+      "codexUnlock": "silkworm",
+      "xp": 90,
+      "mediaId": "media-silkworm-attic",
+      "factCheck": "needed",
+      "notes": "Confirm attic sericulture in gassho houses before live."
+    },
+    {
+      "id": "shirakawa-view",
+      "title": "Village From Above",
+      "type": "find",
+      "status": "approved",
+      "task": "From a viewpoint, tick three survival pieces: river, fields, forest, roofs, paths.",
+      "xp": 50,
+      "mediaId": "media-shirakawa-view"
+    },
+    {
+      "id": "shirakawa-house-factory",
+      "title": "House or Factory?",
+      "type": "reflection",
+      "status": "approved",
+      "task": "Sleeping, cooking, silk, snow. Is this a home, a factory, or both?",
+      "xp": 40
+    },
+    {
+      "id": "shirakawa-snow-weird",
+      "title": "Four Metres of Snow",
+      "type": "observation",
+      "status": "approved",
+      "weirdFact": "Winters here can bury a house. Check typical depths before we print four metres as a fact.",
+      "xp": 30,
+      "factCheck": "needed",
+      "notes": "Confirm regional snowfall figures. Do not treat four metres as every winter."
+    }
+  ]
+}

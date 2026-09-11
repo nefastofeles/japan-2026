@@ -1,0 +1,91 @@
+{
+  "chapterId": "tokyo",
+  "moduleId": "tokyo-tsukiji",
+  "items": [
+    {
+      "id": "tsu-five-creatures",
+      "title": "Five Creatures",
+      "type": "find",
+      "status": "live",
+      "liveMissionId": "tsu-five-creatures",
+      "priority": "must",
+      "task": "Find five different sea creatures for sale. Photograph one you cannot name.",
+      "photo": true,
+      "codexUnlock": "seafood-hunter",
+      "xp": 90,
+      "mediaId": "media-tsukiji-seafood"
+    },
+    {
+      "id": "tsu-tamagoyaki",
+      "title": "Looks Like Omelette...",
+      "type": "food",
+      "status": "live",
+      "liveMissionId": "tsu-tamagoyaki",
+      "question": {
+        "type": "multipleChoice",
+        "text": "Before tasting tamagoyaki, predict the main taste.",
+        "choices": [
+          { "id": "sweet", "text": "Sweet", "response": "Keep your guess. Then taste." },
+          { "id": "salty", "text": "Salty", "response": "Keep your guess. Then taste." },
+          { "id": "spicy", "text": "Spicy", "response": "Keep your guess. Then taste." },
+          { "id": "sour", "text": "Sour", "response": "Keep your guess. Then taste." }
+        ],
+        "retryAllowed": true
+      },
+      "task": "Buy some and test the prediction.",
+      "reveal": "Recipes vary. Some stalls lean sweet. There is no single right guess.",
+      "xp": 80,
+      "notes": "No correctChoiceId."
+    },
+    {
+      "id": "tsu-no-auction",
+      "title": "The Market That Moved",
+      "type": "multipleChoice",
+      "status": "approved",
+      "question": {
+        "type": "multipleChoice",
+        "text": "The wholesale fish market moved away. Why is Tsukiji still full of food?",
+        "choices": [
+          { "id": "outer", "text": "The Outer Market stayed", "response": "Yes. The stalls for visitors stayed." },
+          { "id": "secret", "text": "The auction secretly stayed", "response": "The big auction left. Look at who stayed." },
+          { "id": "theme", "text": "Everything was rebuilt as a theme park", "response": "It is still a working food street." }
+        ],
+        "correctChoiceId": "outer",
+        "retryAllowed": true
+      },
+      "reveal": "The wholesale fish market and famous tuna auctions moved to Toyosu, while Tsukiji’s Outer Market stayed and remains a major food district.",
+      "xp": 70,
+      "factCheck": "verified",
+      "notes": "Wording verified. Keep approved and dormant; do not promote yet."
+    },
+    {
+      "id": "tsu-built-on-sea",
+      "title": "You Are Standing in the Sea",
+      "type": "multipleChoice",
+      "status": "live",
+      "liveMissionId": "tsu-built-on-sea",
+      "hook": "A few centuries ago, this was not land.",
+      "question": {
+        "type": "multipleChoice",
+        "text": "What does the name Tsukiji refer to?",
+        "choices": [
+          { "id": "fish", "text": "Fish town", "response": "Fish is why people come. The name is about the ground." },
+          { "id": "land", "text": "Constructed land", "response": "Yes. The name points to land that was made." },
+          { "id": "temple", "text": "Temple market", "response": "Temples matter in Tokyo. This name is about fill." },
+          { "id": "harbour", "text": "Eastern harbour", "response": "It sits by the bay. Check the name itself." }
+        ],
+        "correctChoiceId": "land",
+        "retryAllowed": true
+      },
+      "reveal": "Tsukiji roughly means constructed land. This ground was reclaimed from Tokyo Bay after the Great Fire of Meireki in 1657.",
+      "moreInfo": {
+        "title": "Filled land",
+        "text": "After the Meireki fire of 1657, new land was packed into the bay here. The name Tsukiji points to that constructed ground."
+      },
+      "codexUnlock": "reclaimed-tokyo",
+      "xp": 100,
+      "mediaId": "media-tsukiji-reclaimed",
+      "factCheck": "verified"
+    }
+  ]
+}

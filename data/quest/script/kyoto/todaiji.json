@@ -1,0 +1,43 @@
+{
+  "chapterId": "kyoto",
+  "moduleId": "kyoto-todai",
+  "items": [
+    {
+      "id": "nar-big-buddha",
+      "title": "How Big Can Buddha Get?",
+      "type": "find",
+      "status": "approved",
+      "priority": "must",
+      "task": "Walk in before you look at a photo. How big is the Buddha, in your body: taller than Dad? Taller than the hall?",
+      "reveal": "This is one of Japan’s great bronze Buddhas. Save the picture for after.",
+      "xp": 90,
+      "mediaId": "media-todai-reveal",
+      "notes": "No teaser image."
+    },
+    {
+      "id": "nar-why-build",
+      "title": "Why Build Something This Huge?",
+      "type": "story",
+      "status": "approved",
+      "moreInfo": {
+        "title": "State and faith",
+        "text": "A huge Buddha is prayer and politics: a ruler showing care and power. Confirm the Nara-period framing before live.",
+        "audioText": "A hall this size is not only faith. It is also a state saying: we can build this. Check the emperor and the date before this page is live."
+      },
+      "reveal": "Religion and government sat in the same room here.",
+      "xp": 80,
+      "factCheck": "needed",
+      "notes": "Confirm Nara-period state and Buddhism framing for Tōdai-ji before live."
+    },
+    {
+      "id": "nar-hole",
+      "title": "Enlightenment Hole",
+      "type": "discovery",
+      "status": "approved",
+      "priority": "optional",
+      "task": "If the queue is kind, find the pillar hole. Only try if you want to, and if it is open.",
+      "notes": "Do not surface if inaccessible. No pushing kids through.",
+      "xp": 40
+    }
+  ]
+}

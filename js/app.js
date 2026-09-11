@@ -17,10 +17,19 @@ import { foodPage } from "./pages/food.js";
 import { photosPage } from "./pages/photos.js";
 import { mapPage } from "./pages/map.js";
 import { adminPage } from "./pages/admin.js";
+import { adventurePage } from "./pages/adventure.js";
+import { adventureMissionPage } from "./pages/adventure-mission.js";
+import { adventureDiscoveryPage } from "./pages/adventure-discovery.js";
+import { adventureScriptPage } from "./pages/adventure-script.js";
+import {
+  adventureMapPage, adventureCodexPage, adventureBadgesPage, adventureStoryPage,
+} from "./pages/adventure-more.js";
+import { bindSpeechLifecycle } from "./quest/speech.js";
 
 const NAV = [
   ["/", "Home"],
   ["/before", "Itinerary"],
+  ["/adventure", "Quest"],
   ["/food", "Food"],
   ["/photos", "Photos"],
   ["/map", "Map"],
@@ -31,12 +40,13 @@ function renderNav(path) {
   const nav = document.querySelector(".site-nav");
   if (!nav) return;
 
-  nav.innerHTML = NAV.map(
-    ([href, label]) =>
-      `<a href="#${href}" ${
-        path === href ? 'aria-current="page"' : ""
-      }>${esc(label)}</a>`
-  ).join("");
+  nav.innerHTML = NAV.map(([href, label]) => {
+    const on =
+      href === "/"
+        ? path === "/"
+        : path === href || path.startsWith(`${href}/`);
+    return `<a href="#${href}" ${on ? 'aria-current="page"' : ""}>${esc(label)}</a>`;
+  }).join("");
 }
 
 /** Mix a leg hex onto washi paper so the phone chrome matches the page wash. */
@@ -83,6 +93,9 @@ function afterRender(path) {
   const onHome = path === "/";
   document.documentElement.toggleAttribute("data-home", onHome);
 
+  const onQuest = path.startsWith("/adventure");
+  document.documentElement.toggleAttribute("data-quest", onQuest);
+
   const adminLink = document.querySelector("[data-footer-admin]");
   if (adminLink) {
     adminLink.hidden = false;
@@ -93,7 +106,7 @@ function afterRender(path) {
   document.documentElement.dataset.leg = legId;
 
   const meta = document.querySelector('meta[name="theme-color"]');
-  const colour = onHome ? "#BC002D" : washHex(store.getLeg(legId).colour);
+  const colour = onHome || onQuest ? "#BC002D" : washHex(store.getLeg(legId).colour);
   if (meta) meta.content = colour;
 
   syncHeaderHeight();
@@ -108,6 +121,14 @@ function registerPages() {
   router.route("/photos", photosPage);
   router.route("/map", mapPage);
   router.route("/admin", adminPage);
+  router.route("/adventure", adventurePage);
+  router.route("/adventure/map", adventureMapPage);
+  router.route("/adventure/codex", adventureCodexPage);
+  router.route("/adventure/badges", adventureBadgesPage);
+  router.route("/adventure/story", adventureStoryPage);
+  router.route("/adventure/mission/:id", adventureMissionPage);
+  router.route("/adventure/discovery/:id", adventureDiscoveryPage);
+  router.route("/adventure/script", adventureScriptPage);
 
   router.setNotFound(
     (path) => `<div class="page">
@@ -128,6 +149,7 @@ async function boot() {
   window.addEventListener("resize", syncHeaderHeight);
 
   registerPages();
+  bindSpeechLifecycle();
   router.start(document.getElementById("app"), { afterRender });
 }
 
@@ -145,8 +167,11 @@ boot().catch((error) => {
 });
 
 /* The service worker only caches the shell, and only when served over http(s).
-   It is what lets the site open on a shinkansen with no signal. */
-if ("serviceWorker" in navigator && location.protocol.startsWith("http")) {
+   It is what lets the site open on a shinkansen with no signal.
+   Skip it on localhost: python’s one-request-at-a-time server deadlocks
+   while the worker tries to cache the whole shell. */
+const onLoopback = ["localhost", "127.0.0.1"].includes(location.hostname);
+if ("serviceWorker" in navigator && location.protocol.startsWith("http") && !onLoopback) {
   window.addEventListener("load", () => {
     navigator.serviceWorker.register("sw.js").catch(() => {
       /* offline support is a bonus, never a requirement */

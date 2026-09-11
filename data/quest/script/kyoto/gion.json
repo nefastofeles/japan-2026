@@ -1,0 +1,47 @@
+{
+  "chapterId": "kyoto",
+  "moduleId": "kyoto-gion",
+  "items": [
+    {
+      "id": "gio-machiya",
+      "title": "Spot the Machiya",
+      "type": "observation",
+      "status": "approved",
+      "task": "Find a house that is skinny on the street and seems to go far back.",
+      "reveal": "Machiya are townhouses: a small face, a long body.",
+      "moreInfo": {
+        "title": "The front",
+        "text": "People often say a narrow front paid less tax. Treat that as a story to check, not a fact, until a source is attached."
+      },
+      "xp": 70,
+      "mediaId": "media-machiya",
+      "factCheck": "needed",
+      "notes": "Do not teach the tax story as certain."
+    },
+    {
+      "id": "gio-maiko-tourist",
+      "title": "Maiko or Tourist?",
+      "type": "reflection",
+      "status": "approved",
+      "task": "If you see someone in geiko or maiko dress, do not chase them for a photo. Watch from a distance. Ask: working person, or visitor in costume?",
+      "reveal": "This is a workplace. Respect beats a picture.",
+      "moreInfo": {
+        "title": "How to look",
+        "text": "Do not block the street. Do not touch. Do not follow. A posed tourist in rented clothes is not a hunt target either."
+      },
+      "xp": 70,
+      "notes": "Ethics mission. Not a scavenger hunt for working geiko/maiko."
+    },
+    {
+      "id": "gio-why-here",
+      "title": "Why Gion Exists Here",
+      "type": "story",
+      "status": "approved",
+      "task": "Stand near Yasaka and look toward the lanes of food and inns. Who was this street for?",
+      "reveal": "Shrine visitors needed food, beds and shows. Gion grew to serve them.",
+      "xp": 60,
+      "factCheck": "needed",
+      "notes": "Confirm shrine visitors, lodging and entertainment without inventing a founding myth."
+    }
+  ]
+}

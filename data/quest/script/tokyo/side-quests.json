@@ -1,0 +1,95 @@
+{
+  "chapterId": "tokyo",
+  "moduleId": "tokyo-side",
+  "items": [
+    {
+      "id": "jp-sport-most-popular",
+      "title": "Japan's Favourite?",
+      "type": "multipleChoice",
+      "status": "live",
+      "liveMissionId": "jp-sport-most-popular",
+      "question": {
+        "type": "multipleChoice",
+        "text": "Which sport has a huge modern spectator following in Japan?",
+        "choices": [
+          { "id": "baseball", "text": "Baseball", "response": "A strong guess. Baseball draws huge crowds." },
+          { "id": "sumo", "text": "Sumo", "response": "Sumo is famous. Check which fills stands most weeks." },
+          { "id": "rugby", "text": "Rugby", "response": "Rugby has big moments. Look at the weekly crowds." },
+          { "id": "judo", "text": "Judo", "response": "Judo is a Japanese gift to the Olympics. Look at spectators." }
+        ],
+        "correctChoiceId": "baseball",
+        "retryAllowed": true
+      },
+      "reveal": "Baseball is one of Japan’s most popular spectator sports.",
+      "xp": 40,
+      "factCheck": "verified",
+      "notes": "Lightweight optional quiz. Do not claim baseball is definitively Japan’s most popular sport. fragmentValue 0."
+    },
+    {
+      "id": "jp-national-sport",
+      "title": "National Sport",
+      "type": "multipleChoice",
+      "status": "live",
+      "liveMissionId": "jp-national-sport",
+      "question": {
+        "type": "multipleChoice",
+        "text": "Which sport is commonly described as Japan’s national sport?",
+        "choices": [
+          { "id": "baseball", "text": "Baseball", "response": "Huge crowds. The ‘national’ label is usually used elsewhere." },
+          { "id": "sumo", "text": "Sumo", "response": "Yes. That is the usual phrase." },
+          { "id": "karate", "text": "Karate", "response": "Karate travelled the world from here. Check the national label." },
+          { "id": "judo", "text": "Judo", "response": "Judo is a Japanese art. Check the national label." }
+        ],
+        "correctChoiceId": "sumo",
+        "retryAllowed": true
+      },
+      "reveal": "Sumo is commonly described as Japan’s national sport.",
+      "moreInfo": {
+        "title": "Sumo and shrine",
+        "text": "Sumo includes Shinto ritual elements, including salt purification, and a long tradition. That label does not make it the country’s most-watched sport."
+      },
+      "codexUnlock": "sumo",
+      "xp": 50,
+      "factCheck": "verified",
+      "notes": "Lightweight optional quiz. fragmentValue 0. Do not imply most-watched."
+    },
+    {
+      "id": "jp-brand-hunt",
+      "title": "Made in Japan",
+      "type": "find",
+      "status": "live",
+      "liveMissionId": "jp-brand-hunt",
+      "task": "Find five Japanese brands while walking around Tokyo.",
+      "hint": "Nintendo, Sony, Uniqlo, Muji, Toyota, Canon, Casio, Asics.",
+      "xp": 60,
+      "notes": "Lightweight optional find. fragmentValue 0."
+    },
+    {
+      "id": "jp-brand-quiz",
+      "title": "Japan or Not?",
+      "type": "multipleChoice",
+      "status": "live",
+      "liveMissionId": "jp-brand-quiz",
+      "task": "Look at the marks. Talk through which ones are Japanese.",
+      "question": {
+        "type": "multipleChoice",
+        "text": "Which of these is not a Japanese brand?",
+        "choices": [
+          { "id": "nintendo", "text": "Nintendo", "response": "Japanese. Try a mark from elsewhere." },
+          { "id": "samsung", "text": "Samsung", "response": "Yes. That one is not Japanese." },
+          { "id": "sony", "text": "Sony", "response": "Japanese. Keep looking." },
+          { "id": "xiaomi", "text": "Xiaomi", "response": "Also not Japanese. Samsung is the sample answer." },
+          { "id": "muji", "text": "Muji", "response": "Japanese. Keep looking." },
+          { "id": "uniqlo", "text": "Uniqlo", "response": "Japanese. Keep looking." }
+        ],
+        "correctChoiceId": "samsung",
+        "retryAllowed": true
+      },
+      "reveal": "Nintendo, Sony, Muji and Uniqlo are Japanese. Samsung and Xiaomi are not.",
+      "visualIdea": "Brand logo grid. Do not copy marks into git until license is clear.",
+      "mediaId": "media-brand-quiz",
+      "xp": 50,
+      "notes": "Lightweight optional quiz. fragmentValue 0. Single-choice stand-in for a multi-select logo grid."
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "chapterId": "kyoto",
+  "moduleId": "kyoto-arashiyama",
+  "items": [
+    {
+      "id": "ara-listen",
+      "title": "Don't Look. Listen.",
+      "type": "observation",
+      "status": "approved",
+      "priority": "must",
+      "task": "Close your eyes for thirty seconds in the bamboo. What do you hear?",
+      "xp": 50,
+      "mediaId": "media-bamboo"
+    },
+    {
+      "id": "ara-grass",
+      "title": "Grass or Tree?",
+      "type": "trueFalse",
+      "status": "approved",
+      "question": {
+        "type": "trueFalse",
+        "text": "Bamboo is a tree.",
+        "choices": [
+          { "id": "true", "text": "True", "response": "It looks like a grove of trunks. Check the family." },
+          { "id": "false", "text": "False", "response": "Yes. Bamboo is a grass." }
+        ],
+        "correctChoiceId": "false",
+        "retryAllowed": true
+      },
+      "codexUnlock": "bamboo",
+      "xp": 50
+    },
+    {
+      "id": "ara-speed",
+      "title": "How Fast?",
+      "type": "observation",
+      "status": "approved",
+      "task": "Guess how much a bamboo culm can grow in a day. Then we check a careful number later.",
+      "weirdFact": "Some bamboos can grow startlingly fast. Species and rates must be checked before live.",
+      "xp": 40,
+      "factCheck": "needed",
+      "notes": "Confirm species and growth-rate figures before quoting any number."
+    },
+    {
+      "id": "ara-technology",
+      "title": "Bamboo Technology",
+      "type": "find",
+      "status": "approved",
+      "task": "Find one object made of bamboo.",
+      "followUp": "Why this plant: light, strong, flexible, renewable?",
+      "xp": 50
+    }
+  ]
+}

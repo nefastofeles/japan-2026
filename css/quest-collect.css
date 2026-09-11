@@ -1,0 +1,231 @@
+/* ==========================================================================
+   Quest collectibles — Codex, Journey path, Script notebook
+   ========================================================================== */
+
+.quest-codex {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-3);
+}
+
+.quest-entry {
+  padding: 0;
+  overflow: hidden;
+  border-radius: var(--radius);
+  border: 0;
+  background: var(--paper-raised);
+  box-shadow: var(--shadow);
+}
+
+.quest-entry__body { padding: var(--sp-4); }
+
+.quest-entry h3 { font-size: 1.125rem; margin: 0 0 var(--sp-2); }
+
+.quest-entry--locked {
+  background: #1a1a1a;
+  color: var(--paper);
+}
+
+.quest-entry--locked h3 { color: var(--paper-raised); }
+
+.quest-entry--locked .quest-visual--mark { filter: brightness(0.45); }
+
+.quest-path {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  position: relative;
+}
+
+.quest-path::before {
+  content: "";
+  position: absolute;
+  left: 1.15rem;
+  top: 0.5rem;
+  bottom: 0.5rem;
+  width: 2px;
+  background: color-mix(in srgb, var(--paper) 45%, transparent);
+}
+
+.quest-path > li {
+  position: relative;
+  padding-left: 0;
+  margin: 0 0 var(--sp-4);
+}
+
+.quest-badge {
+  padding: var(--sp-5);
+  border: 0;
+  border-radius: var(--radius);
+  background: var(--paper-raised);
+  box-shadow: var(--shadow);
+}
+
+.quest-badge--locked { opacity: 0.7; }
+
+.quest-fragment {
+  padding: var(--sp-5);
+  border-left: 4px solid var(--gold-leaf);
+  background: var(--paper-raised);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  font-size: 1.25rem;
+  line-height: 1.65;
+}
+
+.quest-fragment--locked {
+  color: var(--ink-soft);
+  border-left-color: var(--rule);
+  font-size: 1.125rem;
+}
+
+.quest-status {
+  display: inline-block;
+  min-height: 2.25rem;
+  padding: 0.35rem 0.8rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--rule);
+  font-weight: 700;
+  font-size: 1.125rem;
+  margin-right: var(--sp-2);
+}
+
+.quest-script-item {
+  padding: var(--sp-4);
+  border: 0;
+  border-radius: var(--radius);
+  background: var(--paper-raised);
+  margin-bottom: var(--sp-3);
+  box-shadow: var(--shadow);
+}
+
+.quest-script-item summary {
+  cursor: pointer;
+  font-size: 1.125rem;
+  line-height: 1.5;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 0.6rem;
+  min-height: var(--tap);
+}
+
+.quest-script-item summary strong,
+.quest-script-item summary .quest-prose {
+  flex-basis: 100%;
+  margin: 0;
+}
+
+.quest-script-item[data-status="idea"] .quest-status { border-style: dashed; }
+.quest-script-item[data-status="draft"] .quest-status { background: var(--paper-sunk); }
+.quest-script-item[data-status="reviewed"] .quest-status { border-color: var(--leg); }
+.quest-script-item[data-status="approved"] .quest-status {
+  border-color: var(--hinomaru-deep);
+  color: var(--hinomaru-deep);
+}
+.quest-script-item[data-status="live"] .quest-status {
+  background: var(--hinomaru);
+  color: var(--paper-raised);
+  border-color: var(--hinomaru);
+}
+
+.quest-reward {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  font-weight: 700;
+}
+
+.quest-reward .quest-icon { color: var(--hinomaru); }
+
+.quest-fact {
+  padding-left: var(--sp-3);
+  border-left: 4px solid var(--gold-leaf);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .quest-hero .quest-cta { box-shadow: none; }
+}
+
+.quest-motif {
+  background: var(--hinomaru);
+}
+
+.quest-motif::before,
+.quest-visual--mark::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.28;
+  background:
+    radial-gradient(circle at 78% 22%, var(--paper-raised) 0 18%, transparent 19%),
+    linear-gradient(180deg, transparent 62%, color-mix(in srgb, var(--ink) 22%, transparent));
+}
+
+[data-chapter="tokyo"].quest-motif,
+[data-chapter="tokyo"].quest-visual--mark,
+.quest-visual[data-chapter="tokyo"] {
+  background:
+    repeating-linear-gradient(-28deg, var(--hinomaru) 0 10px, #8a001f 10px 12px);
+}
+
+[data-chapter="kyoto"].quest-motif,
+[data-chapter="kyoto"].quest-visual--mark,
+.quest-visual[data-chapter="kyoto"] {
+  background:
+    radial-gradient(circle at 50% 120%, #5b3d8c 0 28%, transparent 29%),
+    var(--hinomaru);
+}
+
+[data-chapter="osaka"].quest-motif,
+[data-chapter="osaka"].quest-visual--mark,
+.quest-visual[data-chapter="osaka"] {
+  background:
+    radial-gradient(circle at 20% 30%, var(--gold-leaf) 0 8%, transparent 9%),
+    radial-gradient(circle at 80% 70%, var(--gold-leaf) 0 6%, transparent 7%),
+    var(--hinomaru);
+}
+
+[data-chapter="miyajima"].quest-motif,
+[data-chapter="miyajima"].quest-visual--mark,
+.quest-visual[data-chapter="miyajima"] {
+  background:
+    linear-gradient(180deg, #7a001c 0 42%, var(--hinomaru) 42%);
+}
+
+[data-chapter="kanazawa"].quest-motif,
+[data-chapter="kanazawa"].quest-visual--mark,
+.quest-visual[data-chapter="kanazawa"] {
+  background:
+    radial-gradient(circle at 50% 40%, var(--gold-leaf) 0 22%, var(--hinomaru) 23%);
+}
+
+[data-chapter="takayama"].quest-motif,
+[data-chapter="takayama"].quest-visual--mark,
+[data-chapter="tokoname"].quest-motif,
+[data-chapter="tokoname"].quest-visual--mark,
+.quest-visual[data-chapter="takayama"],
+.quest-visual[data-chapter="tokoname"] {
+  background:
+    repeating-linear-gradient(90deg, #8b4a2b 0 8px, #a35a34 8px 16px);
+}
+
+[data-chapter="tsumago"].quest-motif,
+[data-chapter="tsumago"].quest-visual--mark,
+.quest-visual[data-chapter="tsumago"] {
+  background:
+    repeating-linear-gradient(90deg, transparent 0 10px, var(--paper) 10px 12px),
+    #3d5a24;
+}
+
+[data-chapter="finale"].quest-motif,
+[data-chapter="finale"].quest-visual--mark,
+.quest-visual[data-chapter="finale"] {
+  background:
+    radial-gradient(circle at 50% 50%, var(--gold-leaf) 0 16%, var(--hinomaru) 17%);
+}
+
+.quest-page--memory .quest-motif,
+.quest-page--memory .quest-visual--mark {
+  background: #6b7580;
+}

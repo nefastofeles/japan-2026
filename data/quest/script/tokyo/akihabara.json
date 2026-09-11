@@ -1,0 +1,56 @@
+{
+  "chapterId": "tokyo",
+  "moduleId": "tokyo-akihabara",
+  "items": [
+    {
+      "id": "aki-old-akihabara",
+      "title": "Find Old Akihabara",
+      "type": "find",
+      "status": "live",
+      "liveMissionId": "aki-old-akihabara",
+      "task": "Find something for sale that has nothing to do with anime or manga.",
+      "hint": "Electronics, cables, parts or cameras.",
+      "reveal": "Akihabara became famous for electronics before it became equally famous for anime, manga, gaming and otaku culture.",
+      "moreInfo": {
+        "title": "Electric town",
+        "text": "After the war the streets around the station filled with radio and parts shops. Character shops came later and now share the same blocks. Both layers are still there if you look."
+      },
+      "xp": 80,
+      "mediaId": "media-akihabara-electronics",
+      "factCheck": "verified",
+      "notes": "Keep deeper postwar history in moreInfo, not the default reveal."
+    },
+    {
+      "id": "aki-character-overload",
+      "title": "Character Overload",
+      "type": "observation",
+      "status": "live",
+      "liveMissionId": "aki-character-overload",
+      "task": "Which fictional character can you spot most often?",
+      "followUp": "Why can an imaginary character become valuable in the real world?",
+      "moreInfo": {
+        "title": "Why a drawing can cost money",
+        "text": "A character can be licensed. Shops pay to print it on bags, games and snacks. Fans keep the picture valuable by wanting it."
+      },
+      "xp": 80
+    },
+    {
+      "id": "aki-1000",
+      "title": "The ¥1,000 Challenge",
+      "type": "find",
+      "status": "live",
+      "liveMissionId": "aki-1000",
+      "task": "Find the strangest thing you would genuinely buy for ¥1,000 or less.",
+      "photo": true,
+      "rewardIdea": "Family votes. Winner may buy it. Not a payment in the app.",
+      "xp": 100
+    },
+    {
+      "id": "script-gachapon-wall",
+      "title": "A wall of chances",
+      "type": "photo",
+      "status": "idea",
+      "weirdFact": "A machine that sells a secret in a plastic egg"
+    }
+  ]
+}

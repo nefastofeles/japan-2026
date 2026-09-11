@@ -1,0 +1,79 @@
+{
+  "chapterId": "kyoto",
+  "moduleId": "kyoto-kinkaku",
+  "items": [
+    {
+      "id": "kin-real-gold",
+      "title": "Is It Actually Gold?",
+      "type": "trueFalse",
+      "status": "approved",
+      "priority": "must",
+      "question": {
+        "type": "trueFalse",
+        "text": "The gold you see is paint.",
+        "choices": [
+          { "id": "true", "text": "True", "response": "Look again. This one uses metal leaf." },
+          { "id": "false", "text": "False", "response": "Yes. Gold leaf, not yellow paint." }
+        ],
+        "correctChoiceId": "false",
+        "retryAllowed": true
+      },
+      "reveal": "It is real gold leaf on the upper floors.",
+      "codexUnlock": "gold-leaf",
+      "xp": 80,
+      "mediaId": "media-kinkaku-gold",
+      "factCheck": "needed",
+      "notes": "Confirm which floors are leafed before live."
+    },
+    {
+      "id": "kin-phoenix",
+      "title": "Find the Bird",
+      "type": "find",
+      "status": "approved",
+      "task": "Find the bird on the roof. Do not look at a photo first.",
+      "reveal": "A phoenix. Check the exact meaning before we print it.",
+      "codexUnlock": "phoenix",
+      "xp": 60,
+      "mediaId": "media-kinkaku-phoenix",
+      "factCheck": "needed",
+      "notes": "Confirm the roof bird as a phoenix (hō-ō) and its usual symbolism before live."
+    },
+    {
+      "id": "kin-burned",
+      "title": "The Temple That Burned",
+      "type": "story",
+      "status": "approved",
+      "story": [
+        "The pavilion you see is not the first.",
+        "In 1950 a young monk set it on fire.",
+        "What you walk around was rebuilt."
+      ],
+      "reveal": "Rebuilt in 1955. The gold is later care, not untouched medieval skin.",
+      "xp": 70,
+      "factCheck": "needed",
+      "notes": "Keep the arson story short. No sensational detail."
+    },
+    {
+      "id": "kin-paradise",
+      "title": "Build Paradise",
+      "type": "observation",
+      "status": "approved",
+      "question": {
+        "type": "multipleChoice",
+        "text": "If you built a paradise here, what would you start with?",
+        "choices": [
+          { "id": "water", "text": "Water", "response": "Now look. Is it here?" },
+          { "id": "gold", "text": "Gold", "response": "Now look. Is it here?" },
+          { "id": "mountains", "text": "Mountains", "response": "Now look. Is it here?" },
+          { "id": "silence", "text": "Silence", "response": "Now listen. Is it here?" },
+          { "id": "animals", "text": "Animals", "response": "Now look. Is it here?" },
+          { "id": "gardens", "text": "Gardens", "response": "Now look. Is it here?" }
+        ],
+        "retryAllowed": true
+      },
+      "task": "Find which of those pieces the garden actually uses.",
+      "xp": 50,
+      "notes": "No correctChoiceId."
+    }
+  ]
+}

@@ -1,0 +1,114 @@
+[
+  {
+    "id": "kyoto-fox",
+    "chapterId": "kyoto",
+    "moduleId": "kyoto-fushimi",
+    "title": "The messengers",
+    "type": "find",
+    "xp": 30,
+    "fragmentValue": 1,
+    "icon": "🦊",
+    "visual": {
+      "type": "image",
+      "src": "assets/heroes/fushimi-inari.jpg",
+      "alt": "The orange torii tunnel at Fushimi Inari in Kyoto",
+      "credit": "Paul Vlaar, CC BY-SA 3.0"
+    },
+    "intro": "Inari’s messengers are not dogs. Look at the ears.",
+    "task": "Find a fox statue holding something. What is in its mouth?",
+    "exactLocation": "Fox statues by the gates at Fushimi Inari Taisha",
+    "observeWhat": "Look at the fox in front of you. What is it carrying?",
+    "hint": "Look at the statues by the gates, not only on the mountain.",
+    "moreInfo": {
+      "title": "Kitsune",
+      "text": "Fox spirits carry messages for Inari, kami of rice and success. A key, a jewel or a rice bale is a gift. Farmers once left the first harvest for them."
+    },
+    "reveal": "Kitsune. Fox spirits. The key, jewel or rice is a gift from Inari.",
+    "codexUnlock": "kitsune",
+    "badgeUnlock": "yokai-hunter",
+    "location": {
+      "lat": 34.9671,
+      "lng": 135.7727,
+      "nearbyMeters": 700,
+      "unlockMeters": 250,
+      "label": "Fushimi Inari Taisha"
+    }
+  },
+  {
+    "id": "kyoto-gates",
+    "chapterId": "kyoto",
+    "moduleId": "kyoto-fushimi",
+    "title": "Who paid for a thousand gates?",
+    "type": "story",
+    "xp": 25,
+    "intro": "The mountain is striped orange because of people.",
+    "task": "Write who you think paid for the gates.",
+    "hint": "Read a name on the side of a gate.",
+    "storySteps": [
+      { "text": "Walk until the gates become a tunnel." },
+      { "text": "Stop at one gate. There is a name on the wood." },
+      {
+        "text": "Who paid for these gates?",
+        "choices": [
+          {
+            "id": "government",
+            "label": "The government",
+            "response": "Not this mountain. The names are private."
+          },
+          {
+            "id": "people",
+            "label": "Families and companies",
+            "response": "Yes. Each gate is a donated prayer."
+          }
+        ]
+      }
+    ],
+    "reveal": "Ordinary people paid. The mountain is a ledger of hope, not a royal monument.",
+    "codexUnlock": "torii",
+    "badgeUnlock": "shrine-spotter",
+    "requiresMission": ["kyoto-fox"]
+  },
+  {
+    "id": "kyoto-matcha",
+    "chapterId": "kyoto",
+    "moduleId": "kyoto-core",
+    "title": "Bitter, then sweet",
+    "type": "food",
+    "xp": 20,
+    "intro": "Matcha was monk fuel before it was ice cream.",
+    "task": "Eat or drink real matcha. Was it bitter, sweet, or both?",
+    "hint": "Tea, sweets, or ice cream. Say who liked it.",
+    "reveal": "The sweet exists because the tea is severe. Kyoto still serves both.",
+    "codexUnlock": "matcha"
+  },
+  {
+    "id": "kyoto-teamlab",
+    "chapterId": "kyoto",
+    "moduleId": "kyoto-teamlab",
+    "date": "2026-09-21",
+    "title": "Has the sentence changed?",
+    "type": "reflection",
+    "difficulty": "special",
+    "anchorEvent": true,
+    "xp": 25,
+    "intro": "You answered this in Tokyo. The artefact reads it back.",
+    "task": "Has “what felt like art?” changed? Write a new sentence, or write “same”.",
+    "hint": "You do not have to be clever. True is enough.",
+    "reveal": "Two rooms. Two nights. The chronicle keeps both sentences.",
+    "callbackKey": "teamlab-art-kyoto",
+    "callbackFrom": "tlb-is-it-art"
+  },
+  {
+    "id": "hiroshima-remember",
+    "chapterId": "hiroshima",
+    "moduleId": "hiroshima-memory",
+    "title": "What should be remembered",
+    "type": "reflection",
+    "sensitive": true,
+    "xp": 0,
+    "intro": "This is not a game. Sit with what you saw.",
+    "task": "Each person says one thing to remember. Write one sentence you agree on.",
+    "hint": "Short is fine. True is better than complete.",
+    "reveal": "Hiroshima was a city of people. Your sentence is now in the chronicle."
+  }
+]

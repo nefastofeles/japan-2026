@@ -1,0 +1,212 @@
+[
+  {
+    "id": "copenhagen-core",
+    "chapterId": "prologue",
+    "title": "The gate",
+    "subtitle": "Copenhagen Airport",
+    "optional": false,
+    "activation": "core"
+  },
+  {
+    "id": "tokyo-core",
+    "chapterId": "tokyo",
+    "title": "Tokyo core",
+    "optional": false,
+    "activation": "core"
+  },
+  {
+    "id": "tokyo-shinjuku",
+    "chapterId": "tokyo",
+    "title": "Shinjuku",
+    "subtitle": "The stacked city",
+    "optional": false,
+    "activation": "core",
+    "location": {
+      "lat": 35.6896,
+      "lng": 139.7004,
+      "radiusMeters": 900,
+      "label": "Shinjuku"
+    }
+  },
+  {
+    "id": "tokyo-asakusa",
+    "chapterId": "tokyo",
+    "title": "Asakusa",
+    "optional": true,
+    "activation": "facilitator",
+    "icon": "🏮",
+    "location": {
+      "lat": 35.7148,
+      "lng": 139.7967,
+      "radiusMeters": 600,
+      "label": "Sensō-ji"
+    }
+  },
+  {
+    "id": "tokyo-akihabara",
+    "chapterId": "tokyo",
+    "title": "Akihabara",
+    "optional": true,
+    "activation": "facilitator"
+  },
+  {
+    "id": "tokyo-meiji",
+    "chapterId": "tokyo",
+    "title": "Meiji / Harajuku",
+    "optional": true,
+    "activation": "gps",
+    "location": {
+      "lat": 35.6764,
+      "lng": 139.6993,
+      "radiusMeters": 700,
+      "label": "Meiji Jingu"
+    }
+  },
+  {
+    "id": "tokyo-shibuya",
+    "chapterId": "tokyo",
+    "title": "Shibuya",
+    "optional": true,
+    "activation": "facilitator"
+  },
+  {
+    "id": "tokyo-skytree",
+    "chapterId": "tokyo",
+    "title": "Skytree",
+    "optional": true,
+    "activation": "booking",
+    "anchorDate": "2026-09-17",
+    "location": {
+      "lat": 35.7101,
+      "lng": 139.8107,
+      "radiusMeters": 500,
+      "label": "Tokyo Skytree"
+    }
+  },
+  {
+    "id": "tokyo-teamlab",
+    "chapterId": "tokyo",
+    "title": "teamLab Tokyo",
+    "optional": true,
+    "activation": "booking",
+    "anchorDate": "2026-09-18"
+  },
+  {
+    "id": "tokyo-imperial",
+    "chapterId": "tokyo",
+    "title": "Imperial Palace",
+    "optional": true,
+    "activation": "facilitator",
+    "location": {
+      "lat": 35.6852,
+      "lng": 139.7528,
+      "radiusMeters": 800,
+      "label": "Imperial Palace East Gardens"
+    }
+  },
+  {
+    "id": "tokyo-tsukiji",
+    "chapterId": "tokyo",
+    "title": "Tsukiji",
+    "optional": true,
+    "activation": "facilitator",
+    "location": {
+      "lat": 35.6654,
+      "lng": 139.7707,
+      "radiusMeters": 500,
+      "label": "Tsukiji Outer Market"
+    }
+  },
+  {
+    "id": "tokyo-shinkansen",
+    "chapterId": "tokyo",
+    "title": "Shinkansen",
+    "optional": true,
+    "activation": "facilitator"
+  },
+  {
+    "id": "tokyo-food",
+    "chapterId": "tokyo",
+    "title": "Tokyo food",
+    "optional": true,
+    "activation": "facilitator"
+  },
+  {
+    "id": "tokyo-side",
+    "chapterId": "tokyo",
+    "title": "Tokyo side quests",
+    "optional": true,
+    "activation": "facilitator"
+  },
+  {
+    "id": "kyoto-core",
+    "chapterId": "kyoto",
+    "title": "Kyoto core",
+    "optional": false,
+    "activation": "core"
+  },
+  {
+    "id": "kyoto-gion",
+    "chapterId": "kyoto",
+    "title": "Gion",
+    "optional": true,
+    "activation": "core"
+  },
+  {
+    "id": "kyoto-fushimi",
+    "chapterId": "kyoto",
+    "title": "Fushimi Inari",
+    "optional": true,
+    "activation": "gps",
+    "icon": "⛩️",
+    "location": {
+      "lat": 34.9671,
+      "lng": 135.7727,
+      "radiusMeters": 700,
+      "label": "Fushimi Inari Taisha"
+    }
+  },
+  {
+    "id": "kyoto-kiyomizu",
+    "chapterId": "kyoto",
+    "title": "Kiyomizu",
+    "optional": true,
+    "activation": "facilitator"
+  },
+  {
+    "id": "kyoto-arashiyama",
+    "chapterId": "kyoto",
+    "title": "Arashiyama",
+    "optional": true,
+    "activation": "facilitator"
+  },
+  {
+    "id": "kyoto-nijo",
+    "chapterId": "kyoto",
+    "title": "Nijo",
+    "optional": true,
+    "activation": "facilitator"
+  },
+  {
+    "id": "kyoto-teamlab",
+    "chapterId": "kyoto",
+    "title": "teamLab Kyoto",
+    "optional": true,
+    "activation": "booking",
+    "anchorDate": "2026-09-21"
+  },
+  {
+    "id": "kyoto-nara",
+    "chapterId": "kyoto",
+    "title": "Nara side quest",
+    "optional": true,
+    "activation": "facilitator"
+  },
+  {
+    "id": "hiroshima-memory",
+    "chapterId": "hiroshima",
+    "title": "Peace Park",
+    "optional": false,
+    "activation": "core"
+  }
+]

@@ -1,0 +1,64 @@
+{
+  "chapterId": "osaka",
+  "moduleId": "osaka-namba",
+  "items": [
+    {
+      "id": "nam-find-animals",
+      "title": "Find the Animals",
+      "type": "find",
+      "status": "approved",
+      "priority": "must",
+      "task": "Find five giant 3D restaurant signs. Photograph the weirdest.",
+      "photo": true,
+      "codexUnlock": "giant-signs",
+      "xp": 80,
+      "mediaId": "media-dotonbori-signs"
+    },
+    {
+      "id": "nam-running-man",
+      "title": "The Running Man",
+      "type": "find",
+      "status": "approved",
+      "priority": "must",
+      "task": "Find the running man. Guess what he sells.",
+      "reveal": "Glico. A sweets and food company. The pose is an advert that became a meeting point.",
+      "xp": 70,
+      "factCheck": "needed",
+      "notes": "Confirm Glico sign product/history wording. Keep it brief."
+    },
+    {
+      "id": "nam-canal",
+      "title": "Why Is There a River Here?",
+      "type": "story",
+      "status": "approved",
+      "task": "Look at the canal. Natural river, or dug?",
+      "reveal": "A human-made canal. Named after people who paid to dig. Confirm Doton / Yasui Doton before live.",
+      "codexUnlock": "dotonbori",
+      "xp": 90,
+      "factCheck": "needed",
+      "notes": "Confirm Doton / Yasui Doton canal history before live."
+    },
+    {
+      "id": "nam-theatre",
+      "title": "Osaka's Broadway",
+      "type": "story",
+      "status": "approved",
+      "hook": "Before the neon food, this street was famous for plays.",
+      "reveal": "Dotonbori was a theatre quarter. Food signs came later.",
+      "xp": 80,
+      "mediaId": "media-dotonbori-theatre",
+      "factCheck": "needed",
+      "notes": "Confirm Dotonbori as a theatre quarter before the food signs."
+    },
+    {
+      "id": "nam-kuidaore",
+      "title": "Kuidaore",
+      "type": "food",
+      "status": "approved",
+      "task": "Try three Osaka foods: takoyaki, okonomiyaki, kushikatsu.",
+      "rewardIdea": "Kids choose a fourth snack. Not money in the app.",
+      "xp": 120,
+      "notes": "Progressive. Engine stores one answer until a collector exists."
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "chapterId": "osaka",
+  "moduleId": "osaka-core",
+  "items": [
+    {
+      "id": "osa-kyoto-vs-osaka",
+      "title": "Kyoto vs Osaka",
+      "type": "observation",
+      "status": "approved",
+      "task": "Walk one busy street. Tick what feels true: louder, brighter, funnier, messier, more food, more shops.",
+      "reveal": "No right mix. Osaka likes to show off. Kyoto likes manners. Both are stereotypes. Check them against the street.",
+      "xp": 60
+    },
+    {
+      "id": "osa-kitchen",
+      "title": "Kitchen of Japan",
+      "type": "story",
+      "status": "approved",
+      "hook": "Osaka fed other cities.",
+      "reveal": "A merchant town. Rice, canals, then street food. ‘Kitchen of Japan’ is a nickname. Confirm the history wording before live.",
+      "codexUnlock": "kitchen-of-japan",
+      "xp": 70,
+      "factCheck": "needed",
+      "notes": "Confirm ‘kitchen of Japan’ as a historical nickname, not a slogan we invented."
+    },
+    {
+      "id": "osa-comedy",
+      "title": "Why Is Osaka Funny?",
+      "type": "discovery",
+      "status": "approved",
+      "priority": "optional",
+      "task": "Listen for jokes, signs, or a comedy theatre. Osaka is famous for manzai: two people, quick talk.",
+      "codexUnlock": "manzai",
+      "xp": 40,
+      "factCheck": "needed",
+      "notes": "Confirm manzai / Osaka comedy association. Do not claim Osaka is the only funny city."
+    }
+  ]
+}

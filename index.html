@@ -23,6 +23,24 @@
   <link rel="stylesheet" href="css/media.css">
   <link rel="stylesheet" href="css/home.css">
   <link rel="stylesheet" href="css/heroes.css">
+  <link rel="stylesheet" href="css/quest.css">
+  <link rel="stylesheet" href="css/quest-shell.css">
+  <link rel="stylesheet" href="css/quest-screens.css">
+  <link rel="stylesheet" href="css/quest-collect.css">
+
+  <!-- Paint Quest red before the router boots so #/adventure is not a teal flash. -->
+  <script>
+    (function () {
+      function syncQuestShell() {
+        document.documentElement.toggleAttribute(
+          "data-quest",
+          location.hash.startsWith("#/adventure")
+        );
+      }
+      syncQuestShell();
+      window.addEventListener("hashchange", syncQuestShell);
+    })();
+  </script>
 
   <!-- Leo's theme. Remove the comment markers around this line to switch it on. -->
   <!-- <link rel="stylesheet" href="css/themes/leo.css"> -->
@@ -54,7 +72,11 @@
     <div class="page">
       <p>Javier, Rikke, Saga and Leo &middot; 15 September to 6 October 2026</p>
       <p class="xs">Built by the four of us. Photos stay in the family.</p>
-      <p><a class="footer-admin" href="#/admin" data-footer-admin>Admin</a></p>
+      <p>
+        <a class="footer-admin" href="#/admin" data-footer-admin>Admin</a>
+        ·
+        <a class="footer-admin" href="#/adventure/script">Script</a>
+      </p>
     </div>
   </footer>
 

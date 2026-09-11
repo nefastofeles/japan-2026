@@ -1,0 +1,84 @@
+{
+  "chapterId": "tokyo",
+  "moduleId": "tokyo-skytree",
+  "items": [
+    {
+      "id": "script-634",
+      "title": "634",
+      "type": "riddle",
+      "status": "idea",
+      "question": "How tall, and why that number?",
+      "physicalObservation": "Forest visible from the tower",
+      "notes": "Old sample tokyo-skytree. Not the same as sky-giant. Progress on 634 does not map."
+    },
+    {
+      "id": "sky-giant",
+      "title": "The Giant",
+      "type": "multipleChoice",
+      "status": "live",
+      "liveMissionId": "sky-giant",
+      "priority": "anchor",
+      "exactLocation": "Tokyo Skytree",
+      "question": {
+        "type": "multipleChoice",
+        "text": "Which is tallest?",
+        "choices": [
+          { "id": "eiffel", "text": "Eiffel Tower", "response": "Famous, but shorter than this one." },
+          { "id": "tokyo-tower", "text": "Tokyo Tower", "response": "Close, and red. Look at the new one." },
+          { "id": "skytree", "text": "Tokyo Skytree", "response": "Yes. This is the tall one." }
+        ],
+        "correctChoiceId": "skytree",
+        "retryAllowed": true
+      },
+      "reveal": "Tokyo Skytree is 634 metres tall.",
+      "mediaId": "media-skytree-exterior",
+      "xp": 70,
+      "factCheck": "verified",
+      "notes": "Public height 634 metres. Quiz stays Eiffel / Tokyo Tower / Tokyo Skytree."
+    },
+    {
+      "id": "sky-find-old-tokyo",
+      "title": "Find Old Tokyo",
+      "type": "find",
+      "status": "live",
+      "liveMissionId": "sky-find-old-tokyo",
+      "priority": "anchor",
+      "exactLocation": "Tokyo Skytree observation deck",
+      "task": "Find the direction of Asakusa and Sensō-ji below.",
+      "reveal": "From here you can see old Tokyo and new Tokyo at the same time.",
+      "fragmentValue": 1,
+      "codexUnlock": "past-future-tokyo",
+      "xp": 100
+    },
+    {
+      "id": "sky-earthquake",
+      "title": "Why Doesn't It Fall?",
+      "type": "multipleChoice",
+      "status": "live",
+      "liveMissionId": "sky-earthquake",
+      "priority": "anchor",
+      "question": {
+        "type": "multipleChoice",
+        "text": "How can something this tall survive strong movement?",
+        "choices": [
+          { "id": "rigid", "text": "It is completely rigid", "response": "Rigid towers fight the ground. This one is meant to move a little." },
+          { "id": "damp", "text": "It can absorb and control movement", "response": "Yes. It is built to sway and settle." },
+          { "id": "rebuild", "text": "It is rebuilt after earthquakes", "response": "It is meant to stay standing." }
+        ],
+        "correctChoiceId": "damp",
+        "retryAllowed": true
+      },
+      "reveal": "Tokyo Skytree uses modern structural damping. A reinforced-concrete central column moves somewhat independently from the outer structure, helping reduce earthquake motion.",
+      "moreInfo": {
+        "title": "Named after a pillar",
+        "text": "The designers named the concept in reference to the central pillar found in traditional five-story pagodas. That is a name for the idea, not a claim that ancient pagodas supplied this engineering solution."
+      },
+      "visualIdea": "Simple Skytree structural/damping diagram",
+      "mediaId": "media-skytree-structure",
+      "rewardIdea": "sky-guardian",
+      "xp": 120,
+      "factCheck": "verified",
+      "notes": "Do not say Skytree copies a pagoda. Keep default copy short; depth stays in moreInfo."
+    }
+  ]
+}

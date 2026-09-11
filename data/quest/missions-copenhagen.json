@@ -1,0 +1,65 @@
+[
+  {
+    "id": "prologue-already-here",
+    "chapterId": "prologue",
+    "moduleId": "copenhagen-core",
+    "title": "Japan Before Japan",
+    "type": "find",
+    "xp": 40,
+    "fragmentValue": 1,
+    "visual": {
+      "type": "image",
+      "src": "assets/heroes/crane.jpg",
+      "alt": "Paper cranes folded from origami paper",
+      "credit": "Laitche, public domain"
+    },
+    "intro": "Japan leaked into this building.",
+    "task": "Before boarding, find something Japanese.",
+    "hint": "Writing, a brand, or Japan on a departures screen.",
+    "exactLocation": "Copenhagen Airport",
+    "reveal": "Japan leaked into this building. You caught one piece.",
+    "codexUnlock": "artefact",
+    "unlockDiscoveries": ["journey-east"],
+    "badgeUnlock": "first-discovery"
+  },
+  {
+    "id": "cph-first-fragment",
+    "chapterId": "prologue",
+    "moduleId": "copenhagen-core",
+    "title": "The First Fragment",
+    "type": "multipleChoice",
+    "xp": 50,
+    "fragmentValue": 1,
+    "mediaId": "media-cph-tokyo-route",
+    "intro": "Japan is far away. But the adventure has already started.",
+    "task": "What do you think will feel most different from Denmark?",
+    "exactLocation": "Copenhagen Airport",
+    "question": {
+      "type": "multipleChoice",
+      "text": "What do you think will feel most different from Denmark?",
+      "choices": [
+        { "id": "food", "text": "Food", "response": "Keep that. We will ask again in Tokyo." },
+        { "id": "cities", "text": "Cities", "response": "Keep that. We will ask again in Tokyo." },
+        { "id": "religion", "text": "Religion", "response": "Keep that. We will ask again in Tokyo." },
+        { "id": "rules", "text": "Everyday rules", "response": "Keep that. We will ask again in Tokyo." }
+      ],
+      "retryAllowed": true
+    },
+    "reveal": "There is no right answer. Keep yours. We will ask again in Tokyo.",
+    "callbackKey": "cph-different"
+  },
+  {
+    "id": "cph-future-you",
+    "chapterId": "prologue",
+    "moduleId": "copenhagen-core",
+    "title": "Future You",
+    "type": "reflection",
+    "xp": 50,
+    "fragmentValue": 1,
+    "intro": "Before Japan changes your mind, make one prediction.",
+    "task": "Each of you: one thing you most want to discover.",
+    "exactLocation": "Copenhagen Airport",
+    "reveal": "Keep these four wishes. Tokyo will read them back.",
+    "callbackKey": "cph-want-to-discover"
+  }
+]

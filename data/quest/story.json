@@ -1,0 +1,32 @@
+[
+  {
+    "id": "open",
+    "unlocksWith": "artefact",
+    "title": "Fragment 01",
+    "body": "A chronicle of Japan was broken into pieces and scattered along a family’s route. It can only be repaired by looking — not by remaining on a phone."
+  },
+  {
+    "id": "sun",
+    "unlocksWith": "hinomaru",
+    "title": "Fragment 02",
+    "body": "The country named itself after the sun. The red disc is not dusk. It is origin."
+  },
+  {
+    "id": "stack",
+    "unlocksWith": "depachika",
+    "title": "Fragment 03",
+    "body": "Edo was wet ground. Tokyo learned to stack. The second city is under the first."
+  },
+  {
+    "id": "fox",
+    "unlocksWith": "kitsune",
+    "title": "Fragment 04",
+    "body": "Inari’s post arrives by fox. The mountain of gates is not an emperor’s work. It is a pile of private hopes."
+  },
+  {
+    "id": "quiet",
+    "unlocksWithMission": "hiroshima-remember",
+    "title": "Fragment 05",
+    "body": "Some pages are not adventures. They are records. Hiroshima is one of those pages."
+  }
+]

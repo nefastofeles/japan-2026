@@ -1,0 +1,207 @@
+/* ==========================================================================
+   Quest Game — mission, discovery, Codex and Memory screens
+   --------------------------------------------------------------------------
+   Progressive disclosure: one short block at a time. Memory mode is quiet.
+   ========================================================================== */
+
+.quest-stage {
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  border-radius: var(--radius-lg);
+  background: var(--paper-raised);
+  box-shadow: var(--shadow-lg);
+}
+
+.quest-stage__body {
+  padding: var(--sp-5);
+}
+
+.quest-stage h2 {
+  font-size: 1.5rem;
+  line-height: 1.3;
+  max-width: 18ch;
+  margin: var(--sp-2) 0 var(--sp-4);
+}
+
+.quest-stage[data-tone="memory"] {
+  background: #f3f5f7;
+  box-shadow: none;
+}
+
+.quest-stage[data-tone="memory"] .quest-cta,
+.quest-stage[data-tone="memory"] .btn:not(.btn--ghost) {
+  background: #2c3a4d;
+  border-color: #2c3a4d;
+  color: #f6f7f8;
+}
+
+.quest-panel { display: none; }
+.quest-panel.is-on { display: block; }
+
+.quest-label {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--hinomaru-deep);
+  margin: 0 0 var(--sp-3);
+}
+
+.quest-listen {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+  margin: 0 0 var(--sp-4);
+}
+
+.quest-listen__btn {
+  min-height: 3.25rem;
+  padding: 0 var(--sp-4);
+  border-radius: var(--radius);
+  border: 2px solid var(--hinomaru);
+  background: var(--paper-raised);
+  color: var(--ink);
+  font-weight: 700;
+  font-size: 1.125rem;
+  font-family: inherit;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+}
+
+.quest-listen__btn--ghost { border-color: var(--rule); }
+
+.quest-listen-fallback {
+  padding: var(--sp-3);
+  border-radius: var(--radius);
+  background: var(--paper-sunk);
+  font-size: 1.125rem;
+}
+
+.quest-who {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  min-height: 3.25rem;
+  margin-right: var(--sp-3);
+  font-weight: 700;
+  font-size: 1.125rem;
+}
+
+.quest-stage textarea.field,
+.quest-stage input.field {
+  min-height: 3.25rem;
+  padding: var(--sp-3);
+  font-size: 1.25rem;
+  line-height: 1.5;
+}
+
+.quest-stage textarea.field { min-height: 6.5rem; }
+
+.quest-choices {
+  display: grid;
+  gap: var(--sp-3);
+  margin: var(--sp-4) 0;
+}
+
+.quest-choice {
+  min-height: 3.25rem;
+  padding: var(--sp-4);
+  border-radius: var(--radius);
+  border: 2px solid var(--rule);
+  background: var(--paper-raised);
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-align: left;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.quest-hint {
+  margin-top: var(--sp-4);
+  padding: var(--sp-4);
+  border-radius: var(--radius);
+  background: var(--paper-sunk);
+  font-size: 1.25rem;
+  line-height: 1.6;
+}
+
+.quest-xp {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.quest-reveal {
+  margin-top: var(--sp-4);
+  padding: var(--sp-4);
+  border-radius: var(--radius);
+  background: var(--paper-sunk);
+}
+
+.quest-visual {
+  position: relative;
+  margin: 0;
+  border-radius: 0;
+  overflow: hidden;
+  max-height: none;
+  aspect-ratio: 16 / 9;
+  background: var(--hinomaru);
+}
+
+.quest-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 35%;
+  display: block;
+}
+
+.quest-card .quest-visual {
+  aspect-ratio: 16 / 9;
+}
+
+.quest-entry .quest-visual {
+  aspect-ratio: 3 / 2;
+  max-height: 5.25rem;
+}
+
+.quest-visual--mark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--paper-raised);
+}
+
+.quest-visual--mark .quest-icon {
+  width: 3rem;
+  height: 3rem;
+  position: relative;
+  z-index: 1;
+}
+
+.quest-visual__credit {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  padding: 0.2rem 0.6rem;
+  font-size: 1.125rem;
+  color: var(--ink);
+  background: rgba(250, 248, 243, 0.9);
+}
+
+.quest-more {
+  margin-top: var(--sp-3);
+  padding: var(--sp-4);
+  border-radius: var(--radius);
+  background: var(--paper-sunk);
+}
+
+.quest-choice[aria-pressed="true"] {
+  border-color: var(--hinomaru);
+  background: color-mix(in srgb, var(--hinomaru) 12%, var(--paper-raised));
+}
+
+.quest-choice:disabled {
+  opacity: 1;
+  color: inherit;
+}

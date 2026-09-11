@@ -1,0 +1,55 @@
+{
+  "chapterId": "tokyo",
+  "moduleId": "tokyo-manga",
+  "items": [
+    {
+      "id": "manga-biggest-ever",
+      "title": "The Biggest Manga Ever",
+      "type": "multipleChoice",
+      "status": "live",
+      "liveMissionId": "manga-biggest-ever",
+      "question": {
+        "type": "multipleChoice",
+        "text": "Which manga series has the highest reported worldwide circulation?",
+        "choices": [
+          { "id": "naruto", "text": "Naruto", "response": "Huge. Check which still leads in copies." },
+          { "id": "db", "text": "Dragon Ball", "response": "A giant. Look at lifetime copies." },
+          { "id": "ds", "text": "Demon Slayer", "response": "A recent wave. Look at the long count." },
+          { "id": "op", "text": "One Piece", "response": "Yes, by the usual circulation count." }
+        ],
+        "correctChoiceId": "op",
+        "retryAllowed": true
+      },
+      "reveal": "As of 2026, One Piece has reported more than 600 million copies in circulation worldwide.",
+      "xp": 40,
+      "mediaId": "media-manga-quiz",
+      "factCheck": "verified",
+      "notes": "Time-sensitive circulation figure as of 2026. Recheck after the trip. Do not say copies sold. Lightweight; fragmentValue 0. No reviewAfter field in this schema."
+    },
+    {
+      "id": "manga-current-japan",
+      "title": "What Is Japan Reading Right Now?",
+      "type": "observation",
+      "status": "live",
+      "liveMissionId": "manga-current-japan",
+      "task": "Look at the featured manga shelf / current rankings.",
+      "reveal": "Charts change. The shop in front of you is the source, not last year’s list.",
+      "xp": 40,
+      "notes": "Keep approved live as a dynamic observation. Do not fact-check as a fixed answer. Current rankings change frequently; do not hardcode one title. Lightweight; fragmentValue 0."
+    },
+    {
+      "id": "manga-shelf-detective",
+      "title": "Manga Shelf Detective",
+      "type": "find",
+      "status": "live",
+      "liveMissionId": "manga-shelf-detective",
+      "task": "Find three manga that look as if they are for different readers.",
+      "moreInfo": {
+        "title": "Different shelves",
+        "text": "Japanese magazines have long sorted stories by intended readers. The labels are rough. Faces, fashion and how busy the page is are clues. Do not treat the labels as rules about who is allowed to read."
+      },
+      "xp": 50,
+      "notes": "Lightweight optional find. fragmentValue 0."
+    }
+  ]
+}

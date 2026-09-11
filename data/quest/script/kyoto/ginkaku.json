@@ -1,0 +1,43 @@
+{
+  "chapterId": "kyoto",
+  "moduleId": "kyoto-ginkaku",
+  "items": [
+    {
+      "id": "gin-no-silver",
+      "title": "Where Is the Silver?",
+      "type": "find",
+      "status": "approved",
+      "priority": "must",
+      "task": "Walk the pavilion. Find the silver.",
+      "reveal": "There is no silver skin. The name came later, as a pair with the Golden Pavilion.",
+      "xp": 100,
+      "notes": "Let them search before the reveal."
+    },
+    {
+      "id": "gin-gold-vs-silver",
+      "title": "Gold vs Silver",
+      "type": "reflection",
+      "status": "approved",
+      "task": "Which feels richer: gold leaf in the sun, or this quieter garden?",
+      "reveal": "There is no right answer. Japanese gardens often prize restraint. Do not turn that into a slogan.",
+      "xp": 60,
+      "mediaId": "media-ginkaku-compare"
+    },
+    {
+      "id": "gin-yoshimasa",
+      "title": "The Shogun Who Preferred Beauty",
+      "type": "story",
+      "status": "approved",
+      "hook": "A shogun who lost a war still shaped how Kyoto looks at beauty.",
+      "moreInfo": {
+        "title": "Higashiyama",
+        "text": "Ashikaga Yoshimasa lived here in retreat. Tea, gardens and quiet rooms grew around him. He was not a cartoon of peace. Confirm names and dates before live.",
+        "audioText": "Ashikaga Yoshimasa was a shogun who lost control of a war and still left Kyoto a taste for quiet rooms, tea and gardens. Call that Higashiyama culture if you like. Do not make him a simple saint. We will check the history before this is live."
+      },
+      "reveal": "Beauty here is a leftover of power, not a replacement for it.",
+      "xp": 70,
+      "factCheck": "needed",
+      "notes": "Confirm Higashiyama / Yoshimasa biography. Avoid caricature."
+    }
+  ]
+}

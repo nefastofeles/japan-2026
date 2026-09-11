@@ -1,0 +1,79 @@
+[
+  {
+    "id": "first-discovery",
+    "name": "First Discovery",
+    "hidden": false,
+    "description": "The chronicle accepted its first recovered page.",
+    "realWorldReward": null
+  },
+  {
+    "id": "food-explorer",
+    "name": "Food Explorer",
+    "hidden": false,
+    "description": "The family ate something new on purpose.",
+    "realWorldReward": "Kids choose the next dessert."
+  },
+  {
+    "id": "konbini-explorer",
+    "name": "Konbini Explorer",
+    "hidden": false,
+    "description": "You treated a convenience store as a kitchen.",
+    "realWorldReward": "Kids choose the next konbini snack."
+  },
+  {
+    "id": "yokai-hunter",
+    "name": "Yokai Hunter",
+    "hidden": false,
+    "description": "You met a kitsune and did not treat it like a dog.",
+    "realWorldReward": null
+  },
+  {
+    "id": "shrine-spotter",
+    "name": "Shrine Spotter",
+    "hidden": false,
+    "description": "You walked the orange tunnel and asked who paid for it.",
+    "realWorldReward": null
+  },
+  {
+    "id": "sky-reader",
+    "name": "Sky Reader",
+    "hidden": true,
+    "description": "You decoded 634 as Musashi.",
+    "realWorldReward": "One gachapon allowance, family choice of machine."
+  },
+  {
+    "id": "samurai-scholar",
+    "name": "Samurai Scholar",
+    "hidden": false,
+    "description": "Kanazawa will ask for this. Not yet.",
+    "realWorldReward": null
+  },
+  {
+    "id": "mountain-traveller",
+    "name": "Mountain Traveller",
+    "hidden": false,
+    "description": "Waiting for the Alps.",
+    "realWorldReward": null
+  },
+  {
+    "id": "nakasendo-traveller",
+    "name": "Nakasendo Traveller",
+    "hidden": false,
+    "description": "Waiting for the old road.",
+    "realWorldReward": null
+  },
+  {
+    "id": "brave-eater",
+    "name": "Brave Eater",
+    "hidden": true,
+    "description": "Ate the thing everyone else refused.",
+    "realWorldReward": "Small mystery reward, Javier’s choice."
+  },
+  {
+    "id": "rail-master",
+    "name": "Rail Master",
+    "hidden": false,
+    "description": "Waiting for a long shinkansen.",
+    "realWorldReward": null
+  }
+]

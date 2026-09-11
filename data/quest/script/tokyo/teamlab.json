@@ -1,0 +1,51 @@
+{
+  "chapterId": "tokyo",
+  "moduleId": "tokyo-teamlab",
+  "items": [
+    {
+      "id": "script-teamlab-tokyo",
+      "title": "What felt like art?",
+      "type": "reflection",
+      "status": "idea",
+      "notes": "Old sample tokyo-teamlab. Replaced by tlb-dont-understand and tlb-is-it-art. No 1:1 map. Kyoto sample callbackFrom now reads tlb-is-it-art."
+    },
+    {
+      "id": "tlb-dont-understand",
+      "title": "Don't Understand Anything",
+      "type": "observation",
+      "status": "live",
+      "liveMissionId": "tlb-dont-understand",
+      "priority": "anchor",
+      "task": "For the first ten minutes, do not explain the art. Just walk.",
+      "followUp": "Each person picks: most beautiful, strangest, most alive.",
+      "xp": 80,
+      "mediaId": "media-teamlab-teaser",
+      "callbackKey": "tlb-first-walk",
+      "notes": "No spoilers in the teaser image. Save the walk for Kyoto/Osaka callbacks."
+    },
+    {
+      "id": "tlb-is-it-art",
+      "title": "Is It Still the Same Art?",
+      "type": "reflection",
+      "status": "live",
+      "liveMissionId": "tlb-is-it-art",
+      "priority": "anchor",
+      "question": {
+        "type": "multipleChoice",
+        "text": "If this moving experience were frozen into one photograph, would it still be the same artwork?",
+        "choices": [
+          { "id": "yes", "text": "Yes", "response": "Keep that. Kyoto and Osaka will ask again." },
+          { "id": "no", "text": "No", "response": "Keep that. Kyoto and Osaka will ask again." },
+          { "id": "partly", "text": "Partly", "response": "Keep that. Kyoto and Osaka will ask again." }
+        ],
+        "retryAllowed": true
+      },
+      "fragmentValue": 1,
+      "rewardIdea": "borderless-fragment-1",
+      "xp": 80,
+      "callbackKey": "tlb-frozen-photo",
+      "saveFor": ["teamlab-kyoto", "teamlab-osaka"],
+      "notes": "No correctChoiceId. Live Kyoto sample reads this id back."
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "chapterId": "tokyo",
+  "moduleId": "tokyo-shibuya",
+  "items": [
+    {
+      "id": "shb-human-tsunami",
+      "title": "Human Tsunami",
+      "type": "observation",
+      "status": "live",
+      "liveMissionId": "shb-human-tsunami",
+      "priority": "must",
+      "exactLocation": "Shibuya Scramble Crossing",
+      "hook": "Guess first. Then watch one full crossing.",
+      "question": {
+        "type": "multipleChoice",
+        "text": "How many people do you predict will cross during one cycle?",
+        "choices": [
+          { "id": "under-100", "text": "Under 100", "response": "Keep your guess. Now watch." },
+          { "id": "100-500", "text": "100–500", "response": "Keep your guess. Now watch." },
+          { "id": "500-1000", "text": "500–1,000", "response": "Keep your guess. Now watch." },
+          { "id": "over-1000", "text": "More than 1,000", "response": "Keep your guess. Now watch." }
+        ],
+        "retryAllowed": true
+      },
+      "task": "Watch one complete crossing. Compare it with your guess. You do not need an exact count.",
+      "reveal": "At busy times, the crossing can handle more than 1,000 pedestrians in a single cycle.",
+      "visualIdea": "Aerial Shibuya only after the prediction",
+      "mediaId": "media-shibuya-aerial",
+      "xp": 90,
+      "factCheck": "verified",
+      "notes": "Prediction/observation only. Do not tell the family that 1,000 people always cross. Exact counting is not required."
+    },
+    {
+      "id": "shb-hachiko",
+      "title": "The Dog Who Kept Coming Back",
+      "type": "story",
+      "status": "live",
+      "liveMissionId": "shb-hachiko",
+      "exactLocation": "Hachiko Memorial Statue",
+      "story": [
+        "Every day Hachiko met his owner at this station.",
+        "One day his owner never came home.",
+        "What do you think Hachiko did?"
+      ],
+      "reveal": "Hachiko kept coming back, for years.",
+      "moreInfo": {
+        "title": "How long",
+        "text": "He continued returning to Shibuya Station for 9 years after his owner died."
+      },
+      "codexUnlock": "hachiko",
+      "xp": 80,
+      "mediaId": "media-hachiko",
+      "factCheck": "verified",
+      "notes": "No exact numbers in the child-facing default text. Duration 9 years stays in moreInfo."
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "chapterId": "kyoto",
+  "moduleId": "kyoto-food",
+  "items": [
+    {
+      "id": "food-kyo-matcha",
+      "title": "Green Everywhere",
+      "type": "food",
+      "status": "approved",
+      "task": "Find three matcha foods. Choose one to try.",
+      "codexUnlock": "matcha",
+      "xp": 60,
+      "mediaId": "media-matcha",
+      "notes": "Sits beside live sample kyoto-matcha. Sample stays live."
+    },
+    {
+      "id": "food-kyo-yatsuhashi",
+      "title": "What Is Yatsuhashi?",
+      "type": "food",
+      "status": "approved",
+      "task": "Before tasting, predict: chewy, crisp, sweet, cinnamon?",
+      "reveal": "Often a cinnamon rice dough, raw-chewy or baked crisp. Recipes vary.",
+      "xp": 50,
+      "mediaId": "media-yatsuhashi"
+    },
+    {
+      "id": "food-nara-deer",
+      "title": "Deer Food Is Not Your Food",
+      "type": "discovery",
+      "status": "approved",
+      "task": "Find shika senbei. Read the pack. It is for deer, not for a snack.",
+      "xp": 20
+    }
+  ]
+}

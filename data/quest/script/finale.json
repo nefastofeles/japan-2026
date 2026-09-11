@@ -1,0 +1,75 @@
+{
+  "chapterId": "finale",
+  "moduleId": "finale-core",
+  "items": [
+    {
+      "id": "fin-first-question",
+      "title": "The First Question",
+      "type": "reflection",
+      "status": "approved",
+      "priority": "anchor",
+      "task": "Show the Copenhagen answer. Were you right: completely, partly, not at all? What surprised you instead?",
+      "callbackFrom": "cph-first-fragment",
+      "xp": 40
+    },
+    {
+      "id": "fin-your-japan",
+      "title": "Your Japan",
+      "type": "reflection",
+      "status": "approved",
+      "priority": "anchor",
+      "task": "Each person: favourite discovery, strangest food, favourite place, favourite photo, favourite myth, biggest surprise.",
+      "mediaId": "media-finale-family",
+      "notes": "Prefer family-generated media. No fireworks."
+    },
+    {
+      "id": "fin-old-new",
+      "title": "Old Japan / New Japan",
+      "type": "reflection",
+      "status": "approved",
+      "task": "Show the Harajuku pair. Which feels more like Japan now?",
+      "reveal": "Both.",
+      "callbackFrom": "har-two-japans",
+      "mediaId": "media-finale-old-new"
+    },
+    {
+      "id": "fin-art",
+      "title": "What Is Art?",
+      "type": "reflection",
+      "status": "approved",
+      "task": "Show the teamLab line: Tokyo → Kyoto → Osaka. What changed?",
+      "callbackFrom": "tlo-trilogy"
+    },
+    {
+      "id": "fin-codex",
+      "title": "Your Codex",
+      "type": "reflection",
+      "status": "approved",
+      "task": "Look at how many discoveries you hold. Each person picks one Legendary Discovery. Hiroshima stays in Memory, not here."
+    },
+    {
+      "id": "fin-chronicle",
+      "title": "The Lost Chronicle",
+      "type": "story",
+      "status": "approved",
+      "priority": "anchor",
+      "story": [
+        "Edo. Temples. Samurai. Merchants.",
+        "War and remembrance. Sacred nature. Mountains. Crafts.",
+        "Trains. Manga. Food. Four of you."
+      ],
+      "reveal": "Japan wasn't one story. It was all of them.",
+      "notes": "End understated. Then: JAPAN QUEST COMPLETE. No childish fireworks."
+    },
+    {
+      "id": "fin-ask-parents",
+      "title": "Ask Mum and Dad",
+      "type": "discovery",
+      "status": "approved",
+      "priority": "optional",
+      "reveal": "Final reward unlocked. Ask Mum and Dad.",
+      "rewardIdea": "finale-ask-parents",
+      "notes": "Hidden real-world reward. No payment logic."
+    }
+  ]
+}

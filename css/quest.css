@@ -1,0 +1,285 @@
+/* ==========================================================================
+   Quest Game — page chrome
+   --------------------------------------------------------------------------
+   Atkinson Hyperlegible is the site font. Quest copy is extra large and
+   extra short because Saga is 12 and dyslexic: chunked screens, no
+   justified text, no italics, no sentence-length capitals.
+   ========================================================================== */
+
+.quest-page {
+  padding-bottom: var(--sp-8);
+  max-width: 36rem;
+  font-size: 1.125rem; /* 18px floor */
+  line-height: 1.6;
+  text-align: left;
+}
+
+.quest-page em,
+.quest-page i,
+.quest-page cite {
+  font-style: normal;
+  font-weight: 700;
+}
+
+.quest-page .muted,
+.quest-page .small {
+  color: var(--ink-soft);
+  font-size: 1.125rem;
+}
+
+.quest-prose {
+  font-size: 1.25rem; /* 20px */
+  line-height: 1.65;
+  max-width: 32rem;
+  text-align: left;
+  font-style: normal;
+}
+
+.quest-prose p { margin: 0 0 0.9em; }
+.quest-prose p:last-child { margin-bottom: 0; }
+
+.quest-kicker {
+  font-size: 1.125rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  color: var(--hinomaru-deep);
+  margin: 0 0 var(--sp-2);
+}
+
+.quest-head h1 {
+  margin-bottom: var(--sp-2);
+  font-size: var(--size-xl);
+  line-height: 1.3;
+  max-width: 18ch;
+}
+
+.quest-tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: var(--sp-2);
+  padding: var(--sp-2) 0 var(--sp-5);
+}
+
+.quest-tabs a {
+  min-height: 3.25rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 var(--sp-3);
+  border-radius: 999px;
+  border: 1px solid var(--rule);
+  background: var(--paper-raised);
+  color: var(--ink);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.125rem;
+}
+
+.quest-tabs a[aria-current="page"] {
+  background: var(--leg-deep);
+  border-color: var(--leg-deep);
+  color: var(--paper-raised);
+}
+
+.quest-type {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--hinomaru-deep);
+}
+
+.quest-type .quest-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.quest-hero {
+  padding: var(--sp-5);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--leg-edge);
+  background:
+    linear-gradient(160deg, var(--leg-wash), var(--paper-raised) 70%);
+  box-shadow: var(--shadow);
+}
+
+.quest-hero h2 { margin: 0 0 var(--sp-3); font-size: var(--size-lg); }
+.quest-hero .quest-prose { margin-bottom: var(--sp-2); }
+
+.quest-cta,
+.quest-page .btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3.25rem;
+  margin-top: var(--sp-4);
+  padding: var(--sp-3) var(--sp-5);
+  border-radius: var(--radius);
+  background: var(--hinomaru);
+  border: 1px solid var(--hinomaru);
+  color: var(--paper-raised);
+  font-weight: 700;
+  font-size: 1.125rem;
+  text-decoration: none;
+  width: 100%;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.quest-page .btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.quest-page .btn--ghost {
+  background: var(--paper-raised);
+  color: var(--ink);
+  border-color: var(--rule);
+}
+
+.quest-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-3);
+}
+
+.quest-stat {
+  padding: var(--sp-4);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  background: var(--paper-raised);
+}
+
+.quest-stat strong {
+  display: block;
+  font-size: var(--size-xl);
+  font-variant-numeric: tabular-nums;
+}
+
+.quest-mission,
+.quest-find,
+.quest-card {
+  display: block;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  border-radius: var(--radius-lg);
+  background: var(--paper-raised);
+  text-decoration: none;
+  color: inherit;
+  box-shadow: var(--shadow-lg);
+}
+
+.quest-card__body {
+  padding: var(--sp-4) var(--sp-5) var(--sp-5);
+}
+
+.quest-mission[data-tone="memory"],
+.quest-card[data-tone="memory"] {
+  background: #f3f5f7;
+  box-shadow: none;
+}
+
+.quest-mission h3,
+.quest-find h3,
+.quest-card h3 {
+  margin: var(--sp-2) 0 0;
+  font-size: 1.25rem;
+  line-height: 1.35;
+  color: var(--ink);
+}
+
+.quest-card__hook {
+  margin: var(--sp-2) 0 0;
+  font-size: 1.125rem;
+  line-height: 1.5;
+  color: var(--ink-soft);
+}
+
+.quest-card--locked {
+  filter: saturate(0.35);
+}
+
+.quest-card--locked .quest-card__hook {
+  color: var(--ink-muted);
+}
+
+.quest-card--find .quest-card__body {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0 var(--sp-3);
+  align-items: center;
+}
+
+.quest-card--find .quest-icon {
+  width: 2.4rem;
+  height: 2.4rem;
+  color: var(--hinomaru);
+  grid-row: span 3;
+}
+
+.quest-pill {
+  display: inline-block;
+  margin-top: var(--sp-3);
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--ink-soft);
+}
+
+.quest-mission:not(:has(.quest-card__body)),
+.quest-find:not(:has(.quest-card__body)) {
+  padding: var(--sp-5);
+}
+
+.quest-section { margin-top: var(--sp-6); }
+
+.quest-page--compact .quest-tabs {
+  padding-top: 0;
+}
+
+.quest-rail {
+  padding: var(--sp-3) var(--sp-4);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  background: var(--paper-raised);
+}
+
+.quest-rail__kicker {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--leg-deep);
+  margin: 0 0 var(--sp-2);
+}
+
+.quest-rail__bar {
+  height: 0.7rem;
+  border-radius: 999px;
+  background: var(--paper-sunk);
+  overflow: hidden;
+}
+
+.quest-rail__bar span {
+  display: block;
+  height: 100%;
+  background: var(--leg-deep);
+}
+
+.quest-rail__meta {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--sp-3);
+  margin: var(--sp-2) 0 0;
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+
+.quest-rail__next {
+  margin: var(--sp-2) 0 0;
+  font-size: 1.125rem;
+}
+
+@media (max-width: 40rem) {
+  .quest-head h1 { font-size: 1.5rem; }
+}
