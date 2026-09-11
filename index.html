@@ -86,6 +86,9 @@
     </div>
   </noscript>
 
-  <script type="module" src="js/app.js"></script>
+  <!-- Vendor first so the album client does not need esm.sh. cache-bust
+       drops an old service worker, then starts the app. -->
+  <script src="js/vendor/supabase.js"></script>
+  <script src="js/cache-bust.js"></script>
 </body>
 </html>

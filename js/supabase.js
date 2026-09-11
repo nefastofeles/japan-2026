@@ -1,27 +1,38 @@
 /* ==========================================================================
    Japan 2026 - Supabase client
-   The library is only downloaded if the project has actually been configured,
-   so "plan mode" stays completely dependency-free.
+   The UMD build lives in js/vendor/supabase.js and is loaded from
+   index.html. Phones must not depend on esm.sh; it often fails on
+   mobile networks and then the album looks empty.
    ========================================================================== */
 
 import { SUPABASE_URL, SUPABASE_ANON_KEY, isConfigured } from "./config.js";
 
-const CDN = "https://esm.sh/@supabase/supabase-js@2";
-
 let clientPromise = null;
+
+function supabaseLibrary() {
+  const lib = globalThis.supabase;
+  if (!lib?.createClient) {
+    throw new Error("Supabase library did not load.");
+  }
+  return lib;
+}
 
 export async function getClient() {
   if (!isConfigured()) return null;
   if (!clientPromise) {
-    clientPromise = import(CDN).then(({ createClient }) =>
-      createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
+    try {
+      const client = supabaseLibrary().createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
         auth: {
           persistSession: true,
           autoRefreshToken: true,
           detectSessionInUrl: false,
         },
-      })
-    );
+      });
+      clientPromise = Promise.resolve(client);
+    } catch (error) {
+      console.warn("Supabase client skipped:", error.message);
+      return null;
+    }
   }
   return clientPromise;
 }

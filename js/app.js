@@ -171,10 +171,18 @@ boot().catch((error) => {
    Skip it on localhost: python’s one-request-at-a-time server deadlocks
    while the worker tries to cache the whole shell. */
 const onLoopback = ["localhost", "127.0.0.1"].includes(location.hostname);
-if ("serviceWorker" in navigator && location.protocol.startsWith("http") && !onLoopback) {
-  window.addEventListener("load", () => {
-    navigator.serviceWorker.register("sw.js").catch(() => {
+function registerShellWorker() {
+  // Query string plus updateViaCache none: an old worker that cache-firsts
+  // /sw.js will miss this URL and actually download the new file.
+  navigator.serviceWorker
+    .register("sw.js?v=34", { updateViaCache: "none" })
+    .catch(() => {
       /* offline support is a bonus, never a requirement */
     });
-  });
+}
+
+if ("serviceWorker" in navigator && location.protocol.startsWith("http") && !onLoopback) {
+  // cache-bust.js often starts this module after window "load" already fired.
+  if (document.readyState === "complete") registerShellWorker();
+  else window.addEventListener("load", registerShellWorker);
 }

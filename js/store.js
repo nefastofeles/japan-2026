@@ -207,8 +207,10 @@ export async function allMedia({ limit = 500 } = {}) {
     const media = await mockAllMedia({ limit });
     return [...media, ...local].map(attachDay);
   }
+  // days.cover_media_id also points at media, so PostgREST will not
+  // guess `days(...)` and the Photos page would come back empty.
   const remote = await query("media", (t) =>
-    t.select("*, days(date, city, leg)")
+    t.select("*, days!media_day_id_fkey(date, city, leg)")
       .order("taken_at", { ascending: false, nullsFirst: false })
       .limit(limit)
   );

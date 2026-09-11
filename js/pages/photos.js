@@ -6,6 +6,7 @@ import { allMedia, getLeg } from "../store.js";
 import { isConfigured } from "../config.js";
 import { esc } from "../util.js";
 import { photoGrid, bindPhotoGrid } from "../components/photo-grid.js";
+import { videoEmbed, bindVideos } from "../components/video-embed.js";
 
 const CATEGORIES = [
   ["all", "Everything"],
@@ -18,8 +19,9 @@ export async function photosPage() {
   const photos = media.filter(
     (m) => m.provider !== "youtube" && m.category !== "food" && !m.meal_id
   );
+  const videos = media.filter((m) => m.provider === "youtube");
 
-  if (!photos.length) {
+  if (!photos.length && !videos.length) {
     return `
       <div class="page stack">
         <h1>Photos</h1>
@@ -27,7 +29,9 @@ export async function photosPage() {
           !isConfigured()
             ? `<p class="notice"><strong>Plan mode.</strong> Connect Supabase and the
                gallery fills up as we go.</p>`
-            : `<p class="empty">No photos yet.</p>`
+            : `<p class="empty">No photos yet.</p>
+               <p>If you already posted videos, <a href="refresh.html">tap here once</a>
+               to update this phone.</p>`
         }
       </div>`;
   }
@@ -44,14 +48,29 @@ export async function photosPage() {
     html: `
       <div class="page stack">
         <h1>Photos</h1>
-        <p class="muted">${photos.length} photos across the trip.</p>
-        <div class="reactions" role="group" aria-label="Filter photos">${filters}</div>
-        <div data-gallery>${await photoGrid(photos)}</div>
+        ${
+          videos.length
+            ? `<section>
+                 <h2 class="section-title">Video</h2>
+                 <div class="video-board">${videos
+                   .map((v) => videoEmbed(v.external_id, v.caption))
+                   .join("")}</div>
+               </section>`
+            : ""
+        }
+        ${
+          photos.length
+            ? `<p class="muted">${photos.length} photos across the trip.</p>
+               <div class="reactions" role="group" aria-label="Filter photos">${filters}</div>
+               <div data-gallery>${await photoGrid(photos)}</div>`
+            : ""
+        }
       </div>`,
 
     mount(root) {
       const holder = root.querySelector("[data-gallery]");
-      bindPhotoGrid(holder, photos);
+      if (holder) bindPhotoGrid(holder, photos);
+      bindVideos(root);
 
       root.querySelectorAll("[data-filter]").forEach((button) => {
         button.addEventListener("click", async () => {

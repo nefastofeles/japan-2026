@@ -8,7 +8,7 @@
    Bump CACHE when you change the shell, otherwise phones keep the old copy.
    ========================================================================== */
 
-const CACHE = "japan-2026-v33";
+const CACHE = "japan-2026-v34";
 
 const SHELL = [
   "./",
@@ -35,6 +35,9 @@ const SHELL = [
   "js/auth.js",
   "js/local-posts.js",
   "js/supabase.js",
+  "js/vendor/supabase.js",
+  "js/cache-bust.js",
+  "refresh.html",
   "js/media.js",
   "js/places.js",
   "js/weather.js",
@@ -101,11 +104,20 @@ const SHELL = [
 
 self.addEventListener("install", (event) => {
   event.waitUntil(
-    caches
-      .open(CACHE)
-      .then((cache) => cache.addAll(SHELL))
-      .then(() => self.skipWaiting())
-      .catch(() => self.skipWaiting())
+    (async () => {
+      const cache = await caches.open(CACHE);
+      // cache: reload so an older worker cannot stuff this cache with
+      // yesterday's config.js (empty Supabase keys, no shared album).
+      await Promise.all(
+        SHELL.map(async (path) => {
+          const url = new URL(path, self.location).href;
+          const response = await fetch(url, { cache: "reload" });
+          if (!response.ok) throw new Error(path);
+          await cache.put(url, response);
+        })
+      );
+      await self.skipWaiting();
+    })().catch(() => self.skipWaiting())
   );
 });
 
@@ -126,19 +138,33 @@ self.addEventListener("fetch", (event) => {
 
   const url = new URL(request.url);
   if (url.origin !== self.location.origin) return; // never touch Supabase or YouTube
+  // Phones must be allowed to download a new worker. If we cache-first
+  // sw.js, Chrome on mobile never sees an update.
+  if (url.pathname.endsWith("/sw.js")) return;
 
-  // The itinerary changes often, so prefer the network and fall back to cache.
-  const isData = url.pathname.endsWith(".json");
+  // JS/CSS/JSON change often during the trip. Prefer the network so a
+  // phone is not stuck on empty Supabase keys after we wire the album.
+  const networkFirst =
+    url.pathname.endsWith(".json") ||
+    url.pathname.endsWith(".js") ||
+    url.pathname.endsWith(".css") ||
+    url.pathname.endsWith(".html") ||
+    url.pathname === "/" ||
+    request.mode === "navigate";
 
   event.respondWith(
-    isData
+    networkFirst
       ? fetch(request)
           .then((response) => {
             const copy = response.clone();
             caches.open(CACHE).then((cache) => cache.put(request, copy));
             return response;
           })
-          .catch(() => caches.match(request))
+          .catch(() =>
+            caches
+              .match(request)
+              .then((cached) => cached || caches.match(request, { ignoreSearch: true }))
+          )
       : caches.match(request).then(
           (cached) =>
             cached ||
