@@ -523,13 +523,13 @@
     "missionId": "tok-street-pottery",
     "role": "hero",
     "type": "image",
-    "alt": "Pottery reused in a Tokoname wall or path",
+    "alt": "Ceramic pipes and pot walls along Tokoname’s Pottery Footpath",
     "status": "live",
     "src": "assets/quest/dokanzaka.jpg",
     "source": "Wikimedia Commons",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Yakimono-sanpomichi_Tokoname_(Aichi)_47.jpg",
-    "credit": "Hyppolyte de Saint-Rambert",
-    "license": "CC BY 4.0"
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Yakimonosanpomichi1.JPG",
+    "credit": "Bariston",
+    "license": "CC BY-SA 4.0"
   },
   {
     "id": "media-tokonyan",

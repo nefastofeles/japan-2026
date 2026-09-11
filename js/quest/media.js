@@ -52,8 +52,8 @@ const CHAPTER_ART = {
   },
   tokoname: {
     src: "assets/quest/dokanzaka.jpg",
-    alt: "Ceramic pipes and pottery reused along Tokoname’s Pottery Footpath",
-    credit: "Hyppolyte de Saint-Rambert",
+    alt: "Ceramic pipes and pot walls along Tokoname’s Pottery Footpath",
+    credit: "Bariston",
   },
   finale: {
     src: "assets/quest/ebisu-dusk.jpg",

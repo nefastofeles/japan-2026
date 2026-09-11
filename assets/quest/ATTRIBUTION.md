@@ -64,7 +64,7 @@ Original uploader was Natsumiya09 at en.wikibooks | CC BY 3.0 | hero | live |
 | `media-tsumago-street` | `heroes/magome.jpg` | Wikimedia Commons | 663highland | CC BY-SA 4.0 | hero | live |
 | `media-kosatsu` | `diagrams/kosatsu.svg` | Original Japan Quest diagram | Japan Quest | All rights reserved, family trip site | historical | live |
 | `media-jizo` | `jizo.jpg` | Wikimedia Commons | Vlaemynck Célia | CC BY-SA 4.0 | codex | live |
-| `media-dokanzaka` | `dokanzaka.jpg` | Wikimedia Commons | Hyppolyte de Saint-Rambert | CC BY 4.0 | hero | live |
+| `media-dokanzaka` | `dokanzaka.jpg` | Wikimedia Commons | Bariston | CC BY-SA 4.0 | hero | live |
 | `media-tokonyan` | `tokonyan.jpg` | Wikimedia Commons | Asturio Cantabrio | CC BY-SA 4.0 | reveal | live |
 | `media-maneki-paws` | `diagrams/maneki-paws.svg` | Original Japan Quest diagram | Japan Quest | All rights reserved, family trip site | diagram | live |
 | `media-noborigama` | `diagrams/noborigama.svg` | Original Japan Quest diagram | Japan Quest | All rights reserved, family trip site | diagram | live |
@@ -73,7 +73,7 @@ Original uploader was Natsumiya09 at en.wikibooks | CC BY 3.0 | hero | live |
 | `media-finale-old-new` | `—` | — | — | — | family | family-wait |
 | `media-hida-beef` | `—` | — | — | — | hero | family-wait |
 | `media-ebisu-dusk` | `ebisu-dusk.jpg` | Wikimedia Commons | hiroshi nakano | CC BY 3.0 | journey | live |
-| `media-tokoname-journey` | `dokanzaka.jpg` | Wikimedia Commons | Hyppolyte de Saint-Rambert | CC BY 4.0 | journey | live |
+| `media-tokoname-journey` | `dokanzaka.jpg` | Wikimedia Commons | Bariston | CC BY-SA 4.0 | journey | live |
 | `media-konbini` | `konbini.jpg` | Wikimedia Commons | LERK | CC BY-SA 3.0 | codex | live |
 | `media-ekiben` | `ekiben.jpg` | Wikimedia Commons | User 電車(新幹線)でGO! | CC BY-SA 4.0 | codex | live |
 | `media-sumo` | `sumo-dohyo.jpg` | Wikimedia Commons | Simon Q | CC BY 2.0 | codex | live |
