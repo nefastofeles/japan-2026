@@ -38,13 +38,16 @@
   box-shadow: var(--shadow);
 }
 
-.quest-seal {
+img.quest-seal {
   width: 4.5rem;
   height: 4.5rem;
+  min-width: 4.5rem;
+  min-height: 4.5rem;
   flex-shrink: 0;
   display: block;
   border-radius: 50%;
-  background: var(--paper);
+  background: #1a1610;
+  box-shadow: 0 0 0 2px var(--gold-leaf);
 }
 
 .quest-badge {

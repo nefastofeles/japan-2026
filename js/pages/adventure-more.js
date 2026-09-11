@@ -16,7 +16,7 @@ function sealHtml(item) {
   const src = item.visual?.src;
   const alt = item.visual?.alt || item.name || item.title || "Family seal";
   if (!src) return "";
-  return `<img class="quest-seal" src="${esc(src)}?v=41" alt="${esc(alt)}" width="96" height="96">`;
+  return `<img class="quest-seal" src="${esc(src)}?v=42" alt="${esc(alt)}" width="96" height="96">`;
 }
 
 export { adventureMapPage };

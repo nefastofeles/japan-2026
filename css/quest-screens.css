@@ -156,6 +156,10 @@
   display: block;
 }
 
+.quest-visual[data-chapter="finale"] img {
+  object-position: center 75%;
+}
+
 .quest-visual[data-visual="diagram"] img,
 .quest-visual[data-visual="illustration"] img {
   object-fit: contain;
