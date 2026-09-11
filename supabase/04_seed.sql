@@ -14,7 +14,7 @@ on conflict (id) do update set
 
 -- --------------------------------------------------------------- days
 insert into days (position, kind, date, slug, leg, city, overnight, title, subtitle) values
-  (0, 'pre', null, 'before', 'before', 'Home', null, 'Before We Go', 'Packing, predictions and counting down'),
+  (0, 'pre', null, 'before', 'before', 'Home', null, 'Before We Go', 'Counting down'),
   (1, 'day', '2026-09-15', null, 'inbound', 'Copenhagen to Tokyo', 'In flight', 'Departure Day', 'The long way east'),
   (2, 'day', '2026-09-16', null, 'shinjuku', 'Tokyo', 'Granbell Hotel Shinjuku', 'Arrival, Senso-ji and the First Konbini', 'Landing 07:55. Jet lag day, keep it gentle.'),
   (3, 'day', '2026-09-17', null, 'shinjuku', 'Tokyo', 'Granbell Hotel Shinjuku', 'Tsukiji, Gardens and the Skytree', 'Markets in the morning, the whole city at night'),

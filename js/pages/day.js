@@ -20,7 +20,7 @@ import {
 import { mealBoard } from "../components/meal-card.js";
 import { markdown } from "../components/markdown.js";
 import {
-  weatherLine, watchlistSection, packingSection, weatherTable,
+  weatherLine, weatherTable,
 } from "../components/reference.js";
 import { bindLiveWeather } from "../weather.js";
 import { destinationHero } from "../components/hero-banner.js";
@@ -109,12 +109,13 @@ export async function dayPage({ date }) {
     ? `<div class="day-cover"><img src="${esc(day.coverUrl)}" alt=""></div>`
     : destinationHero(day.leg);
 
-  const photosSection = unattachedPhotos.length
-    ? `<section>
-         <h2 class="section-title">Photos</h2>
-         ${await photoAlbum(unattachedPhotos, { fallbackPlace: day.city })}
-       </section>`
-    : "";
+  const photosSection =
+    day.kind === "pre" || unattachedPhotos.length
+      ? `<section>
+           <h2 class="section-title">Photos</h2>
+           ${await photoAlbum(unattachedPhotos, { fallbackPlace: day.city })}
+         </section>`
+      : "";
 
   const videoSection = videos.length
     ? `<section>
@@ -160,17 +161,13 @@ export async function dayPage({ date }) {
       ${bookings(day.bookings)}
       ${day.special ? `<p class="notice"><strong>A special one.</strong> This is the day the whole trip bends around.</p>` : ""}
 
-      ${daySummary(day)}
+      ${day.kind === "pre" ? "" : daySummary(day)}
       ${storySection}
       ${photosSection}
       ${videoSection}
       ${foodSection}
 
-      ${
-        day.kind === "pre"
-          ? watchlistSection() + weatherTable() + packingSection()
-          : ""
-      }
+      ${day.kind === "pre" ? weatherTable() : ""}
 
       <nav class="day-nav" aria-label="Day navigation">
         ${
