@@ -66,7 +66,7 @@ export async function addPhoto(day, prepared, { category, place, mealId } = {}) 
   if (!id) throw new Error("This day does not exist in the database yet.");
   return uploadImage(prepared, {
     dayId: id,
-    dayDate: day.date,
+    dayDate: day.date || day.slug,
     category,
     place: place || null,
     mealId: mealId || null,

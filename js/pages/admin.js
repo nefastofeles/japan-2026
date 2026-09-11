@@ -72,6 +72,7 @@ function bindAdmin(root) {
     const day = selectedDay();
     let done = 0;
     let failed = 0;
+    let lastError = "";
 
     for (const group of groups) {
       for (const file of group.files) {
@@ -86,12 +87,13 @@ function bindAdmin(root) {
         } catch (error) {
           console.error(file.name, error);
           failed += 1;
+          lastError = error.message || "Upload failed.";
         }
       }
     }
 
     status.textContent = `Uploaded ${done} of ${total}.` +
-      (failed ? ` ${failed} failed, try those again.` : "");
+      (failed ? ` ${failed} failed. ${lastError}` : "");
     batches.querySelectorAll("[data-files]").forEach((input) => {
       input.value = "";
     });

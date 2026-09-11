@@ -166,12 +166,19 @@ export async function exifOf(file) {
 /* ------------------------------------------------------------- resampling */
 
 async function toBitmap(file) {
-  // imageOrientation "from-image" makes the browser apply the EXIF rotation,
-  // so portrait photos are not silently drawn on their side.
+  // imageOrientation "from-image" applies EXIF rotation so portraits stay upright.
   try {
     return await createImageBitmap(file, { imageOrientation: "from-image" });
   } catch {
-    return createImageBitmap(file);
+    const heic = /\.hei[cf]$/i.test(file.name || "") || /^image\/hei[cf]$/.test(file.type || "");
+    if (heic) {
+      throw new Error("Chrome cannot read HEIC. Export the picture as JPEG from Photos first.");
+    }
+    try {
+      return await createImageBitmap(file);
+    } catch {
+      throw new Error("This file is not a photo Chrome can read.");
+    }
   }
 }
 
@@ -195,6 +202,7 @@ async function encode(bitmap, maxEdge, quality) {
   const blob = await new Promise((resolve) =>
     canvas.toBlob(resolve, "image/jpeg", quality)
   );
+  if (!blob) throw new Error("This photo could not be turned into a JPEG.");
   return { blob, ...size };
 }
 
@@ -246,6 +254,7 @@ export async function uploadImage(prepared, { dayId, dayDate, category, caption,
   if (fullResult.error) throw fullResult.error;
   if (thumbResult.error) throw thumbResult.error;
 
+  const takenMs = prepared.takenAt ? Date.parse(prepared.takenAt) : NaN;
   const { error } = await supabase.from("media").insert({
     day_id: dayId,
     meal_id: mealId || null,
@@ -256,9 +265,9 @@ export async function uploadImage(prepared, { dayId, dayDate, category, caption,
     width: prepared.width,
     height: prepared.height,
     bytes: prepared.bytes,
-    taken_at: prepared.takenAt,
-    lat: prepared.lat,
-    lng: prepared.lng,
+    taken_at: Number.isFinite(takenMs) ? new Date(takenMs).toISOString() : null,
+    lat: Number.isFinite(prepared.lat) ? prepared.lat : null,
+    lng: Number.isFinite(prepared.lng) ? prepared.lng : null,
     place: place || null,
     caption: caption || null,
   });

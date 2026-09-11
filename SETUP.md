@@ -79,6 +79,7 @@ whole:
 2. `supabase/02_policies.sql` — row level security
 3. `supabase/03_storage.sql` — the two private buckets
 4. `supabase/04_seed.sql` — the four people and the 24 days
+5. `supabase/06_media_place.sql` — place names on photos (safe if already applied)
 
 Quest Game uses a fifth file, `supabase/05_quest.sql`. Run it when you
 want shared Quest progress across phones. It adds Quest-only tables and

@@ -61,7 +61,8 @@ function photoSection() {
       <h2 class="section-title">Photos</h2>
       <p class="small muted">
         Add a place, pick the photos from there, then add another place if you
-        need to. Location from the iPhone is kept and shown on the map link.
+        need to. On a Mac, export iPhone photos as JPEG first — Chrome cannot
+        read HEIC. Location from the iPhone is kept and shown on the map link.
         Food photos belong in the meal section below.
       </p>
       <div class="stack" data-photo-batches>${photoBatchMarkup(false)}</div>
