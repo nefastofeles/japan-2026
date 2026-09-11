@@ -214,7 +214,7 @@ function registerShellWorker() {
   // Query string plus updateViaCache none: an old worker that cache-firsts
   // /sw.js will miss this URL and actually download the new file.
   navigator.serviceWorker
-    .register("sw.js?v=39", { updateViaCache: "none" })
+    .register("sw.js?v=40", { updateViaCache: "none" })
     .catch(() => {
       /* offline support is a bonus, never a requirement */
     });

@@ -9,6 +9,7 @@
 
 import { getDays, getPeople } from "../store.js";
 import { esc } from "../util.js";
+import { albumLibraryMarkup } from "./admin-album.js";
 
 function dayOptions(selected) {
   return getDays()
@@ -216,6 +217,7 @@ export function adminForms(defaultDay) {
       </div>
 
       ${photoSection()}
+      ${albumLibraryMarkup()}
       ${storySection()}
       ${videoSection()}
       ${bestOfSection()}

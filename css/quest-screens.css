@@ -156,13 +156,20 @@
   display: block;
 }
 
+.quest-visual[data-visual="diagram"] img,
+.quest-visual[data-visual="illustration"] img {
+  object-fit: contain;
+  object-position: center;
+  background: var(--paper-raised);
+}
+
 .quest-card .quest-visual {
   aspect-ratio: 16 / 9;
 }
 
 .quest-entry .quest-visual {
   aspect-ratio: 3 / 2;
-  max-height: 5.25rem;
+  max-height: 7.5rem;
 }
 
 .quest-visual--mark {

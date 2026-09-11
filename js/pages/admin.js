@@ -15,6 +15,7 @@ import { isAdmin, signOut, getSession } from "../auth.js";
 import { todayISO, youtubeId } from "../util.js";
 import { prepareImage } from "../media.js";
 import { adminForms, photoBatchMarkup } from "./admin-forms.js";
+import { bindAlbumLibrary, refreshAlbumLibrary } from "./admin-album.js";
 import { loginPage } from "./login.js";
 import { resetQuestState } from "../quest/reset.js";
 import { uploadPhotoFiles } from "../components/photo-upload.js";
@@ -108,6 +109,7 @@ function bindAdmin(root) {
     batches.querySelectorAll("[data-file-list]").forEach((note) => {
       note.textContent = "";
     });
+    await refreshAlbumLibrary(root);
   });
 
   /* -------------------------------------------------------------- video */
@@ -125,6 +127,7 @@ function bindAdmin(root) {
       status.textContent = "Video added.";
       pick("[data-yt]").value = "";
       pick("[data-ytcap]").value = "";
+      await refreshAlbumLibrary(root);
     } catch (error) {
       status.textContent = error.message;
     }
@@ -211,6 +214,7 @@ function bindAdmin(root) {
         photos,
       });
       status.textContent = "Meal saved.";
+      await refreshAlbumLibrary(root);
       pick("[data-place]").value = "";
       pick("[data-dishes]").value = "";
       pick("[data-price]").value = "";
@@ -222,6 +226,8 @@ function bindAdmin(root) {
       status.textContent = error.message;
     }
   });
+
+  bindAlbumLibrary(root);
 
   pick("[data-reset-quest]").addEventListener("click", async () => {
     const status = pick("[data-reset-status]");

@@ -1,0 +1,76 @@
+/* Sticky Quest HUD — fragments, family XP, next reward.
+   Uses the same numbers as the rest of the game. Hidden in Memory mode. */
+
+.quest-sticky {
+  position: sticky;
+  top: var(--header-height);
+  z-index: 15;
+  padding-bottom: var(--sp-2);
+  background: var(--hinomaru);
+}
+
+html[data-quest]:has(.quest-page--memory) .quest-sticky {
+  background: #5c6570;
+}
+
+.quest-sticky .quest-tabs {
+  padding: var(--sp-2) 0;
+}
+
+.quest-hud {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 0.4rem 0.65rem;
+  min-height: var(--tap);
+  padding: 0.4rem 0.8rem;
+  margin: 0;
+  overflow: hidden;
+  border-radius: 999px;
+  background: var(--paper-raised);
+  color: var(--ink);
+  text-decoration: none;
+  box-shadow: var(--shadow);
+  font-size: 1.125rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.quest-hud__chapter {
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  max-width: 14ch;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.quest-hud__dots {
+  color: var(--gold-leaf);
+  letter-spacing: 0.12em;
+  white-space: nowrap;
+}
+
+.quest-hud__frag {
+  white-space: nowrap;
+}
+
+.quest-hud__xp {
+  margin-left: auto;
+  color: var(--hinomaru-deep);
+  white-space: nowrap;
+}
+
+.quest-hud__next {
+  color: var(--hinomaru-deep);
+  max-width: 14ch;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@media (max-width: 40rem) {
+  .quest-hud__frag { display: none; }
+  .quest-hud__next { max-width: 9ch; }
+  .quest-hud { gap: 0.3rem 0.45rem; padding: 0.35rem 0.7rem; }
+}

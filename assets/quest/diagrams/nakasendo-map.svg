@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="A simple inland road between Edo and Kyoto, with post towns marked">
+  <rect width="1600" height="900" fill="#FAF8F3"/>
+  <rect x="0" y="0" width="1600" height="16" fill="#BC002D"/>
+  <rect x="0" y="884" width="1600" height="16" fill="#BC002D"/>
+  
+        <circle cx="220" cy="620" r="24" fill="#BC002D"/>
+        <circle cx="1380" cy="220" r="24" fill="#BC002D"/>
+        <path d="M220 620 C 480 580, 700 400, 980 360 C 1160 330, 1280 250, 1380 220" fill="none" stroke="#1A1610" stroke-width="10"/>
+        <circle cx="700" cy="430" r="14" fill="#E6B422"/>
+        <circle cx="1080" cy="340" r="14" fill="#E6B422"/>
+        <text x="160" y="700" font-size="30" font-family="Georgia, serif">Edo</text>
+        <text x="1320" y="180" font-size="30" font-family="Georgia, serif">Kyoto</text>
+        <text x="640" y="490" font-size="24" font-family="Georgia, serif">post towns</text>
+        
+  
+</svg>

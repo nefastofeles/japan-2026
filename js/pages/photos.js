@@ -47,7 +47,7 @@ export async function photosPage() {
             ? `<p class="notice"><strong>Plan mode.</strong> Connect Supabase and the
                gallery fills up as we go.</p>`
             : `<p class="empty">No photos yet in the shared album.</p>
-               <p>Add them from a day page or Admin. They will then show here
+               <p>Add them from Admin. They will then show here
                on every phone after you sign in.</p>`
         }
       </div>`;

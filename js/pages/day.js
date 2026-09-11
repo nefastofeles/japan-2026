@@ -2,8 +2,8 @@
    Day page
    --------------------------------------------------------------------------
    One template for all 24 pages. The pre-trip and post-trip pages are just
-   days with kind "pre" and "post", so they get the same layout, the same
-   editor and the same upload flow with no extra code paths.
+   days with kind "pre" and "post". Photos are added in Admin, then they
+   show here for anyone signed in.
    ========================================================================== */
 
 import {
@@ -25,7 +25,6 @@ import {
 import { bindLiveWeather } from "../weather.js";
 import { destinationHero } from "../components/hero-banner.js";
 import { bestOfSection } from "../components/best-of.js";
-import { photoUploadMarkup, bindPhotoUpload } from "../components/photo-upload.js";
 import { albumLoadError, albumSharedNote } from "../components/album-notice.js";
 
 function header(day) {
@@ -126,7 +125,6 @@ export async function dayPage({ date }) {
            ${albumError ? albumLoadError(albumError) : ""}
            ${albumError ? "" : albumSharedNote()}
            ${await photoAlbum(unattachedPhotos, { fallbackPlace: day.city })}
-           ${photoUploadMarkup()}
          </section>`;
 
   const videoSection = videos.length
@@ -208,7 +206,6 @@ export async function dayPage({ date }) {
       centreActiveChip();
       bindVideos(root);
       bindPhotoGrid(root, unattachedPhotos);
-      bindPhotoUpload(root, day);
       bindLiveWeather(root);
     },
   };

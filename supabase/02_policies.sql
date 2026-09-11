@@ -72,6 +72,14 @@ create policy media_insert on media
   for insert to anon, authenticated
   with check (true);
 
+-- The site gate is a browser password, not a Supabase user, so Admin
+-- delete has to match insert: the anon key can remove a miss. The
+-- website itself is private and noindex.
+drop policy if exists media_delete on media;
+create policy media_delete on media
+  for delete to anon, authenticated
+  using (true);
+
 -- --------------------------------------------- comments: any signed-in user
 -- may leave one; only the admin may edit or delete.
 drop policy if exists comments_insert on comments;

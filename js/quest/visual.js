@@ -8,19 +8,24 @@ import { listenBar } from "../components/quest-chrome.js";
 import { typeIcon } from "../components/quest-icons.js";
 import { resolveVisual } from "./media.js";
 
-export function visualHtml(item, quest, { compact } = {}) {
-  const picture = resolveVisual(item, quest);
+export function visualHtml(item, quest, { compact, complete } = {}) {
+  const picture = resolveVisual(item, quest, { complete });
   const chapterId = item?.chapterId || "";
   const kind = item?.type || "quest";
   const extra = compact ? " quest-visual--card" : "";
   if (picture?.src) {
     const mediaKind = picture.type || "image";
+    const remote = /^https?:\/\//.test(picture.src) || picture.src.startsWith("blob:");
+    const src = remote || picture.src.includes("?")
+      ? picture.src
+      : `${picture.src}?v=40`;
     return `
       <figure class="quest-visual${extra}" data-visual="${esc(mediaKind)}" data-chapter="${esc(chapterId)}">
-        <img src="${esc(picture.src)}" alt="${esc(picture.alt || "")}"
-             width="800" height="450">
+        <img src="${esc(src)}" alt="${esc(picture.alt || "")}"
+             width="800" height="450"
+             loading="${compact ? "lazy" : "eager"}" decoding="async">
         ${
-          picture.credit
+          !compact && picture.credit
             ? `<figcaption class="quest-visual__credit">${esc(picture.credit)}</figcaption>`
             : ""
         }

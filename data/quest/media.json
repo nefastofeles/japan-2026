@@ -7,8 +7,12 @@
     "role": "hero",
     "type": "diagram",
     "alt": "Simple illustrated route from Copenhagen to Tokyo",
-    "status": "needed",
-    "notes": "Orientation only. No spoilers."
+    "status": "live",
+    "notes": "Orientation only. No spoilers.",
+    "source": "Original Japan Quest diagram",
+    "license": "All rights reserved, family trip site",
+    "credit": "Japan Quest",
+    "src": "assets/quest/diagrams/cph-tokyo-route.svg"
   },
   {
     "id": "media-godzilla-clue",
@@ -16,10 +20,14 @@
     "moduleId": "tokyo-shinjuku",
     "missionId": "shi-godzilla",
     "role": "clue",
-    "type": "image",
+    "type": "illustration",
     "alt": "A silhouette of a huge creature above a city street, face hidden",
-    "status": "needed",
-    "notes": "Teaser only. Do not show Godzilla clearly before the find."
+    "status": "live",
+    "notes": "Teaser only. Do not show Godzilla clearly before the find.",
+    "source": "Original Japan Quest diagram",
+    "license": "All rights reserved, family trip site",
+    "credit": "Japan Quest",
+    "src": "assets/quest/diagrams/godzilla-silhouette.svg"
   },
   {
     "id": "media-godzilla-reveal",
@@ -29,7 +37,12 @@
     "role": "reveal",
     "type": "image",
     "alt": "The Godzilla head on the Shinjuku Toho Building in Kabukicho",
-    "status": "needed"
+    "status": "live",
+    "src": "assets/quest/godzilla-reveal.jpg",
+    "source": "Wikimedia Commons",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:%E6%AD%8C%E8%88%9E%E4%BC%8E%E7%94%BATOHO%E3%82%B7%E3%83%8D%E3%83%9E%E3%82%BA%E3%81%AE%E3%82%B4%E3%82%B8%E3%83%A9.jpg",
+    "credit": "Suginami",
+    "license": "CC BY-SA 4.0"
   },
   {
     "id": "media-shibuya-aerial",
@@ -39,8 +52,13 @@
     "role": "reveal",
     "type": "image",
     "alt": "Aerial view of Shibuya Scramble Crossing packed with pedestrians",
-    "status": "needed",
-    "notes": "Highest-priority media for the live shortlist. Show only after the family makes a prediction."
+    "status": "live",
+    "notes": "Highest-priority media for the live shortlist. Show only after the family makes a prediction.",
+    "src": "assets/quest/shibuya-aerial.jpg",
+    "source": "Wikimedia Commons",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Shibuya_Crossing%2C_Aerial.jpg",
+    "credit": "David Kernan",
+    "license": "CC BY 4.0"
   },
   {
     "id": "media-hachiko",
@@ -50,8 +68,13 @@
     "role": "historical",
     "type": "image",
     "alt": "The Hachiko memorial statue at Shibuya Station",
-    "status": "needed",
-    "notes": "Highest-priority media for the live shortlist. Story image for Hachiko."
+    "status": "live",
+    "notes": "Highest-priority media for the live shortlist. Story image for Hachiko.",
+    "src": "assets/quest/hachiko.jpg",
+    "source": "Wikimedia Commons",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:The_Hachiko_statue_at_Shibuya%2C_Tokyo%2C_Japan.jpg",
+    "credit": "Joli Rumi",
+    "license": "CC BY-SA 4.0"
   },
   {
     "id": "media-edo-castle-compare",
@@ -61,8 +84,12 @@
     "role": "historical",
     "type": "diagram",
     "alt": "Edo Castle grounds compared with the green Imperial Palace site in modern Tokyo",
-    "status": "needed",
-    "notes": "Highest-priority media for the live shortlist. Imperial Palace / Edo Castle comparison."
+    "status": "live",
+    "notes": "Highest-priority media for the live shortlist. Imperial Palace / Edo Castle comparison.",
+    "source": "Original Japan Quest diagram",
+    "license": "All rights reserved, family trip site",
+    "credit": "Japan Quest",
+    "src": "assets/quest/diagrams/edo-castle-compare.svg"
   },
   {
     "id": "media-skytree-exterior",
@@ -72,8 +99,13 @@
     "role": "hero",
     "type": "image",
     "alt": "Tokyo Skytree standing above the city",
-    "status": "needed",
-    "notes": "Do not use Tokyo Tower photos by mistake."
+    "status": "live",
+    "notes": "Do not use Tokyo Tower photos by mistake.",
+    "src": "assets/quest/skytree-exterior.jpg",
+    "source": "Wikimedia Commons",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Tokyo_Sky_Tree_2012.JPG",
+    "credit": "Kakidai",
+    "license": "CC BY-SA 3.0"
   },
   {
     "id": "media-skytree-structure",
@@ -83,8 +115,12 @@
     "role": "diagram",
     "type": "diagram",
     "alt": "Simple diagram of a tall tower that can sway, with a central column",
-    "status": "needed",
-    "notes": "Highest-priority media for the live shortlist. Skytree damping diagram. Keep it simple. Copy is verified: modern damping, not a pagoda copy."
+    "status": "live",
+    "notes": "Highest-priority media for the live shortlist. Skytree damping diagram. Keep it simple. Copy is verified: modern damping, not a pagoda copy.",
+    "source": "Original Japan Quest diagram",
+    "license": "All rights reserved, family trip site",
+    "credit": "Japan Quest",
+    "src": "assets/quest/diagrams/skytree-damping.svg"
   },
   {
     "id": "media-kaminarimon-lantern",
@@ -93,9 +129,14 @@
     "missionId": "asa-thunder-gate",
     "role": "clue",
     "type": "image",
-    "alt": "The huge red lantern hanging in Kaminarimon, seen from below",
-    "status": "needed",
-    "notes": "Highest-priority media for the live shortlist. Kaminarimon lantern underside/detail. Do not spoil the missed detail."
+    "alt": "Kaminarimon, the Thunder Gate at Sensō-ji, seen from the street",
+    "status": "live",
+    "notes": "Street view of the gate. Underside lantern detail stays for the reveal on site.",
+    "src": "assets/quest/kaminarimon-lantern.jpg",
+    "source": "Wikimedia Commons",
+    "credit": "Daderot",
+    "license": "Public domain",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Kaminarimon_%28outer_gate%29%2C_Sensoji_Temple%2C_Akakusa%2C_Tokyo.jpg"
   },
   {
     "id": "media-asakusa-historic",
@@ -109,7 +150,8 @@
     "credit": "LMP 2001",
     "license": "CC BY-SA 4.0",
     "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sensoji_Temple_(Asakusa,_Tokyo,_Japan)_2023-07-02.jpg",
-    "status": "candidate"
+    "status": "live",
+    "source": "Wikimedia Commons"
   },
   {
     "id": "media-meiji-forest",
@@ -119,8 +161,13 @@
     "role": "hero",
     "type": "image",
     "alt": "Tall trees on the path into Meiji Jingu",
-    "status": "needed",
-    "notes": "Highest-priority media for the live shortlist. Meiji forest image."
+    "status": "live",
+    "notes": "Highest-priority media for the live shortlist. Meiji forest image.",
+    "src": "assets/quest/meiji-forest.jpg",
+    "source": "Wikimedia Commons",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Meiji-jingu-pathway.jpg",
+    "credit": "Nightcrafter",
+    "license": "CC BY-SA 4.0"
   },
   {
     "id": "media-harajuku-pop",
@@ -130,8 +177,13 @@
     "role": "clue",
     "type": "image",
     "alt": "A busy Harajuku street with bright shop signs",
-    "status": "needed",
-    "notes": "Orientation. Family photos are the real pair."
+    "status": "live",
+    "notes": "Orientation. Family photos are the real pair.",
+    "src": "assets/quest/harajuku-pop.jpg",
+    "source": "Wikimedia Commons",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Takeshita_Street.jpg",
+    "credit": "Syced",
+    "license": "CC0"
   },
   {
     "id": "media-akihabara-electronics",
@@ -141,8 +193,13 @@
     "role": "historical",
     "type": "image",
     "alt": "Akihabara shop displays of electronics and parts, not only characters",
-    "status": "needed",
-    "notes": "Highest-priority media for the live shortlist. Electronics-history comparison."
+    "status": "live",
+    "notes": "Highest-priority media for the live shortlist. Electronics-history comparison.",
+    "src": "assets/quest/akihabara-electronics.jpg",
+    "source": "Wikimedia Commons",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Akihabara_at_night.jpg",
+    "credit": "Stéfan Le Dû from Nantes, France",
+    "license": "CC BY-SA 2.0"
   },
   {
     "id": "media-tsukiji-seafood",
@@ -152,7 +209,12 @@
     "role": "hero",
     "type": "image",
     "alt": "Fresh seafood laid out at an outer-market stall",
-    "status": "needed"
+    "status": "live",
+    "src": "assets/quest/tsukiji-seafood.jpg",
+    "source": "Wikimedia Commons",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Tsukiji_fish_market.jpg",
+    "credit": "Bernard Gagnon",
+    "license": "CC BY-SA 3.0"
   },
   {
     "id": "media-tsukiji-reclaimed",
@@ -162,8 +224,12 @@
     "role": "historical",
     "type": "diagram",
     "alt": "Simple map showing Tokyo Bay filled to make new land at Tsukiji",
-    "status": "needed",
-    "notes": "Highest-priority media for the live shortlist. Reclaimed-land historical map/diagram."
+    "status": "live",
+    "notes": "Highest-priority media for the live shortlist. Reclaimed-land historical map/diagram.",
+    "source": "Original Japan Quest diagram",
+    "license": "All rights reserved, family trip site",
+    "credit": "Japan Quest",
+    "src": "assets/quest/diagrams/tsukiji-reclaimed.svg"
   },
   {
     "id": "media-teamlab-teaser",
@@ -173,8 +239,12 @@
     "role": "hero",
     "type": "image",
     "alt": "Soft abstract light, no identifiable teamLab room",
-    "status": "needed",
-    "notes": "Teaser only. No spoilers of rooms or works."
+    "status": "live",
+    "notes": "Teaser only. No spoilers of rooms or works.",
+    "source": "Original Japan Quest diagram",
+    "license": "All rights reserved, family trip site",
+    "credit": "Japan Quest",
+    "src": "assets/quest/diagrams/teamlab-teaser.svg"
   },
   {
     "id": "media-brand-quiz",
@@ -184,8 +254,12 @@
     "role": "diagram",
     "type": "diagram",
     "alt": "A grid of brand marks for a family quiz: Japanese and not Japanese mixed",
-    "status": "needed",
-    "notes": "Highest-priority media for the live shortlist. Japanese-brand logo quiz. Do not copy trademarked logos into git until license is clear."
+    "status": "live",
+    "notes": "Highest-priority media for the live shortlist. Japanese-brand logo quiz. Do not copy trademarked logos into git until license is clear.",
+    "source": "Original Japan Quest diagram",
+    "license": "All rights reserved, family trip site",
+    "credit": "Japan Quest",
+    "src": "assets/quest/diagrams/brand-quiz.svg"
   },
   {
     "id": "media-shinkansen-nose",
@@ -195,7 +269,12 @@
     "role": "hero",
     "type": "image",
     "alt": "The long nose of a shinkansen at a platform",
-    "status": "needed"
+    "status": "live",
+    "src": "assets/quest/shinkansen-nose.jpg",
+    "source": "Wikimedia Commons",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Shinkansen_N700.jpg",
+    "credit": "Artem.G",
+    "license": "CC BY 4.0"
   },
   {
     "id": "media-shinkansen-tunnel",
@@ -205,7 +284,11 @@
     "role": "diagram",
     "type": "diagram",
     "alt": "Simple diagram of a fast train entering a tunnel and the air being squeezed",
-    "status": "needed"
+    "status": "live",
+    "source": "Original Japan Quest diagram",
+    "license": "All rights reserved, family trip site",
+    "credit": "Japan Quest",
+    "src": "assets/quest/diagrams/shinkansen-tunnel.svg"
   },
   {
     "id": "media-sushi-types",
@@ -215,8 +298,12 @@
     "role": "diagram",
     "type": "diagram",
     "alt": "Five plates: nigiri, maki, gunkan, temaki, and sashimi",
-    "status": "needed",
-    "notes": "Highest-priority media for the live shortlist. Sushi-type visual quiz."
+    "status": "live",
+    "notes": "Highest-priority media for the live shortlist. Sushi-type visual quiz.",
+    "source": "Original Japan Quest diagram",
+    "license": "All rights reserved, family trip site",
+    "credit": "Japan Quest",
+    "src": "assets/quest/diagrams/sushi-types.svg"
   },
   {
     "id": "media-sampuru",
@@ -226,6 +313,11 @@
     "role": "hero",
     "type": "image",
     "alt": "A restaurant window display of plastic food that looks real",
-    "status": "needed"
+    "status": "live",
+    "src": "assets/quest/sampuru.jpg",
+    "source": "Wikimedia Commons",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Plastic_food_for_restaurant_displays_-_Kappabashi_Kitchen_Town_in_Taito_Ward_%2850119191636%29.jpg",
+    "credit": "Real Estate Japan from Tokyo, Japan",
+    "license": "CC BY 2.0"
   }
 ]

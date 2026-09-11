@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="Edo Castle grounds compared with the green Imperial Palace site in modern Tokyo">
+  <rect width="1600" height="900" fill="#FAF8F3"/>
+  <rect x="0" y="0" width="1600" height="16" fill="#BC002D"/>
+  <rect x="0" y="884" width="1600" height="16" fill="#BC002D"/>
+  
+        <rect x="80" y="140" width="680" height="620" fill="#EFE7D6" stroke="#1A1610" stroke-width="3"/>
+        <rect x="840" y="140" width="680" height="620" fill="#D7E4D0" stroke="#1A1610" stroke-width="3"/>
+        <polygon points="250,520 420,280 590,520" fill="#8C6A3A"/>
+        <rect x="380" y="470" width="80" height="90" fill="#5C4030"/>
+        <circle cx="1180" cy="430" r="160" fill="#6F8F62"/>
+        <rect x="1120" y="400" width="120" height="70" fill="#C9B48A"/>
+        <text x="160" y="200" font-size="34" font-family="Georgia, serif" fill="#1A1610">Edo Castle</text>
+        <text x="920" y="200" font-size="34" font-family="Georgia, serif" fill="#1A1610">Imperial gardens</text>
+        
+  <text x="48" y="860" font-family="Georgia, serif" font-size="26" fill="#1A1610">Same ground. Stone then, trees now.</text>
+</svg>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="A narrow street front that hides a long house behind">
+  <rect width="1600" height="900" fill="#FAF8F3"/>
+  <rect x="0" y="0" width="1600" height="16" fill="#BC002D"/>
+  <rect x="0" y="884" width="1600" height="16" fill="#BC002D"/>
+  
+        <rect x="80" y="160" width="220" height="560" fill="#C9B48A" stroke="#1A1610" stroke-width="4"/>
+        <rect x="110" y="220" width="160" height="120" fill="#7A1F2B"/>
+        <rect x="300" y="280" width="1100" height="440" fill="#E6D7B8" stroke="#1A1610" stroke-width="4"/>
+        <line x1="300" y1="400" x2="1400" y2="400" stroke="#1A1610" stroke-width="3"/>
+        <text x="120" y="780" font-size="28" font-family="Georgia, serif">street</text>
+        <text x="820" y="250" font-size="28" font-family="Georgia, serif">the house goes back and back</text>
+        
+  
+</svg>

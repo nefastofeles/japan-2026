@@ -1,9 +1,8 @@
 /* ==========================================================================
-   Add photos to the day you are looking at.
+   Admin photo batches
    --------------------------------------------------------------------------
-   Admin is in the footer and easy to miss. The day page is where photos
-   belong, so the picker lives here too. Same pipeline as Admin: resize in
-   the browser, then storage + a media row.
+   Shared-album uploads live on the Admin page only. Day pages are
+   consumption: they show photos that have already been saved.
    ========================================================================== */
 
 import { prepareImage } from "../media.js";

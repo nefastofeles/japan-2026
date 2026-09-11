@@ -70,6 +70,7 @@ export async function adventureMapPage() {
           const on = moduleEligible(pack, state, { date: today });
           return `
             <article class="quest-card ${on ? "" : "quest-card--locked"}">
+              ${visualHtml({ chapterId: current.id, moduleId: pack.id, type: "story" }, quest, { compact: true })}
               <div class="quest-card__body">
               <p class="quest-kicker">${pack.optional ? "Optional" : "Core"} · ${esc(pack.activation || "core")}</p>
               <h3>${esc(pack.title)}</h3>
@@ -170,7 +171,7 @@ export async function adventureCodexPage() {
                   const findable = discoveryForCodex(quest, entry.id);
                   return `
                     <article class="quest-entry ${open ? "" : "quest-entry--locked"}">
-                      ${visualHtml({ chapterId: entry.chapterId, type: "discovery" }, quest, { compact: true })}
+                      ${visualHtml(entry, quest, { compact: true, complete: open })}
                       <div class="quest-entry__body">
                       <h3>${
                         open

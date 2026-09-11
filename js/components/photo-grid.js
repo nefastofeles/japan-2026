@@ -29,7 +29,15 @@ function isLocalPath(path) {
 function thumbSrc(photo) {
   const path = photo.thumb_path || photo.storage_path || "";
   if (isLocalPath(path) || photo.provider === "local") return path;
-  return publicUrl("thumbs", path);
+  return publicUrl("thumbs", path, photo.updated_at || photo.created_at);
+}
+
+function photoImg(photo, alt) {
+  const thumb = thumbSrc(photo);
+  if (!thumb) return "";
+  // Grids stay on the 800px thumb. The 2000px file is only for the lightbox.
+  return `<img src="${esc(thumb)}" alt="${esc(alt)}"
+               width="800" height="800" loading="lazy" decoding="async">`;
 }
 
 export async function photoGrid(items, { emptyMessage = "No photos yet.", bindable = true } = {}) {
@@ -38,17 +46,12 @@ export async function photoGrid(items, { emptyMessage = "No photos yet.", bindab
 
   const cells = photos
     .map((photo, index) => {
-      const url = thumbSrc(photo);
       const alt = photo.caption || "Trip photo";
       const badge = photo.category === "food" ? "🍜" : "";
 
       return `<button class="photo-grid__item" data-index="${index}"
                       aria-label="${esc(alt)}">
-                ${
-                  url
-                    ? `<img src="${esc(url)}" alt="${esc(alt)}" loading="lazy" decoding="async">`
-                    : ""
-                }
+                ${photoImg(photo, alt)}
                 ${badge ? `<span class="photo-grid__badge">${badge}</span>` : ""}
               </button>`;
     })
@@ -91,17 +94,12 @@ export async function photoAlbum(items, { fallbackPlace = "" } = {}) {
 
   const cards = photos
     .map((photo, index) => {
-      const url = thumbSrc(photo);
       const alt = photo.caption || photo.place || "Trip photo";
       return `
         <figure class="photo-card">
           <button class="photo-card__shot" data-index="${index}"
                   aria-label="${esc(alt)}">
-            ${
-              url
-                ? `<img src="${esc(url)}" alt="${esc(alt)}" loading="lazy" decoding="async">`
-                : ""
-            }
+            ${photoImg(photo, alt)}
           </button>
           ${photo.caption ? `<figcaption class="photo-card__caption">${esc(photo.caption)}</figcaption>` : ""}
           ${photoInfo(photo, fallbackPlace)}

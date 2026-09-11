@@ -8,7 +8,7 @@
    ========================================================================== */
 
 import { isConfigured } from "./config.js";
-import { AlbumError, albumInsert } from "./album.js";
+import { AlbumError, albumInsert, albumDeleteRows, albumRemoveFiles } from "./album.js";
 import { uploadImage } from "./media.js";
 import { dayId } from "./store.js";
 import {
@@ -100,4 +100,19 @@ export async function addMeal(day, { slot, placeName, priceYen, dishes, ratings,
     });
   }
   return meal.id;
+}
+
+export async function deleteMedia(item) {
+  if (!isConfigured()) {
+    throw new AlbumError("The online album is not connected yet.");
+  }
+  if (!item?.id) throw new AlbumError("That photo is missing.");
+  const paths = [item.storage_path, item.thumb_path].filter(Boolean);
+  if (paths.length && item.provider === "supabase") {
+    await Promise.all([
+      albumRemoveFiles("photos", paths),
+      albumRemoveFiles("thumbs", paths),
+    ]);
+  }
+  await albumDeleteRows("media", `id=eq.${encodeURIComponent(item.id)}`);
 }

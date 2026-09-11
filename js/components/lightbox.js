@@ -19,7 +19,7 @@ async function fullUrl(item) {
   if (item.provider === "local") return path;
   if (!item.storage_path) return publicUrl("thumbs", item.thumb_path);
   if (fullCache.has(item.storage_path)) return fullCache.get(item.storage_path);
-  const url = publicUrl("photos", item.storage_path);
+  const url = publicUrl("photos", item.storage_path, item.updated_at || item.created_at);
   fullCache.set(item.storage_path, url);
   return url;
 }

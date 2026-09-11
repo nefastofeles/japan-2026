@@ -73,8 +73,9 @@ function encodeObjectPath(path) {
     .join("/");
 }
 
-/** Direct URL for a stored JPEG. Works in every browser without signing. */
-export function publicUrl(bucket, path) {
+/** Direct URL for a stored JPEG. Works in every browser without signing.
+    `version` busts a year-long cache when an admin replaces a file. */
+export function publicUrl(bucket, path, version) {
   if (!path) return "";
   if (
     path.startsWith("blob:") ||
@@ -83,7 +84,9 @@ export function publicUrl(bucket, path) {
   ) {
     return path;
   }
-  return `${SUPABASE_URL}/storage/v1/object/public/${bucket}/${encodeObjectPath(path)}`;
+  const url = `${SUPABASE_URL}/storage/v1/object/public/${bucket}/${encodeObjectPath(path)}`;
+  if (!version) return url;
+  return `${url}?v=${encodeURIComponent(String(version))}`;
 }
 
 async function parseError(response, fallback) {
@@ -140,4 +143,25 @@ export async function albumUpload(bucket, path, blob, contentType) {
   );
   if (!response.ok) throw await parseError(response, `Could not upload to ${bucket}.`);
   return path;
+}
+
+export async function albumDeleteRows(table, query) {
+  requireAlbum();
+  const response = await fetch(`${SUPABASE_URL}/rest/v1/${table}?${query}`, {
+    method: "DELETE",
+    headers: restHeaders({ Prefer: "return=minimal" }),
+  });
+  if (!response.ok) throw await parseError(response, `Could not delete from ${table}.`);
+}
+
+export async function albumRemoveFiles(bucket, paths) {
+  requireAlbum();
+  const wanted = [...new Set(paths.filter(Boolean))];
+  if (!wanted.length) return;
+  const response = await fetch(`${SUPABASE_URL}/storage/v1/object/${bucket}`, {
+    method: "DELETE",
+    headers: restHeaders({ "Content-Type": "application/json" }),
+    body: JSON.stringify({ prefixes: wanted }),
+  });
+  if (!response.ok) throw await parseError(response, `Could not remove files from ${bucket}.`);
 }
