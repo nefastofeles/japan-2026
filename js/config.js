@@ -10,8 +10,9 @@
    is protected by row level security. NEVER put the service_role key here.
    ========================================================================== */
 
-export const SUPABASE_URL = "";
-export const SUPABASE_ANON_KEY = "";
+export const SUPABASE_URL = "https://kblmmdsdffnkfmoxnvxq.supabase.co";
+export const SUPABASE_ANON_KEY =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtibG1tZHNkZmZua2Ztb3hudnhxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODc1ODY3OTMsImV4cCI6MjEwMzE2Mjc5M30.do-ENOHdel9Zdy82OXTjxWbSx1TjcgwVf3KcHVoI-zU";
 
 /** True once Supabase has been configured. */
 export function isConfigured() {

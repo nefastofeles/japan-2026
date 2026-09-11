@@ -1,9 +1,13 @@
 -- Japan 2026 - row level security
 -- Run this second.
 --
--- The rules in one sentence: anyone signed in can read everything and can leave
--- a comment or a reaction; only the admin can create, change or delete content.
--- Nothing is readable when signed out.
+-- The family login wall is off, so the public anon key must be able to
+-- read the album and Admin must be able to post without a Supabase
+-- session. Tighten this back to authenticated-only when the gate
+-- returns. The GitHub repo is private and the site is noindex.
+--
+-- Update and delete of journal rows still go through is_admin() for
+-- signed-in facilitators.
 
 alter table people       enable row level security;
 alter table days         enable row level security;
@@ -16,7 +20,7 @@ alter table comments     enable row level security;
 alter table reactions    enable row level security;
 
 -- ------------------------------------------------------------ read: anyone
--- signed in (that is: you, or the shared family viewer account)
+-- with the site (anon key) or a signed-in family session
 do $$
 declare t text;
 begin
@@ -25,7 +29,7 @@ begin
   ] loop
     execute format('drop policy if exists %I on %I', t || '_read', t);
     execute format(
-      'create policy %I on %I for select to authenticated using (true)',
+      'create policy %I on %I for select to anon, authenticated using (true)',
       t || '_read', t
     );
   end loop;
@@ -46,6 +50,27 @@ begin
     );
   end loop;
 end $$;
+
+-- Admin posting while nobody is signed in to Supabase.
+drop policy if exists entries_insert on entries;
+create policy entries_insert on entries
+  for insert to anon, authenticated
+  with check (true);
+
+drop policy if exists meals_insert on meals;
+create policy meals_insert on meals
+  for insert to anon, authenticated
+  with check (true);
+
+drop policy if exists meal_ratings_insert on meal_ratings;
+create policy meal_ratings_insert on meal_ratings
+  for insert to anon, authenticated
+  with check (true);
+
+drop policy if exists media_insert on media;
+create policy media_insert on media
+  for insert to anon, authenticated
+  with check (true);
 
 -- --------------------------------------------- comments: any signed-in user
 -- may leave one; only the admin may edit or delete.

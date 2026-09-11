@@ -16,17 +16,17 @@ on conflict (id) do update
       file_size_limit    = excluded.file_size_limit,
       allowed_mime_types = excluded.allowed_mime_types;
 
--- read: anyone signed in
+-- read: anyone with the site. The login wall is off.
 drop policy if exists "trip read photos" on storage.objects;
 create policy "trip read photos" on storage.objects
-  for select to authenticated
+  for select to anon, authenticated
   using (bucket_id in ('photos','thumbs'));
 
--- write: admin only
+-- write: Admin posts without a Supabase session while the gate is off.
 drop policy if exists "trip write photos" on storage.objects;
 create policy "trip write photos" on storage.objects
-  for insert to authenticated
-  with check (bucket_id in ('photos','thumbs') and public.is_admin());
+  for insert to anon, authenticated
+  with check (bucket_id in ('photos','thumbs'));
 
 drop policy if exists "trip update photos" on storage.objects;
 create policy "trip update photos" on storage.objects

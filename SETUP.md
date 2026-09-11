@@ -110,6 +110,10 @@ October. Being asked to log in again on day nine is what kills a family site.
 
 ### Wire it up
 
+The family login wall is off for now. That means the **anon** key can
+read the album and Admin can post photos without a Supabase sign-in.
+Tighten `02_policies.sql` and `03_storage.sql` when the gate comes back.
+
 **Project Settings, API**, copy the two values into `js/config.js`:
 
 ```js
