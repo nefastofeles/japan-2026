@@ -26,6 +26,7 @@ import { bindLiveWeather } from "../weather.js";
 import { destinationHero } from "../components/hero-banner.js";
 import { bestOfSection } from "../components/best-of.js";
 import { photoUploadMarkup, bindPhotoUpload } from "../components/photo-upload.js";
+import { albumLoadError, albumSharedNote } from "../components/album-notice.js";
 
 function header(day) {
   const counter = dayNumber(day);
@@ -82,12 +83,22 @@ export async function dayPage({ date }) {
   const leg = getLeg(day.leg);
   const { prev, next } = neighbours(day);
 
-  const [media, meals, entries, bestNotes] = await Promise.all([
-    mediaForDay(day),
-    mealsForDay(day),
-    entriesForDay(day),
-    bestOfForDay(day),
-  ]);
+  let media = [];
+  let meals = [];
+  let entries = [];
+  let bestNotes = [];
+  let albumError = "";
+  try {
+    [media, meals, entries, bestNotes] = await Promise.all([
+      mediaForDay(day),
+      mealsForDay(day),
+      entriesForDay(day),
+      bestOfForDay(day),
+    ]);
+  } catch (error) {
+    console.warn("Shared album failed to load", error);
+    albumError = error.message || "The shared album could not load.";
+  }
 
   const photos = media
     .filter((m) => m.provider !== "youtube" && m.category !== "food" && !m.meal_id)
@@ -112,6 +123,8 @@ export async function dayPage({ date }) {
 
   const photosSection = `<section>
            <h2 class="section-title">Photos</h2>
+           ${albumError ? albumLoadError(albumError) : ""}
+           ${albumError ? "" : albumSharedNote()}
            ${await photoAlbum(unattachedPhotos, { fallbackPlace: day.city })}
            ${photoUploadMarkup()}
          </section>`;
