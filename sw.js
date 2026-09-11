@@ -8,7 +8,7 @@
    Bump CACHE when you change the shell, otherwise phones keep the old copy.
    ========================================================================== */
 
-const CACHE = "japan-2026-v38";
+const CACHE = "japan-2026-v39";
 
 const SHELL = [
   "./",

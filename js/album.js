@@ -28,8 +28,41 @@ function restHeaders(extra = {}) {
   return {
     apikey: SUPABASE_ANON_KEY,
     Authorization: `Bearer ${SUPABASE_ANON_KEY}`,
+    Accept: "application/json",
     ...extra,
   };
+}
+
+function isNetworkError(error) {
+  const message = String(error?.message || "");
+  return (
+    error?.name === "TypeError" ||
+    error?.name === "AbortError" ||
+    /failed to fetch|networkerror|load failed/i.test(message)
+  );
+}
+
+/** Hotel wifi and the first tab after sign-in sometimes drop one request.
+    Reads try again; writes do not, so a photo cannot land twice. */
+async function albumFetch(url, options, fallback) {
+  requireAlbum();
+  for (let attempt = 1; attempt <= 3; attempt += 1) {
+    try {
+      const response = await fetch(url, { cache: "no-store", ...options });
+      if (!response.ok) throw await parseError(response, fallback);
+      if (response.status === 204) return null;
+      const text = await response.text();
+      return text ? JSON.parse(text) : null;
+    } catch (error) {
+      if (error instanceof AlbumError) throw error;
+      if (attempt === 3 || !isNetworkError(error)) {
+        throw new AlbumError(
+          "Could not reach the shared album. Check the connection and try again."
+        );
+      }
+      await new Promise((resolve) => setTimeout(resolve, 300 * attempt));
+    }
+  }
 }
 
 function encodeObjectPath(path) {
@@ -67,11 +100,9 @@ async function parseError(response, fallback) {
 }
 
 export async function albumGet(table, query = "") {
-  requireAlbum();
   const url = `${SUPABASE_URL}/rest/v1/${table}${query ? `?${query}` : ""}`;
-  const response = await fetch(url, { headers: restHeaders() });
-  if (!response.ok) throw await parseError(response, `Could not load ${table}.`);
-  return response.json();
+  const rows = await albumFetch(url, { headers: restHeaders() }, `Could not load ${table}.`);
+  return rows || [];
 }
 
 export async function albumInsert(table, row) {
