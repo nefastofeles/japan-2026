@@ -4,9 +4,12 @@
    named .jpeg. We sniff the bytes first so the error is honest.
    ========================================================================== */
 
-function isHeic(bytes) {
-  const brand = String.fromCharCode(...bytes.slice(4, 16)).toLowerCase();
-  return /ftyp(heic|heix|hevc|hevx|mif1|msf1)/.test(brand);
+function looksLikeHeic(file, bytes) {
+  const name = (file.name || "").toLowerCase();
+  if (name.endsWith(".heic") || name.endsWith(".heif")) return true;
+  let ascii = "";
+  for (const byte of bytes) ascii += byte >= 32 && byte < 127 ? String.fromCharCode(byte) : " ";
+  return /ftyp\s*(heic|heix|hevc|hevx|mif1|msf1)/i.test(ascii);
 }
 
 export async function assertReadablePhoto(file) {
@@ -14,7 +17,7 @@ export async function assertReadablePhoto(file) {
     throw new Error("That file is empty. If it lives in iCloud, download it first.");
   }
   const head = new Uint8Array(await file.slice(0, 24).arrayBuffer());
-  if (isHeic(head)) {
+  if (looksLikeHeic(file, head)) {
     throw new Error(
       "This is an iPhone HEIC file. Chrome cannot read it. In Photos: File → Export → JPEG, then pick that file."
     );
