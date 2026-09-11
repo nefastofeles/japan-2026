@@ -2,13 +2,13 @@
    Service worker
    --------------------------------------------------------------------------
    Caches the shell so the site opens with no signal: on a shinkansen, in the
-   Kiso valley, on a plane. Photos are not cached, since they are signed URLs
-   that expire and would fill the phone up anyway.
+   Kiso valley, on a plane. Photos are not cached; they live in the online
+   album and would fill the phone up.
 
    Bump CACHE when you change the shell, otherwise phones keep the old copy.
    ========================================================================== */
 
-const CACHE = "japan-2026-v37";
+const CACHE = "japan-2026-v38";
 
 const SHELL = [
   "./",
@@ -35,6 +35,7 @@ const SHELL = [
   "js/auth.js",
   "js/local-posts.js",
   "js/supabase.js",
+  "js/album.js",
   "js/vendor/supabase.js",
   "js/cache-bust.js",
   "refresh.html",
@@ -76,6 +77,7 @@ const SHELL = [
   "js/components/day-strip.js",
   "js/components/photo-grid.js",
   "js/components/photo-upload.js",
+  "js/components/album-notice.js",
   "js/components/lightbox.js",
   "js/components/meal-card.js",
   "js/components/rating-pips.js",

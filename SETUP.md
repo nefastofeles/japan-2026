@@ -77,7 +77,7 @@ whole:
 
 1. `supabase/01_schema.sql` — tables
 2. `supabase/02_policies.sql` — row level security
-3. `supabase/03_storage.sql` — the two private buckets
+3. `supabase/03_storage.sql` — the two public photo buckets
 4. `supabase/04_seed.sql` — the four people and the 24 days
 5. `supabase/06_media_place.sql` — place names on photos (safe if already applied)
 

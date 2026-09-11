@@ -3,7 +3,7 @@
    ========================================================================== */
 
 import { esc } from "../util.js";
-import { signPaths } from "../supabase.js";
+import { publicUrl } from "../album.js";
 
 let items = [];
 let index = 0;
@@ -13,11 +13,13 @@ const fullCache = new Map();
 
 async function fullUrl(item) {
   const path = item.storage_path || item.thumb_path || "";
-  if (path.startsWith("assets/") || path.startsWith("blob:") || /^https?:\/\//.test(path)) return path;
-  if (!item.storage_path) return "";
+  if (path.startsWith("assets/") || path.startsWith("blob:") || /^https?:\/\//.test(path)) {
+    return path;
+  }
+  if (item.provider === "local") return path;
+  if (!item.storage_path) return publicUrl("thumbs", item.thumb_path);
   if (fullCache.has(item.storage_path)) return fullCache.get(item.storage_path);
-  const signed = await signPaths("photos", [item.storage_path]);
-  const url = signed.get(item.storage_path) || "";
+  const url = publicUrl("photos", item.storage_path);
   fullCache.set(item.storage_path, url);
   return url;
 }

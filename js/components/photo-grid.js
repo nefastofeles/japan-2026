@@ -10,16 +10,12 @@
    ========================================================================== */
 
 import { esc, clockFromStamp } from "../util.js";
-import { signPaths } from "../supabase.js";
+import { publicUrl } from "../album.js";
 import { openLightbox } from "./lightbox.js";
 
 export const DAY_PHOTO_LIMIT = 24;
 export const DAY_VIDEO_LIMIT = 12;
 export const MEAL_PHOTO_LIMIT = 3;
-
-/* Resolved signed URLs, kept for the life of the page so switching between
-   days does not re-sign the same thumbnails over and over. */
-const thumbCache = new Map();
 
 function isLocalPath(path) {
   return (
@@ -30,24 +26,19 @@ function isLocalPath(path) {
   );
 }
 
+function thumbSrc(photo) {
+  const path = photo.thumb_path || photo.storage_path || "";
+  if (isLocalPath(path) || photo.provider === "local") return path;
+  return publicUrl("thumbs", path);
+}
+
 export async function photoGrid(items, { emptyMessage = "No photos yet.", bindable = true } = {}) {
   const photos = items.filter((m) => m.provider !== "youtube");
   if (!photos.length) return `<p class="empty">${esc(emptyMessage)}</p>`;
 
-  const missing = photos
-    .map((p) => p.thumb_path)
-    .filter((path) => path && !isLocalPath(path) && !thumbCache.has(path));
-
-  if (missing.length) {
-    const signed = await signPaths("thumbs", missing);
-    for (const [path, url] of signed) thumbCache.set(path, url);
-  }
-
   const cells = photos
     .map((photo, index) => {
-      const url = isLocalPath(photo.thumb_path)
-        ? photo.thumb_path
-        : thumbCache.get(photo.thumb_path) || "";
+      const url = thumbSrc(photo);
       const alt = photo.caption || "Trip photo";
       const badge = photo.category === "food" ? "🍜" : "";
 
@@ -98,20 +89,9 @@ export async function photoAlbum(items, { fallbackPlace = "" } = {}) {
   const photos = items.filter((m) => m.provider !== "youtube").slice(0, DAY_PHOTO_LIMIT);
   if (!photos.length) return `<p class="empty">No photos yet.</p>`;
 
-  const missing = photos
-    .map((p) => p.thumb_path)
-    .filter((path) => path && !isLocalPath(path) && !thumbCache.has(path));
-
-  if (missing.length) {
-    const signed = await signPaths("thumbs", missing);
-    for (const [path, url] of signed) thumbCache.set(path, url);
-  }
-
   const cards = photos
     .map((photo, index) => {
-      const url = isLocalPath(photo.thumb_path)
-        ? photo.thumb_path
-        : thumbCache.get(photo.thumb_path) || "";
+      const url = thumbSrc(photo);
       const alt = photo.caption || photo.place || "Trip photo";
       return `
         <figure class="photo-card">

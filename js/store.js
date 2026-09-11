@@ -14,8 +14,8 @@
    memories from data/mock-memories.json so we can see a full page.
    ========================================================================== */
 
-import { getClient } from "./supabase.js";
 import { isConfigured } from "./config.js";
+import { AlbumError, albumGet, albumInsert } from "./album.js";
 import {
   mockMediaForDay, mockMealsForDay, mockEntriesForDay,
   mockBestOfForDay, mockAllMedia, mockAllFood, mocksEnabled,
@@ -93,38 +93,37 @@ export function legGroups() {
 
 /* ----------------------------------------------------------- the memories */
 
-/** Maps "2026-09-18" to the Supabase row id, so media can be attached. */
+/** Maps "2026-09-18" and "before" to the Supabase row id. */
 async function dayIndex() {
   if (dayIdByDate) return dayIdByDate;
-  dayIdByDate = new Map();
+  if (!isConfigured()) return new Map();
 
-  const supabase = await getClient();
-  if (!supabase) return dayIdByDate;
-
-  const { data, error } = await supabase.from("days").select("id, date, slug, position");
-  if (error) {
-    console.warn("Could not load days:", error.message);
-    return dayIdByDate;
+  // Do not cache an empty map on failure — the next read must retry.
+  const rows = await albumGet("days", "select=id,date,slug,position");
+  const index = new Map();
+  for (const row of rows) {
+    if (row.date) index.set(row.date, row.id);
+    if (row.slug) index.set(row.slug, row.id);
   }
-  for (const row of data) dayIdByDate.set(row.date || row.slug, row.id);
-  return dayIdByDate;
+  dayIdByDate = index;
+  return index;
 }
 
 export async function dayId(day) {
   const index = await dayIndex();
-  return index.get(day.date || day.slug) || null;
+  return index.get(day.date) || index.get(day.slug) || null;
 }
 
-async function query(table, build) {
-  if (!isConfigured()) return [];
-  const supabase = await getClient();
-  if (!supabase) return [];
-  const { data, error } = await build(supabase.from(table));
-  if (error) {
-    console.warn(`Could not load ${table}:`, error.message);
-    return [];
-  }
-  return data || [];
+async function requireDayId(day) {
+  const id = await dayId(day);
+  if (!id) throw new AlbumError("This day is missing from the online album.");
+  return id;
+}
+
+async function localOnly(loader) {
+  if (mocksEnabled()) return loader();
+  if (!isConfigured()) return loader();
+  return null;
 }
 
 function attachDay(item) {
@@ -136,91 +135,103 @@ function attachDay(item) {
 }
 
 export async function mediaForDay(day) {
-  const local = await localMediaForDay(day);
-  if (mocksEnabled()) return [...(await mockMediaForDay(day)), ...local];
-  const id = await dayId(day);
-  if (!id) return local;
-  const remote = await query("media", (t) =>
-    t.select("*").eq("day_id", id).order("taken_at", { ascending: true, nullsFirst: false })
+  const local = await localOnly(() => localMediaForDay(day));
+  if (local) {
+    if (mocksEnabled()) return [...(await mockMediaForDay(day)), ...local];
+    return local;
+  }
+  const id = await requireDayId(day);
+  return albumGet(
+    "media",
+    `select=*&day_id=eq.${encodeURIComponent(id)}&order=taken_at.asc.nullslast`
   );
-  return [...remote, ...local];
 }
 
 export async function mealsForDay(day) {
-  const local = await localMealsForDay(day);
-  if (mocksEnabled()) return [...(await mockMealsForDay(day)), ...local];
-  const id = await dayId(day);
-  if (!id) return local;
-  const meals = await query("meals", (t) =>
-    t.select("*, meal_ratings(*)").eq("day_id", id).order("created_at")
+  const local = await localOnly(() => localMealsForDay(day));
+  if (local) {
+    if (mocksEnabled()) return [...(await mockMealsForDay(day)), ...local];
+    return local;
+  }
+  const id = await requireDayId(day);
+  const meals = await albumGet(
+    "meals",
+    `select=*,meal_ratings(*)&day_id=eq.${encodeURIComponent(id)}&order=created_at.asc`
   );
-  if (!meals.length) return local;
+  if (!meals.length) return [];
 
   const mediaByMeal = new Map();
-  const shots = await query("media", (t) =>
-    t.select("*").in("meal_id", meals.map((m) => m.id))
+  const shots = await albumGet(
+    "media",
+    `select=*&meal_id=in.(${meals.map((m) => m.id).join(",")})`
   );
   for (const shot of shots) {
     if (!mediaByMeal.has(shot.meal_id)) mediaByMeal.set(shot.meal_id, []);
     mediaByMeal.get(shot.meal_id).push(shot);
   }
-  return [
-    ...meals.map((m) => ({ ...m, media: mediaByMeal.get(m.id) || [] })),
-    ...local,
-  ];
+  return meals.map((m) => ({ ...m, media: mediaByMeal.get(m.id) || [] }));
 }
 
 export async function entriesForDay(day) {
-  const local = await localEntriesForDay(day);
-  if (mocksEnabled()) return [...(await mockEntriesForDay(day)), ...local];
-  const id = await dayId(day);
-  if (!id) return local;
-  const remote = await query("entries", (t) => t.select("*").eq("day_id", id).order("position"));
-  return [...remote, ...local];
+  const local = await localOnly(() => localEntriesForDay(day));
+  if (local) {
+    if (mocksEnabled()) return [...(await mockEntriesForDay(day)), ...local];
+    return local;
+  }
+  const id = await requireDayId(day);
+  return albumGet(
+    "entries",
+    `select=*&day_id=eq.${encodeURIComponent(id)}&order=position.asc`
+  );
 }
 
 export async function bestOfForDay(day) {
   if (mocksEnabled()) return mockBestOfForDay(day);
-  const id = await dayId(day);
-  if (!id) return [];
-  const rows = await query("entries", (t) =>
-    t.select("*").eq("day_id", id).eq("kind", "best")
+  if (!isConfigured()) return [];
+  const id = await requireDayId(day);
+  const rows = await albumGet(
+    "entries",
+    `select=*&day_id=eq.${encodeURIComponent(id)}&kind=eq.best`
   );
   return rows.filter((row) => row.person_id && row.body);
 }
 
 export async function allFood() {
-  const local = await localAllMeals();
-  if (mocksEnabled()) {
-    const meals = await mockAllFood();
-    return [...meals, ...local].map(attachDay);
+  const local = await localOnly(() => localAllMeals());
+  if (local) {
+    if (mocksEnabled()) {
+      const meals = await mockAllFood();
+      return [...meals, ...local].map(attachDay);
+    }
+    return local.map(attachDay);
   }
-  const remote = await query("meals", (t) =>
-    t.select("*, meal_ratings(*), days(date, city, leg)").order("created_at")
+  const remote = await albumGet(
+    "meals",
+    "select=*,meal_ratings(*),days(date,city,leg)&order=created_at.asc"
   );
-  return [...remote, ...local.map(attachDay)];
+  return remote;
 }
 
 export async function allMedia({ limit = 500 } = {}) {
-  const local = await localAllMedia();
-  if (mocksEnabled()) {
-    const media = await mockAllMedia({ limit });
-    return [...media, ...local].map(attachDay);
+  const local = await localOnly(() => localAllMedia());
+  if (local) {
+    if (mocksEnabled()) {
+      const media = await mockAllMedia({ limit });
+      return [...media, ...local].map(attachDay);
+    }
+    return local.map(attachDay);
   }
   // days.cover_media_id also points at media, so PostgREST will not
   // guess `days(...)` and the Photos page would come back empty.
-  const remote = await query("media", (t) =>
-    t.select("*, days!media_day_id_fkey(date, city, leg)")
-      .order("taken_at", { ascending: false, nullsFirst: false })
-      .limit(limit)
+  return albumGet(
+    "media",
+    `select=*,days!media_day_id_fkey(date,city,leg)&order=taken_at.desc.nullslast&limit=${Number(limit) || 500}`
   );
-  return [...remote, ...local.map(attachDay)];
 }
 
 export async function addReaction(targetType, targetId, emoji) {
-  const supabase = await getClient();
-  if (!supabase) return;
-  await supabase.from("reactions").insert({
+  if (!isConfigured()) return;
+  await albumInsert("reactions", {
     target_type: targetType,
     target_id: targetId,
     emoji,
