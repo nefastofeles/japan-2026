@@ -1,13 +1,13 @@
 -- Japan 2026 - row level security
 -- Run this second.
 --
--- The family login wall is off, so the public anon key must be able to
--- read the album and Admin must be able to post without a Supabase
--- session. Tighten this back to authenticated-only when the gate
--- returns. The GitHub repo is private and the site is noindex.
+-- The website gate login is a browser password, not a Supabase user.
+-- Journal read and insert stay open to anon so the album still works
+-- after that gate. Update and delete of journal rows still go through
+-- is_admin() for signed-in facilitators. Quest tables stay locked to
+-- a real family session (see 05_quest.sql).
 --
--- Update and delete of journal rows still go through is_admin() for
--- signed-in facilitators.
+-- The GitHub repo is private and the site is noindex.
 
 alter table people       enable row level security;
 alter table days         enable row level security;

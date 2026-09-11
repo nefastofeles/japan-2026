@@ -8,6 +8,7 @@
 
 import * as store from "./store.js";
 import * as router from "./router.js";
+import * as auth from "./auth.js";
 import { esc, todayISO, tripPhase } from "./util.js";
 import { TRIP } from "./config.js";
 
@@ -17,6 +18,7 @@ import { foodPage } from "./pages/food.js";
 import { photosPage } from "./pages/photos.js";
 import { mapPage } from "./pages/map.js";
 import { adminPage } from "./pages/admin.js";
+import { loginPage } from "./pages/login.js";
 import { adventurePage } from "./pages/adventure.js";
 import { adventureMissionPage } from "./pages/adventure-mission.js";
 import { adventureDiscoveryPage } from "./pages/adventure-discovery.js";
@@ -40,13 +42,20 @@ function renderNav(path) {
   const nav = document.querySelector(".site-nav");
   if (!nav) return;
 
-  nav.innerHTML = NAV.map(([href, label]) => {
-    const on =
-      href === "/"
-        ? path === "/"
-        : path === href || path.startsWith(`${href}/`);
-    return `<a href="#${href}" ${on ? 'aria-current="page"' : ""}>${esc(label)}</a>`;
-  }).join("");
+  if (!auth.isSignedIn()) {
+    nav.innerHTML = "";
+    return;
+  }
+
+  nav.innerHTML =
+    NAV.map(([href, label]) => {
+      const on =
+        href === "/"
+          ? path === "/"
+          : path === href || path.startsWith(`${href}/`);
+      return `<a href="#${href}" ${on ? 'aria-current="page"' : ""}>${esc(label)}</a>`;
+    }).join("") +
+    `<button type="button" class="site-signout" data-signout>Sign out</button>`;
 }
 
 /** Mix a leg hex onto washi paper so the phone chrome matches the page wash. */
@@ -90,17 +99,36 @@ function chromeLeg(path) {
 function afterRender(path) {
   renderNav(path);
 
-  const onHome = path === "/";
+  const signedIn = auth.isSignedIn();
+  const onHome = path === "/" && signedIn;
   document.documentElement.toggleAttribute("data-home", onHome);
-
-  const onQuest = path.startsWith("/adventure");
-  document.documentElement.toggleAttribute("data-quest", onQuest);
+  document.documentElement.toggleAttribute("data-locked", !signedIn);
 
   const adminLink = document.querySelector("[data-footer-admin]");
   if (adminLink) {
-    adminLink.hidden = false;
+    adminLink.hidden = !signedIn;
     adminLink.setAttribute("aria-current", path === "/admin" ? "page" : "false");
   }
+
+  const signOutButton = document.querySelector("[data-signout]");
+  if (signOutButton) {
+    signOutButton.addEventListener("click", async () => {
+      await auth.signOut();
+      location.hash = "#/";
+      location.reload();
+    });
+  }
+
+  if (!signedIn) {
+    document.documentElement.removeAttribute("data-quest");
+    const meta = document.querySelector('meta[name="theme-color"]');
+    if (meta) meta.content = "#BC002D";
+    syncHeaderHeight();
+    return;
+  }
+
+  const onQuest = path.startsWith("/adventure");
+  document.documentElement.toggleAttribute("data-quest", onQuest);
 
   const legId = chromeLeg(path);
   document.documentElement.dataset.leg = legId;
@@ -139,11 +167,22 @@ function registerPages() {
 }
 
 async function boot() {
+  await auth.init();
+
+  const title = document.querySelector(".site-title-text");
+
+  if (!auth.isSignedIn()) {
+    document.title = "Sign in · Japan Family Trip 2026";
+    if (title) title.textContent = "Japan Family Trip 2026";
+    router.setNotFound(() => loginPage());
+    router.start(document.getElementById("app"), { afterRender });
+    return;
+  }
+
   await store.load();
 
   const trip = store.getTrip();
   document.title = trip.name;
-  const title = document.querySelector(".site-title-text");
   if (title) title.textContent = trip.name;
 
   window.addEventListener("resize", syncHeaderHeight);
@@ -175,7 +214,7 @@ function registerShellWorker() {
   // Query string plus updateViaCache none: an old worker that cache-firsts
   // /sw.js will miss this URL and actually download the new file.
   navigator.serviceWorker
-    .register("sw.js?v=34", { updateViaCache: "none" })
+    .register("sw.js?v=35", { updateViaCache: "none" })
     .catch(() => {
       /* offline support is a bonus, never a requirement */
     });

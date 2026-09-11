@@ -11,12 +11,22 @@
 import { getDay, getDays } from "../store.js";
 import { addBestOf, addStory, addVideo, addPhoto, addMeal } from "../posts.js";
 import { isConfigured, TRIP } from "../config.js";
+import { isAdmin, signOut, getSession } from "../auth.js";
 import { todayISO, youtubeId } from "../util.js";
 import { prepareImage } from "../media.js";
 import { adminForms, photoBatchMarkup } from "./admin-forms.js";
+import { loginPage } from "./login.js";
 import { resetQuestState } from "../quest/reset.js";
 
 export async function adminPage() {
+  if (!getSession()) return loginPage();
+
+  if (!(await isAdmin())) {
+    return `<div class="page stack">
+              <p class="notice">This login can read the journal. Posting needs the admin login.</p>
+            </div>`;
+  }
+
   const today = todayISO(TRIP.timezone);
   const defaultDay = getDay(today) ? today : getDays()[0].date || getDays()[0].slug;
 
@@ -26,6 +36,11 @@ export async function adminPage() {
 function bindAdmin(root) {
   const pick = (sel) => root.querySelector(sel);
   const selectedDay = () => getDay(pick("[data-day]").value);
+
+  pick("[data-signout]").addEventListener("click", async () => {
+    await signOut();
+    location.reload();
+  });
 
   /* ------------------------------------------------------------- photos */
   const batches = pick("[data-photo-batches]");

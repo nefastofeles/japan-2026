@@ -202,7 +202,8 @@ export function adminForms(defaultDay) {
     <div class="page stack">
       <header>
         <h1>Admin</h1>
-        <p class="small muted">Add the day's photos, story and videos.</p>
+        <p class="small muted">Add the day's photos, story and videos.
+          <button class="reaction" data-signout type="button">Sign out</button></p>
       </header>
 
       <div class="card stack">
