@@ -7,6 +7,7 @@ import { isConfigured } from "../config.js";
 import { esc } from "../util.js";
 import { photoGrid, bindPhotoGrid } from "../components/photo-grid.js";
 import { videoEmbed, bindVideos } from "../components/video-embed.js";
+import { albumLoadError, albumSharedNote } from "../components/album-notice.js";
 
 const CATEGORIES = [
   ["all", "Everything"],
@@ -15,23 +16,39 @@ const CATEGORIES = [
 ];
 
 export async function photosPage() {
-  const media = await allMedia({ limit: 1000 });
+  let media = [];
+  let albumError = "";
+  try {
+    media = await allMedia({ limit: 1000 });
+  } catch (error) {
+    console.warn("Shared album failed to load", error);
+    albumError = error.message || "The shared album could not load.";
+  }
   const photos = media.filter(
     (m) => m.provider !== "youtube" && m.category !== "food" && !m.meal_id
   );
   const videos = media.filter((m) => m.provider === "youtube");
 
+  if (albumError) {
+    return `
+      <div class="page stack">
+        <h1>Photos</h1>
+        ${albumLoadError(albumError)}
+      </div>`;
+  }
+
   if (!photos.length && !videos.length) {
     return `
       <div class="page stack">
         <h1>Photos</h1>
+        ${albumSharedNote()}
         ${
           !isConfigured()
             ? `<p class="notice"><strong>Plan mode.</strong> Connect Supabase and the
                gallery fills up as we go.</p>`
-            : `<p class="empty">No photos yet.</p>
-               <p>If you already posted videos, <a href="refresh.html">tap here once</a>
-               to update this phone.</p>`
+            : `<p class="empty">No photos yet in the shared album.</p>
+               <p>Add them from a day page or Admin. They will then show here
+               on every phone after you sign in.</p>`
         }
       </div>`;
   }
@@ -48,10 +65,12 @@ export async function photosPage() {
     html: `
       <div class="page stack">
         <h1>Photos</h1>
+        ${albumSharedNote()}
         ${
           videos.length
             ? `<section>
                  <h2 class="section-title">Video</h2>
+                 <p class="muted">${videos.length} video${videos.length === 1 ? "" : "s"} in the shared album.</p>
                  <div class="video-board">${videos
                    .map((v) => videoEmbed(v.external_id, v.caption))
                    .join("")}</div>
@@ -60,7 +79,7 @@ export async function photosPage() {
         }
         ${
           photos.length
-            ? `<p class="muted">${photos.length} photos across the trip.</p>
+            ? `<p class="muted">${photos.length} photos in the shared album.</p>
                <div class="reactions" role="group" aria-label="Filter photos">${filters}</div>
                <div data-gallery>${await photoGrid(photos)}</div>`
             : ""

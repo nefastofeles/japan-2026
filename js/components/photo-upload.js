@@ -21,7 +21,7 @@ export function photoUploadMarkup() {
           Chrome cannot read iPhone HEIC.</span>
       </label>
       <p class="muted" data-upload-list></p>
-      <button class="btn" type="button" data-upload-go>Add these photos to this day</button>
+      <button class="btn" type="button" data-upload-go>Save to the shared album</button>
       <p data-upload-status role="status"></p>
     </div>`;
 }
@@ -102,12 +102,11 @@ export function bindPhotoUpload(root, day) {
     );
     go.disabled = false;
     status.textContent =
-      `Uploaded ${result.done} of ${result.total}.` +
+      `Saved ${result.done} of ${result.total} in the shared album.` +
       (result.failed ? ` ${result.failed} failed. ${result.lastError}` : "");
     if (result.done) {
-      status.textContent += " Showing them…";
-      // Give PostgREST a beat so the new row is there after reload.
-      setTimeout(() => location.reload(), 400);
+      status.textContent += " Loading them for everyone…";
+      location.reload();
     }
   });
 }

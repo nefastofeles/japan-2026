@@ -66,7 +66,12 @@ export async function homePage() {
       <p style="text-align:center"><a class="btn" href="#/before">See the itinerary</a></p>`;
   } else if (phase === "during") {
     const todaysBookings = todayDay && todayDay.bookings ? todayDay.bookings : [];
-    recent = await allMedia({ limit: 12 });
+    try {
+      recent = await allMedia({ limit: 12 });
+    } catch (error) {
+      console.warn("Shared album failed to load", error);
+      recent = [];
+    }
 
     lead = `
       ${nowCard(today)}
@@ -90,7 +95,13 @@ export async function homePage() {
           : ""
       }`;
   } else {
-    const [media, meals] = await Promise.all([allMedia({ limit: 12 }), allFood()]);
+    let media = [];
+    let meals = [];
+    try {
+      [media, meals] = await Promise.all([allMedia({ limit: 12 }), allFood()]);
+    } catch (error) {
+      console.warn("Shared album failed to load", error);
+    }
     recent = media;
     const spent = meals.reduce((sum, m) => sum + (m.price_yen || 0), 0);
 

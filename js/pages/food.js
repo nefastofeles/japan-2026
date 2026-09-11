@@ -32,7 +32,12 @@ function hitList() {
 }
 
 export async function foodPage() {
-  const meals = await allFood();
+  let meals = [];
+  try {
+    meals = await allFood();
+  } catch (error) {
+    console.warn("Shared album failed to load", error);
+  }
 
   if (!meals.length) {
     return `

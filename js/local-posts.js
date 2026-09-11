@@ -2,9 +2,9 @@
    Posts saved on this phone
    --------------------------------------------------------------------------
    Until Supabase is wired up, photos, story text and YouTube links stay in
-   IndexedDB / localStorage on the device that posted them. They are not a
-   substitute for the database — grandparents on another phone will not see
-   them — but they let Admin work before the backend exists.
+   IndexedDB / localStorage on the device that posted them. They vanish from
+   other browsers and are not the family album. Once the online album is
+   connected, nothing new is written here.
    ========================================================================== */
 
 const META_KEY = "japan-2026-local-posts";

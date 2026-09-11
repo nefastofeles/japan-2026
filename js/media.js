@@ -12,7 +12,7 @@
    ========================================================================== */
 
 import { IMAGE } from "./config.js";
-import { getClient } from "./supabase.js";
+import { albumInsert, albumUpload } from "./album.js";
 import { assertReadablePhoto, toBitmap, encodeJpeg } from "./image-decode.js";
 
 /* ------------------------------------------------------------ EXIF reader */
@@ -197,26 +197,19 @@ function safeName(name) {
 /**
  * Upload one prepared image and create its media row.
  * Both objects share a path, so the thumbnail for photos/x.jpg is thumbs/x.jpg.
+ * Returns the media row from the database — that is the proof it is shared.
  */
 export async function uploadImage(prepared, { dayId, dayDate, category, caption, place, mealId }) {
-  const supabase = await getClient();
-  if (!supabase) throw new Error("Supabase is not configured.");
-
   const stamp = Date.now();
   const path = `${dayDate || "unsorted"}/${stamp}-${safeName(prepared.originalName)}.jpg`;
 
-  const options = { contentType: "image/jpeg", upsert: false, cacheControl: "31536000" };
-
-  const [fullResult, thumbResult] = await Promise.all([
-    supabase.storage.from("photos").upload(path, prepared.full, options),
-    supabase.storage.from("thumbs").upload(path, prepared.thumb, options),
+  await Promise.all([
+    albumUpload("photos", path, prepared.full, "image/jpeg"),
+    albumUpload("thumbs", path, prepared.thumb, "image/jpeg"),
   ]);
 
-  if (fullResult.error) throw fullResult.error;
-  if (thumbResult.error) throw thumbResult.error;
-
   const takenMs = prepared.takenAt ? Date.parse(prepared.takenAt) : NaN;
-  const { error } = await supabase.from("media").insert({
+  return albumInsert("media", {
     day_id: dayId,
     meal_id: mealId || null,
     category: category || (mealId ? "food" : "place"),
@@ -232,9 +225,6 @@ export async function uploadImage(prepared, { dayId, dayDate, category, caption,
     place: place || null,
     caption: caption || null,
   });
-  if (error) throw error;
-
-  return path;
 }
 
 /**

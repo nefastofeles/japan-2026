@@ -101,7 +101,7 @@ function bindAdmin(root) {
     }
 
     status.textContent = `Uploaded ${done} of ${total}.` +
-      (failed ? ` ${failed} failed. ${lastError}` : " Open Photos to see them.");
+      (failed ? ` ${failed} failed. ${lastError}` : " They are in the shared album. Open Photos on any signed-in phone.");
     batches.querySelectorAll("[data-files]").forEach((input) => {
       input.value = "";
     });
