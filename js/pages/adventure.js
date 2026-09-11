@@ -97,12 +97,17 @@ export async function adventurePage() {
       <h2 class="section-title">${memoryChapter ? "Memories here" : "Out in the world"}</h2>
       ${
         open.length
-          ? open.map((mission) => missionCard(mission, state, chapter, quest)).join("")
+          ? open.slice(0, 8).map((mission) => missionCard(mission, state, chapter, quest)).join("")
           : `<p class="empty">${
               chapterComplete(quest, state, chapter.id)
                 ? "This chapter’s pages are in."
                 : "Nothing queued. Open Journey when you arrive."
             }</p>`
+      }
+      ${
+        open.length > 8
+          ? `<p class="quest-prose"><a href="#/adventure/map/${esc(chapter.id)}">More in Journey</a></p>`
+          : ""
       }
     </section>
 
@@ -110,7 +115,12 @@ export async function adventurePage() {
       finds.length
         ? `<section class="stack quest-section">
             <h2 class="section-title">Nearby finds</h2>
-            ${finds.map((find) => discoveryCard(find, quest)).join("")}
+            ${finds.slice(0, 4).map((find) => discoveryCard(find, quest)).join("")}
+            ${
+              finds.length > 4
+                ? `<p class="quest-prose"><a href="#/adventure/map/${esc(chapter.id)}">More finds in Journey</a></p>`
+                : ""
+            }
           </section>`
         : ""
     }

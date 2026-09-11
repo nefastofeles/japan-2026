@@ -1,0 +1,233 @@
+[
+  {
+    "id": "media-badge-first-discovery",
+    "role": "badge",
+    "type": "illustration",
+    "alt": "First Discovery family seal",
+    "status": "live",
+    "source": "Original Japan Quest badge",
+    "license": "All rights reserved, family trip site",
+    "credit": "Japan Quest",
+    "src": "assets/quest/badges/first-discovery.svg"
+  },
+  {
+    "id": "media-badge-food-explorer",
+    "role": "badge",
+    "type": "illustration",
+    "alt": "Food Explorer family seal",
+    "status": "live",
+    "source": "Original Japan Quest badge",
+    "license": "All rights reserved, family trip site",
+    "credit": "Japan Quest",
+    "src": "assets/quest/badges/food-explorer.svg"
+  },
+  {
+    "id": "media-badge-konbini-explorer",
+    "role": "badge",
+    "type": "illustration",
+    "alt": "Konbini Explorer family seal",
+    "status": "live",
+    "source": "Original Japan Quest badge",
+    "license": "All rights reserved, family trip site",
+    "credit": "Japan Quest",
+    "src": "assets/quest/badges/konbini-explorer.svg"
+  },
+  {
+    "id": "media-badge-yokai-hunter",
+    "role": "badge",
+    "type": "illustration",
+    "alt": "Yokai Hunter family seal",
+    "status": "live",
+    "source": "Original Japan Quest badge",
+    "license": "All rights reserved, family trip site",
+    "credit": "Japan Quest",
+    "src": "assets/quest/badges/yokai-hunter.svg"
+  },
+  {
+    "id": "media-badge-shrine-spotter",
+    "role": "badge",
+    "type": "illustration",
+    "alt": "Shrine Spotter family seal",
+    "status": "live",
+    "source": "Original Japan Quest badge",
+    "license": "All rights reserved, family trip site",
+    "credit": "Japan Quest",
+    "src": "assets/quest/badges/shrine-spotter.svg"
+  },
+  {
+    "id": "media-badge-sky-reader",
+    "role": "badge",
+    "type": "illustration",
+    "alt": "Sky Reader family seal",
+    "status": "live",
+    "source": "Original Japan Quest badge",
+    "license": "All rights reserved, family trip site",
+    "credit": "Japan Quest",
+    "src": "assets/quest/badges/sky-reader.svg"
+  },
+  {
+    "id": "media-badge-samurai-scholar",
+    "role": "badge",
+    "type": "illustration",
+    "alt": "Samurai Scholar family seal",
+    "status": "live",
+    "source": "Original Japan Quest badge",
+    "license": "All rights reserved, family trip site",
+    "credit": "Japan Quest",
+    "src": "assets/quest/badges/samurai-scholar.svg"
+  },
+  {
+    "id": "media-badge-mountain-traveller",
+    "role": "badge",
+    "type": "illustration",
+    "alt": "Mountain Traveller family seal",
+    "status": "live",
+    "source": "Original Japan Quest badge",
+    "license": "All rights reserved, family trip site",
+    "credit": "Japan Quest",
+    "src": "assets/quest/badges/mountain-traveller.svg"
+  },
+  {
+    "id": "media-badge-nakasendo-traveller",
+    "role": "badge",
+    "type": "illustration",
+    "alt": "Nakasendo Traveller family seal",
+    "status": "live",
+    "source": "Original Japan Quest badge",
+    "license": "All rights reserved, family trip site",
+    "credit": "Japan Quest",
+    "src": "assets/quest/badges/nakasendo-traveller.svg"
+  },
+  {
+    "id": "media-badge-brave-eater",
+    "role": "badge",
+    "type": "illustration",
+    "alt": "Brave Eater family seal",
+    "status": "live",
+    "source": "Original Japan Quest badge",
+    "license": "All rights reserved, family trip site",
+    "credit": "Japan Quest",
+    "src": "assets/quest/badges/brave-eater.svg"
+  },
+  {
+    "id": "media-badge-rail-master",
+    "role": "badge",
+    "type": "illustration",
+    "alt": "Rail Master family seal",
+    "status": "live",
+    "source": "Original Japan Quest badge",
+    "license": "All rights reserved, family trip site",
+    "credit": "Japan Quest",
+    "src": "assets/quest/badges/rail-master.svg"
+  },
+  {
+    "id": "media-reward-sky-guardian",
+    "role": "badge",
+    "type": "illustration",
+    "alt": "Sky Guardian seal",
+    "status": "live",
+    "source": "Original Japan Quest badge",
+    "license": "All rights reserved, family trip site",
+    "credit": "Japan Quest",
+    "src": "assets/quest/badges/sky-guardian.svg"
+  },
+  {
+    "id": "media-reward-borderless-fragment",
+    "role": "badge",
+    "type": "illustration",
+    "alt": "Borderless Fragment seal",
+    "status": "live",
+    "source": "Original Japan Quest badge",
+    "license": "All rights reserved, family trip site",
+    "credit": "Japan Quest",
+    "src": "assets/quest/badges/borderless-fragment.svg"
+  },
+  {
+    "id": "media-reward-world-walker",
+    "role": "badge",
+    "type": "illustration",
+    "alt": "World Walker seal",
+    "status": "live",
+    "source": "Original Japan Quest badge",
+    "license": "All rights reserved, family trip site",
+    "credit": "Japan Quest",
+    "src": "assets/quest/badges/world-walker.svg"
+  },
+  {
+    "id": "media-reward-sacred-nature",
+    "role": "badge",
+    "type": "illustration",
+    "alt": "Sacred Nature seal",
+    "status": "live",
+    "source": "Original Japan Quest badge",
+    "license": "All rights reserved, family trip site",
+    "credit": "Japan Quest",
+    "src": "assets/quest/badges/sacred-nature.svg"
+  },
+  {
+    "id": "media-reward-power-without-war",
+    "role": "badge",
+    "type": "illustration",
+    "alt": "Power Without War seal",
+    "status": "live",
+    "source": "Original Japan Quest badge",
+    "license": "All rights reserved, family trip site",
+    "credit": "Japan Quest",
+    "src": "assets/quest/badges/power-without-war.svg"
+  },
+  {
+    "id": "media-reward-journey-east-seal",
+    "role": "badge",
+    "type": "illustration",
+    "alt": "Journey East seal",
+    "status": "live",
+    "source": "Original Japan Quest badge",
+    "license": "All rights reserved, family trip site",
+    "credit": "Japan Quest",
+    "src": "assets/quest/badges/journey-east-seal.svg"
+  },
+  {
+    "id": "media-reward-first-pages",
+    "role": "badge",
+    "type": "illustration",
+    "alt": "First pages seal",
+    "status": "live",
+    "source": "Original Japan Quest badge",
+    "license": "All rights reserved, family trip site",
+    "credit": "Japan Quest",
+    "src": "assets/quest/badges/first-pages.svg"
+  },
+  {
+    "id": "media-reward-mystery-snack",
+    "role": "badge",
+    "type": "illustration",
+    "alt": "Mystery snack seal",
+    "status": "live",
+    "source": "Original Japan Quest badge",
+    "license": "All rights reserved, family trip site",
+    "credit": "Japan Quest",
+    "src": "assets/quest/badges/mystery-snack.svg"
+  },
+  {
+    "id": "media-reward-gachapon-allowance",
+    "role": "badge",
+    "type": "illustration",
+    "alt": "Gachapon seal",
+    "status": "live",
+    "source": "Original Japan Quest badge",
+    "license": "All rights reserved, family trip site",
+    "credit": "Japan Quest",
+    "src": "assets/quest/badges/gachapon-allowance.svg"
+  },
+  {
+    "id": "media-reward-finale-ask-parents",
+    "role": "badge",
+    "type": "illustration",
+    "alt": "Ask Mum and Dad seal",
+    "status": "live",
+    "source": "Original Japan Quest badge",
+    "license": "All rights reserved, family trip site",
+    "credit": "Japan Quest",
+    "src": "assets/quest/badges/finale-ask-parents.svg"
+  }
+]

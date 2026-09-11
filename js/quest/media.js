@@ -51,14 +51,14 @@ const CHAPTER_ART = {
     credit: "663highland",
   },
   tokoname: {
-    src: "assets/heroes/crane.jpg",
-    alt: "Folded paper cranes",
-    credit: "Laitche",
+    src: "assets/quest/dokanzaka.jpg",
+    alt: "Ceramic pipes and pottery reused along Tokoname’s Pottery Footpath",
+    credit: "Hyppolyte de Saint-Rambert",
   },
   finale: {
-    src: "assets/heroes/fuji.jpg",
-    alt: "Hokusai’s Red Fuji",
-    credit: "Katsushika Hokusai",
+    src: "assets/quest/ebisu-dusk.jpg",
+    alt: "Dusk at Yebisu Garden Place, a calm Tokyo evening",
+    credit: "hiroshi nakano",
   },
 };
 

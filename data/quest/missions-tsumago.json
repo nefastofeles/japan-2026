@@ -1,0 +1,56 @@
+[
+  {
+    "id": "tsu-road",
+    "chapterId": "tsumago",
+    "moduleId": "tsumago-core",
+    "title": "The Road to Edo",
+    "type": "story",
+    "xp": 100,
+    "fragmentValue": 1,
+    "intro": "Post towns existed to serve walkers, horses and official mail.",
+    "task": "Post towns existed to serve walkers, horses and official mail.",
+    "mediaId": "media-nakasendo-map",
+    "codexUnlock": "nakasendo",
+    "callbackKey": "road-to-edo"
+  },
+  {
+    "id": "tsu-missing",
+    "chapterId": "tsumago",
+    "moduleId": "tsumago-core",
+    "title": "What Is Missing?",
+    "type": "observation",
+    "xp": 90,
+    "fragmentValue": 0,
+    "intro": "Look for wires, cars, vending, neon. What did they hide or keep out?",
+    "task": "Look for wires, cars, vending, neon. What did they hide or keep out?",
+    "mediaId": "media-tsumago-street"
+  },
+  {
+    "id": "tsu-guardian",
+    "chapterId": "tsumago",
+    "moduleId": "tsumago-core",
+    "title": "Who Protects Travellers?",
+    "type": "find",
+    "xp": 60,
+    "fragmentValue": 0,
+    "intro": "Find a stone roadside figure. Jizo or dōsojin: protectors of the way.",
+    "task": "Find a stone roadside figure. Jizo or dōsojin: protectors of the way.",
+    "mediaId": "media-jizo",
+    "codexUnlock": "jizo"
+  },
+  {
+    "id": "tsu-why-road",
+    "chapterId": "tsumago",
+    "moduleId": "tsumago-core",
+    "title": "Why This Road?",
+    "type": "story",
+    "xp": 50,
+    "fragmentValue": 0,
+    "intro": "Why This Road?",
+    "task": "Why This Road?",
+    "moreInfo": {
+      "title": "Inland",
+      "text": "The Nakasendo ran inland. The Tōkaidō hugged the coast. Different weather, different control. Confirm the comparison before live."
+    }
+  }
+]

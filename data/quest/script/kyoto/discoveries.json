@@ -33,7 +33,8 @@
       "status": "approved",
       "task": "Watch the water pavilion. Hands, then mouth, then the ladle handle.",
       "notes": "Live sample discovery temizu already exists. This is the Kyoto script twin. Do not promote both.",
-      "xp": 20
+      "xp": 20,
+      "liveDiscoveryId": "temizu"
     },
     {
       "id": "kyo-jizo",

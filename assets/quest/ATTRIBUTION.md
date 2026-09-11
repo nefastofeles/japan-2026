@@ -72,3 +72,20 @@ Original uploader was Natsumiya09 at en.wikibooks | CC BY 3.0 | hero | live |
 | `media-finale-family` | `—` | — | — | — | family | family-wait |
 | `media-finale-old-new` | `—` | — | — | — | family | family-wait |
 | `media-hida-beef` | `—` | — | — | — | hero | family-wait |
+| `media-ebisu-dusk` | `ebisu-dusk.jpg` | Wikimedia Commons | hiroshi nakano | CC BY 3.0 | journey | live |
+| `media-tokoname-journey` | `dokanzaka.jpg` | Wikimedia Commons | Hyppolyte de Saint-Rambert | CC BY 4.0 | journey | live |
+| `media-konbini` | `konbini.jpg` | Wikimedia Commons | LERK | CC BY-SA 3.0 | codex | live |
+| `media-ekiben` | `ekiben.jpg` | Wikimedia Commons | User 電車(新幹線)でGO! | CC BY-SA 4.0 | codex | live |
+| `media-sumo` | `sumo-dohyo.jpg` | Wikimedia Commons | Simon Q | CC BY 2.0 | codex | live |
+| `media-gion-matsuri` | `gion-matsuri.jpg` | Wikimedia Commons | 江戸村のとくぞう | CC BY-SA 4.0 | codex | live |
+| `media-artefact` | `diagrams/artefact.svg` | Original Japan Quest diagram | Japan Quest | All rights reserved, family trip site | illustration | live |
+| `media-hinomaru` | `diagrams/hinomaru.svg` | Original Japan Quest diagram | Japan Quest | All rights reserved, family trip site | diagram | live |
+| `media-depachika` | `diagrams/depachika.svg` | Original Japan Quest diagram | Japan Quest | All rights reserved, family trip site | diagram | live |
+| `media-vending` | `diagrams/vending.svg` | Original Japan Quest diagram | Japan Quest | All rights reserved, family trip site | diagram | live |
+| `media-onigiri` | `diagrams/onigiri.svg` | Original Japan Quest diagram | Japan Quest | All rights reserved, family trip site | diagram | live |
+| `media-temizu` | `diagrams/temizu.svg` | Original Japan Quest diagram | Japan Quest | All rights reserved, family trip site | diagram | live |
+| `media-manzai` | `diagrams/manzai.svg` | Original Japan Quest diagram | Japan Quest | All rights reserved, family trip site | illustration | live |
+| `media-momiji` | `diagrams/momiji.svg` | Original Japan Quest diagram | Japan Quest | All rights reserved, family trip site | diagram | live |
+| `media-jinya` | `diagrams/jinya.svg` | Original Japan Quest diagram | Japan Quest | All rights reserved, family trip site | diagram | live |
+| `media-hida-beef-mark` | `diagrams/hida-beef.svg` | Original Japan Quest diagram | Japan Quest | All rights reserved, family trip site | diagram | live |
+| Family badge seals | `badges/*.svg` | Original Japan Quest badges | Japan Quest | All rights reserved, family trip site | badge | live |

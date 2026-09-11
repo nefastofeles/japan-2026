@@ -24,7 +24,10 @@ import { adventureMissionPage } from "./pages/adventure-mission.js";
 import { adventureDiscoveryPage } from "./pages/adventure-discovery.js";
 import { adventureScriptPage } from "./pages/adventure-script.js";
 import {
-  adventureMapPage, adventureCodexPage, adventureBadgesPage, adventureStoryPage,
+  adventureMapPage, adventureChapterPage, adventureModulePage,
+} from "./pages/adventure-journey.js";
+import {
+  adventureCodexPage, adventureBadgesPage, adventureStoryPage,
 } from "./pages/adventure-more.js";
 import { bindSpeechLifecycle } from "./quest/speech.js";
 
@@ -151,6 +154,8 @@ function registerPages() {
   router.route("/admin", adminPage);
   router.route("/adventure", adventurePage);
   router.route("/adventure/map", adventureMapPage);
+  router.route("/adventure/map/:chapterId/:moduleId", adventureModulePage);
+  router.route("/adventure/map/:chapterId", adventureChapterPage);
   router.route("/adventure/codex", adventureCodexPage);
   router.route("/adventure/badges", adventureBadgesPage);
   router.route("/adventure/story", adventureStoryPage);
@@ -214,7 +219,7 @@ function registerShellWorker() {
   // Query string plus updateViaCache none: an old worker that cache-firsts
   // /sw.js will miss this URL and actually download the new file.
   navigator.serviceWorker
-    .register("sw.js?v=40", { updateViaCache: "none" })
+    .register("sw.js?v=41", { updateViaCache: "none" })
     .catch(() => {
       /* offline support is a bonus, never a requirement */
     });

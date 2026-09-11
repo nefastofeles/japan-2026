@@ -1,0 +1,153 @@
+[
+  {
+    "id": "kan-samurai-walls",
+    "chapterId": "kanazawa",
+    "moduleId": "kanazawa-core",
+    "title": "Who Lived Behind These Walls?",
+    "type": "observation",
+    "xp": 80,
+    "fragmentValue": 0,
+    "intro": "Find two things that hide a house: a wall, a canal, a bent lane, a small gate.",
+    "task": "Find two things that hide a house: a wall, a canal, a bent lane, a small gate.",
+    "exactLocation": "Nagamachi",
+    "mediaId": "media-nagamachi",
+    "codexUnlock": "samurai-district"
+  },
+  {
+    "id": "kan-samurai-rich",
+    "chapterId": "kanazawa",
+    "moduleId": "kanazawa-core",
+    "title": "Samurai ≠ Rich?",
+    "type": "trueFalse",
+    "xp": 50,
+    "fragmentValue": 0,
+    "intro": "Every samurai family here was rich.",
+    "task": "Every samurai family here was rich.",
+    "question": {
+      "type": "trueFalse",
+      "text": "Every samurai family here was rich.",
+      "choices": [
+        {
+          "id": "true",
+          "text": "True",
+          "response": "Some were. Many were not."
+        },
+        {
+          "id": "false",
+          "text": "False",
+          "response": "Yes. Rank and pay varied."
+        }
+      ],
+      "correctChoiceId": "false",
+      "retryAllowed": true
+    }
+  },
+  {
+    "id": "kan-preservation",
+    "chapterId": "kanazawa",
+    "moduleId": "kanazawa-core",
+    "title": "Why Is Kanazawa Still Here?",
+    "type": "story",
+    "xp": 60,
+    "fragmentValue": 0,
+    "intro": "This old town is not a rebuild after bombs. Why did it survive?",
+    "task": "This old town is not a rebuild after bombs. Why did it survive?",
+    "reveal": "Several causes: luck, distance, later choices to keep streets. Do not pick one simple reason until checked."
+  },
+  {
+    "id": "kan-maeda",
+    "chapterId": "kanazawa",
+    "moduleId": "kanazawa-core",
+    "title": "Too Rich for Your Own Good",
+    "type": "story",
+    "xp": 80,
+    "fragmentValue": 1,
+    "intro": "The Maeda were rich enough to make Edo nervous.",
+    "task": "The Maeda were rich enough to make Edo nervous.",
+    "callbackKey": "power-without-war",
+    "moreInfo": {
+      "title": "Patronage",
+      "text": "Wealth went into crafts and gardens as well as power. Avoid a cartoon of ‘hid gold so the shogun would not attack’ unless a source supports the exact claim."
+    }
+  },
+  {
+    "id": "kan-gold",
+    "chapterId": "kanazawa",
+    "moduleId": "kanazawa-core",
+    "title": "Why So Much Gold?",
+    "type": "photo",
+    "xp": 80,
+    "fragmentValue": 0,
+    "intro": "Find gold leaf used in a slightly unnecessary way. Photograph it.",
+    "task": "Find gold leaf used in a slightly unnecessary way. Photograph it.",
+    "mediaId": "media-maeda-gold",
+    "codexUnlock": "gold-leaf"
+  },
+  {
+    "id": "kan-eat-gold",
+    "chapterId": "kanazawa",
+    "moduleId": "kanazawa-core",
+    "title": "Gold You Can Eat",
+    "type": "food",
+    "xp": 40,
+    "fragmentValue": 0,
+    "intro": "If you actually meet gold on ice cream or tea, say whether it tastes of anything.",
+    "task": "If you actually meet gold on ice cream or tea, say whether it tastes of anything."
+  },
+  {
+    "id": "kan-chaya",
+    "chapterId": "kanazawa",
+    "moduleId": "kanazawa-core",
+    "title": "Samurai City, Entertainment City",
+    "type": "observation",
+    "xp": 50,
+    "fragmentValue": 0,
+    "intro": "If you walk a chaya district, compare it with Gion: same job, different city.",
+    "task": "If you walk a chaya district, compare it with Gion: same job, different city."
+  },
+  {
+    "id": "food-kan-sea",
+    "chapterId": "kanazawa",
+    "moduleId": "kanazawa-food",
+    "title": "Seafood North",
+    "type": "food",
+    "xp": 60,
+    "fragmentValue": 0,
+    "intro": "Find or try a Sea of Japan food you did not eat in Tokyo.",
+    "task": "Find or try a Sea of Japan food you did not eat in Tokyo."
+  },
+  {
+    "id": "food-kan-jibuni",
+    "chapterId": "kanazawa",
+    "moduleId": "kanazawa-food",
+    "title": "Jibuni",
+    "type": "food",
+    "xp": 50,
+    "fragmentValue": 0,
+    "intro": "If jibuni is on a menu, try it. Duck and starch in a winter stew.",
+    "task": "If jibuni is on a menu, try it. Duck and starch in a winter stew."
+  },
+  {
+    "id": "ken-six",
+    "chapterId": "kanazawa",
+    "moduleId": "kanazawa-kenrokuen",
+    "title": "The Six Impossible Things",
+    "type": "find",
+    "xp": 100,
+    "fragmentValue": 0,
+    "intro": "Kenrokuen is praised for six qualities. Find a plaque or map. Tick which you can actually see.",
+    "task": "Kenrokuen is praised for six qualities. Find a plaque or map. Tick which you can actually see.",
+    "mediaId": "media-kenrokuen"
+  },
+  {
+    "id": "ken-nature",
+    "chapterId": "kanazawa",
+    "moduleId": "kanazawa-kenrokuen",
+    "title": "Is This Nature?",
+    "type": "reflection",
+    "xp": 50,
+    "fragmentValue": 0,
+    "intro": "teamLab asked where art stops. This garden is planted and pruned. Is it nature?",
+    "task": "teamLab asked where art stops. This garden is planted and pruned. Is it nature?"
+  }
+]

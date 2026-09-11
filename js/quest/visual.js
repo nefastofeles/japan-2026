@@ -18,7 +18,7 @@ export function visualHtml(item, quest, { compact, complete } = {}) {
     const remote = /^https?:\/\//.test(picture.src) || picture.src.startsWith("blob:");
     const src = remote || picture.src.includes("?")
       ? picture.src
-      : `${picture.src}?v=40`;
+      : `${picture.src}?v=41`;
     return `
       <figure class="quest-visual${extra}" data-visual="${esc(mediaKind)}" data-chapter="${esc(chapterId)}">
         <img src="${esc(src)}" alt="${esc(picture.alt || "")}"

@@ -1,0 +1,212 @@
+[
+  {
+    "id": "tak-merchant",
+    "chapterId": "takayama",
+    "moduleId": "takayama-core",
+    "title": "Samurai or Merchant?",
+    "type": "observation",
+    "xp": 90,
+    "fragmentValue": 0,
+    "intro": "Compare these wooden shop-houses with Kanazawa’s walled lanes. Who showed off here?",
+    "task": "Compare these wooden shop-houses with Kanazawa’s walled lanes. Who showed off here?",
+    "mediaId": "media-sanmachi"
+  },
+  {
+    "id": "tak-wood",
+    "chapterId": "takayama",
+    "moduleId": "takayama-core",
+    "title": "Why Is Everything Wood?",
+    "type": "observation",
+    "xp": 50,
+    "fragmentValue": 0,
+    "intro": "Look up. Forests, carpenters, fire risk. Why wood anyway?",
+    "task": "Look up. Forests, carpenters, fire risk. Why wood anyway?",
+    "codexUnlock": "hida-woodcraft"
+  },
+  {
+    "id": "tak-jinya",
+    "chapterId": "takayama",
+    "moduleId": "takayama-core",
+    "title": "Tokyo's Office in the Mountains",
+    "type": "story",
+    "xp": 80,
+    "fragmentValue": 0,
+    "intro": "The shogun’s office, far from Edo.",
+    "task": "The shogun’s office, far from Edo.",
+    "reveal": "A magistrate’s compound. Why keep one here? Check the motive before live.",
+    "exactLocation": "Takayama Jinya",
+    "codexUnlock": "takayama-jinya"
+  },
+  {
+    "id": "tak-sarubobo",
+    "chapterId": "takayama",
+    "moduleId": "takayama-core",
+    "title": "The Faceless Doll",
+    "type": "find",
+    "xp": 100,
+    "fragmentValue": 0,
+    "intro": "Find a sarubobo. What is missing?",
+    "task": "Find a sarubobo. What is missing?",
+    "reveal": "A face. The blank is part of the charm tradition. Check the luck story before live.",
+    "mediaId": "media-sarubobo",
+    "codexUnlock": "sarubobo"
+  },
+  {
+    "id": "tak-float",
+    "chapterId": "takayama",
+    "moduleId": "takayama-core",
+    "title": "This Is Not a Car",
+    "type": "find",
+    "xp": 90,
+    "fragmentValue": 0,
+    "intro": "Find a festival float, in a hall or a storehouse. It is a yatai, not a truck.",
+    "task": "Find a festival float, in a hall or a storehouse. It is a yatai, not a truck.",
+    "mediaId": "media-yatai",
+    "codexUnlock": "yatai"
+  },
+  {
+    "id": "tak-karakuri",
+    "chapterId": "takayama",
+    "moduleId": "takayama-core",
+    "title": "Robots Before Electronics",
+    "type": "story",
+    "xp": 60,
+    "fragmentValue": 0,
+    "intro": "Mechanical puppets on festival floats.",
+    "task": "Mechanical puppets on festival floats.",
+    "reveal": "Karakuri are clockwork theatre. Do not say they caused modern robots."
+  },
+  {
+    "id": "tak-hida-beef",
+    "chapterId": "takayama",
+    "moduleId": "takayama-core",
+    "title": "Hida Beef Test",
+    "type": "food",
+    "xp": 50,
+    "fragmentValue": 0,
+    "intro": "If you eat it, predict: sweet, fatty, mild?",
+    "task": "If you eat it, predict: sweet, fatty, mild?",
+    "mediaId": "media-hida-beef",
+    "codexUnlock": "hida-beef"
+  },
+  {
+    "id": "tak-mitarashi",
+    "chapterId": "takayama",
+    "moduleId": "takayama-core",
+    "title": "Mitarashi Surprise",
+    "type": "food",
+    "xp": 40,
+    "fragmentValue": 0,
+    "intro": "If you meet mitarashi dango, guess: only sweet, or also savoury soy?",
+    "task": "If you meet mitarashi dango, guess: only sweet, or also savoury soy?"
+  },
+  {
+    "id": "shirakawa-praying-roofs",
+    "chapterId": "takayama",
+    "moduleId": "takayama-shirakawa",
+    "title": "Why Do the Houses Pray?",
+    "type": "observation",
+    "xp": 90,
+    "fragmentValue": 0,
+    "intro": "Look at the roof. What shape is it making?",
+    "task": "Look at the roof. What shape is it making?",
+    "reveal": "Gassho-zukuri: like hands in prayer. Steep, to shed snow.",
+    "mediaId": "media-gassho-roof",
+    "codexUnlock": "gassho-zukuri"
+  },
+  {
+    "id": "shirakawa-snow",
+    "chapterId": "takayama",
+    "moduleId": "takayama-shirakawa",
+    "title": "Build a Snow House",
+    "type": "multipleChoice",
+    "xp": 100,
+    "fragmentValue": 0,
+    "intro": "Which roof sheds a heavy snow load better?",
+    "task": "Which roof sheds a heavy snow load better?",
+    "mediaId": "media-snow-load",
+    "question": {
+      "type": "multipleChoice",
+      "text": "Which roof sheds a heavy snow load better?",
+      "choices": [
+        {
+          "id": "flat",
+          "text": "Flat",
+          "response": "Snow sits. Think of a slide."
+        },
+        {
+          "id": "steep",
+          "text": "Steep",
+          "response": "Yes. A slide for snow."
+        },
+        {
+          "id": "round",
+          "text": "Round like a dome",
+          "response": "Not the local answer."
+        }
+      ],
+      "correctChoiceId": "steep",
+      "retryAllowed": true
+    }
+  },
+  {
+    "id": "shirakawa-nails",
+    "chapterId": "takayama",
+    "moduleId": "takayama-shirakawa",
+    "title": "No Nails?",
+    "type": "observation",
+    "xp": 60,
+    "fragmentValue": 0,
+    "intro": "If a house is open, look at joints. Rope, wood, pegs.",
+    "task": "If a house is open, look at joints. Rope, wood, pegs.",
+    "reveal": "Some frames use joinery and rope more than big iron nails. Check the exact wording before live."
+  },
+  {
+    "id": "shirakawa-silkworm",
+    "chapterId": "takayama",
+    "moduleId": "takayama-shirakawa",
+    "title": "What's Upstairs?",
+    "type": "story",
+    "xp": 90,
+    "fragmentValue": 0,
+    "intro": "The attic was not only storage.",
+    "task": "The attic was not only storage.",
+    "reveal": "Silkworms. A house that was also a workshop.",
+    "mediaId": "media-silkworm-attic",
+    "codexUnlock": "silkworm"
+  },
+  {
+    "id": "shirakawa-view",
+    "chapterId": "takayama",
+    "moduleId": "takayama-shirakawa",
+    "title": "Village From Above",
+    "type": "find",
+    "xp": 50,
+    "fragmentValue": 0,
+    "intro": "From a viewpoint, tick three survival pieces: river, fields, forest, roofs, paths.",
+    "task": "From a viewpoint, tick three survival pieces: river, fields, forest, roofs, paths.",
+    "mediaId": "media-shirakawa-view"
+  },
+  {
+    "id": "shirakawa-house-factory",
+    "chapterId": "takayama",
+    "moduleId": "takayama-shirakawa",
+    "title": "House or Factory?",
+    "type": "reflection",
+    "xp": 40,
+    "fragmentValue": 0,
+    "intro": "Sleeping, cooking, silk, snow. Is this a home, a factory, or both?",
+    "task": "Sleeping, cooking, silk, snow. Is this a home, a factory, or both?"
+  },
+  {
+    "id": "shirakawa-snow-weird",
+    "chapterId": "takayama",
+    "moduleId": "takayama-shirakawa",
+    "title": "Four Metres of Snow",
+    "type": "observation",
+    "xp": 30,
+    "fragmentValue": 0,
+    "intro": "Four Metres of Snow",
+    "task": "Four Metres of Snow"
+  }
+]

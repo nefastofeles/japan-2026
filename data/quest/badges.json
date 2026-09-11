@@ -4,76 +4,142 @@
     "name": "First Discovery",
     "hidden": false,
     "description": "The chronicle accepted its first recovered page.",
-    "realWorldReward": null
+    "realWorldReward": null,
+    "mediaId": "media-badge-first-discovery",
+    "visual": {
+      "type": "image",
+      "src": "assets/quest/badges/first-discovery.svg",
+      "alt": "First Discovery family seal"
+    }
   },
   {
     "id": "food-explorer",
     "name": "Food Explorer",
     "hidden": false,
     "description": "The family ate something new on purpose.",
-    "realWorldReward": "Kids choose the next dessert."
+    "realWorldReward": "Kids choose the next dessert.",
+    "mediaId": "media-badge-food-explorer",
+    "visual": {
+      "type": "image",
+      "src": "assets/quest/badges/food-explorer.svg",
+      "alt": "Food Explorer family seal"
+    }
   },
   {
     "id": "konbini-explorer",
     "name": "Konbini Explorer",
     "hidden": false,
     "description": "You treated a convenience store as a kitchen.",
-    "realWorldReward": "Kids choose the next konbini snack."
+    "realWorldReward": "Kids choose the next konbini snack.",
+    "mediaId": "media-badge-konbini-explorer",
+    "visual": {
+      "type": "image",
+      "src": "assets/quest/badges/konbini-explorer.svg",
+      "alt": "Konbini Explorer family seal"
+    }
   },
   {
     "id": "yokai-hunter",
     "name": "Yokai Hunter",
     "hidden": false,
     "description": "You met a kitsune and did not treat it like a dog.",
-    "realWorldReward": null
+    "realWorldReward": null,
+    "mediaId": "media-badge-yokai-hunter",
+    "visual": {
+      "type": "image",
+      "src": "assets/quest/badges/yokai-hunter.svg",
+      "alt": "Yokai Hunter family seal"
+    }
   },
   {
     "id": "shrine-spotter",
     "name": "Shrine Spotter",
     "hidden": false,
     "description": "You walked the orange tunnel and asked who paid for it.",
-    "realWorldReward": null
+    "realWorldReward": null,
+    "mediaId": "media-badge-shrine-spotter",
+    "visual": {
+      "type": "image",
+      "src": "assets/quest/badges/shrine-spotter.svg",
+      "alt": "Shrine Spotter family seal"
+    }
   },
   {
     "id": "sky-reader",
     "name": "Sky Reader",
     "hidden": true,
     "description": "You decoded 634 as Musashi.",
-    "realWorldReward": "One gachapon allowance, family choice of machine."
+    "realWorldReward": "One gachapon allowance, family choice of machine.",
+    "mediaId": "media-badge-sky-reader",
+    "visual": {
+      "type": "image",
+      "src": "assets/quest/badges/sky-reader.svg",
+      "alt": "Sky Reader family seal"
+    }
   },
   {
     "id": "samurai-scholar",
     "name": "Samurai Scholar",
     "hidden": false,
     "description": "Kanazawa will ask for this. Not yet.",
-    "realWorldReward": null
+    "realWorldReward": null,
+    "mediaId": "media-badge-samurai-scholar",
+    "visual": {
+      "type": "image",
+      "src": "assets/quest/badges/samurai-scholar.svg",
+      "alt": "Samurai Scholar family seal"
+    }
   },
   {
     "id": "mountain-traveller",
     "name": "Mountain Traveller",
     "hidden": false,
     "description": "Waiting for the Alps.",
-    "realWorldReward": null
+    "realWorldReward": null,
+    "mediaId": "media-badge-mountain-traveller",
+    "visual": {
+      "type": "image",
+      "src": "assets/quest/badges/mountain-traveller.svg",
+      "alt": "Mountain Traveller family seal"
+    }
   },
   {
     "id": "nakasendo-traveller",
     "name": "Nakasendo Traveller",
     "hidden": false,
     "description": "Waiting for the old road.",
-    "realWorldReward": null
+    "realWorldReward": null,
+    "mediaId": "media-badge-nakasendo-traveller",
+    "visual": {
+      "type": "image",
+      "src": "assets/quest/badges/nakasendo-traveller.svg",
+      "alt": "Nakasendo Traveller family seal"
+    }
   },
   {
     "id": "brave-eater",
     "name": "Brave Eater",
     "hidden": true,
     "description": "Ate the thing everyone else refused.",
-    "realWorldReward": "Small mystery reward, Javier’s choice."
+    "realWorldReward": "Small mystery reward, Javier’s choice.",
+    "mediaId": "media-badge-brave-eater",
+    "visual": {
+      "type": "image",
+      "src": "assets/quest/badges/brave-eater.svg",
+      "alt": "Brave Eater family seal"
+    }
   },
   {
     "id": "rail-master",
     "name": "Rail Master",
     "hidden": false,
     "description": "Waiting for a long shinkansen.",
-    "realWorldReward": null
+    "realWorldReward": null,
+    "mediaId": "media-badge-rail-master",
+    "visual": {
+      "type": "image",
+      "src": "assets/quest/badges/rail-master.svg",
+      "alt": "Rail Master family seal"
+    }
   }
 ]

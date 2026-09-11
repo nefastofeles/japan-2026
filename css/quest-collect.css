@@ -30,6 +30,42 @@
 
 .quest-entry--locked .quest-visual--mark { filter: brightness(0.45); }
 
+.quest-entry--locked .quest-visual img {
+  filter: brightness(0.28) saturate(0.35);
+}
+
+.quest-card--preview {
+  box-shadow: var(--shadow);
+}
+
+.quest-seal {
+  width: 4.5rem;
+  height: 4.5rem;
+  flex-shrink: 0;
+  display: block;
+  border-radius: 50%;
+  background: var(--paper);
+}
+
+.quest-badge {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-4);
+}
+
+.quest-badge-grid {
+  display: grid;
+  gap: var(--sp-3);
+}
+
+.quest-badge h3 { margin: 0 0 var(--sp-2); }
+
+@media (min-width: 40rem) {
+  .quest-badge-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
 .quest-path {
   list-style: none;
   padding: 0;

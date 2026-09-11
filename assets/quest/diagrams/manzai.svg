@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="Two manzai comedy figures">
+  <rect width="1600" height="900" fill="#FAF8F3"/>
+  <rect x="0" y="0" width="1600" height="16" fill="#BC002D"/>
+  <rect x="0" y="884" width="1600" height="16" fill="#BC002D"/>
+  <circle cx="620" cy="360" r="70" fill="none" stroke="#1A1610" stroke-width="8"/><circle cx="980" cy="360" r="70" fill="none" stroke="#1A1610" stroke-width="8"/><path d="M560 620c20-120 120-120 140 0M920 620c20-120 120-120 140 0" fill="none" stroke="#BC002D" stroke-width="8"/>
+  <text x="48" y="860" font-family="Georgia, serif" font-size="26" fill="#1A1610">Osaka laughs in pairs. One straight line, one bounce.</text>
+</svg>

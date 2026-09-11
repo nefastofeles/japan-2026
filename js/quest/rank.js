@@ -22,7 +22,9 @@ function rankOf(mission, quest, date) {
   if (bookedOnDate(mission, quest, date)) return 0;
   if (mission.anchorEvent) return 1;
   const pack = packFor(quest, mission);
-  if (pack && pack.optional === false) return 1;
+  // Library pages published for Journey keep fragmentValue 0 so they
+  // do not fill the hub when a real chapter page is already waiting.
+  if (pack && pack.optional === false && (mission.fragmentValue ?? 1) > 0) return 1;
   if ((mission.fragmentValue ?? 1) > 0) return 2;
   return 3;
 }
