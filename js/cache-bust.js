@@ -6,9 +6,11 @@ const CURRENT_CACHE = "japan-2026-v34";
 const RELOAD_FLAG = "japan-2026-cleared-v34";
 
 function bootApp() {
+  if (document.querySelector("script[data-app-boot]")) return;
   const script = document.createElement("script");
   script.type = "module";
   script.src = "js/app.js?v=34";
+  script.dataset.appBoot = "1";
   document.body.appendChild(script);
 }
 
@@ -32,6 +34,9 @@ dropStaleShell()
       sessionStorage.setItem(RELOAD_FLAG, "1");
       const url = new URL(location.href);
       url.searchParams.set("v", "34");
+      // A new query so replace() always navigates, even when we already
+      // landed here from refresh.html?v=34.
+      url.searchParams.set("bust", "1");
       location.replace(url.href);
       return;
     }
