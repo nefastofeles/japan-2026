@@ -33,7 +33,8 @@ export function photoBatchMarkup(canRemove) {
     <div class="photo-batch stack" data-photo-batch>
       <div>
         <label>Photos for one place</label>
-        <input class="field" type="file" accept="image/*" multiple data-files>
+        <input class="field" type="file" accept="image/jpeg,image/png,image/webp,.jpg,.jpeg,.png,.webp,.heic,.heif" multiple data-files>
+        <p class="muted" data-file-list></p>
       </div>
       <div>
         <label>Place</label>
@@ -174,7 +175,7 @@ function mealSection() {
       </div>
       <div>
         <label for="mealfiles">Photos of this meal</label>
-        <input class="field" id="mealfiles" type="file" accept="image/*" multiple data-meal-files>
+        <input class="field" id="mealfiles" type="file" accept="image/jpeg,image/png,image/webp,.jpg,.jpeg,.png,.webp" multiple data-meal-files>
       </div>
       <fieldset class="scores">
         <legend class="small">Scores out of 5</legend>

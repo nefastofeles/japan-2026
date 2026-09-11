@@ -9,7 +9,7 @@
    ========================================================================== */
 
 import { getDay, getDays } from "../store.js";
-import { addBestOf, addStory, addVideo, addPhoto, addMeal } from "../posts.js";
+import { addBestOf, addStory, addVideo, addMeal } from "../posts.js";
 import { isConfigured, TRIP } from "../config.js";
 import { isAdmin, signOut, getSession } from "../auth.js";
 import { todayISO, youtubeId } from "../util.js";
@@ -17,6 +17,7 @@ import { prepareImage } from "../media.js";
 import { adminForms, photoBatchMarkup } from "./admin-forms.js";
 import { loginPage } from "./login.js";
 import { resetQuestState } from "../quest/reset.js";
+import { uploadPhotoFiles } from "../components/photo-upload.js";
 
 export async function adminPage() {
   if (!getSession()) return loginPage();
@@ -56,6 +57,17 @@ function bindAdmin(root) {
     }
   });
 
+  batches.addEventListener("change", (event) => {
+    const input = event.target.closest("[data-files]");
+    if (!input) return;
+    const note = input.parentElement.querySelector("[data-file-list]");
+    if (!note) return;
+    const files = Array.from(input.files || []);
+    note.textContent = files.length
+      ? files.map((file) => `${file.name} (${Math.max(1, Math.round(file.size / 1024))} KB)`).join(" · ")
+      : "";
+  });
+
   pick("[data-upload]").addEventListener("click", async () => {
     const status = pick("[data-upload-status]");
     const groups = [...batches.querySelectorAll("[data-photo-batch]")].map((batch) => ({
@@ -75,27 +87,26 @@ function bindAdmin(root) {
     let lastError = "";
 
     for (const group of groups) {
-      for (const file of group.files) {
-        status.textContent = `Uploading ${done + failed + 1} of ${total}…`;
-        try {
-          const prepared = await prepareImage(file);
-          await addPhoto(day, prepared, {
-            category: group.category,
-            place: group.place || null,
-          });
-          done += 1;
-        } catch (error) {
-          console.error(file.name, error);
-          failed += 1;
-          lastError = error.message || "Upload failed.";
+      const result = await uploadPhotoFiles(
+        day,
+        group.files,
+        { category: group.category, place: group.place || null },
+        (n) => {
+          status.textContent = `Uploading ${done + failed + n} of ${total}…`;
         }
-      }
+      );
+      done += result.done;
+      failed += result.failed;
+      if (result.lastError) lastError = result.lastError;
     }
 
     status.textContent = `Uploaded ${done} of ${total}.` +
-      (failed ? ` ${failed} failed. ${lastError}` : "");
+      (failed ? ` ${failed} failed. ${lastError}` : " Open Photos to see them.");
     batches.querySelectorAll("[data-files]").forEach((input) => {
       input.value = "";
+    });
+    batches.querySelectorAll("[data-file-list]").forEach((note) => {
+      note.textContent = "";
     });
   });
 

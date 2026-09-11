@@ -13,6 +13,7 @@
 
 import { IMAGE } from "./config.js";
 import { getClient } from "./supabase.js";
+import { assertReadablePhoto, toBitmap, encodeJpeg } from "./image-decode.js";
 
 /* ------------------------------------------------------------ EXIF reader */
 /* iPhone photos (JPEG and HEIC) put GPS in an Exif TIFF block, sometimes
@@ -165,53 +166,13 @@ export async function exifOf(file) {
 
 /* ------------------------------------------------------------- resampling */
 
-async function toBitmap(file) {
-  // imageOrientation "from-image" applies EXIF rotation so portraits stay upright.
-  try {
-    return await createImageBitmap(file, { imageOrientation: "from-image" });
-  } catch {
-    const heic = /\.hei[cf]$/i.test(file.name || "") || /^image\/hei[cf]$/.test(file.type || "");
-    if (heic) {
-      throw new Error("Chrome cannot read HEIC. Export the picture as JPEG from Photos first.");
-    }
-    try {
-      return await createImageBitmap(file);
-    } catch {
-      throw new Error("This file is not a photo Chrome can read.");
-    }
-  }
-}
-
-function scaleTo(width, height, maxEdge) {
-  const longest = Math.max(width, height);
-  if (longest <= maxEdge) return { width, height };
-  const ratio = maxEdge / longest;
-  return { width: Math.round(width * ratio), height: Math.round(height * ratio) };
-}
-
-async function encode(bitmap, maxEdge, quality) {
-  const size = scaleTo(bitmap.width, bitmap.height, maxEdge);
-  const canvas = document.createElement("canvas");
-  canvas.width = size.width;
-  canvas.height = size.height;
-
-  const context = canvas.getContext("2d");
-  context.imageSmoothingQuality = "high";
-  context.drawImage(bitmap, 0, 0, size.width, size.height);
-
-  const blob = await new Promise((resolve) =>
-    canvas.toBlob(resolve, "image/jpeg", quality)
-  );
-  if (!blob) throw new Error("This photo could not be turned into a JPEG.");
-  return { blob, ...size };
-}
-
 /** Turn one picked file into a full-size JPEG, a thumbnail and its metadata. */
 export async function prepareImage(file) {
+  await assertReadablePhoto(file);
   const [meta, bitmap] = await Promise.all([exifOf(file), toBitmap(file)]);
 
-  const full = await encode(bitmap, IMAGE.fullMaxEdge, IMAGE.fullQuality);
-  const thumb = await encode(bitmap, IMAGE.thumbMaxEdge, IMAGE.thumbQuality);
+  const full = await encodeJpeg(bitmap, IMAGE.fullMaxEdge, IMAGE.fullQuality);
+  const thumb = await encodeJpeg(bitmap, IMAGE.thumbMaxEdge, IMAGE.thumbQuality);
   bitmap.close?.();
 
   return {

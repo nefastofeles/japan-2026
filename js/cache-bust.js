@@ -2,14 +2,14 @@
    Yesterday's worker cache-firsts js/supabase.js, so a new browser
    tab still talks to esm.sh and the album looks empty. Unregister,
    delete those caches, then reload once. */
-const CURRENT_CACHE = "japan-2026-v36";
-const RELOAD_FLAG = "japan-2026-cleared-v36";
+const CURRENT_CACHE = "japan-2026-v37";
+const RELOAD_FLAG = "japan-2026-cleared-v37";
 
 function bootApp() {
   if (document.querySelector("script[data-app-boot]")) return;
   const script = document.createElement("script");
   script.type = "module";
-  script.src = "js/app.js?v=36";
+  script.src = "js/app.js?v=37";
   script.dataset.appBoot = "1";
   document.body.appendChild(script);
 }
@@ -33,9 +33,9 @@ dropStaleShell()
     if (cleared && !sessionStorage.getItem(RELOAD_FLAG)) {
       sessionStorage.setItem(RELOAD_FLAG, "1");
       const url = new URL(location.href);
-      url.searchParams.set("v", "36");
+      url.searchParams.set("v", "37");
       // A new query so replace() always navigates, even when we already
-      // landed here from refresh.html?v=36.
+      // landed here from refresh.html?v=37.
       url.searchParams.set("bust", "1");
       location.replace(url.href);
       return;

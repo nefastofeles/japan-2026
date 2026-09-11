@@ -270,3 +270,24 @@
 @media (max-width: 40rem) {
   .photo-grid { grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: var(--sp-2); }
 }
+
+.photo-upload {
+  display: grid;
+  gap: var(--sp-3);
+  margin-top: var(--sp-5);
+}
+
+.photo-upload__drop {
+  display: grid;
+  align-items: center;
+  min-height: 6rem;
+  padding: var(--sp-4);
+  border: 2px dashed var(--rule);
+  border-radius: var(--radius);
+  background: var(--paper-raised);
+  cursor: pointer;
+  font-size: var(--size-base);
+  line-height: 1.4;
+}
+
+.photo-upload__drop:hover { border-color: var(--leg); }

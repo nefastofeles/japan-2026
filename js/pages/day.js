@@ -25,6 +25,7 @@ import {
 import { bindLiveWeather } from "../weather.js";
 import { destinationHero } from "../components/hero-banner.js";
 import { bestOfSection } from "../components/best-of.js";
+import { photoUploadMarkup, bindPhotoUpload } from "../components/photo-upload.js";
 
 function header(day) {
   const counter = dayNumber(day);
@@ -109,13 +110,11 @@ export async function dayPage({ date }) {
     ? `<div class="day-cover"><img src="${esc(day.coverUrl)}" alt=""></div>`
     : destinationHero(day.leg);
 
-  const photosSection =
-    day.kind === "pre" || unattachedPhotos.length
-      ? `<section>
+  const photosSection = `<section>
            <h2 class="section-title">Photos</h2>
            ${await photoAlbum(unattachedPhotos, { fallbackPlace: day.city })}
-         </section>`
-      : "";
+           ${photoUploadMarkup()}
+         </section>`;
 
   const videoSection = videos.length
     ? `<section>
@@ -196,6 +195,7 @@ export async function dayPage({ date }) {
       centreActiveChip();
       bindVideos(root);
       bindPhotoGrid(root, unattachedPhotos);
+      bindPhotoUpload(root, day);
       bindLiveWeather(root);
     },
   };
