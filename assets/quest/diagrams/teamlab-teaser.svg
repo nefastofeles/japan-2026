@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="Soft abstract light, no identifiable teamLab room">
+  <rect width="1600" height="900" fill="#FAF8F3"/>
+  <rect x="0" y="0" width="1600" height="16" fill="#BC002D"/>
+  <rect x="0" y="884" width="1600" height="16" fill="#BC002D"/>
+  
+        <defs>
+          <radialGradient id="g1" cx="40%" cy="40%"><stop offset="0" stop-color="#7EC8E3"/><stop offset="1" stop-color="#FAF8F3" stop-opacity="0"/></radialGradient>
+          <radialGradient id="g2" cx="70%" cy="60%"><stop offset="0" stop-color="#E6B422"/><stop offset="1" stop-color="#FAF8F3" stop-opacity="0"/></radialGradient>
+        </defs>
+        <rect width="1600" height="900" fill="#121018"/>
+        <ellipse cx="620" cy="360" rx="380" ry="260" fill="url(#g1)"/>
+        <ellipse cx="1100" cy="540" rx="320" ry="220" fill="url(#g2)"/>
+        <circle cx="240" cy="200" r="6" fill="#FAF8F3"/>
+        <circle cx="1400" cy="160" r="5" fill="#FAF8F3"/>
+        <circle cx="900" cy="120" r="4" fill="#E6B422"/>
+        
+  <text x="48" y="860" font-family="Georgia, serif" font-size="26" fill="#1A1610">Light, not a spoiler of any room.</text>
+</svg>

@@ -4,14 +4,26 @@
     "xpThreshold": 40,
     "title": "Kids choose dessert",
     "description": "The family recovered enough pages. Kids pick the next sweet.",
-    "type": "realWorld"
+    "type": "realWorld",
+    "mediaId": "media-reward-first-pages",
+    "visual": {
+      "type": "image",
+      "src": "assets/quest/badges/first-pages.svg",
+      "alt": "Kids choose dessert seal"
+    }
   },
   {
     "id": "mystery-snack",
     "xpThreshold": 80,
     "title": "Mystery snack",
     "description": "A small surprise from Javier’s pocket. Not money.",
-    "type": "mystery"
+    "type": "mystery",
+    "mediaId": "media-reward-mystery-snack",
+    "visual": {
+      "type": "image",
+      "src": "assets/quest/badges/mystery-snack.svg",
+      "alt": "Mystery snack seal"
+    }
   },
   {
     "id": "gachapon-allowance",
@@ -20,41 +32,77 @@
     "title": "One gachapon",
     "description": "One capsule machine, family choice.",
     "type": "realWorld",
-    "hidden": true
+    "hidden": true,
+    "mediaId": "media-reward-gachapon-allowance",
+    "visual": {
+      "type": "image",
+      "src": "assets/quest/badges/gachapon-allowance.svg",
+      "alt": "One gachapon seal"
+    }
   },
   {
     "id": "sky-guardian",
     "title": "Sky guardian",
     "description": "A digital badge idea for the Skytree engineering page. Hidden until that mission is live.",
     "type": "digital",
-    "hidden": true
+    "hidden": true,
+    "mediaId": "media-reward-sky-guardian",
+    "visual": {
+      "type": "image",
+      "src": "assets/quest/badges/sky-guardian.svg",
+      "alt": "Sky guardian seal"
+    }
   },
   {
     "id": "borderless-fragment-1",
     "title": "Borderless fragment 1",
     "description": "Digital fragment idea for teamLab Tokyo. Hidden until live.",
     "type": "digital",
-    "hidden": true
+    "hidden": true,
+    "mediaId": "media-reward-borderless-fragment",
+    "visual": {
+      "type": "image",
+      "src": "assets/quest/badges/borderless-fragment.svg",
+      "alt": "Borderless fragment 1 seal"
+    }
   },
   {
     "id": "borderless-fragment-2",
     "title": "Borderless fragment 2",
     "description": "Digital fragment idea for teamLab Kyoto. Hidden until live.",
     "type": "digital",
-    "hidden": true
+    "hidden": true,
+    "mediaId": "media-reward-borderless-fragment",
+    "visual": {
+      "type": "image",
+      "src": "assets/quest/badges/borderless-fragment.svg",
+      "alt": "Borderless fragment 2 seal"
+    }
   },
   {
     "id": "world-walker",
     "title": "World Walker",
     "description": "Digital idea for the teamLab trilogy. Hidden until live.",
     "type": "digital",
-    "hidden": true
+    "hidden": true,
+    "mediaId": "media-reward-world-walker",
+    "visual": {
+      "type": "image",
+      "src": "assets/quest/badges/world-walker.svg",
+      "alt": "World Walker seal"
+    }
   },
   {
     "id": "finale-ask-parents",
     "title": "Ask Mum and Dad",
     "description": "Final real-world reward. Hidden. No payment.",
     "type": "realWorld",
-    "hidden": true
+    "hidden": true,
+    "mediaId": "media-reward-finale-ask-parents",
+    "visual": {
+      "type": "image",
+      "src": "assets/quest/badges/finale-ask-parents.svg",
+      "alt": "Ask Mum and Dad seal"
+    }
   }
 ]

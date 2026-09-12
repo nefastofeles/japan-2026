@@ -45,37 +45,67 @@ const EXTRA_MISSION_FILES = [
   "data/quest/missions-tokyo.json",
   "data/quest/missions-tokyo-places.json",
   "data/quest/missions-tokyo-light.json",
+  "data/quest/missions-kyoto-keep-1.json",
+  "data/quest/missions-kyoto-keep-2.json",
+  "data/quest/missions-nara.json",
+  "data/quest/missions-osaka.json",
+  "data/quest/missions-hiroshima-keep.json",
+  "data/quest/missions-miyajima.json",
+  "data/quest/missions-kanazawa.json",
+  "data/quest/missions-takayama.json",
+  "data/quest/missions-tsumago.json",
+  "data/quest/missions-tokoname.json",
+  "data/quest/missions-finale.json",
+];
+
+const EXTRA_DISCOVERY_FILES = [
+  "data/quest/discoveries-more.json",
+];
+
+const EXTRA_CODEX_FILES = [
+  "data/quest/codex-more.json",
+  "data/quest/codex-destinations.json",
+];
+
+const EXTRA_MEDIA_FILES = [
+  "data/quest/media-more.json",
+  "data/quest/media-codex.json",
+  "data/quest/media-badges.json",
 ];
 
 export async function loadQuest() {
   if (cache) return cache;
-  const [chapters, missions, extraMissions, codex, moreCodex, badges, story, discoveries, modules, moreModules, rewards, media, moreMedia, script] =
-    await Promise.all([
-      readJson("data/quest/chapters.json"),
-      readJson("data/quest/missions.json"),
-      Promise.all(EXTRA_MISSION_FILES.map(readJsonArray)),
-      readJson("data/quest/codex.json"),
-      readJsonArray("data/quest/codex-more.json"),
-      readJson("data/quest/badges.json"),
-      readJson("data/quest/story.json"),
-      readJson("data/quest/discoveries.json"),
-      readJson("data/quest/modules.json"),
-      readJsonArray("data/quest/modules-more.json"),
-      readJson("data/quest/rewards.json"),
-      readJsonArray("data/quest/media.json"),
-      readJsonArray("data/quest/media-more.json"),
-      loadScript(),
-    ]);
+  const [
+    chapters, missions, extraMissions, codex, extraCodex,
+    extraDiscoveries, extraMedia, badges, story, discoveries,
+    modules, moreModules, rewards, media, script,
+  ] = await Promise.all([
+    readJson("data/quest/chapters.json"),
+    readJson("data/quest/missions.json"),
+    Promise.all(EXTRA_MISSION_FILES.map(readJsonArray)),
+    readJson("data/quest/codex.json"),
+    Promise.all(EXTRA_CODEX_FILES.map(readJsonArray)),
+    Promise.all(EXTRA_DISCOVERY_FILES.map(readJsonArray)),
+    Promise.all(EXTRA_MEDIA_FILES.map(readJsonArray)),
+    readJson("data/quest/badges.json"),
+    readJson("data/quest/story.json"),
+    readJson("data/quest/discoveries.json"),
+    readJson("data/quest/modules.json"),
+    readJsonArray("data/quest/modules-more.json"),
+    readJson("data/quest/rewards.json"),
+    readJsonArray("data/quest/media.json"),
+    loadScript(),
+  ]);
   cache = {
     chapters,
     missions: [...missions, ...extraMissions.flat()],
-    codex: [...codex, ...moreCodex],
+    codex: [...codex, ...extraCodex.flat()],
     badges,
     story,
-    discoveries,
+    discoveries: [...discoveries, ...extraDiscoveries.flat()],
     modules: [...modules, ...moreModules],
     rewards,
-    media: [...media, ...moreMedia],
+    media: [...media, ...extraMedia.flat()],
     script,
   };
   return cache;
@@ -95,6 +125,14 @@ export function missionsForChapter(quest, chapterId) {
 
 export function missionsForModule(quest, moduleId) {
   return quest.missions.filter((mission) => mission.moduleId === moduleId);
+}
+
+export function discoveriesForChapter(quest, chapterId) {
+  return (quest.discoveries || []).filter((item) => item.chapterId === chapterId);
+}
+
+export function discoveriesForModule(quest, moduleId) {
+  return (quest.discoveries || []).filter((item) => item.moduleId === moduleId);
 }
 
 export function codexById(quest, id) {

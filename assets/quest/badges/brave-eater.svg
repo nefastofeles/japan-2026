@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="Brave Eater">
+  <circle cx="64" cy="64" r="62" fill="#BC002D"/>
+  <circle cx="64" cy="64" r="56" fill="#F3E6C8"/>
+  <circle cx="64" cy="64" r="52" fill="none" stroke="#E6B422" stroke-width="2.4"/>
+  <circle cx="64" cy="64" r="46" fill="none" stroke="#BC002D" stroke-width="1.2" stroke-dasharray="2 3"/>
+  <path d="M44 48c0-10 40-10 40 0v28c0 12-40 12-40 0z" fill="none" stroke="#1A1610" stroke-width="3"/><path d="M56 40c4-8 12-8 16 0" fill="none" stroke="#BC002D" stroke-width="3"/><circle cx="64" cy="66" r="5" fill="#E6B422"/>
+</svg>

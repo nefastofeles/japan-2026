@@ -1,0 +1,279 @@
+[
+  {
+    "id": "ara-listen",
+    "chapterId": "kyoto",
+    "moduleId": "kyoto-arashiyama",
+    "title": "Don't Look. Listen.",
+    "type": "observation",
+    "xp": 50,
+    "fragmentValue": 0,
+    "intro": "Close your eyes for thirty seconds in the bamboo. What do you hear?",
+    "task": "Close your eyes for thirty seconds in the bamboo. What do you hear?",
+    "mediaId": "media-bamboo"
+  },
+  {
+    "id": "ara-grass",
+    "chapterId": "kyoto",
+    "moduleId": "kyoto-arashiyama",
+    "title": "Grass or Tree?",
+    "type": "trueFalse",
+    "xp": 50,
+    "fragmentValue": 0,
+    "intro": "Bamboo is a tree.",
+    "task": "Bamboo is a tree.",
+    "codexUnlock": "bamboo",
+    "question": {
+      "type": "trueFalse",
+      "text": "Bamboo is a tree.",
+      "choices": [
+        {
+          "id": "true",
+          "text": "True",
+          "response": "It looks like a grove of trunks. Check the family."
+        },
+        {
+          "id": "false",
+          "text": "False",
+          "response": "Yes. Bamboo is a grass."
+        }
+      ],
+      "correctChoiceId": "false",
+      "retryAllowed": true
+    }
+  },
+  {
+    "id": "ara-speed",
+    "chapterId": "kyoto",
+    "moduleId": "kyoto-arashiyama",
+    "title": "How Fast?",
+    "type": "observation",
+    "xp": 40,
+    "fragmentValue": 0,
+    "intro": "Guess how much a bamboo culm can grow in a day. Then we check a careful number later.",
+    "task": "Guess how much a bamboo culm can grow in a day. Then we check a careful number later."
+  },
+  {
+    "id": "ara-technology",
+    "chapterId": "kyoto",
+    "moduleId": "kyoto-arashiyama",
+    "title": "Bamboo Technology",
+    "type": "find",
+    "xp": 50,
+    "fragmentValue": 0,
+    "intro": "Find one object made of bamboo.",
+    "task": "Find one object made of bamboo."
+  },
+  {
+    "id": "kyo-why-temples",
+    "chapterId": "kyoto",
+    "moduleId": "kyoto-core",
+    "title": "Why So Many Temples?",
+    "type": "story",
+    "xp": 60,
+    "fragmentValue": 0,
+    "intro": "Kyoto kept the old capital’s job: houses for gods and for monks.",
+    "task": "Count how many temple or shrine roofs you can see from one street.",
+    "reveal": "Emperors sat here for centuries. Temples and shrines stacked up around the court.",
+    "moreInfo": {
+      "title": "A long capital",
+      "text": "Kyoto was the imperial seat for about a thousand years. Power later moved. The religious houses stayed. Confirm the date range before live."
+    }
+  },
+  {
+    "id": "kyo-shrine-or-temple",
+    "chapterId": "kyoto",
+    "moduleId": "kyoto-core",
+    "title": "Shrine or Temple?",
+    "type": "observation",
+    "xp": 80,
+    "fragmentValue": 0,
+    "intro": "At the next holy place, decide: shrine or temple? Use what you can see.",
+    "task": "At the next holy place, decide: shrine or temple? Use what you can see.",
+    "reveal": "Shrines are Shinto. Temples are Buddhist. The clues overlap. Guess, then check the name.",
+    "mediaId": "media-shrine-temple",
+    "codexUnlock": "shrine-vs-temple",
+    "observeWhat": "Torii, rope, foxes, incense, cemetery, Buddha."
+  },
+  {
+    "id": "food-kyo-matcha",
+    "chapterId": "kyoto",
+    "moduleId": "kyoto-food",
+    "title": "Green Everywhere",
+    "type": "food",
+    "xp": 60,
+    "fragmentValue": 0,
+    "intro": "Find three matcha foods. Choose one to try.",
+    "task": "Find three matcha foods. Choose one to try.",
+    "mediaId": "media-matcha",
+    "codexUnlock": "matcha"
+  },
+  {
+    "id": "food-kyo-yatsuhashi",
+    "chapterId": "kyoto",
+    "moduleId": "kyoto-food",
+    "title": "What Is Yatsuhashi?",
+    "type": "food",
+    "xp": 50,
+    "fragmentValue": 0,
+    "intro": "Before tasting, predict: chewy, crisp, sweet, cinnamon?",
+    "task": "Before tasting, predict: chewy, crisp, sweet, cinnamon?",
+    "reveal": "Often a cinnamon rice dough, raw-chewy or baked crisp. Recipes vary.",
+    "mediaId": "media-yatsuhashi"
+  },
+  {
+    "id": "gin-no-silver",
+    "chapterId": "kyoto",
+    "moduleId": "kyoto-ginkaku",
+    "title": "Where Is the Silver?",
+    "type": "find",
+    "xp": 100,
+    "fragmentValue": 0,
+    "intro": "Walk the pavilion. Find the silver.",
+    "task": "Walk the pavilion. Find the silver.",
+    "reveal": "There is no silver skin. The name came later, as a pair with the Golden Pavilion."
+  },
+  {
+    "id": "gin-gold-vs-silver",
+    "chapterId": "kyoto",
+    "moduleId": "kyoto-ginkaku",
+    "title": "Gold vs Silver",
+    "type": "reflection",
+    "xp": 60,
+    "fragmentValue": 0,
+    "intro": "Which feels richer: gold leaf in the sun, or this quieter garden?",
+    "task": "Which feels richer: gold leaf in the sun, or this quieter garden?",
+    "reveal": "There is no right answer. Japanese gardens often prize restraint. Do not turn that into a slogan.",
+    "mediaId": "media-ginkaku-compare"
+  },
+  {
+    "id": "gin-yoshimasa",
+    "chapterId": "kyoto",
+    "moduleId": "kyoto-ginkaku",
+    "title": "The Shogun Who Preferred Beauty",
+    "type": "story",
+    "xp": 70,
+    "fragmentValue": 0,
+    "intro": "A shogun who lost a war still shaped how Kyoto looks at beauty.",
+    "task": "A shogun who lost a war still shaped how Kyoto looks at beauty.",
+    "reveal": "Beauty here is a leftover of power, not a replacement for it.",
+    "moreInfo": {
+      "title": "Higashiyama",
+      "text": "Ashikaga Yoshimasa lived here in retreat. Tea, gardens and quiet rooms grew around him. He was not a cartoon of peace. Confirm names and dates before live.",
+      "audioText": "Ashikaga Yoshimasa was a shogun who lost control of a war and still left Kyoto a taste for quiet rooms, tea and gardens. Call that Higashiyama culture if you like. Do not make him a simple saint. We will check the history before this is live."
+    }
+  },
+  {
+    "id": "gio-machiya",
+    "chapterId": "kyoto",
+    "moduleId": "kyoto-gion",
+    "title": "Spot the Machiya",
+    "type": "observation",
+    "xp": 70,
+    "fragmentValue": 0,
+    "intro": "Find a house that is skinny on the street and seems to go far back.",
+    "task": "Find a house that is skinny on the street and seems to go far back.",
+    "reveal": "Machiya are townhouses: a small face, a long body.",
+    "mediaId": "media-machiya",
+    "moreInfo": {
+      "title": "The front",
+      "text": "People often say a narrow front paid less tax. Treat that as a story to check, not a fact, until a source is attached."
+    }
+  },
+  {
+    "id": "gio-maiko-tourist",
+    "chapterId": "kyoto",
+    "moduleId": "kyoto-gion",
+    "title": "Maiko or Tourist?",
+    "type": "reflection",
+    "xp": 70,
+    "fragmentValue": 0,
+    "intro": "If you see someone in geiko or maiko dress, do not chase them for a photo. Watch from a distance. Ask: working person, or visitor in costume?",
+    "task": "If you see someone in geiko or maiko dress, do not chase them for a photo. Watch from a distance. Ask: working person, or visitor in costume?",
+    "reveal": "This is a workplace. Respect beats a picture.",
+    "moreInfo": {
+      "title": "How to look",
+      "text": "Do not block the street. Do not touch. Do not follow. A posed tourist in rented clothes is not a hunt target either."
+    }
+  },
+  {
+    "id": "gio-why-here",
+    "chapterId": "kyoto",
+    "moduleId": "kyoto-gion",
+    "title": "Why Gion Exists Here",
+    "type": "story",
+    "xp": 60,
+    "fragmentValue": 0,
+    "intro": "Stand near Yasaka and look toward the lanes of food and inns. Who was this street for?",
+    "task": "Stand near Yasaka and look toward the lanes of food and inns. Who was this street for?",
+    "reveal": "Shrine visitors needed food, beds and shows. Gion grew to serve them."
+  },
+  {
+    "id": "kin-real-gold",
+    "chapterId": "kyoto",
+    "moduleId": "kyoto-kinkaku",
+    "title": "Is It Actually Gold?",
+    "type": "trueFalse",
+    "xp": 80,
+    "fragmentValue": 0,
+    "intro": "The gold you see is paint.",
+    "task": "The gold you see is paint.",
+    "reveal": "It is real gold leaf on the upper floors.",
+    "mediaId": "media-kinkaku-gold",
+    "codexUnlock": "gold-leaf",
+    "question": {
+      "type": "trueFalse",
+      "text": "The gold you see is paint.",
+      "choices": [
+        {
+          "id": "true",
+          "text": "True",
+          "response": "Look again. This one uses metal leaf."
+        },
+        {
+          "id": "false",
+          "text": "False",
+          "response": "Yes. Gold leaf, not yellow paint."
+        }
+      ],
+      "correctChoiceId": "false",
+      "retryAllowed": true
+    }
+  },
+  {
+    "id": "kin-phoenix",
+    "chapterId": "kyoto",
+    "moduleId": "kyoto-kinkaku",
+    "title": "Find the Bird",
+    "type": "find",
+    "xp": 60,
+    "fragmentValue": 0,
+    "intro": "Find the bird on the roof. Do not look at a photo first.",
+    "task": "Find the bird on the roof. Do not look at a photo first.",
+    "reveal": "A phoenix. Check the exact meaning before we print it.",
+    "mediaId": "media-kinkaku-phoenix",
+    "codexUnlock": "phoenix"
+  },
+  {
+    "id": "kin-burned",
+    "chapterId": "kyoto",
+    "moduleId": "kyoto-kinkaku",
+    "title": "The Temple That Burned",
+    "type": "story",
+    "xp": 70,
+    "fragmentValue": 0,
+    "intro": "Rebuilt in 1955. The gold is later care, not untouched medieval skin.",
+    "task": "Rebuilt in 1955. The gold is later care, not untouched medieval skin.",
+    "reveal": "Rebuilt in 1955. The gold is later care, not untouched medieval skin.",
+    "storySteps": [
+      {
+        "text": "The pavilion you see is not the first."
+      },
+      {
+        "text": "In 1950 a young monk set it on fire."
+      },
+      {
+        "text": "What you walk around was rebuilt."
+      }
+    ]
+  }
+]

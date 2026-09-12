@@ -81,7 +81,7 @@ export function renderMissionPage({ quest, mission, chapter, state, people, lock
   const body = `
     <article class="quest-stage" data-tone="${memory ? "memory" : ""}"
              data-start="${esc(start)}">
-      ${visualHtml(mission, quest)}
+      ${visualHtml(mission, quest, { complete: done })}
       <div class="stack quest-stage__body">
       ${typeMark(memory ? "memory" : mission.type)}
       <p class="quest-kicker">${esc(labels.kicker)} · ${esc(chapter.destination)}</p>

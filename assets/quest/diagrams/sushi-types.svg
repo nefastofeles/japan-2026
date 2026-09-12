@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="Five plates: nigiri, maki, gunkan, temaki, and sashimi">
+  <rect width="1600" height="900" fill="#FAF8F3"/>
+  <rect x="0" y="0" width="1600" height="16" fill="#BC002D"/>
+  <rect x="0" y="884" width="1600" height="16" fill="#BC002D"/>
+  
+        <g font-family="Georgia, serif" font-size="26" text-anchor="middle" fill="#1A1610">
+          <ellipse cx="170" cy="430" rx="110" ry="70" fill="#F2E4C8" stroke="#1A1610"/>
+          <rect x="130" y="390" width="80" height="40" rx="8" fill="#F4C7C3"/>
+          <rect x="140" y="418" width="60" height="22" fill="#FAF8F3"/>
+          <text x="170" y="560">nigiri</text>
+          <ellipse cx="470" cy="430" rx="110" ry="70" fill="#F2E4C8" stroke="#1A1610"/>
+          <circle cx="470" cy="430" r="36" fill="#6B8F71"/>
+          <circle cx="470" cy="430" r="18" fill="#FAF8F3"/>
+          <text x="470" y="560">maki</text>
+          <ellipse cx="770" cy="430" rx="110" ry="70" fill="#F2E4C8" stroke="#1A1610"/>
+          <rect x="735" y="400" width="70" height="55" rx="12" fill="#6B8F71"/>
+          <ellipse cx="770" cy="400" rx="28" ry="12" fill="#D96C6C"/>
+          <text x="770" y="560">gunkan</text>
+          <ellipse cx="1070" cy="430" rx="110" ry="70" fill="#F2E4C8" stroke="#1A1610"/>
+          <polygon points="1030,470 1070,360 1110,470" fill="#6B8F71"/>
+          <text x="1070" y="560">temaki</text>
+          <ellipse cx="1370" cy="430" rx="110" ry="70" fill="#F2E4C8" stroke="#1A1610"/>
+          <rect x="1320" y="400" width="90" height="28" rx="8" fill="#E08A7A"/>
+          <text x="1370" y="560">sashimi</text>
+        </g>
+        
+  <text x="48" y="860" font-family="Georgia, serif" font-size="26" fill="#1A1610">Five shapes. No restaurant brands.</text>
+</svg>

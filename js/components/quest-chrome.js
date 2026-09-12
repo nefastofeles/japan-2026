@@ -10,9 +10,8 @@ import {
   speechAvailable, speakNormal, speakSlow, stopSpeech,
   pauseSpeech, resumeSpeech, isSpeaking, isSpeechPaused,
 } from "../quest/speech.js";
-import { familyXp } from "../quest/engine.js";
-import { chapterFragments, nextVisibleReward } from "../quest/progress.js";
 import { questIcon, typeIcon } from "./quest-icons.js";
+import { questHud } from "./quest-hud.js";
 
 const TABS = [
   ["/adventure", "Quest"],
@@ -80,48 +79,16 @@ export function questShell(activePath, body, options = {}) {
         ${options.compact ? "" : `<h1>The Missing Stories of Japan</h1>`}
       </header>`
       }
-      ${questTabs(activePath)}
-      ${options.rail || ""}
+      <div class="quest-sticky">
+        ${questTabs(activePath)}
+        ${options.rail || ""}
+      </div>
       ${body}
     </div>`;
 }
 
 export function familyRail(quest, state, chapter) {
-  if (!chapter || !state || !quest) return "";
-  const xp = familyXp(quest, state);
-  return progressRail({
-    chapter,
-    fragments: chapterFragments(quest, state, chapter.id),
-    xp,
-    next: nextVisibleReward(quest, state, xp),
-    memory: chapter.tone === "memory",
-  });
-}
-
-export function progressRail({ chapter, fragments, xp, next, memory }) {
-  if (memory || !chapter) return "";
-  const pct = fragments?.pct || 0;
-  const nextLine = next
-    ? next.xpThreshold
-      ? `${next.xpThreshold} XP → ${next.title}`
-      : next.title
-    : "Nothing queued";
-  return `
-    <section class="quest-rail" aria-label="Family progress">
-      <div class="quest-rail__top">
-        <span class="quest-rail__seal">${questIcon("badge")}</span>
-        <p class="quest-rail__kicker">Current chapter<br>${esc(chapter.destination)}</p>
-      </div>
-      <div class="quest-rail__bar" role="progressbar"
-           aria-valuemin="0" aria-valuemax="100" aria-valuenow="${pct}">
-        <span style="width:${pct}%"></span>
-      </div>
-      <p class="quest-rail__meta">
-        <span class="quest-reward">${questIcon("xp")} Family XP ${xp}</span>
-        <span class="quest-reward">${questIcon("fragment")} ${fragments?.earned || 0}/${fragments?.target || 0}</span>
-      </p>
-      <p class="quest-rail__next">${questIcon("badge")} Next reward · ${esc(nextLine)}</p>
-    </section>`;
+  return questHud(quest, state, chapter);
 }
 
 export function peopleChecks(people, prefix = "who") {

@@ -2,13 +2,13 @@
    Service worker
    --------------------------------------------------------------------------
    Caches the shell so the site opens with no signal: on a shinkansen, in the
-   Kiso valley, on a plane. Photos are not cached, since they are signed URLs
-   that expire and would fill the phone up anyway.
+   Kiso valley, on a plane. Photos are not cached; they live in the online
+   album and would fill the phone up.
 
    Bump CACHE when you change the shell, otherwise phones keep the old copy.
    ========================================================================== */
 
-const CACHE = "japan-2026-v37";
+const CACHE = "japan-2026-v42";
 
 const SHELL = [
   "./",
@@ -24,6 +24,7 @@ const SHELL = [
   "css/heroes.css",
   "css/quest.css",
   "css/quest-shell.css",
+  "css/quest-hud.css",
   "css/quest-screens.css",
   "css/quest-collect.css",
   "js/app.js",
@@ -35,6 +36,7 @@ const SHELL = [
   "js/auth.js",
   "js/local-posts.js",
   "js/supabase.js",
+  "js/album.js",
   "js/vendor/supabase.js",
   "js/cache-bust.js",
   "refresh.html",
@@ -49,10 +51,12 @@ const SHELL = [
   "js/pages/map.js",
   "js/pages/admin.js",
   "js/pages/admin-forms.js",
+  "js/pages/admin-album.js",
   "js/pages/login.js",
   "js/pages/adventure.js",
   "js/pages/adventure-mission.js",
   "js/pages/adventure-more.js",
+  "js/pages/adventure-journey.js",
   "js/pages/adventure-discovery.js",
   "js/pages/adventure-script.js",
   "js/quest/content.js",
@@ -72,10 +76,12 @@ const SHELL = [
   "js/quest/rank.js",
   "js/quest/mission-screen.js",
   "js/components/quest-chrome.js",
+  "js/components/quest-hud.js",
   "js/components/quest-icons.js",
   "js/components/day-strip.js",
   "js/components/photo-grid.js",
   "js/components/photo-upload.js",
+  "js/components/album-notice.js",
   "js/components/lightbox.js",
   "js/components/meal-card.js",
   "js/components/rating-pips.js",

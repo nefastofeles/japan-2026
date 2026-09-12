@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="A broken chronicle fragment">
+  <rect width="1600" height="900" fill="#FAF8F3"/>
+  <rect x="0" y="0" width="1600" height="16" fill="#BC002D"/>
+  <rect x="0" y="884" width="1600" height="16" fill="#BC002D"/>
+  <polygon points="520,220 1080,260 1040,680 480,640" fill="none" stroke="#1A1610" stroke-width="10"/><path d="M560 320h400M560 400h320M560 480h360" stroke="#BC002D" stroke-width="8"/><circle cx="980" cy="560" r="28" fill="#E6B422"/>
+  <text x="48" y="860" font-family="Georgia, serif" font-size="26" fill="#1A1610">A page that woke in Copenhagen. The rest is still in Japan.</text>
+</svg>

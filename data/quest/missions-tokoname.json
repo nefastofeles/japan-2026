@@ -1,0 +1,92 @@
+[
+  {
+    "id": "tok-street-pottery",
+    "chapterId": "tokoname",
+    "moduleId": "tokoname-core",
+    "title": "The City Is Made of Pottery",
+    "type": "photo",
+    "xp": 100,
+    "fragmentValue": 0,
+    "intro": "Find pottery reused as path or wall. Photograph it.",
+    "task": "Find pottery reused as path or wall. Photograph it.",
+    "exactLocation": "Pottery Footpath / Dokanzaka",
+    "mediaId": "media-dokanzaka",
+    "codexUnlock": "tokoname-ware"
+  },
+  {
+    "id": "tok-pipe-wall",
+    "chapterId": "tokoname",
+    "moduleId": "tokoname-core",
+    "title": "Why Put Pipes in a Wall?",
+    "type": "observation",
+    "xp": 50,
+    "fragmentValue": 0,
+    "intro": "If you see ceramic pipes in a wall, guess their first job: water, smoke, or show?",
+    "task": "If you see ceramic pipes in a wall, guess their first job: water, smoke, or show?",
+    "reveal": "Tokoname made industrial clay pipe as well as teapots."
+  },
+  {
+    "id": "tok-tokonyan",
+    "chapterId": "tokoname",
+    "moduleId": "tokoname-core",
+    "title": "Giant Cat Alert",
+    "type": "photo",
+    "xp": 80,
+    "fragmentValue": 0,
+    "intro": "Find Tokonyan without a photo first. Then a family picture.",
+    "task": "Find Tokonyan without a photo first. Then a family picture.",
+    "mediaId": "media-tokonyan",
+    "codexUnlock": "tokonyan"
+  },
+  {
+    "id": "tok-paw",
+    "chapterId": "tokoname",
+    "moduleId": "tokoname-core",
+    "title": "Which Paw?",
+    "type": "observation",
+    "xp": 40,
+    "fragmentValue": 0,
+    "intro": "Compare with the Tokyo shop cat. Which paw is up? Meanings vary. Do not print one rule as law.",
+    "task": "Compare with the Tokyo shop cat. Which paw is up? Meanings vary. Do not print one rule as law.",
+    "mediaId": "media-maneki-paws",
+    "codexUnlock": "maneki-neko"
+  },
+  {
+    "id": "tok-cat-hunt",
+    "chapterId": "tokoname",
+    "moduleId": "tokoname-core",
+    "title": "Lucky Cat Hunt",
+    "type": "find",
+    "xp": 80,
+    "fragmentValue": 0,
+    "intro": "Find the funniest, the weirdest, and one you would put by a bed.",
+    "task": "Find the funniest, the weirdest, and one you would put by a bed."
+  },
+  {
+    "id": "tok-kiln",
+    "chapterId": "tokoname",
+    "moduleId": "tokoname-core",
+    "title": "Why Does an Oven Climb a Hill?",
+    "type": "observation",
+    "xp": 100,
+    "fragmentValue": 0,
+    "intro": "A noborigama climbs. Why would fire want a slope?",
+    "task": "A noborigama climbs. Why would fire want a slope?",
+    "mediaId": "media-noborigama",
+    "codexUnlock": "noborigama"
+  },
+  {
+    "id": "tok-workshop",
+    "chapterId": "tokoname",
+    "moduleId": "tokoname-core",
+    "title": "Make Something That Survives Us",
+    "type": "photo",
+    "xp": 60,
+    "fragmentValue": 0,
+    "intro": "Only if you actually take a workshop. Photograph the piece before firing. Save for the finale.",
+    "task": "Only if you actually take a workshop. Photograph the piece before firing. Save for the finale.",
+    "saveFor": [
+      "tokyo-finale"
+    ]
+  }
+]

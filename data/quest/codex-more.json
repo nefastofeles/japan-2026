@@ -6,7 +6,8 @@
     "category": "Objects",
     "rarity": "common",
     "chapterId": "prologue",
-    "description": "A scrap of Japan found before the plane left. Stories travel ahead of people."
+    "description": "A scrap of Japan found before the plane left. Stories travel ahead of people.",
+    "mediaId": "media-cph-tokyo-route"
   },
   {
     "id": "edo",
@@ -15,7 +16,8 @@
     "category": "Places",
     "rarity": "uncommon",
     "chapterId": "tokyo",
-    "description": "The old name of Tokyo. Edo was the Tokugawa shogunate’s political centre, then renamed Tokyo in the Meiji transition."
+    "description": "The old name of Tokyo. Edo was the Tokugawa shogunate’s political centre, then renamed Tokyo in the Meiji transition.",
+    "mediaId": "media-edo-castle-compare"
   },
   {
     "id": "konbini",
@@ -24,7 +26,8 @@
     "category": "Food",
     "rarity": "common",
     "chapterId": "tokyo",
-    "description": "A tiny kitchen that never sleeps. Onigiri, egg sandwiches and hot snacks at odd hours are a system, not a compromise."
+    "description": "A tiny kitchen that never sleeps. Onigiri, egg sandwiches and hot snacks at odd hours are a system, not a compromise.",
+    "mediaId": "media-konbini"
   },
   {
     "id": "kaiju",
@@ -33,7 +36,8 @@
     "category": "Modern Japan",
     "rarity": "uncommon",
     "chapterId": "tokyo",
-    "description": "A giant screen-monster. Godzilla’s head watches Kabukicho from the Shinjuku Toho Building."
+    "description": "A giant screen-monster. Godzilla’s head watches Kabukicho from the Shinjuku Toho Building.",
+    "mediaId": "media-godzilla-reveal"
   },
   {
     "id": "past-future-tokyo",
@@ -42,7 +46,8 @@
     "category": "Places",
     "rarity": "uncommon",
     "chapterId": "tokyo",
-    "description": "From Skytree you can point toward Asakusa and see the low city still sitting under the new one."
+    "description": "From Skytree you can point toward Asakusa and see the low city still sitting under the new one.",
+    "mediaId": "media-asakusa-historic"
   },
   {
     "id": "hachiko",
@@ -51,7 +56,8 @@
     "category": "Places",
     "rarity": "uncommon",
     "chapterId": "tokyo",
-    "description": "The Akita who kept returning to Shibuya Station for years after his owner died. The statue still waits."
+    "description": "The Akita who kept returning to Shibuya Station for years after his owner died. The statue still waits.",
+    "mediaId": "media-hachiko"
   },
   {
     "id": "sacred-forest",
@@ -60,7 +66,8 @@
     "category": "Places",
     "rarity": "uncommon",
     "chapterId": "tokyo",
-    "description": "The woods at Meiji Jingu were planted on purpose, designed to become a forest that could keep itself."
+    "description": "The woods at Meiji Jingu were planted on purpose, designed to become a forest that could keep itself.",
+    "mediaId": "media-meiji-forest"
   },
   {
     "id": "seafood-hunter",
@@ -69,7 +76,8 @@
     "category": "Food",
     "rarity": "common",
     "chapterId": "tokyo",
-    "description": "The outer market still sells the sea. Naming every creature is optional. Noticing them is the page."
+    "description": "The outer market still sells the sea. Naming every creature is optional. Noticing them is the page.",
+    "mediaId": "media-tsukiji-seafood"
   },
   {
     "id": "reclaimed-tokyo",
@@ -78,7 +86,8 @@
     "category": "Places",
     "rarity": "uncommon",
     "chapterId": "tokyo",
-    "description": "Tsukiji roughly means constructed land. After the Meireki fire of 1657, this ground was packed into Tokyo Bay."
+    "description": "Tsukiji roughly means constructed land. After the Meireki fire of 1657, this ground was packed into Tokyo Bay.",
+    "mediaId": "media-tsukiji-reclaimed"
   },
   {
     "id": "sushi",
@@ -87,7 +96,8 @@
     "category": "Food",
     "rarity": "common",
     "chapterId": "tokyo",
-    "description": "Seasoned rice, not a synonym for raw fish. Sashimi is the slice without that rice."
+    "description": "Seasoned rice, not a synonym for raw fish. Sashimi is the slice without that rice.",
+    "mediaId": "media-sushi-types"
   },
   {
     "id": "sampuru",
@@ -96,7 +106,8 @@
     "category": "Strange Japan",
     "rarity": "common",
     "chapterId": "tokyo",
-    "description": "Plastic food in a restaurant window. It shows the dish without spoiling in the sun."
+    "description": "Plastic food in a restaurant window. It shows the dish without spoiling in the sun.",
+    "mediaId": "media-sampuru"
   },
   {
     "id": "shinkansen",
@@ -105,7 +116,8 @@
     "category": "Modern Japan",
     "rarity": "common",
     "chapterId": "tokyo",
-    "description": "A long nose that moves air aside, so a fast train does not punch a tunnel as hard."
+    "description": "A long nose that moves air aside, so a fast train does not punch a tunnel as hard.",
+    "mediaId": "media-shinkansen-nose"
   },
   {
     "id": "sumo",
@@ -114,6 +126,7 @@
     "category": "Modern Japan",
     "rarity": "common",
     "chapterId": "tokyo",
-    "description": "Commonly described as Japan’s national sport. The ring still carries Shinto ritual, including salt. That is not the same as most-watched."
+    "description": "Commonly described as Japan’s national sport. The ring still carries Shinto ritual, including salt. That is not the same as most-watched.",
+    "mediaId": "media-sumo"
   }
 ]

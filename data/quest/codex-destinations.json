@@ -1,0 +1,281 @@
+[
+  {
+    "id": "bamboo",
+    "name": "Arashiyama Bamboo",
+    "japaneseName": "竹林",
+    "category": "Places",
+    "chapterId": "kyoto",
+    "mediaId": "media-bamboo",
+    "description": "A path of living columns. The grove is planted and tended, not a wild accident."
+  },
+  {
+    "id": "phoenix",
+    "name": "Roof Phoenix",
+    "japaneseName": "鳳凰",
+    "category": "Symbols",
+    "chapterId": "kyoto",
+    "mediaId": "media-kinkaku-phoenix",
+    "description": "A bird on the gold pavilion roof. Look up after you decide if the gold is real."
+  },
+  {
+    "id": "sacred-deer",
+    "name": "Sacred Deer",
+    "japaneseName": "神鹿",
+    "category": "Places",
+    "chapterId": "kyoto",
+    "mediaId": "media-nara-deer",
+    "description": "Nara’s deer were messengers. Bowing is a learned trick. Food is not a toy."
+  },
+  {
+    "id": "jizo",
+    "name": "Jizo",
+    "japaneseName": "地蔵",
+    "category": "Yokai & Spirits",
+    "chapterId": "kyoto",
+    "mediaId": "media-jizo",
+    "description": "A small stone guardian by a road or temple path, often given a bib or hat."
+  },
+  {
+    "id": "gion-matsuri",
+    "name": "Gion Festival",
+    "japaneseName": "祇園祭",
+    "category": "Places",
+    "chapterId": "kyoto",
+    "mediaId": "media-gion-matsuri",
+    "description": "Kyoto’s summer festival. The tall floats are neighbourhood prayers on wheels."
+  },
+  {
+    "id": "shrine-vs-temple",
+    "name": "Shrine or Temple",
+    "japaneseName": "神社と寺",
+    "category": "Symbols",
+    "chapterId": "kyoto",
+    "mediaId": "media-shrine-temple",
+    "description": "A torii and rope often mark a shrine. Incense and a cemetery often mark a temple."
+  },
+  {
+    "id": "yokai-category",
+    "name": "Yokai",
+    "japaneseName": "妖怪",
+    "category": "Yokai & Spirits",
+    "chapterId": "kyoto",
+    "mediaId": "media-yokai-set",
+    "description": "Old Japanese spirits. Fox, tanuki, kappa, tengu, oni — not Pokémon, though games borrowed the silhouettes."
+  },
+  {
+    "id": "takoyaki",
+    "name": "Takoyaki",
+    "japaneseName": "たこ焼き",
+    "category": "Food",
+    "chapterId": "osaka",
+    "mediaId": "media-takoyaki",
+    "description": "Octopus batter balls from a dimpled iron. Osaka food you eat standing up."
+  },
+  {
+    "id": "okonomiyaki",
+    "name": "Okonomiyaki",
+    "japaneseName": "お好み焼き",
+    "category": "Food",
+    "chapterId": "osaka",
+    "mediaId": "media-okonomiyaki",
+    "description": "A savoury pancake of cabbage and whatever you like. Hiroshima layers it; Osaka mixes it."
+  },
+  {
+    "id": "kitchen-of-japan",
+    "name": "Kitchen of Japan",
+    "japaneseName": "天下の台所",
+    "category": "Places",
+    "chapterId": "osaka",
+    "mediaId": "media-takoyaki",
+    "description": "Osaka earned the nickname by feeding the country. The canal still sells the joke."
+  },
+  {
+    "id": "dotonbori",
+    "name": "Dotonbori",
+    "japaneseName": "道頓堀",
+    "category": "Places",
+    "chapterId": "osaka",
+    "mediaId": "media-dotonbori-theatre",
+    "description": "A canal street of signs and theatres. Find the animals before the neon eats them."
+  },
+  {
+    "id": "giant-signs",
+    "name": "Running Man",
+    "japaneseName": "グリコ",
+    "category": "Modern Japan",
+    "chapterId": "osaka",
+    "mediaId": "media-dotonbori-signs",
+    "description": "A sign big enough to steer a night walk. Osaka advertises by feeding you."
+  },
+  {
+    "id": "manzai",
+    "name": "Manzai",
+    "japaneseName": "漫才",
+    "category": "Strange Japan",
+    "chapterId": "osaka",
+    "mediaId": "media-manzai",
+    "description": "Two-person comedy from Osaka: one straight face, one bounce."
+  },
+  {
+    "id": "itsukushima",
+    "name": "Itsukushima Gate",
+    "japaneseName": "厳島",
+    "category": "Places",
+    "chapterId": "miyajima",
+    "mediaId": "media-itsukushima-torii",
+    "description": "A gate that stands in the sea when the tide is in, and on sand when it leaves."
+  },
+  {
+    "id": "tengu",
+    "name": "Tengu",
+    "japaneseName": "天狗",
+    "category": "Yokai & Spirits",
+    "chapterId": "miyajima",
+    "mediaId": "media-tengu",
+    "description": "Long-nosed mountain spirits. Misen keeps their stories with the trees."
+  },
+  {
+    "id": "eternal-fire",
+    "name": "The Fire That Stays",
+    "japaneseName": "消えずの火",
+    "category": "Places",
+    "chapterId": "miyajima",
+    "mediaId": "media-misen",
+    "description": "A flame kept on Mount Misen. Confirm the local story when you stand there."
+  },
+  {
+    "id": "momiji-manju",
+    "name": "Momiji Manju",
+    "japaneseName": "もみじ饅頭",
+    "category": "Food",
+    "chapterId": "miyajima",
+    "mediaId": "media-momiji",
+    "description": "A maple-leaf bun from the island of maples."
+  },
+  {
+    "id": "samurai-district",
+    "name": "Samurai Walls",
+    "japaneseName": "長町",
+    "category": "Places",
+    "chapterId": "kanazawa",
+    "mediaId": "media-nagamachi",
+    "description": "Earthen walls and canals of a castle town the bombs missed."
+  },
+  {
+    "id": "gold-leaf",
+    "name": "Gold Leaf",
+    "japaneseName": "金沢金箔",
+    "category": "Objects",
+    "chapterId": "kanazawa",
+    "mediaId": "media-maeda-gold",
+    "description": "Kanazawa still beats gold thinner than paper. Sometimes it even goes on ice cream."
+  },
+  {
+    "id": "gassho-zukuri",
+    "name": "Gassho-zukuri",
+    "japaneseName": "合掌造り",
+    "category": "Places",
+    "chapterId": "takayama",
+    "mediaId": "media-shirakawa-view",
+    "description": "Hands in prayer: a steep thatch roof built to shed snow and hide a silk attic."
+  },
+  {
+    "id": "silkworm",
+    "name": "Silk Attic",
+    "japaneseName": "養蚕",
+    "category": "Places",
+    "chapterId": "takayama",
+    "mediaId": "media-silkworm-attic",
+    "description": "The upstairs of a gassho house was a workshop for worms, not only a bedroom."
+  },
+  {
+    "id": "sarubobo",
+    "name": "Sarubobo",
+    "japaneseName": "さるぼぼ",
+    "category": "Objects",
+    "chapterId": "takayama",
+    "mediaId": "media-sarubobo",
+    "description": "A faceless red doll from Hida. The missing face lets you put your own wish on it."
+  },
+  {
+    "id": "yatai",
+    "name": "Festival Float",
+    "japaneseName": "屋台",
+    "category": "Objects",
+    "chapterId": "takayama",
+    "mediaId": "media-yatai",
+    "description": "A street shrine on wheels, with carvings and hidden puppets."
+  },
+  {
+    "id": "takayama-jinya",
+    "name": "Takayama Jinya",
+    "japaneseName": "高山陣屋",
+    "category": "Places",
+    "chapterId": "takayama",
+    "mediaId": "media-jinya",
+    "description": "The shogunate’s mountain office. Paper, wood, and a long reach from Edo."
+  },
+  {
+    "id": "hida-woodcraft",
+    "name": "Hida Wood",
+    "japaneseName": "飛騨の木工",
+    "category": "Objects",
+    "chapterId": "takayama",
+    "mediaId": "media-sanmachi",
+    "description": "Merchant streets built in timber because the mountains gave it freely."
+  },
+  {
+    "id": "hida-beef",
+    "name": "Hida Beef",
+    "japaneseName": "飛騨牛",
+    "category": "Food",
+    "chapterId": "takayama",
+    "mediaId": "media-hida-beef-mark",
+    "description": "A mountain luxury. The live plate waits for a family photo."
+  },
+  {
+    "id": "nakasendo",
+    "name": "Nakasendo",
+    "japaneseName": "中山道",
+    "category": "Places",
+    "chapterId": "tsumago",
+    "mediaId": "media-nakasendo-map",
+    "description": "The inland road between Edo and Kyoto. Post towns still sell the walk."
+  },
+  {
+    "id": "kosatsu",
+    "name": "Kosatsu",
+    "japaneseName": "高札",
+    "category": "Objects",
+    "chapterId": "tsumago",
+    "mediaId": "media-kosatsu",
+    "description": "A government noticeboard at traveller height. Rules stood by the road."
+  },
+  {
+    "id": "tokoname-ware",
+    "name": "Tokoname Ware",
+    "japaneseName": "常滑焼",
+    "category": "Objects",
+    "chapterId": "tokoname",
+    "mediaId": "media-dokanzaka",
+    "description": "One of the Six Ancient Kilns. Clay pipes and teapots share the same earth."
+  },
+  {
+    "id": "noborigama",
+    "name": "Noborigama",
+    "japaneseName": "登り窯",
+    "category": "Places",
+    "chapterId": "tokoname",
+    "mediaId": "media-noborigama",
+    "description": "A climbing kiln. Fire wants a slope so heat can walk uphill."
+  },
+  {
+    "id": "tokonyan",
+    "name": "Tokonyan",
+    "japaneseName": "とこにゃん",
+    "category": "Objects",
+    "chapterId": "tokoname",
+    "mediaId": "media-tokonyan",
+    "description": "Tokoname’s giant lucky cat. Find it in the street before you look at a photo."
+  }
+]

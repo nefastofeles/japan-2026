@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="The same torii at high tide and low tide">
+  <rect width="1600" height="900" fill="#FAF8F3"/>
+  <rect x="0" y="0" width="1600" height="16" fill="#BC002D"/>
+  <rect x="0" y="884" width="1600" height="16" fill="#BC002D"/>
+  
+        <rect x="80" y="140" width="700" height="620" fill="#7BA7C9"/>
+        <rect x="80" y="420" width="700" height="340" fill="#3E6F93"/>
+        <path d="M220 500 V280 H640 V500" fill="none" stroke="#BC002D" stroke-width="22"/>
+        <line x1="220" y1="320" x2="640" y2="320" stroke="#BC002D" stroke-width="28"/>
+        <rect x="820" y="140" width="700" height="620" fill="#E6D7B8"/>
+        <rect x="820" y="620" width="700" height="140" fill="#7BA7C9"/>
+        <path d="M960 620 V280 H1380 V620" fill="none" stroke="#BC002D" stroke-width="22"/>
+        <line x1="960" y1="320" x2="1380" y2="320" stroke="#BC002D" stroke-width="28"/>
+        <text x="220" y="200" font-size="32" font-family="Georgia, serif">high tide</text>
+        <text x="980" y="200" font-size="32" font-family="Georgia, serif">low tide</text>
+        
+  
+</svg>

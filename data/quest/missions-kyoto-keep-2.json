@@ -1,0 +1,176 @@
+[
+  {
+    "id": "kin-paradise",
+    "chapterId": "kyoto",
+    "moduleId": "kyoto-kinkaku",
+    "title": "Build Paradise",
+    "type": "observation",
+    "xp": 50,
+    "fragmentValue": 0,
+    "intro": "Find which of those pieces the garden actually uses.",
+    "task": "Find which of those pieces the garden actually uses.",
+    "question": {
+      "type": "multipleChoice",
+      "text": "If you built a paradise here, what would you start with?",
+      "choices": [
+        {
+          "id": "water",
+          "text": "Water",
+          "response": "Now look. Is it here?"
+        },
+        {
+          "id": "gold",
+          "text": "Gold",
+          "response": "Now look. Is it here?"
+        },
+        {
+          "id": "mountains",
+          "text": "Mountains",
+          "response": "Now look. Is it here?"
+        },
+        {
+          "id": "silence",
+          "text": "Silence",
+          "response": "Now listen. Is it here?"
+        },
+        {
+          "id": "animals",
+          "text": "Animals",
+          "response": "Now look. Is it here?"
+        },
+        {
+          "id": "gardens",
+          "text": "Gardens",
+          "response": "Now look. Is it here?"
+        }
+      ],
+      "retryAllowed": true
+    }
+  },
+  {
+    "id": "tlk-callback",
+    "chapterId": "kyoto",
+    "moduleId": "kyoto-teamlab",
+    "title": "You Already Changed Your Mind",
+    "type": "reflection",
+    "xp": 40,
+    "fragmentValue": 0,
+    "intro": "Before you go in, read back the Tokyo teamLab answers.",
+    "task": "Before you go in, read back the Tokyo teamLab answers.",
+    "callbackFrom": "tlb-is-it-art"
+  },
+  {
+    "id": "tlk-same-art",
+    "chapterId": "kyoto",
+    "moduleId": "kyoto-teamlab",
+    "title": "Same Artists, Same Experience?",
+    "type": "reflection",
+    "xp": 60,
+    "fragmentValue": 0,
+    "intro": "Was this the same experience as Tokyo?",
+    "task": "Was this the same experience as Tokyo?",
+    "callbackKey": "tlk-same",
+    "saveFor": [
+      "teamlab-osaka"
+    ],
+    "question": {
+      "type": "multipleChoice",
+      "text": "Was this the same experience as Tokyo?",
+      "choices": [
+        {
+          "id": "yes",
+          "text": "Yes",
+          "response": "Keep that for Osaka."
+        },
+        {
+          "id": "no",
+          "text": "No",
+          "response": "Keep that for Osaka."
+        },
+        {
+          "id": "partly",
+          "text": "Partly",
+          "response": "Keep that for Osaka."
+        }
+      ],
+      "retryAllowed": true
+    }
+  },
+  {
+    "id": "tlk-kyoto-added",
+    "chapterId": "kyoto",
+    "moduleId": "kyoto-teamlab",
+    "title": "What Did Kyoto Add?",
+    "type": "reflection",
+    "xp": 70,
+    "fragmentValue": 0,
+    "intro": "What did Kyoto add?",
+    "task": "What did Kyoto add?",
+    "callbackKey": "tlk-added",
+    "saveFor": [
+      "teamlab-osaka"
+    ],
+    "question": {
+      "type": "multipleChoice",
+      "text": "What did Kyoto add?",
+      "choices": [
+        {
+          "id": "nature",
+          "text": "Nature"
+        },
+        {
+          "id": "tech",
+          "text": "Technology"
+        },
+        {
+          "id": "dark",
+          "text": "Darkness"
+        },
+        {
+          "id": "move",
+          "text": "Movement"
+        },
+        {
+          "id": "surprise",
+          "text": "Surprise"
+        },
+        {
+          "id": "emotion",
+          "text": "Emotion"
+        },
+        {
+          "id": "other",
+          "text": "Other"
+        }
+      ],
+      "retryAllowed": true
+    },
+    "realWorldReward": "Ask Mum and Dad."
+  },
+  {
+    "id": "yas-disease",
+    "chapterId": "kyoto",
+    "moduleId": "kyoto-yasaka",
+    "title": "A Shrine Built Against Disease",
+    "type": "story",
+    "xp": 100,
+    "fragmentValue": 0,
+    "intro": "This shrine is tied to keeping sickness away.",
+    "task": "Find one sign of the Gion festival: a float storehouse, a plaque, or a lion-dog.",
+    "reveal": "Gion Matsuri grew from rites meant to calm epidemic fear. Check dates and names before this is live.",
+    "exactLocation": "Yasaka Shrine",
+    "codexUnlock": "gion-matsuri"
+  },
+  {
+    "id": "yas-worship-sequence",
+    "chapterId": "kyoto",
+    "moduleId": "kyoto-yasaka",
+    "title": "How Do You Wake a God?",
+    "type": "observation",
+    "xp": 50,
+    "fragmentValue": 0,
+    "intro": "Watch worshippers. What do they do with coin, bell, bow and clap?",
+    "task": "Watch worshippers. What do they do with coin, bell, bow and clap?",
+    "reveal": "Many people toss a coin, bow, clap, then bow again. Local habit varies. Do not correct strangers."
+  }
+]

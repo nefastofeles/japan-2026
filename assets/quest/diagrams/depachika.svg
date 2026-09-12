@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="A department-store basement food hall">
+  <rect width="1600" height="900" fill="#FAF8F3"/>
+  <rect x="0" y="0" width="1600" height="16" fill="#BC002D"/>
+  <rect x="0" y="884" width="1600" height="16" fill="#BC002D"/>
+  <rect x="300" y="200" width="1000" height="520" fill="none" stroke="#1A1610" stroke-width="8"/><path d="M300 360h1000M300 520h1000M620 200v520M980 200v520" stroke="#BC002D" stroke-width="6"/><circle cx="460" cy="280" r="24" fill="#E6B422"/><circle cx="800" cy="440" r="24" fill="#E6B422"/><circle cx="1140" cy="600" r="24" fill="#E6B422"/>
+  <text x="48" y="860" font-family="Georgia, serif" font-size="26" fill="#1A1610">The city under the city: food stacked below the street.</text>
+</svg>

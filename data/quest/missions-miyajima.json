@@ -1,0 +1,139 @@
+[
+  {
+    "id": "miy-gate",
+    "chapterId": "miyajima",
+    "moduleId": "miyajima-core",
+    "title": "The Gate in the Sea",
+    "type": "observation",
+    "xp": 100,
+    "fragmentValue": 0,
+    "intro": "Why is the torii in the water?",
+    "task": "Why is the torii in the water?",
+    "reveal": "The shrine treats the island as holy. The gate stands in the tidal approach.",
+    "mediaId": "media-itsukushima-torii",
+    "codexUnlock": "itsukushima"
+  },
+  {
+    "id": "miy-tide",
+    "chapterId": "miyajima",
+    "moduleId": "miyajima-core",
+    "title": "Where Did the Water Go?",
+    "type": "reflection",
+    "xp": 60,
+    "fragmentValue": 0,
+    "intro": "If the tide is out, walk the sand. If it is in, watch the gate stand in the sea. Is the sea part of the architecture?",
+    "task": "If the tide is out, walk the sand. If it is in, watch the gate stand in the sea. Is the sea part of the architecture?",
+    "reveal": "No right answer. The building is designed with the tide.",
+    "mediaId": "media-torii-tide"
+  },
+  {
+    "id": "miy-momiji",
+    "chapterId": "miyajima",
+    "moduleId": "miyajima-food",
+    "title": "Momiji Manju",
+    "type": "food",
+    "xp": 50,
+    "fragmentValue": 0,
+    "intro": "Predict the filling. Then taste.",
+    "task": "Predict the filling. Then taste.",
+    "codexUnlock": "momiji-manju"
+  },
+  {
+    "id": "mis-enter",
+    "chapterId": "miyajima",
+    "moduleId": "miyajima-misen",
+    "title": "Enter the Sacred Mountain",
+    "type": "find",
+    "xp": 40,
+    "fragmentValue": 0,
+    "intro": "On the way up, find one unusual rock, one old tree, or one religious object.",
+    "task": "On the way up, find one unusual rock, one old tree, or one religious object."
+  },
+  {
+    "id": "mis-fire",
+    "chapterId": "miyajima",
+    "moduleId": "miyajima-misen",
+    "title": "The Fire That Doesn't Go Out",
+    "type": "story",
+    "xp": 120,
+    "fragmentValue": 0,
+    "intro": "A hall that keeps a fire.",
+    "task": "A hall that keeps a fire.",
+    "reveal": "Tradition ties it to Kūkai. Treat ‘eternal’ as a living practice, not a physics claim, until checked.",
+    "exactLocation": "Reikado, if visited",
+    "codexUnlock": "eternal-fire"
+  },
+  {
+    "id": "mis-seven",
+    "chapterId": "miyajima",
+    "moduleId": "miyajima-misen",
+    "title": "Seven Wonders",
+    "type": "observation",
+    "xp": 50,
+    "fragmentValue": 0,
+    "intro": "Hear one Misen wonder. Which sounds believable? Which sounds impossible?",
+    "task": "Hear one Misen wonder. Which sounds believable? Which sounds impossible?",
+    "mediaId": "media-seven-wonders"
+  },
+  {
+    "id": "mis-tengu",
+    "chapterId": "miyajima",
+    "moduleId": "miyajima-misen",
+    "title": "Tengu",
+    "type": "story",
+    "xp": 60,
+    "fragmentValue": 0,
+    "intro": "Mountain goblins with long noses or bird faces.",
+    "task": "Mountain goblins with long noses or bird faces.",
+    "mediaId": "media-tengu",
+    "codexUnlock": "tengu"
+  },
+  {
+    "id": "mis-summit",
+    "chapterId": "miyajima",
+    "moduleId": "miyajima-misen",
+    "title": "The Summit",
+    "type": "reflection",
+    "xp": 80,
+    "fragmentValue": 1,
+    "intro": "Phones down for sixty seconds.",
+    "task": "Phones down for sixty seconds.",
+    "mediaId": "media-misen",
+    "callbackKey": "sacred-nature",
+    "question": {
+      "type": "multipleChoice",
+      "text": "Why might this place feel sacred?",
+      "choices": [
+        {
+          "id": "height",
+          "text": "Height"
+        },
+        {
+          "id": "silence",
+          "text": "Silence"
+        },
+        {
+          "id": "rocks",
+          "text": "Rocks"
+        },
+        {
+          "id": "forest",
+          "text": "Forest"
+        },
+        {
+          "id": "ocean",
+          "text": "Ocean"
+        },
+        {
+          "id": "isolation",
+          "text": "Isolation"
+        },
+        {
+          "id": "other",
+          "text": "Other"
+        }
+      ],
+      "retryAllowed": true
+    }
+  }
+]

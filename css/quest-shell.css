@@ -177,6 +177,20 @@ html[data-quest] :focus-visible {
   background: var(--hinomaru);
 }
 
+.quest-hero__art .quest-visual {
+  height: 100%;
+  aspect-ratio: auto;
+  max-height: none;
+}
+
+.quest-hero__art img,
+.quest-hero__art .quest-visual {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
 .quest-hero .quest-rail {
   box-shadow: none;
   background: var(--paper-sunk);
@@ -227,3 +241,4 @@ html[data-quest] :focus-visible {
 @media (max-width: 40rem) {
   .quest-hero__art { height: 6.2rem; }
 }
+

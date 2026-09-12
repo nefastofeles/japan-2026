@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="Sky Guardian">
+  <circle cx="64" cy="64" r="62" fill="#BC002D"/>
+  <circle cx="64" cy="64" r="56" fill="#F3E6C8"/>
+  <circle cx="64" cy="64" r="52" fill="none" stroke="#E6B422" stroke-width="2.4"/>
+  <circle cx="64" cy="64" r="46" fill="none" stroke="#BC002D" stroke-width="1.2" stroke-dasharray="2 3"/>
+  <path d="M64 30v50M50 80h28" fill="none" stroke="#1A1610" stroke-width="3"/><path d="M48 52h32v22H48z" fill="none" stroke="#E6B422" stroke-width="3"/><path d="M64 36l6 10h-12z" fill="#BC002D"/>
+</svg>

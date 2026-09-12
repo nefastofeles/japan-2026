@@ -6,7 +6,8 @@
     "category": "Objects",
     "rarity": "story",
     "chapterId": "prologue",
-    "description": "A broken chronicle that woke at Copenhagen Airport. It does not teach Japanese. It asks the family to notice things and fill the gaps."
+    "description": "A broken chronicle that woke at Copenhagen Airport. It does not teach Japanese. It asks the family to notice things and fill the gaps.",
+    "mediaId": "media-artefact"
   },
   {
     "id": "hinomaru",
@@ -15,7 +16,8 @@
     "category": "Symbols",
     "rarity": "common",
     "chapterId": "prologue",
-    "description": "The sun disc. Japan’s name, Nihon, means origin of the sun. The flag is not a sunset. It is a claim about where light begins."
+    "description": "The sun disc. Japan’s name, Nihon, means origin of the sun. The flag is not a sunset. It is a claim about where light begins.",
+    "mediaId": "media-hinomaru"
   },
   {
     "id": "depachika",
@@ -24,7 +26,8 @@
     "category": "Places",
     "rarity": "uncommon",
     "chapterId": "tokyo",
-    "description": "The city under the city: department-store basements packed with food. Tokyo stacked itself on old wetland. The sky is optional."
+    "description": "The city under the city: department-store basements packed with food. Tokyo stacked itself on old wetland. The sky is optional.",
+    "mediaId": "media-depachika"
   },
   {
     "id": "weird-vending",
@@ -33,7 +36,8 @@
     "category": "Strange Japan",
     "rarity": "common",
     "chapterId": "tokyo",
-    "description": "Vending machines that sell eggs, umbrellas, manga or hot food. A city that stays open after the staff go home."
+    "description": "Vending machines that sell eggs, umbrellas, manga or hot food. A city that stays open after the staff go home.",
+    "mediaId": "media-vending"
   },
   {
     "id": "onigiri",
@@ -42,7 +46,8 @@
     "category": "Food",
     "rarity": "common",
     "chapterId": "tokyo",
-    "description": "A rice triangle wrapped in nori. Konbini food is how a megacity eats at odd hours — not a compromise, a system."
+    "description": "A rice triangle wrapped in nori. Konbini food is how a megacity eats at odd hours — not a compromise, a system.",
+    "mediaId": "media-onigiri"
   },
   {
     "id": "maneki-neko",
@@ -51,7 +56,8 @@
     "category": "Objects",
     "rarity": "common",
     "chapterId": "tokyo",
-    "description": "The beckoning cat. The raised paw is an invitation, not a wave. Folklore says one cat saved a lord from lightning."
+    "description": "The beckoning cat. The raised paw is an invitation, not a wave. Folklore says one cat saved a lord from lightning.",
+    "mediaId": "media-maneki-paws"
   },
   {
     "id": "skytree-pun",
@@ -60,7 +66,8 @@
     "category": "Modern Japan",
     "rarity": "uncommon",
     "chapterId": "tokyo",
-    "description": "Tokyo Skytree is 634 metres tall because 6-3-4 can be read mu-sa-shi, the old provincial name. A lightning rod that is also a word."
+    "description": "Tokyo Skytree is 634 metres tall because 6-3-4 can be read mu-sa-shi, the old provincial name. A lightning rod that is also a word.",
+    "mediaId": "media-skytree-exterior"
   },
   {
     "id": "kitsune",
@@ -69,7 +76,8 @@
     "category": "Yokai & Spirits",
     "rarity": "rare",
     "chapterId": "kyoto",
-    "description": "Fox spirits. Messengers of Inari. Statues hold a key, a jewel or rice. Farmers once left the first harvest for them."
+    "description": "Fox spirits. Messengers of Inari. Statues hold a key, a jewel or rice. Farmers once left the first harvest for them.",
+    "mediaId": "media-yokai-set"
   },
   {
     "id": "torii",
@@ -78,7 +86,8 @@
     "category": "Symbols",
     "rarity": "common",
     "chapterId": "kyoto",
-    "description": "A gate that marks the start of sacred ground. At Fushimi Inari the tunnel of gates is a ledger: each one paid for by a family or a company."
+    "description": "A gate that marks the start of sacred ground. At Fushimi Inari the tunnel of gates is a ledger: each one paid for by a family or a company.",
+    "mediaId": "media-shrine-temple"
   },
   {
     "id": "matcha",
@@ -87,7 +96,8 @@
     "category": "Food",
     "rarity": "common",
     "chapterId": "kyoto",
-    "description": "Powdered green tea. Monks used it to stay awake. The sweet on the tray exists because the tea is severe."
+    "description": "Powdered green tea. Monks used it to stay awake. The sweet on the tray exists because the tea is severe.",
+    "mediaId": "media-matcha"
   },
   {
     "id": "ekiben",
@@ -96,7 +106,8 @@
     "category": "Food",
     "rarity": "common",
     "chapterId": "tokyo",
-    "description": "A packed train lunch. The box is the point: a meal that can leave with you."
+    "description": "A packed train lunch. The box is the point: a meal that can leave with you.",
+    "mediaId": "media-ekiben"
   },
   {
     "id": "temizu",
@@ -105,6 +116,7 @@
     "category": "Places",
     "rarity": "common",
     "chapterId": "kyoto",
-    "description": "A water basin by the shrine path. Hands and mouth are rinsed before you step closer."
+    "description": "A water basin by the shrine path. Hands and mouth are rinsed before you step closer.",
+    "mediaId": "media-temizu"
   }
 ]

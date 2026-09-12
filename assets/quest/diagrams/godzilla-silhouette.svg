@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="A silhouette of a huge creature above a city street, face hidden">
+  <rect width="1600" height="900" fill="#FAF8F3"/>
+  <rect x="0" y="0" width="1600" height="16" fill="#BC002D"/>
+  <rect x="0" y="884" width="1600" height="16" fill="#BC002D"/>
+  
+        <rect x="80" y="620" width="1440" height="180" fill="#2B2420"/>
+        <rect x="140" y="480" width="70" height="160" fill="#3A332E"/>
+        <rect x="240" y="430" width="90" height="210" fill="#3A332E"/>
+        <rect x="360" y="500" width="60" height="140" fill="#3A332E"/>
+        <rect x="1100" y="400" width="120" height="240" fill="#3A332E"/>
+        <rect x="1260" y="460" width="80" height="180" fill="#3A332E"/>
+        <path d="M620 640 L700 300 L820 250 L900 310 L980 240 L1080 360 L1040 640 Z" fill="#1A1610"/>
+        <circle cx="860" cy="290" r="10" fill="#E6B422"/>
+        
+  <text x="48" y="860" font-family="Georgia, serif" font-size="26" fill="#1A1610">Something huge is watching Shinjuku. Face hidden on purpose.</text>
+</svg>

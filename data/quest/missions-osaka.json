@@ -1,0 +1,200 @@
+[
+  {
+    "id": "osa-kyoto-vs-osaka",
+    "chapterId": "osaka",
+    "moduleId": "osaka-core",
+    "title": "Kyoto vs Osaka",
+    "type": "observation",
+    "xp": 60,
+    "fragmentValue": 0,
+    "intro": "Walk one busy street. Tick what feels true: louder, brighter, funnier, messier, more food, more shops.",
+    "task": "Walk one busy street. Tick what feels true: louder, brighter, funnier, messier, more food, more shops.",
+    "reveal": "No right mix. Osaka likes to show off. Kyoto likes manners. Both are stereotypes. Check them against the street."
+  },
+  {
+    "id": "osa-kitchen",
+    "chapterId": "osaka",
+    "moduleId": "osaka-core",
+    "title": "Kitchen of Japan",
+    "type": "story",
+    "xp": 70,
+    "fragmentValue": 0,
+    "intro": "Osaka fed other cities.",
+    "task": "Osaka fed other cities.",
+    "reveal": "A merchant town. Rice, canals, then street food. ‘Kitchen of Japan’ is a nickname. Confirm the history wording before live.",
+    "codexUnlock": "kitchen-of-japan"
+  },
+  {
+    "id": "food-osa-takoyaki",
+    "chapterId": "osaka",
+    "moduleId": "osaka-food",
+    "title": "Takoyaki Anatomy",
+    "type": "food",
+    "xp": 70,
+    "fragmentValue": 0,
+    "intro": "Before you bite, guess the filling.",
+    "task": "Before you bite, guess the filling.",
+    "reveal": "Traditionally octopus. Other fillings exist. Check the stall.",
+    "mediaId": "media-takoyaki",
+    "codexUnlock": "takoyaki"
+  },
+  {
+    "id": "food-osa-okonomiyaki",
+    "chapterId": "osaka",
+    "moduleId": "osaka-food",
+    "title": "Okonomiyaki",
+    "type": "food",
+    "xp": 60,
+    "fragmentValue": 0,
+    "intro": "Taste. Talk. There is no exam answer.",
+    "task": "Taste. Talk. There is no exam answer.",
+    "mediaId": "media-okonomiyaki",
+    "codexUnlock": "okonomiyaki",
+    "question": {
+      "type": "multipleChoice",
+      "text": "What is it closest to?",
+      "choices": [
+        {
+          "id": "pizza",
+          "text": "Pizza",
+          "response": "Keep that. Then taste."
+        },
+        {
+          "id": "pancake",
+          "text": "Pancake",
+          "response": "Keep that. Then taste."
+        },
+        {
+          "id": "omelette",
+          "text": "Omelette",
+          "response": "Keep that. Then taste."
+        },
+        {
+          "id": "none",
+          "text": "None of those",
+          "response": "Keep that. Then taste."
+        }
+      ],
+      "retryAllowed": true
+    }
+  },
+  {
+    "id": "nam-find-animals",
+    "chapterId": "osaka",
+    "moduleId": "osaka-namba",
+    "title": "Find the Animals",
+    "type": "photo",
+    "xp": 80,
+    "fragmentValue": 0,
+    "intro": "Find five giant 3D restaurant signs. Photograph the weirdest.",
+    "task": "Find five giant 3D restaurant signs. Photograph the weirdest.",
+    "mediaId": "media-dotonbori-signs",
+    "codexUnlock": "giant-signs"
+  },
+  {
+    "id": "nam-running-man",
+    "chapterId": "osaka",
+    "moduleId": "osaka-namba",
+    "title": "The Running Man",
+    "type": "find",
+    "xp": 70,
+    "fragmentValue": 0,
+    "intro": "Find the running man. Guess what he sells.",
+    "task": "Find the running man. Guess what he sells.",
+    "reveal": "Glico. A sweets and food company. The pose is an advert that became a meeting point."
+  },
+  {
+    "id": "nam-canal",
+    "chapterId": "osaka",
+    "moduleId": "osaka-namba",
+    "title": "Why Is There a River Here?",
+    "type": "story",
+    "xp": 90,
+    "fragmentValue": 0,
+    "intro": "Look at the canal. Natural river, or dug?",
+    "task": "Look at the canal. Natural river, or dug?",
+    "reveal": "A human-made canal. Named after people who paid to dig. Confirm Doton / Yasui Doton before live.",
+    "codexUnlock": "dotonbori"
+  },
+  {
+    "id": "nam-theatre",
+    "chapterId": "osaka",
+    "moduleId": "osaka-namba",
+    "title": "Osaka's Broadway",
+    "type": "story",
+    "xp": 80,
+    "fragmentValue": 0,
+    "intro": "Before the neon food, this street was famous for plays.",
+    "task": "Before the neon food, this street was famous for plays.",
+    "reveal": "Dotonbori was a theatre quarter. Food signs came later.",
+    "mediaId": "media-dotonbori-theatre"
+  },
+  {
+    "id": "nam-kuidaore",
+    "chapterId": "osaka",
+    "moduleId": "osaka-namba",
+    "title": "Kuidaore",
+    "type": "food",
+    "xp": 120,
+    "fragmentValue": 0,
+    "intro": "Try three Osaka foods: takoyaki, okonomiyaki, kushikatsu.",
+    "task": "Try three Osaka foods: takoyaki, okonomiyaki, kushikatsu.",
+    "realWorldReward": "Ask Mum and Dad."
+  },
+  {
+    "id": "tlo-nature-art",
+    "chapterId": "osaka",
+    "moduleId": "osaka-teamlab",
+    "title": "Tokyo → Kyoto → Osaka",
+    "type": "reflection",
+    "xp": 60,
+    "fragmentValue": 0,
+    "intro": "Read back Tokyo and Kyoto answers. Then walk. Where does artwork stop and nature begin?",
+    "task": "Read back Tokyo and Kyoto answers. Then walk. Where does artwork stop and nature begin?"
+  },
+  {
+    "id": "tlo-tree",
+    "chapterId": "osaka",
+    "moduleId": "osaka-teamlab",
+    "title": "Is the Tree Part of the Artwork?",
+    "type": "reflection",
+    "xp": 60,
+    "fragmentValue": 0,
+    "intro": "If a tree is in the room, who made the art?",
+    "task": "If a tree is in the room, who made the art?",
+    "question": {
+      "type": "multipleChoice",
+      "text": "If a tree is in the room, who made the art?",
+      "choices": [
+        {
+          "id": "artist",
+          "text": "The artist",
+          "response": "Keep that."
+        },
+        {
+          "id": "nature",
+          "text": "Nature",
+          "response": "Keep that."
+        },
+        {
+          "id": "both",
+          "text": "Both",
+          "response": "Keep that."
+        }
+      ],
+      "retryAllowed": true
+    }
+  },
+  {
+    "id": "tlo-trilogy",
+    "chapterId": "osaka",
+    "moduleId": "osaka-teamlab",
+    "title": "teamLab Trilogy",
+    "type": "reflection",
+    "xp": 80,
+    "fragmentValue": 0,
+    "intro": "Rank Tokyo, Kyoto and Osaka: most beautiful, strangest, most surprising, favourite.",
+    "task": "Rank Tokyo, Kyoto and Osaka: most beautiful, strangest, most surprising, favourite.",
+    "realWorldReward": "Ask Mum and Dad."
+  }
+]

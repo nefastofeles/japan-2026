@@ -40,14 +40,15 @@ export const TRIP = {
   homeTimezone: "Europe/Copenhagen",
 };
 
-/* Photos are resized in the browser before upload. These numbers are what
-   keep the whole trip inside a sensible storage and bandwidth budget:
-   a 4MB phone photo becomes roughly 400KB, and the grid thumbnail ~40KB. */
+/* Photos are resized in the browser before upload. Thumbs need to stay
+   sharp on a phone retina screen (~350 CSS px at 2x is 700 px), so the
+   long edge is 800, not 400. Full size is still capped so one trip does
+   not blow the storage budget. */
 export const IMAGE = {
   fullMaxEdge: 2000,
   fullQuality: 0.82,
-  thumbMaxEdge: 400,
-  thumbQuality: 0.72,
+  thumbMaxEdge: 800,
+  thumbQuality: 0.82,
 };
 
 export const REACTION_EMOJI = ["❤️", "😍", "😂", "🤩", "🍜", "⛩️"];

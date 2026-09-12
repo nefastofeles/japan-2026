@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="A climbing kiln on a hillside in simple cross-section">
+  <rect width="1600" height="900" fill="#FAF8F3"/>
+  <rect x="0" y="0" width="1600" height="16" fill="#BC002D"/>
+  <rect x="0" y="884" width="1600" height="16" fill="#BC002D"/>
+  
+        <polygon points="80,780 900,200 1520,780" fill="#6F8F62"/>
+        <path d="M360 700 L520 520 L700 560 L880 400 L1040 440" fill="none" stroke="#7A1F2B" stroke-width="28" stroke-linecap="round"/>
+        <circle cx="400" cy="680" r="16" fill="#E6B422"/>
+        <circle cx="1040" cy="440" r="16" fill="#E6B422"/>
+        <text x="240" y="840" font-size="28" font-family="Georgia, serif">fire climbs the hill</text>
+        
+  
+</svg>

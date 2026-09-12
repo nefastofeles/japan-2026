@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="Simple icons for a few Mount Misen wonders">
+  <rect width="1600" height="900" fill="#FAF8F3"/>
+  <rect x="0" y="0" width="1600" height="16" fill="#BC002D"/>
+  <rect x="0" y="884" width="1600" height="16" fill="#BC002D"/>
+  
+        <g font-family="Georgia, serif" font-size="26" text-anchor="middle">
+          <circle cx="280" cy="360" r="110" fill="#fff" stroke="#1A1610" stroke-width="4"/>
+          <text x="280" y="370">fire</text>
+          <circle cx="800" cy="360" r="110" fill="#fff" stroke="#1A1610" stroke-width="4"/>
+          <text x="800" y="370">rock</text>
+          <circle cx="1320" cy="360" r="110" fill="#fff" stroke="#1A1610" stroke-width="4"/>
+          <text x="1320" y="370">view</text>
+        </g>
+        
+  <text x="48" y="860" font-family="Georgia, serif" font-size="26" fill="#1A1610">A few wonders. Find them on the mountain.</text>
+</svg>

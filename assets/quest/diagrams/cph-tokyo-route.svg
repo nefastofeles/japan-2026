@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="Simple illustrated route from Copenhagen to Tokyo">
+  <rect width="1600" height="900" fill="#FAF8F3"/>
+  <rect x="0" y="0" width="1600" height="16" fill="#BC002D"/>
+  <rect x="0" y="884" width="1600" height="16" fill="#BC002D"/>
+  
+        <circle cx="280" cy="430" r="28" fill="#BC002D"/>
+        <circle cx="1320" cy="390" r="34" fill="#BC002D"/>
+        <path d="M310 420 C 640 220, 980 620, 1288 400" fill="none" stroke="#1A1610" stroke-width="10" stroke-linecap="round"/>
+        <circle cx="310" cy="420" r="8" fill="#E6B422"/>
+        <circle cx="1288" cy="400" r="8" fill="#E6B422"/>
+        <text x="220" y="510" font-size="32" fill="#1A1610" font-family="Georgia, serif">Copenhagen</text>
+        <text x="1240" y="480" font-size="32" fill="#1A1610" font-family="Georgia, serif">Tokyo</text>
+        
+  <text x="48" y="860" font-family="Georgia, serif" font-size="26" fill="#1A1610">The artefact travels east, nine hours ahead.</text>
+</svg>

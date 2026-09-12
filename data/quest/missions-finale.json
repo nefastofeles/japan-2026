@@ -1,0 +1,99 @@
+[
+  {
+    "id": "fin-first-question",
+    "chapterId": "finale",
+    "moduleId": "finale-core",
+    "title": "The First Question",
+    "type": "reflection",
+    "xp": 40,
+    "fragmentValue": 0,
+    "intro": "Show the Copenhagen answer. Were you right: completely, partly, not at all? What surprised you instead?",
+    "task": "Show the Copenhagen answer. Were you right: completely, partly, not at all? What surprised you instead?",
+    "callbackFrom": "cph-first-fragment"
+  },
+  {
+    "id": "fin-your-japan",
+    "chapterId": "finale",
+    "moduleId": "finale-core",
+    "title": "Your Japan",
+    "type": "reflection",
+    "xp": 0,
+    "fragmentValue": 0,
+    "intro": "Each person: favourite discovery, strangest food, favourite place, favourite photo, favourite myth, biggest surprise.",
+    "task": "Each person: favourite discovery, strangest food, favourite place, favourite photo, favourite myth, biggest surprise.",
+    "mediaId": "media-finale-family"
+  },
+  {
+    "id": "fin-old-new",
+    "chapterId": "finale",
+    "moduleId": "finale-core",
+    "title": "Old Japan / New Japan",
+    "type": "reflection",
+    "xp": 0,
+    "fragmentValue": 0,
+    "intro": "Show the Harajuku pair. Which feels more like Japan now?",
+    "task": "Show the Harajuku pair. Which feels more like Japan now?",
+    "reveal": "Both.",
+    "mediaId": "media-finale-old-new",
+    "callbackFrom": "har-two-japans"
+  },
+  {
+    "id": "fin-art",
+    "chapterId": "finale",
+    "moduleId": "finale-core",
+    "title": "What Is Art?",
+    "type": "reflection",
+    "xp": 0,
+    "fragmentValue": 0,
+    "intro": "Show the teamLab line: Tokyo → Kyoto → Osaka. What changed?",
+    "task": "Show the teamLab line: Tokyo → Kyoto → Osaka. What changed?",
+    "callbackFrom": "tlo-trilogy"
+  },
+  {
+    "id": "fin-codex",
+    "chapterId": "finale",
+    "moduleId": "finale-core",
+    "title": "Your Codex",
+    "type": "reflection",
+    "xp": 0,
+    "fragmentValue": 0,
+    "intro": "Look at how many discoveries you hold. Each person picks one Legendary Discovery. Hiroshima stays in Memory, not here.",
+    "task": "Look at how many discoveries you hold. Each person picks one Legendary Discovery. Hiroshima stays in Memory, not here."
+  },
+  {
+    "id": "fin-chronicle",
+    "chapterId": "finale",
+    "moduleId": "finale-core",
+    "title": "The Lost Chronicle",
+    "type": "story",
+    "xp": 0,
+    "fragmentValue": 0,
+    "intro": "Japan wasn't one story. It was all of them.",
+    "task": "Japan wasn't one story. It was all of them.",
+    "reveal": "Japan wasn't one story. It was all of them.",
+    "storySteps": [
+      {
+        "text": "Edo. Temples. Samurai. Merchants."
+      },
+      {
+        "text": "War and remembrance. Sacred nature. Mountains. Crafts."
+      },
+      {
+        "text": "Trains. Manga. Food. Four of you."
+      }
+    ]
+  },
+  {
+    "id": "fin-ask-parents",
+    "chapterId": "finale",
+    "moduleId": "finale-core",
+    "title": "Ask Mum and Dad",
+    "type": "reflection",
+    "xp": 0,
+    "fragmentValue": 0,
+    "intro": "Final reward unlocked. Ask Mum and Dad.",
+    "task": "Final reward unlocked. Ask Mum and Dad.",
+    "reveal": "Final reward unlocked. Ask Mum and Dad.",
+    "realWorldReward": "Ask Mum and Dad."
+  }
+]
