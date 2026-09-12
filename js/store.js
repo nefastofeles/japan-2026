@@ -23,6 +23,7 @@ import {
 import {
   localMediaForDay, localEntriesForDay, localAllMedia,
   localMealsForDay, localAllMeals,
+  localVideos, localVideosForDay,
 } from "./local-posts.js";
 
 let itinerary = null;
@@ -134,6 +135,27 @@ function attachDay(item) {
   };
 }
 
+function youtubeKey(item) {
+  return item?.provider === "youtube" && item.external_id
+    ? item.external_id
+    : "";
+}
+
+// YouTube rows are just an id and a caption, not a private photo blob.
+// Keep phone-local clips on the boards after the shared album is on, so
+// a storage wipe cannot hide a link that is still on this phone.
+function withLocalYoutube(remote, extras) {
+  const seen = new Set(remote.map(youtubeKey).filter(Boolean));
+  const extra = [];
+  for (const item of extras || []) {
+    const key = youtubeKey(item);
+    if (!key || seen.has(key)) continue;
+    seen.add(key);
+    extra.push(item);
+  }
+  return extra.length ? [...remote, ...extra] : remote;
+}
+
 export async function mediaForDay(day) {
   const local = await localOnly(() => localMediaForDay(day));
   if (local) {
@@ -141,10 +163,11 @@ export async function mediaForDay(day) {
     return local;
   }
   const id = await requireDayId(day);
-  return albumGet(
+  const remote = await albumGet(
     "media",
     `select=*&day_id=eq.${encodeURIComponent(id)}&order=taken_at.asc.nullslast`
   );
+  return withLocalYoutube(remote, localVideosForDay(day));
 }
 
 export async function mealsForDay(day) {
@@ -221,10 +244,11 @@ export async function allMedia({ limit = 500 } = {}) {
     }
     return local.map(attachDay);
   }
-  return albumGet(
+  const remote = await albumGet(
     "media",
     `select=*&order=taken_at.desc.nullslast&limit=${Number(limit) || 500}`
   );
+  return withLocalYoutube(remote, localVideos().map(attachDay));
 }
 
 export async function addReaction(targetType, targetId, emoji) {
