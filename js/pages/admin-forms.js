@@ -10,6 +10,7 @@
 import { getDays, getPeople } from "../store.js";
 import { esc } from "../util.js";
 import { albumLibraryMarkup } from "./admin-album.js";
+import { adminPlanMarkup } from "./admin-plan.js";
 
 function dayOptions(selected) {
   return getDays()
@@ -205,7 +206,7 @@ export function adminForms(defaultDay) {
     <div class="page stack">
       <header>
         <h1>Admin</h1>
-        <p class="small muted">Add the day's photos, story and videos.
+        <p class="small muted">Add the day's photos, story, plan and videos.
           <button class="reaction" data-signout type="button">Sign out</button></p>
       </header>
 
@@ -216,6 +217,7 @@ export function adminForms(defaultDay) {
         </div>
       </div>
 
+      ${adminPlanMarkup()}
       ${photoSection()}
       ${albumLibraryMarkup()}
       ${storySection()}

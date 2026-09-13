@@ -7,7 +7,7 @@
    ========================================================================== */
 
 import {
-  getDay, neighbours, dayNumber, getLeg,
+  getDay, neighbours, dayNumber, getLeg, getStay,
   mediaForDay, mealsForDay, entriesForDay, bestOfForDay,
 } from "../store.js";
 import { esc, formatDate, youtubeId } from "../util.js";
@@ -26,6 +26,7 @@ import { bindLiveWeather } from "../weather.js";
 import { destinationHero } from "../components/hero-banner.js";
 import { bestOfSection } from "../components/best-of.js";
 import { albumLoadError, albumSharedNote } from "../components/album-notice.js";
+import { dayPlanSection, stayCard } from "../components/day-plan.js";
 
 function header(day) {
   const counter = dayNumber(day);
@@ -46,25 +47,6 @@ function header(day) {
     </header>`;
 }
 
-function daySummary(day) {
-  const blocks = (day.activities || [])
-    .map(
-      (block) => `
-      <div class="block">
-        <p class="block__when">${esc(block.when)}</p>
-        <ul class="block__items">
-          ${block.items.map((item) => `<li>${esc(item)}</li>`).join("")}
-        </ul>
-      </div>`
-    )
-    .join("");
-
-  if (!blocks) return "";
-  return `<section>
-            <h2 class="section-title">Day summary</h2>
-            ${blocks}
-          </section>`;
-}
 
 function foodPlan(day) {
   if (!day.food || !day.food.length) return "";
@@ -169,9 +151,10 @@ export async function dayPage({ date }) {
       ${day.transit ? `<p class="transit"><span aria-hidden="true">🚄</span><span>${esc(day.transit)}</span></p>` : ""}
       ${day.kind === "day" ? weatherLine(day) : ""}
       ${bookings(day.bookings)}
+      ${day.kind === "day" ? stayCard(getStay(day)) : ""}
       ${day.special ? `<p class="notice"><strong>A special one.</strong> This is the day the whole trip bends around.</p>` : ""}
 
-      ${day.kind === "pre" ? "" : daySummary(day)}
+      ${day.kind === "pre" ? "" : dayPlanSection(day)}
       ${storySection}
       ${photosSection}
       ${videoSection}
