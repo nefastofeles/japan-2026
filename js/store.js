@@ -48,6 +48,15 @@ export const getDays = () => itinerary.days;
 export const getPeople = () => people;
 export const getReference = () => itinerary.reference;
 
+/** Confirmed hotel or Airbnb for the night this day ends. */
+export function getStay(day) {
+  if (!day) return null;
+  const stays = itinerary?.reference?.stays || [];
+  if (day.stay) return stays.find((row) => row.id === day.stay) || null;
+  if (!day.overnight) return null;
+  return stays.find((row) => row.name === day.overnight) || null;
+}
+
 export const getPerson = (id) => people.find((p) => p.id === id) || null;
 
 export const getLeg = (id) =>

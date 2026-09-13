@@ -64,6 +64,10 @@
 .booking__title { font-weight: 700; }
 .booking__note { color: var(--ink-muted); font-size: var(--size-sm); }
 
+.plan-note { max-width: var(--measure); margin: 0 0 var(--sp-5); }
+
+.stay__name { font-weight: 700; }
+
 /* Activity blocks */
 
 .block { margin-bottom: var(--sp-5); }

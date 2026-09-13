@@ -16,6 +16,7 @@ import { todayISO, youtubeId } from "../util.js";
 import { prepareImage } from "../media.js";
 import { adminForms, photoBatchMarkup } from "./admin-forms.js";
 import { bindAlbumLibrary, refreshAlbumLibrary } from "./admin-album.js";
+import { bindAdminPlan } from "./admin-plan.js";
 import { loginPage } from "./login.js";
 import { resetQuestState } from "../quest/reset.js";
 import { uploadPhotoFiles } from "../components/photo-upload.js";
@@ -227,6 +228,7 @@ function bindAdmin(root) {
     }
   });
 
+  bindAdminPlan(root, selectedDay);
   bindAlbumLibrary(root);
 
   pick("[data-reset-quest]").addEventListener("click", async () => {
