@@ -89,6 +89,15 @@ function asVideo(item) {
   return { ...item, provider: "youtube", category: "other" };
 }
 
+export function localVideos() {
+  return loadMeta().videos.map(asVideo);
+}
+
+export function localVideosForDay(day) {
+  const key = dayKey(day);
+  return localVideos().filter((item) => item.day === key);
+}
+
 export async function addLocalPhoto(day, prepared, { category, place, mealId } = {}) {
   const id = newId();
   await putBlobs(id, { full: prepared.full, thumb: prepared.thumb });
